@@ -3,7 +3,12 @@
   <q-page class="container q-pa-xs">
     <div class="row q-gutter-lg">
       <!-- <div class="col-xs-12 col-lg-4" v-for="artigo in 10" :key="artigo"> -->
-      <div class="col-xs-12 col-lg-4 q-gutter-lg">
+      <div
+        class="col-xs-12 col-lg-4 q-gutter-lg"
+        v-for="(post, index) in posts"
+        :key="index"
+      >
+        <!--  <div class="col-xs-12 col-lg-4 q-gutter-lg"> -->
         <q-card>
           <q-card-media>
             <!-- <q-img src="~assets/bentleybrasil.jpeg" style="min-width: 400px; max-width: 50rem;"></q-img> -->
@@ -22,12 +27,12 @@
               Inclua a internet da Bentley Brasil no seu catálogo de produtos,
               expandindo seu negócio, aumentando seus lucros. Integrar o time de
               parceiros da Bentley Brasil pode trazer inúmeros benefícios para
-              sua empresa: <br> <br>
-              • Comercialização do serviço de internet Bentley
-                Brasil de alta velocidade <br>
-              • Networking qualificado <br>
-              • Comissões com
-                retorno rápido
+              sua empresa: <br />
+              <br />
+              • Comercialização do serviço de internet Bentley Brasil de alta
+              velocidade <br />
+              • Networking qualificado <br />
+              • Comissões com retorno rápido
             </div>
           </q-card-section>
           <q-card-actions class="q-gutter-md">
@@ -62,5 +67,25 @@
 /* eslint-disable */
 export default {
   name: "Posts",
+  data() {
+    return {
+      posts: [],
+    };
+  },
+  mounted() {
+    this.getPosts();
+  },
+  methods: {
+    getPosts() {
+      this.$axios
+        .get("http://viladossilicio.com.br/wp-json/wp/v2/posts")
+        .then((res) => {
+          console.log("POSTS", res.data);
+        })
+        .cath((err) => {
+          console.error(err);
+        });
+    },
+  },
 };
 </script>
