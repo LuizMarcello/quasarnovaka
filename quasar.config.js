@@ -9,7 +9,8 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 
-const ESLintPlugin = require('eslint-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin');
+const { QCard } = require('quasar');
 
 
 const { configure } = require('quasar/wrappers');
@@ -101,7 +102,14 @@ module.exports = configure(function (ctx) {
       // (like functional components as one of the examples),
       // you can manually specify Quasar components/directives to be available everywhere:
       //
-      // components: [],
+      components: [
+        /* 'QCard',
+        'QCardTitle',
+        'QCardMain',
+        'QCardMedia',
+        'QCardSeparator',
+        'QCardActions' */
+      ],
       // directives: [],
 
       // Quasar plugins

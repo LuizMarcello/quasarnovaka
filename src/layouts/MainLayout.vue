@@ -4,9 +4,10 @@
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title> Bentley nova ka </q-toolbar-title>
+        <q-toolbar-title> Bentley Brasil </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <!-- <div>Quasar v{{ $q.version }}</div> -->
+        <div>Nova Ka</div>
       </q-toolbar>
     </q-header>
 
@@ -28,13 +29,23 @@
             </q-item-section>
           </q-item>
 
+          <q-item to="/dashboard" exact>
+            <q-item-section avatar>
+              <q-icon name="list_alt" />
+            </q-item-section>
+            <q-item-section
+              ><q-item-label>Dashboard</q-item-label>
+              <q-item-label caption>Página dashboard</q-item-label>
+            </q-item-section>
+          </q-item>
+
           <q-item to="/posts" exact>
             <q-item-section avatar>
               <q-icon name="list_alt" />
             </q-item-section>
             <q-item-section
-              ><q-item-label>Posts</q-item-label>
-              <q-item-label caption>Página de posts</q-item-label>
+              ><q-item-label>Parceria</q-item-label>
+              <q-item-label caption>Seja uma revenda Bentley</q-item-label>
             </q-item-section>
           </q-item>
 
