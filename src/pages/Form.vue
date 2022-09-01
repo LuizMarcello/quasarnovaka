@@ -62,7 +62,7 @@
       <div>
         <q-btn label="Enviar" type="submit" color="primary" />
         <q-btn
-          label="Reset"
+          label="Limpar"
           type="reset"
           color="primary"
           flat
@@ -76,10 +76,6 @@
 <script>
 import { useQuasar } from "quasar";
 import { ref } from "vue";
-
-import textareaform from "src/pages/Textareaform.vue";
-
-components: textareaform;
 
 export default {
   setup() {
