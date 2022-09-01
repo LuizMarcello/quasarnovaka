@@ -39,7 +39,7 @@
             </q-item-section>
           </q-item> -->
 
-          <q-item to="/posts" exact>
+          <q-item to="/dashboard" exact>
             <q-item-section avatar>
               <q-icon name="list_alt" />
             </q-item-section>
@@ -49,13 +49,23 @@
             </q-item-section>
           </q-item>
 
-            <q-item to="/dashboard" exact>
+            <q-item to="/quemsomosnos" exact>
             <q-item-section avatar>
               <q-icon name="list_alt" />
             </q-item-section>
             <q-item-section
               ><q-item-label>Quem somos nós</q-item-label>
               <q-item-label caption>Bentley Brasil</q-item-label>
+            </q-item-section>
+          </q-item>
+
+          <q-item to="/form" exact>
+            <q-item-section avatar>
+              <q-icon name="list_alt" />
+            </q-item-section>
+            <q-item-section
+              ><q-item-label>Formulário</q-item-label>
+              <q-item-label caption>Preencha os dados</q-item-label>
             </q-item-section>
           </q-item>
 

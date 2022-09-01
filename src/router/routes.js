@@ -6,7 +6,7 @@ const routes = [
       /*  { path: '', component: () => import('pages/IndexPage.vue') } */
       {
         path: "/",
-        component: () => import("src/pages/Dashboard.vue"),
+        component: () => import("src/pages/Home.vue"),
       },
 
       {
@@ -15,8 +15,13 @@ const routes = [
       },
 
       {
-        path: "/posts",
-        component: () => import("src/pages/Posts.vue"),
+        path: "/quemsomosnos",
+        component: () => import("src/pages/Quemsomosnos.vue"),
+      },
+
+      {
+        path: "/form",
+        component: () => import("src/pages/Form.vue"),
       },
     ],
   },
