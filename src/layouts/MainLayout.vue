@@ -29,7 +29,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item to="/dashboard" exact>
+         <!--  <q-item to="/dashboard" exact>
             <q-item-section avatar>
               <q-icon name="list_alt" />
             </q-item-section>
@@ -37,7 +37,7 @@
               ><q-item-label>Dashboard</q-item-label>
               <q-item-label caption>Página dashboard</q-item-label>
             </q-item-section>
-          </q-item>
+          </q-item> -->
 
           <q-item to="/posts" exact>
             <q-item-section avatar>
@@ -46,6 +46,16 @@
             <q-item-section
               ><q-item-label>Parceria</q-item-label>
               <q-item-label caption>Seja uma revenda Bentley</q-item-label>
+            </q-item-section>
+          </q-item>
+
+            <q-item to="/dashboard" exact>
+            <q-item-section avatar>
+              <q-icon name="list_alt" />
+            </q-item-section>
+            <q-item-section
+              ><q-item-label>Quem somos nós</q-item-label>
+              <q-item-label caption>Bentley Brasil</q-item-label>
             </q-item-section>
           </q-item>
 

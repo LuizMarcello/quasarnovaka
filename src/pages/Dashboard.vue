@@ -1,67 +1,81 @@
 <!-- eslint-disable -->
 <template>
-  <q-page class="container q-pa-xs">
-    <div class="row gutter-md">
-      <!-- <div class="col-xs-12 col-lg-4" v-for="artigo in 10" :key="artigo"> -->
-      <div class="col-xs-12 col-lg-4">
-        <q-card>
-          <q-card-media>
-            <!-- <q-img src="~assets/bentleybrasil.jpeg" style="min-width: 400px; max-width: 50rem;"></q-img> -->
-            <q-img src="~assets/conectandovcaomundo.jpg" style="max-width: 650px"></q-img>
-          </q-card-media>
-
-          <!-- <q-card-title>Título do artigo</q-card-title>
-          <q-separator />
-          <q-card-main>Aqui só um resumo breve do artigo em destaque.</q-card-main> -->
-          <q-card-section>
-            <div class="text-h6">Torne-se um parceiro da Bentley Brasil</div>
-            <!-- <div class="text-subtitle2">
-              Venha fazer parte de nossa equipe. Estamos em busca de parceiros
-              locais talentosos em descobrir soluções inovadoras para integrar
-              nosso time e levar internet via satélite de excelente qualidade as
-              comunidades, residências e empresas do Brasil que mais necessitam.
-              Inclua a internet da Bentley Brasil no seu catálogo de produtos,
-              expandindo seu negócio, aumentando seus lucros. Integrar o time de
-              parceiros da Bentley Brasil pode trazer inúmeros benefícios para
-              sua empresa:
-              • Comercialização do serviço de internet Bentley
-                Brasil de alta velocidade
-              • Networking qualificado
-              • Comissões com
-                retorno rápido
-            </div> -->
-          </q-card-section>
-          <q-card-actions>
-            <!-- <q-btn flat round dense icon="event"></q-btn> -->
-            <div class="col">
-              <!-- <q-btn flat label="Detalhes"></q-btn> -->
-              <q-btn
-                push
-                color="dark"
-                label="Detalhes"
-                class="full-width"
-              ></q-btn>
-            </div>
-            <div class="col">
-              <!-- <q-btn flat color="dark" label="Visualizar"></q-btn> -->
-              <!-- <q-btn
-                push
-                color="dark"
-                label="Visualizar"
-                class="full-width"
-              ></q-btn> -->
-            </div>
-            <!-- <q-btn flat color="primary" label="Reserve"></q-btn> -->
-          </q-card-actions>
-        </q-card>
-      </div>
-    </div>
-  </q-page>
+  <div class="q-pa-md">
+    <q-carousel
+      v-model="slide"
+      transition-prev="slide-right"
+      transition-next="slide-left"
+      swipeable
+      animated
+      control-color="primary"
+      navigation
+      padding
+      arrows
+      height="300px"
+      class="bg-grey-1 shadow-2 rounded-borders"
+    >
+      <q-carousel-slide :name="1" class="column no-wrap">
+        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+          <q-img
+            class="rounded-borders col-6 full-height"
+            src="https://cdn.quasar.dev/img/mountains.jpg"
+          />
+          <q-img
+            class="rounded-borders col-6 full-height"
+            src="https://cdn.quasar.dev/img/parallax1.jpg"
+          />
+        </div>
+      </q-carousel-slide>
+      <q-carousel-slide :name="2" class="column no-wrap">
+        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+          <q-img
+            class="rounded-borders col-6 full-height"
+            src="https://cdn.quasar.dev/img/parallax2.jpg"
+          />
+          <q-img
+            class="rounded-borders col-6 full-height"
+            src="https://cdn.quasar.dev/img/quasar.jpg"
+          />
+        </div>
+      </q-carousel-slide>
+      <q-carousel-slide :name="3" class="column no-wrap">
+        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+          <q-img
+            class="rounded-borders col-6 full-height"
+            src="https://cdn.quasar.dev/img/cat.jpg"
+          />
+          <q-img
+            class="rounded-borders col-6 full-height"
+            src="https://cdn.quasar.dev/img/linux-avatar.png"
+          />
+        </div>
+      </q-carousel-slide>
+      <q-carousel-slide :name="4" class="column no-wrap">
+        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+          <q-img
+            class="rounded-borders col-6 full-height"
+            src="https://cdn.quasar.dev/img/material.png"
+          />
+          <q-img
+            class="rounded-borders col-6 full-height"
+            src="https://cdn.quasar.dev/img/donuts.png"
+          />
+        </div>
+      </q-carousel-slide>
+    </q-carousel>
+  </div>
 </template>
 
 <script>
 /* eslint-disable */
+import { ref } from "vue";
 export default {
   name: "Dashboard",
+
+  setup() {
+    return {
+      slide: ref(1),
+    };
+  },
 };
 </script>
