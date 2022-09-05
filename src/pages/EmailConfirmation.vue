@@ -1,8 +1,8 @@
 <template>
   <q-page padding>
-    <p>Obrigado por se registrar !</p>
-    <p>
-      Por favor, confirme seu email para finalizar o registro: {{ $route.query.email }}
+    <p class="text-body1">Obrigado por se registrar !</p>
+    <p class="text-body1">
+      Por favor, confirme seu email para finalizar o registro:  <strong>{{ $route.query.email }}</strong>
     </p>
   </q-page>
 </template>

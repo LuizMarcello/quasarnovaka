@@ -28,7 +28,7 @@
         </q-item-label>
 
         <q-list bordered separator>
-          <q-item to="home" exact>
+          <q-item to="/" exact>
             <q-item-section avatar>
               <q-icon name="home" />
             </q-item-section>

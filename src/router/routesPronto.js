@@ -39,27 +39,7 @@ const routes = [{
         path: 'me',
         name: 'me',
         component: () => import("pages/Me.vue"),
-      },
-      {
-        path: 'home',
-        name: 'home',
-        component: () => import("pages/Home.vue"),
-      },
-      {
-        path: 'dashboard',
-        name: 'dashboard',
-        component: () => import("pages/Dashboard.vue"),
-      },
-      {
-        path: 'quemsomosnos',
-        name: 'quemsomosnos',
-        component: () => import("pages/Quemsomosnos.vue"),
-      },
-      {
-        path: 'form',
-        name: 'form',
-        component: () => import("pages/Form.vue"),
-      },
+      }
     ],
     meta: {
       requiresAuth: true
