@@ -137,7 +137,9 @@ module.exports = configure(function (ctx) {
 
       // Quasar plugins
       // Plugin "Dialog" será usado também no logout
-      plugins: ['Dialog']
+      plugins: ['Dialog',
+        'Notify'
+      ]
     },
 
     // animations: 'all', // --- includes all animations

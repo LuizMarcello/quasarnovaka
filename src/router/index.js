@@ -37,11 +37,24 @@ export default route(function ( /* { store, ssrContext } */ ) {
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
 
-  /* Verificação se está relamente logado */
+  /* Verificação se está realmente logado */
   Router.beforeEach((to) => {
     const {
       isLoggedIn
     } = useAuthUser()
+
+    /* Se existe o hash, e preparando o token para ser enviado, para alterar a senha. */
+    if (to.hash.includes('type=recovery') &&
+      to.name !== 'reset-password') {
+      const accessToken = to.hash.split('&')[0]
+      const token = accessToken.replace('#access_token=', '')
+      return {
+        name: 'reset-password',
+        query: {
+          token
+        }
+      }
+    }
 
     if (!isLoggedIn() && to.meta.requiresAuth && !Object.keys(to.query).includes('fromEmail')) {
       return {
