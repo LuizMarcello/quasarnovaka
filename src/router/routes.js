@@ -22,6 +22,11 @@ const routes = [{
         name: 'email-confirmation',
         component: () => import('pages/EmailConfirmation.vue')
       },
+       {
+         path: 'forgot-password',
+         name: 'forgot-password',
+         component: () => import('pages/ForgotPassword.vue')
+       }
 
     ],
   },

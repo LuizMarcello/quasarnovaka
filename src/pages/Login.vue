@@ -24,13 +24,23 @@
           ></q-btn>
         </div>
 
-        <div class="full-width">
+        <div class="full-width q-gutter-y-md">
           <q-btn
-            label="Register"
+            label="Registrar"
             color="primary"
             class="full-width"
             flat
             to="/register"
+            size="sm"
+          ></q-btn>
+
+          <q-btn
+            label="Esqueceu a senha ?"
+            color="primary"
+            class="full-width"
+            flat
+            :to="{ name: 'forgot-password' }"
+            size="sm"
           ></q-btn>
         </div>
       </div>

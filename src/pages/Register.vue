@@ -15,7 +15,7 @@
         <!-- <q-input label="Password" v-model="form.password" outlined /> -->
         <q-input label="Password" v-model="form.password" outlined rounded />
 
-        <div class="full-width q-pt-md">
+        <div class="full-width q-pt-md q-gutter-y-sm">
           <q-btn
             label="Registrar"
             color="primary"
@@ -24,6 +24,15 @@
             rounded
             size="lg"
             type="submit"
+          ></q-btn>
+
+          <q-btn
+            label="Voltar"
+            color="primary"
+            class="full-width"
+            flat
+            :to="{ name: 'login' }"
+            size="sm"
           ></q-btn>
         </div>
       </div>

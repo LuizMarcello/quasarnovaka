@@ -5,6 +5,7 @@ import {
 
 /* Importando o "supabase" */
 import useSupabase from 'boot/supabase'
+import { access } from 'fs'
 
 /* Este é um "estado global(usuário global)".
    Quem importar este "composable", terá
@@ -97,6 +98,17 @@ export default function useAuthUser() {
     if (error) throw error
     return user
   }
+
+  /* Envio para o e-mail, o qual a senha será resetada */
+  const resetPassword = async (accessToken, newPassword) => {
+    const {
+      user,
+      error
+    } = await supabase.auth.api.updateUser(
+      
+    )
+  }
+
 
   /* Este return é devido ao vuejs 3 */
   return {
