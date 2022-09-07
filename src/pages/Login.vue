@@ -7,10 +7,25 @@
       <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
         <!-- <q-input label="Email" v-model="form.email" /> -->
         <!-- <q-input label="Email" v-model="form.email" outlined /> -->
-        <q-input label="Email" v-model="form.email" outlined rounded />
+        <q-input
+          label="Email"
+          v-model="form.email"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Por favor, digite seu email']"
+          type="email"
+          outlined
+          rounded
+        />
         <!-- <q-input label="Password" v-model="form.password" /> -->
         <!-- <q-input label="Password" v-model="form.password" outlined /> -->
-        <q-input label="Password" v-model="form.password" outlined rounded />
+        <q-input
+          label="Password"
+          v-model="form.password"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Por favor, digite sua senha']"
+          outlined
+          rounded
+        />
 
         <div class="full-width q-pt-md">
           <q-btn
@@ -53,6 +68,8 @@
 import { defineComponent, ref } from "vue";
 /* Importando o "composable" já pronto */
 import useAuthUser from "src/composables/UseAuthUser";
+/* Importando o "composable" já pronto */
+import useNotify from "src/composables/UseNotify";
 /* Para redicionar para algumas rotas */
 import { useRouter } from "vue-router";
 
@@ -64,18 +81,26 @@ export default defineComponent({
 
     const { login } = useAuthUser();
 
-    /* o "ref" é para reatividade na responsividade */
+    const { notifyError, notifySuccess } = useNotify();
+
+    /* O "ref" é para reatividade na responsividade */
     const form = ref({
       email: "",
       password: "",
     });
 
+    /* Usando Quasar "internal validation" (Em Input Textfield)
+       para validações dos valores dentro do input. Se deixar os
+       inputs vazios, já dará mensagens. Do próprio Quasar. */
     const handleLogin = async () => {
       try {
         await login(form.value);
+        notifySuccess("Logado com sucesso!");
         router.push({ name: "me" });
       } catch (error) {
-        alert(error.message);
+        /* notifyError("Favor inserir seu e-mail e senha cadastrados!"); */
+        notifyError(error.message);
+        /* alert(error.message); */
       }
     };
 

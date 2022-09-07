@@ -7,11 +7,18 @@
       <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
         <!-- <q-input label="Email" v-model="email" /> -->
         <!-- <q-input label="Email" v-model="email" outlined /> -->
-        <q-input label="Nova senha" v-model="password" outlined rounded />
+        <q-input
+          label="Nova senha"
+          v-model="password"
+          lazy-rules
+          :rules="[(val) => (val && val.length >= 6) || 'Informe a nova senha']"
+          outlined
+          rounded
+        />
 
         <div class="full-width q-pt-md q-gutter-y-sm">
           <q-btn
-            label="Enviar email"
+            label="Enviar nova senha"
             color="primary"
             class="full-width"
             outline
@@ -19,15 +26,6 @@
             size="lg"
             type="submit"
           ></q-btn>
-
-          <!--    <q-btn
-            label="Voltar"
-            color="primary"
-            class="full-width"
-            flat
-            :to="{ name: 'login' }"
-            size="sm"
-          ></q-btn> -->
         </div>
       </div>
     </q-form>
@@ -37,12 +35,14 @@
 <script>
 import { defineComponent, ref } from "vue";
 import useAuthUser from "src/composables/UseAuthUser";
+import useNotify from "src/composables/UseNotify";
 import { useRouter, useRoute } from "vue-router";
 
 export default defineComponent({
   name: "PageResetPassword",
   setup() {
     const { resetPassword } = useAuthUser();
+    const { notifyError, notifySuccess } = useNotify();
     const router = useRouter();
     const route = useRoute();
     const token = route.query.token;
@@ -50,8 +50,13 @@ export default defineComponent({
     const password = ref("");
 
     const handlePasswordReset = async () => {
-      await resetPassword(token, password.value);
-      router.push({ name: "login" });
+      try {
+        await resetPassword(token, password.value);
+        notifySuccess("A nova senha já foi enviada");
+        router.push({ name: "login" });
+      } catch (error) {
+        notifyError(error.message);
+      }
     };
 
     return { password, handlePasswordReset };
