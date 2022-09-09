@@ -57,6 +57,15 @@
             :to="{ name: 'forgot-password' }"
             size="sm"
           ></q-btn>
+
+          <q-btn
+            label="Cancelar"
+            color="primary"
+            class="full-width"
+            flat
+            to="/home"
+            size="sm"
+          ></q-btn>
         </div>
       </div>
     </q-form>

@@ -1,56 +1,71 @@
-const routes = [{
+const routes = [
+  {
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/LoginLayout.vue"),
-    children: [{
+    children: [
+      /* {
       path: '',
       name: 'loginDefault',
       component: () => import('pages/Login.vue')
-    }, {
-      path: 'login',
-      name: 'login',
-      component: () => import('pages/Login.vue')
-    }, {
-      path: 'register',
-      name: 'register',
-      component: () => import('pages/Register.vue')
-    }, {
-      path: 'email-confirmation',
-      name: 'email-confirmation',
-      component: () => import('pages/EmailConfirmation.vue')
-    }, {
-      path: 'forgot-password',
-      name: 'forgot-password',
-      component: () => import('pages/ForgotPassword.vue')
-    }, {
-      path: 'reset-password',
-      name: 'reset-password',
-      component: () => import('pages/ResetPassword.vue')
-    }],
+
+    }, */ {
+        path: "login",
+        name: "login",
+        component: () => import("pages/Login.vue"),
+      },
+      {
+        path: "register",
+        name: "register",
+        component: () => import("pages/Register.vue"),
+      },
+      {
+        path: "email-confirmation",
+        name: "email-confirmation",
+        component: () => import("pages/EmailConfirmation.vue"),
+      },
+      {
+        path: "forgot-password",
+        name: "forgot-password",
+        component: () => import("pages/ForgotPassword.vue"),
+      },
+      {
+        path: "reset-password",
+        name: "reset-password",
+        component: () => import("pages/ResetPassword.vue"),
+      },
+    ],
   },
 
   {
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
-    component: () => import("layouts/MainLayoutSemLogout.vue"),
-    children: [{
-        path: 'home',
-        name: 'home',
+    component: () => import("layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "",
+        name: "loginDefault",
+        /* component: () => import('pages/Login.vue') */
         component: () => import("pages/Home.vue"),
       },
       {
-        path: 'dashboard',
-        name: 'dashboard',
+        path: "home",
+        name: "home",
+        component: () => import("pages/Home.vue"),
+      },
+      {
+        path: "dashboard",
+        name: "dashboard",
         component: () => import("pages/Dashboard.vue"),
       },
       {
-        path: 'quemsomosnos',
-        name: 'quemsomosnos',
+        path: "quemsomosnos",
+        name: "quemsomosnos",
         component: () => import("pages/Quemsomosnos.vue"),
       },
       {
-        path: 'form',
-        name: 'form',
+        path: "form",
+        name: "form",
         component: () => import("pages/Form.vue"),
       },
     ],
@@ -63,20 +78,21 @@ const routes = [{
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{
-        path: 'me',
-        name: 'me',
+    children: [
+      {
+        path: "me",
+        name: "me",
         component: () => import("pages/Me.vue"),
       },
       {
-        path: 'listarevendas',
-        name: 'listarevendas',
+        path: "listarevendas",
+        name: "listarevendas",
         component: () => import("pages/revendas/ListaRevendas.vue"),
       },
     ],
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
 
   // Always leave this as last one,
