@@ -54,13 +54,18 @@ module.exports = configure(function (ctx) {
       'roboto-font', // optional, you are not bound to it
       'material-icons', // optional, you are not bound to it
       'fontawesome-v6',
-      'bootstrap-icons'
+      'bootstrap-icons',
+      'mdi-v5'
     ],
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-build
     build: {
       //vueRouterMode: 'hash', // available values: 'hash', 'history'
       vueRouterMode: 'history', // available values: 'hash', 'history'
+      env: {
+        SUPABASE_URL: 'https://shgydekzsmsygqsulbma.supabase.co',
+        SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNoZ3lkZWt6c21zeWdxc3VsYm1hIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjE5Nzc0MDMsImV4cCI6MTk3NzU1MzQwM30.0ldS7sm9QKcAiUUSUkxrwlPbev2qn42ytZ5VhJVenKs'
+      },
 
       // transpile: false,
       // publicPath: '/',

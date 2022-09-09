@@ -65,7 +65,7 @@
 
 <script>
 /* o "ref" é para reatividade na responsividade */
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 /* Importando o "composable" já pronto */
 import useAuthUser from "src/composables/UseAuthUser";
 /* Importando o "composable" já pronto */
@@ -79,7 +79,7 @@ export default defineComponent({
   setup() {
     const router = useRouter();
 
-    const { login } = useAuthUser();
+    const { login, isLoggedIn } = useAuthUser();
 
     const { notifyError, notifySuccess } = useNotify();
 
@@ -87,6 +87,12 @@ export default defineComponent({
     const form = ref({
       email: "",
       password: "",
+    });
+
+    onMounted(() => {
+      if (isLoggedIn) {
+        router.push({ name: "me" });
+      }
     });
 
     /* Usando Quasar "internal validation" (Em Input Textfield)

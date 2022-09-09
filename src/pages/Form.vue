@@ -13,7 +13,7 @@
         />
         <q-input
           filled
-          v-model="name"
+          v-model="sobrenome"
           label="Sobrenome *"
           hint="xxxxxxx"
           lazy-rules
