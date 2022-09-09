@@ -15,7 +15,7 @@
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
 
-
+        <div v-if="!isLogged">
           <q-btn-dropdown flat color="white" icon="person">
             <q-list>
               <q-item to="login" exact>
@@ -26,22 +26,20 @@
               <!-- <div>Nova Ka</div> -->
             </q-list>
           </q-btn-dropdown>
+        </div>
 
-
+        <div v-if="!isLogged">
           <q-btn-dropdown flat color="white" icon="person">
             <q-list>
-              <template v-if="!isLogged">
-                <q-item clickable v-close-popup @click="handleLogout">
-                  <q-item-section>
-                    <q-item-label>Sair</q-item-label>
-                  </q-item-section>
-                </q-item>
-              </template>
+              <q-item clickable v-close-popup @click="handleLogout">
+                <q-item-section>
+                  <q-item-label>Sair</q-item-label>
+                </q-item-section>
+              </q-item>
               <!-- <div>Nova Ka</div> -->
             </q-list>
           </q-btn-dropdown>
-
-
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -135,7 +133,7 @@
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 import useAuthUser from "src/composables/UseAuthUser";
-import isLoggedIn from "src/composables/UseAuthUser";
+/* import isLoggedIn from "src/composables/UseAuthUser"; */
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
@@ -225,6 +223,9 @@ export default defineComponent({
       },
       handleLogout,
     };
+  },
+  if(isLoggedIn) {
+    isLoggedIn = true;
   },
 });
 </script>
