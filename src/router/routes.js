@@ -66,7 +66,12 @@ const routes = [
       {
         path: "form",
         name: "form",
-        component: () => import("pages/Form.vue"),
+        component: () => import("src/pages/revendas/Form.vue"),
+      },
+      {
+        path: "form-revendas",
+        name: "form-revendas",
+        component: () => import("src/pages/revendas/Form.vue"),
       },
     ],
     /* meta: {

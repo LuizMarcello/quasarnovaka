@@ -2,20 +2,13 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title> Bentley Brasil </q-toolbar-title>
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
 
-        <div v-if="!isLogged">
+        <div v-if="dd">
           <q-btn-dropdown flat color="white" icon="person">
             <q-list>
               <q-item to="login" exact>
@@ -28,7 +21,7 @@
           </q-btn-dropdown>
         </div>
 
-        <div v-if="!isLogged">
+        <div v-if="!dd">
           <q-btn-dropdown flat color="white" icon="person">
             <q-list>
               <q-item clickable v-close-popup @click="handleLogout">
@@ -114,11 +107,7 @@
             </q-item-section>
           </q-item>
 
-          <EssentialLink
-            v-for="link in essentialLinks"
-            :key="link.title"
-            v-bind="link"
-          />
+          <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
         </q-list>
       </q-list>
     </q-drawer>
@@ -192,7 +181,7 @@ export default defineComponent({
 
     const { logout } = useAuthUser();
 
-    /* const { isLoggedIn } = useAuthUser(); */
+    const { isLoggedIn } = useAuthUser();
 
     const handleLogout = async () => {
       $q.dialog({
@@ -223,9 +212,6 @@ export default defineComponent({
       },
       handleLogout,
     };
-  },
-  if(isLoggedIn) {
-    isLoggedIn = true;
   },
 });
 </script>
