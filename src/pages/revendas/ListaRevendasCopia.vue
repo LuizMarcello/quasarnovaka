@@ -127,7 +127,7 @@ export default defineComponent({
     const revendas = ref([]);
     const loading = ref(true);
     const router = useRouter();
-    /* const table = "revendas"; */
+    const table = "revendas";
     const $q = useQuasar();
     const { list, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
@@ -135,7 +135,7 @@ export default defineComponent({
     const handleListRevendas = async () => {
       try {
         loading.value = true;
-        revendas.value = await list("revendas");
+        revendas.value = await list("table");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
@@ -150,13 +150,13 @@ export default defineComponent({
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${revenda.nome} ?`,
+          message: `Tem certeza que quer deletar ${revenda.name} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("revendas", revenda.id);
+          await remove(table, revenda.id);
           notifySuccess("Removido com sucesso!");
-          handleListRevendas()
+          handleListRevendas();
         });
       } catch (error) {
         notifyError(error.message);
