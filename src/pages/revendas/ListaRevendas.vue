@@ -12,13 +12,32 @@
         <template v-slot:top>
           <span class="text-h6">Revenda</span>
           <q-space />
-          <q-btn
+          <!-- <q-btn
+            v-if="$q.platform.is.desktop"
             label="Adicionar"
             color="primary"
             icon="mdi-plus"
             dense
             :to="{ name: 'form-revendas' }"
-          />
+          /> -->
+          <q-td class="q-gutter-x-sm">
+            <q-btn
+              class="desktop-only"
+              label="Gerar pdf"
+              color="primary"
+              icon="mdi-file-pdf-box"
+              dense
+              :to="{ name: 'listarevendas-pdf' }"
+            />
+            <q-btn
+              class="desktop-only"
+              label="Adicionar"
+              color="primary"
+              icon="mdi-plus"
+              dense
+              :to="{ name: 'form-revendas' }"
+            />
+          </q-td>
         </template>
 
         <template v-slot:body-cell-actions="props">
@@ -44,6 +63,22 @@
         </template>
       </q-table>
     </div>
+    <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <!-- <q-btn
+        v-if="$q.platform.is.mobile"
+        fab
+        icon="mdi-plus"
+        color="primary"
+        :to="{ name: 'form-revendas' }"
+      /> -->
+      <q-btn
+        class="mobile-only"
+        fab
+        icon="mdi-plus"
+        color="primary"
+        :to="{ name: 'form-revendas' }"
+      />
+    </q-page-sticky>
   </q-page>
 </template>
 
@@ -113,6 +148,7 @@ const columns = [
     sortable: true,
   },
 ];
+
 /* "defineComponent": Porque é vuejs 3 */
 import { defineComponent, ref, onMounted, computed } from "vue";
 import useApi from "src/composables/UseApi";
@@ -156,7 +192,7 @@ export default defineComponent({
         }).onOk(async () => {
           await remove("revendas", revenda.id);
           notifySuccess("Removido com sucesso!");
-          handleListRevendas()
+          handleListRevendas();
         });
       } catch (error) {
         notifyError(error.message);

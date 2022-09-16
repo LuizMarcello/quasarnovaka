@@ -40,14 +40,14 @@
         </div>
 
         <div class="full-width q-gutter-y-md">
-          <q-btn
+         <!--  <q-btn
             label="Registrar"
             color="primary"
             class="full-width"
             flat
             to="/register"
             size="sm"
-          ></q-btn>
+          ></q-btn> -->
 
           <q-btn
             label="Esqueceu a senha ?"

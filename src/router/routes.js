@@ -94,6 +94,7 @@ const routes = [
         name: "listarevendas",
         component: () => import("pages/revendas/ListaRevendas.vue"),
       },
+      
     ],
     meta: {
       requiresAuth: true,

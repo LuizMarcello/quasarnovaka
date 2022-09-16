@@ -51,6 +51,14 @@
         próprio serviço de internet via satélite.
       </div>
     </div>
+    <q-btn
+      class="desktop-only"
+      label="Seja nossa revenda"
+      color="primary"
+      icon="mdi-plus"
+      dense
+      :to="{ name: 'form-revendas' }"
+    />
   </q-page>
   <q-footer elevated>
     <q-toolbar>

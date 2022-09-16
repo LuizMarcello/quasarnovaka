@@ -22,18 +22,18 @@
         <q-input
           label="Nome da empresa"
           v-model="form.nomedaempresa"
-          :rules="[
-            (val) => (val && val.length > 0) || 'Informe o nome da empresa',
-          ]"
+          :rules="[(val) => (val && val.length > 0) || 'Informe o nome da empresa']"
         />
         <q-input
           label="Telefone"
           v-model="form.telefone"
+          mask="(##) # #### - ####"
           :rules="[(val) => (val && val.length > 0) || 'Informe seu telefone']"
         />
         <q-input
           label="WhatsApp"
           v-model="form.whatsapp"
+          mask="(##) # #### - ####"
           :rules="[(val) => (val && val.length > 0) || 'Informe seu WhatsApp']"
         />
         <q-input
@@ -49,6 +49,7 @@
         <q-input
           label="Estado"
           v-model="form.estado"
+          hint="Nome completo"
           :rules="[(val) => (val && val.length > 0) || 'Informe o estado']"
         />
 
@@ -65,7 +66,7 @@
           class="full-width"
           rounded
           flat
-          :to="{ nome: 'revendas' }"
+          :to="{ name: 'home' }"
         />
       </q-form>
     </div>

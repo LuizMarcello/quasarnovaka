@@ -20,17 +20,15 @@
           <q-card-section>
             <div class="text-h6">Torne-se um parceiro da Bentley Brasil</div>
             <div class="text-subtitle2">
-              Venha fazer parte de nossa equipe. Estamos em busca de parceiros
-              locais talentosos em descobrir soluções inovadoras para integrar
-              nosso time e levar internet via satélite de excelente qualidade as
-              comunidades, residências e empresas do Brasil que mais necessitam.
-              Inclua a internet da Bentley Brasil no seu catálogo de produtos,
-              expandindo seu negócio, aumentando seus lucros. Integrar o time de
-              parceiros da Bentley Brasil pode trazer inúmeros benefícios para
-              sua empresa: <br />
+              Venha fazer parte de nossa equipe. Estamos em busca de parceiros locais
+              talentosos em descobrir soluções inovadoras para integrar nosso time e levar
+              internet via satélite de excelente qualidade as comunidades, residências e
+              empresas do Brasil que mais necessitam. Inclua a internet da Bentley Brasil
+              no seu catálogo de produtos, expandindo seu negócio, aumentando seus lucros.
+              Integrar o time de parceiros da Bentley Brasil pode trazer inúmeros
+              benefícios para sua empresa: <br />
               <br />
-              • Comercialização do serviço de internet Bentley Brasil de alta
-              velocidade
+              • Comercialização do serviço de internet Bentley Brasil de alta velocidade
               <br />
               • Networking qualificado <br />
               • Comissões com retorno rápido
@@ -41,21 +39,15 @@
             <div class="col">
               <!-- <q-btn flat label="Detalhes"></q-btn> -->
               <q-btn
-                push
-                color="dark"
-                label="Mais detalhes"
-                class="full-width"
-              ></q-btn>
+                class="desktop-only"
+                label="Seja nossa revenda"
+                color="primary"
+                icon="mdi-plus"
+                dense
+                :to="{ name: 'form-revendas' }"
+              />
             </div>
-            <div class="col">
-              <!-- <q-btn flat color="dark" label="Visualizar"></q-btn> -->
-              <q-btn
-                push
-                color="dark"
-                label="Visualizar"
-                class="full-width"
-              ></q-btn>
-            </div>
+            
             <!-- <q-btn flat color="primary" label="Reserve"></q-btn> -->
           </q-card-actions>
         </q-card>
