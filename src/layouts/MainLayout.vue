@@ -5,34 +5,31 @@
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title> Bentley Brasil </q-toolbar-title>
-
         <!-- <div>Quasar v{{ $q.version }}</div> -->
 
-        <div v-if="dd">
-          <q-btn-dropdown flat color="white" icon="person">
-            <q-list>
-              <q-item to="login" exact>
-                <q-item-section>
-                  <q-item-label>Entrar</q-item-label>
-                </q-item-section>
-              </q-item>
-              <!-- <div>Nova Ka</div> -->
-            </q-list>
-          </q-btn-dropdown>
-        </div>
+       <!--  <q-btn-dropdown flat color="white" icon="person">
+          <q-list>
+            <q-item to="login" exact>
+              <q-item-section>
+                <q-item-label
+                  ><span v-if="isLoggedIn"> Entrar</span></q-item-label
+                >
+              </q-item-section>
+            </q-item>
+            <div>Nova Ka</div>
+          </q-list>
+        </q-btn-dropdown> -->
 
-        <div v-if="!dd">
-          <q-btn-dropdown flat color="white" icon="person">
-            <q-list>
-              <q-item clickable v-close-popup @click="handleLogout">
-                <q-item-section>
-                  <q-item-label>Sair</q-item-label>
-                </q-item-section>
-              </q-item>
-              <!-- <div>Nova Ka</div> -->
-            </q-list>
-          </q-btn-dropdown>
-        </div>
+        <q-btn-dropdown flat color="white" icon="person">
+          <q-list>
+            <q-item clickable v-close-popup @click="handleLogout">
+              <q-item-section>
+                <q-item-label><span> Sair</span></q-item-label>
+              </q-item-section>
+            </q-item>
+            <!-- <div>Nova Ka</div> -->
+          </q-list>
+        </q-btn-dropdown>
       </q-toolbar>
     </q-header>
 
@@ -54,16 +51,6 @@
               <q-item-label caption>Voltar para a home</q-item-label>
             </q-item-section>
           </q-item>
-
-          <!--  <q-item to="/dashboard" exact>
-            <q-item-section avatar>
-              <q-icon name="list_alt" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Dashboard</q-item-label>
-              <q-item-label caption>Página dashboard</q-item-label>
-            </q-item-section>
-          </q-item> -->
 
           <q-item to="/dashboard" exact>
             <q-item-section avatar>
@@ -92,8 +79,8 @@
               <q-icon name="list_alt" />
             </q-item-section>
             <q-item-section
-              ><q-item-label>Formulário</q-item-label>
-              <q-item-label caption>Preencha os dados</q-item-label>
+              ><q-item-label>Cadastrar revenda</q-item-label>
+              <q-item-label caption>Preencha o formulário</q-item-label>
             </q-item-section>
           </q-item>
 
@@ -127,41 +114,11 @@ import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
 const linksList = [
-  /*  {
-    title: "Github",
-    caption: "github.com/quasarframework",
-    icon: "code",
-    link: "https://github.com/quasarframework",
-  },
-  {
-    title: "Discord Chat Channel",
-    caption: "chat.quasar.dev",
-    icon: "chat",
-    link: "https://chat.quasar.dev",
-  },
-  {
-    title: "Forum",
-    caption: "forum.quasar.dev",
-    icon: "record_voice_over",
-    link: "https://forum.quasar.dev",
-  },
-  {
-    title: "Twitter",
-    caption: "@quasarframework",
-    icon: "rss_feed",
-    link: "https://twitter.quasar.dev",
-  },
-  {
-    title: "Facebook",
-    caption: "@QuasarFramework",
-    icon: "public",
-    link: "https://facebook.quasar.dev",
-  },
-  {
-    title: "Quasar Awesome",
-    caption: "Community Quasar projects",
-    icon: "favorite",
-    link: "https://awesome.quasar.dev",
+  /* {
+     title: "Discord Chat Channel",
+     caption: "chat.quasar.dev",
+     icon: "chat",
+     link: "https://chat.quasar.dev",
   }, */
 ];
 
@@ -169,19 +126,19 @@ export default defineComponent({
   name: "MainLayout",
 
   components: {
-    EssentialLink,
+    EssentialLink
   },
 
   setup() {
     const leftDrawerOpen = ref(false);
+
+    const { isLoggedIn } = useAuthUser();
 
     const $q = useQuasar();
 
     const router = useRouter();
 
     const { logout } = useAuthUser();
-
-    const { isLoggedIn } = useAuthUser();
 
     const handleLogout = async () => {
       $q.dialog({

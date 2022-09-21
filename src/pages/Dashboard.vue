@@ -47,7 +47,10 @@
                 :to="{ name: 'form-revendas' }"
               />
             </div>
-            
+            <div class="col">
+              <!-- <q-btn flat color="dark" label="Visualizar"></q-btn> -->
+              <!-- <q-btn push color="dark" label="Visualizar" class="full-width"></q-btn> -->
+            </div>
             <!-- <q-btn flat color="primary" label="Reserve"></q-btn> -->
           </q-card-actions>
         </q-card>
@@ -55,11 +58,11 @@
     </div>
   </q-page>
   <q-footer elevated>
-    <q-toolbar>
-      <q-icon name="facebook" />
-      <q-icon name="facebook" />
-      <q-icon name="facebook" />
-      <q-icon name="facebook" />
+    <q-toolbar class="q-gutter-md">
+      <q-icon name="facebook"/>
+      <q-icon name="mdi-twitter"/>
+      <q-icon name="mdi-instagram" />
+      <q-icon name="mdi-linkedin" />
       <q-toolbar-title>Internet via satélite</q-toolbar-title>
     </q-toolbar>
   </q-footer>

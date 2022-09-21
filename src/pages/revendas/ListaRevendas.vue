@@ -64,6 +64,13 @@
       </q-table>
     </div>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-btn
+        class="mobile-only"
+        fab
+        icon="mdi-file-pdf-box"
+        color="primary"
+        :to="{ name: 'listarevendas-pdf' }"
+      />
       <!-- <q-btn
         v-if="$q.platform.is.mobile"
         fab
@@ -151,6 +158,7 @@ const columns = [
 
 /* "defineComponent": Porque é vuejs 3 */
 import { defineComponent, ref, onMounted, computed } from "vue";
+
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 /* import router from "src/router"; */

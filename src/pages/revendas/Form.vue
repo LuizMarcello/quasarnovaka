@@ -46,12 +46,8 @@
           v-model="form.cidade"
           :rules="[(val) => (val && val.length > 0) || 'Informe a cidade']"
         />
-        <q-input
-          label="Estado"
-          v-model="form.estado"
-          hint="Nome completo"
-          :rules="[(val) => (val && val.length > 0) || 'Informe o estado']"
-        />
+
+        <q-select v-model="form.estado" :options="options" label="Estado" />
 
         <q-btn
           :label="isUpdate ? 'Atualizar' : 'Enviar'"
@@ -66,7 +62,7 @@
           class="full-width"
           rounded
           flat
-          :to="{ name: 'home' }"
+          :to="{ name: 'listarevendas' }"
         />
       </q-form>
     </div>
@@ -137,7 +133,41 @@ export default defineComponent({
       }
     };
 
-    return { handleSubmit, form, isUpdate };
+    return {
+      handleSubmit,
+      form,
+      isUpdate,
+      model: ref(null),
+      options: [
+        "Acre",
+        "Alagoas",
+        "Amapá",
+        "Amazonas",
+        "Bahia",
+        "Ceará",
+        "Distrito Federal",
+        "Espírito Santo",
+        "Goiás",
+        "Maranhão",
+        "Mato Grosso",
+        "Mato Grosso do Sul",
+        "Minas Gerais",
+        "Pará",
+        "Paraíba",
+        "Paraná",
+        "Pernanbuco",
+        "Piauí",
+        "Rio de Janeiro",
+        "Rio Grande do Norte",
+        "Rio Grande do Sul",
+        "Rondônia",
+        "Roraima",
+        "Santa Catarina",
+        "São Paulo",
+        "Sergipe",
+        "Tocantins",
+      ],
+    };
   },
 });
 </script>

@@ -111,6 +111,7 @@ export default defineComponent({
       try {
         await login(form.value);
         notifySuccess("Logado com sucesso!");
+        
         router.push({ name: "home" });
       } catch (error) {
         /* notifyError("Favor inserir seu e-mail e senha cadastrados!"); */
