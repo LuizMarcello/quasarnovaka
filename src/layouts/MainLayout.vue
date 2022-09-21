@@ -1,4 +1,5 @@
 <template>
+  <!-- <q-layout view="lHh Lpr lFf"> -->
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
@@ -132,7 +133,7 @@ export default defineComponent({
   setup() {
     const leftDrawerOpen = ref(false);
 
-    const { isLoggedIn } = useAuthUser();
+    /* const { isLoggedIn } = useAuthUser(); */
 
     const $q = useQuasar();
 
