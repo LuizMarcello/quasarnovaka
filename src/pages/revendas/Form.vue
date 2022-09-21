@@ -22,7 +22,9 @@
         <q-input
           label="Nome da empresa"
           v-model="form.nomedaempresa"
-          :rules="[(val) => (val && val.length > 0) || 'Informe o nome da empresa']"
+          :rules="[
+            (val) => (val && val.length > 0) || 'Informe o nome da empresa',
+          ]"
         />
         <q-input
           label="Telefone"
@@ -39,6 +41,7 @@
         <q-input
           label="Email"
           v-model="form.email"
+          type="email"
           :rules="[(val) => (val && val.length > 0) || 'Informe seu email']"
         />
         <q-input
@@ -48,6 +51,10 @@
         />
 
         <q-select v-model="form.estado" :options="options" label="Estado" />
+
+        <q-input v-model="text" filled autogrow readonly />
+
+        <q-toggle v-model="accept" label="Eu aceito os termos de uso e licança." />
 
         <q-btn
           :label="isUpdate ? 'Atualizar' : 'Enviar'"
@@ -70,6 +77,7 @@
 </template>
 
 <script>
+import { useQuasar } from "quasar";
 import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
@@ -78,11 +86,13 @@ import useNotify from "src/composables/UseNotify";
 export default defineComponent({
   nome: "PageFormRevenda",
   setup() {
+    const $q = useQuasar();
     const table = "revendas";
     const router = useRouter();
     const route = useRoute();
     const { post, getById, update } = useApi();
     const { notifyError, notifySuccess } = useNotify();
+    const accept = ref(false);
 
     /* Verificando se na rota existe o "id" como parâmetro
        ou seja, se é para atualizar um "id", ou criar um registro novo.
@@ -137,6 +147,7 @@ export default defineComponent({
       handleSubmit,
       form,
       isUpdate,
+      accept,
       model: ref(null),
       options: [
         "Acre",
@@ -167,6 +178,31 @@ export default defineComponent({
         "Sergipe",
         "Tocantins",
       ],
+      text: ref(
+        "A Bentley usará suas informações pessoais somente para administrar a sua conta, fornecer os produtos e serviços que você solicitar e, ocasionalmente, entrar em contato para oferecer informações sobre nossos produtos, serviços e outros conteúdos que podem ser de seu interesse. Você pode se descadastrar deste serviço a qualquer momento. Para mais informações sobre como cancelar sua inscrição e sobre nossas práticas de privacidade, por favor, consulte nossa Política de Privacidade"
+      ),
+      onSubmit() {
+        if (accept.value !== true) {
+          $q.notify({
+            color: "red-5",
+            textColor: "white",
+            icon: "warning",
+            message: "You need to accept the license and terms first",
+          });
+        } else {
+          $q.notify({
+            color: "green-4",
+            textColor: "white",
+            icon: "cloud_done",
+            message: "Submitted",
+          });
+        }
+      },
+      onReset() {
+        /* name.value = null; */
+        age.value = null;
+        accept.value = false;
+      },
     };
   },
 });
