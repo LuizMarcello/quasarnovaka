@@ -148,6 +148,13 @@ const columns = [
     sortable: true,
   },
   {
+    name: "servicos",
+    align: "left",
+    label: "Serviços já prestados",
+    field: "servicos",
+    sortable: true,
+  },
+  {
     name: "actions",
     align: "right",
     label: "Actions",

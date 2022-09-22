@@ -22,9 +22,7 @@
         <q-input
           label="Nome da empresa"
           v-model="form.nomedaempresa"
-          :rules="[
-            (val) => (val && val.length > 0) || 'Informe o nome da empresa',
-          ]"
+          :rules="[(val) => (val && val.length > 0) || 'Informe o nome da empresa']"
         />
         <q-input
           label="Telefone"
@@ -52,9 +50,18 @@
 
         <q-select v-model="form.estado" :options="options" label="Estado" />
 
+        <q-select
+          v-model="form.servicos"
+          :options="servicos"
+          label="Produtos e serviços que você vende atualmente"
+        />
+
         <q-input v-model="text" filled autogrow readonly />
 
-        <q-toggle v-model="accept" label="Eu aceito os termos de uso e licança." />
+        <q-toggle
+          v-model="accept"
+          label="Estou de acôrdo em receber comunicações da Bentley."
+        />
 
         <q-btn
           :label="isUpdate ? 'Atualizar' : 'Enviar'"
@@ -111,6 +118,7 @@ export default defineComponent({
       email: "",
       cidade: "",
       estado: "",
+      servicos: ""
     });
 
     onMounted(() => {
@@ -177,6 +185,13 @@ export default defineComponent({
         "São Paulo",
         "Sergipe",
         "Tocantins",
+      ],
+      servicos: [
+        "Internet via satélite",
+        "TV via satélite",
+        "Segurança residencial",
+        "Serviços de informática",
+        "Outros",
       ],
       text: ref(
         "A Bentley usará suas informações pessoais somente para administrar a sua conta, fornecer os produtos e serviços que você solicitar e, ocasionalmente, entrar em contato para oferecer informações sobre nossos produtos, serviços e outros conteúdos que podem ser de seu interesse. Você pode se descadastrar deste serviço a qualquer momento. Para mais informações sobre como cancelar sua inscrição e sobre nossas práticas de privacidade, por favor, consulte nossa Política de Privacidade"
