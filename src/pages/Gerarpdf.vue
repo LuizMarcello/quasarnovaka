@@ -22,7 +22,7 @@
                 id="namepdf"
                 v-model="nomedopdf"
                 class="form-control"
-                placeholder="Nome do novo arquivo PDF"
+                placeholder="Nome do arquivo PDF"
               />
             </div>
             <button class="btn btn-primary pl-5 pr-5" @click="download">
