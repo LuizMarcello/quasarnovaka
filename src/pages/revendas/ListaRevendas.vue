@@ -27,7 +27,7 @@
               color="primary"
               icon="mdi-file-pdf-box"
               dense
-              :to="{ name: 'listarevendas-pdf' }"
+              :to="{ name: 'gerarpdf' }"
             />
             <q-btn
               class="desktop-only"
@@ -69,7 +69,7 @@
         fab
         icon="mdi-file-pdf-box"
         color="primary"
-        :to="{ name: 'listarevendas-pdf' }"
+        :to="{ name: 'gerarpdf' }"
       />
       <!-- <q-btn
         v-if="$q.platform.is.mobile"

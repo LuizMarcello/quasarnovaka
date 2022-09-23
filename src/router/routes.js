@@ -92,6 +92,11 @@ const routes = [{
         name: "listarevendas",
         component: () => import("pages/revendas/ListaRevendas.vue"),
       },
+      {
+        path: "gerarpdf",
+        name: "gerarpdf",
+        component: () => import("pages/Gerarpdf.vue"),
+      },
 
     ],
     meta: {
