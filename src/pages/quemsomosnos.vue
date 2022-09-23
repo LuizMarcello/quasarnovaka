@@ -9,10 +9,12 @@
       >
         <!-- <div class="col-xs-5 col-lg-4 q-gutter-lg"> -->
         <q-card>
-          <q-card-media>
-            <q-img src="~assets/imgbentley03.jpg"></q-img>
-            <!-- <q-img src="~assets/imgbentley03.jpg"></q-img> -->
-          </q-card-media>
+          <div style="padding: 20px">
+            <q-card-media>
+              <q-img src="~assets/imgbentley03.jpg"></q-img>
+              <!-- <q-img src="~assets/imgbentley03.jpg"></q-img> -->
+            </q-card-media>
+          </div>
         </q-card>
         <!-- </div> -->
         <!-- <div class="col-xs-5 col-lg-4 q-gutter-lg"> -->
