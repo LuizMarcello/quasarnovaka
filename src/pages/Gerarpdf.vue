@@ -1,18 +1,21 @@
 <!-- eslint-disable -->
 <template>
   <q-page padding>
-
-    <div id="home" class="container mt-5">
+    <div
+      id="home"
+      class="container mt-5"
+      style="display: block; text-align: center; padding: 15%"
+    >
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="card card-body">
-            <div class="form-group">
+            <div class="form-group" style="padding: 5%">
               <input
                 type="text"
                 id="name"
                 v-model="conteudopdf"
                 class="form-control"
-                placeholder="Nome do arquivo pdf"
+                placeholder="Nome do arquivo PDF"
               />
             </div>
             <button class="btn btn-primary pl-5 pr-5" @click="download">

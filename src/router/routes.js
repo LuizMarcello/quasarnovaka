@@ -1,14 +1,9 @@
-const routes = [{
+const routes = [
+  {
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/LoginLayout.vue"),
     children: [
-      /* {
-      path: '',
-      name: 'loginDefault',
-      component: () => import('pages/Login.vue')
-
-    }, */
       {
         path: "login",
         name: "login",
@@ -41,8 +36,9 @@ const routes = [{
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{
-        path: "",
+    children: [
+      {
+        path: "/",
         name: "loginDefault",
         /* component: () => import('pages/Login.vue') */
         component: () => import("pages/Home.vue"),
@@ -82,7 +78,8 @@ const routes = [{
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{
+    children: [
+      {
         path: "me",
         name: "me",
         component: () => import("pages/Me.vue"),
@@ -97,7 +94,6 @@ const routes = [{
         name: "gerarpdf",
         component: () => import("pages/Gerarpdf.vue"),
       },
-
     ],
     meta: {
       requiresAuth: true,
