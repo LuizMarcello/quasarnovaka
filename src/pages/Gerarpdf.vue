@@ -26,7 +26,7 @@
               />
             </div>
             <button class="btn btn-primary pl-5 pr-5" @click="download">
-              Download PDF
+              Download
             </button>
           </div>
         </div>

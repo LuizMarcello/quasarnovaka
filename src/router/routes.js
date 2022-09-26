@@ -94,6 +94,11 @@ const routes = [
         name: "gerarpdf",
         component: () => import("pages/Gerarpdf.vue"),
       },
+      {
+        path: "outrogerarpdf",
+        name: "outrogerarpdf",
+        component: () => import("pages/Outrogerarpdf.vue"),
+      },
     ],
     meta: {
       requiresAuth: true,
