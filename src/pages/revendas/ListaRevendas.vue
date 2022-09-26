@@ -27,7 +27,7 @@
               color="primary"
               icon="mdi-file-pdf-box"
               dense
-              :to="{ name: 'gerarpdf' }"
+              @click="makePDF"
             />
             <q-btn
               class="desktop-only"
@@ -69,7 +69,7 @@
         fab
         icon="mdi-file-pdf-box"
         color="primary"
-        :to="{ name: 'gerarpdf' }"
+        @click="makePDF"
       />
       <!-- <q-btn
         v-if="$q.platform.is.mobile"
@@ -90,6 +90,9 @@
 </template>
 
 <script>
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
 const columns = [
   {
     name: "nome",
@@ -174,6 +177,20 @@ import { useQuasar } from "quasar";
 
 export default defineComponent({
   name: "PageRevendasList",
+
+  methods: {
+    makePDF() {
+      /* window.html2canvas = html2canvas; */
+      globalThis.html2canvas = html2canvas;
+      var doc = new jsPDF("p", "pt", "a1");
+      doc.html(document.querySelector("#app"), {
+        callback: function (pdf) {
+          pdf.save("Revendas_cadastradas.pdf");
+        },
+      });
+    },
+  },
+
   setup() {
     const revendas = ref([]);
     const loading = ref(true);

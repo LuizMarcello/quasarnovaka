@@ -1,10 +1,8 @@
-const routes = [
-  {
+const routes = [{
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/LoginLayout.vue"),
-    children: [
-      {
+    children: [{
         path: "login",
         name: "login",
         component: () => import("pages/Login.vue"),
@@ -36,8 +34,7 @@ const routes = [
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
+    children: [{
         path: "/",
         name: "loginDefault",
         /* component: () => import('pages/Login.vue') */
@@ -78,8 +75,7 @@ const routes = [
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
+    children: [{
         path: "me",
         name: "me",
         component: () => import("pages/Me.vue"),
@@ -88,16 +84,6 @@ const routes = [
         path: "listarevendas",
         name: "listarevendas",
         component: () => import("pages/revendas/ListaRevendas.vue"),
-      },
-      {
-        path: "gerarpdf",
-        name: "gerarpdf",
-        component: () => import("pages/Gerarpdf.vue"),
-      },
-      {
-        path: "outrogerarpdf",
-        name: "outrogerarpdf",
-        component: () => import("pages/Outrogerarpdf.vue"),
       },
     ],
     meta: {
