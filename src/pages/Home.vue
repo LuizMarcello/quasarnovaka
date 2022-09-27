@@ -109,12 +109,20 @@
       <div class="col">
         <q-btn
           class="desktop-only"
+          label="Página principal"
+          color="primary"
+          icon="mdi-plus"
+          dense
+          :to="{ name: 'home' }"
+        />
+       <!--  <q-btn
+          class="desktop-only"
           label="Seja nossa revenda"
           color="primary"
           icon="mdi-plus"
           dense
           :to="{ name: 'form-revendas' }"
-        />
+        /> -->
       </div>
       <div class="col"></div>
     </q-card-actions>
