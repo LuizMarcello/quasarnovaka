@@ -76,7 +76,7 @@
           class="full-width"
           rounded
           flat
-          :to="{ name: 'listarevendas' }"
+          :to="{ name: 'home' }"
         />
       </q-form>
     </div>
