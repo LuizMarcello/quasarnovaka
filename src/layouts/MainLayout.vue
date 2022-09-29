@@ -59,7 +59,7 @@
               <q-icon name="mdi-handshake-outline" />
             </q-item-section>
             <q-item-section
-              ><q-item-label>Parceria</q-item-label>
+              ><q-item-label>Bentley Brasil</q-item-label>
               <q-item-label caption>Seja uma revenda Bentley</q-item-label>
             </q-item-section>
           </q-item>

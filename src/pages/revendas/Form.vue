@@ -5,59 +5,70 @@
       <div class="col-12 text-center">
         <p class="text-h6">Formulário de revendas</p>
       </div>
+
       <q-form
         class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md"
         @submit.prevent="handleSubmit"
       >
-        <q-input
-          label="Nome"
-          v-model="form.nome"
-          :rules="[(val) => (val && val.length > 0) || 'Informe seu nome']"
-        />
-        <q-input
-          label="Sobrenome"
-          v-model="form.sobrenome"
-          :rules="[(val) => (val && val.length > 0) || 'Informe seu sobrenome']"
-        />
-        <q-input
-          label="Nome da empresa"
-          v-model="form.nomedaempresa"
-          :rules="[(val) => (val && val.length > 0) || 'Informe o nome da empresa']"
-        />
-        <q-input
-          label="Telefone"
-          v-model="form.telefone"
-          mask="(##) # #### - ####"
-          :rules="[(val) => (val && val.length > 0) || 'Informe seu telefone']"
-        />
-        <q-input
-          label="WhatsApp"
-          v-model="form.whatsapp"
-          mask="(##) # #### - ####"
-          :rules="[(val) => (val && val.length > 0) || 'Informe seu WhatsApp']"
-        />
-        <q-input
-          label="Email"
-          v-model="form.email"
-          type="email"
-          :rules="[(val) => (val && val.length > 0) || 'Informe seu email']"
-        />
-        <q-input
-          label="Cidade"
-          v-model="form.cidade"
-          :rules="[(val) => (val && val.length > 0) || 'Informe a cidade']"
-        />
+        <div style="border: 2px solid #0B0B61;; border-radius: 15px; padding: 30px">
+          <q-input
+            label="Nome"
+            v-model="form.nome"
+            :rules="[(val) => (val && val.length > 0) || 'Informe seu nome']"
+          />
+          <q-input
+            label="Sobrenome"
+            v-model="form.sobrenome"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Informe seu sobrenome',
+            ]"
+          />
+          <q-input
+            label="Nome da empresa"
+            v-model="form.nomedaempresa"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Informe o nome da empresa',
+            ]"
+          />
+          <q-input
+            label="Telefone"
+            v-model="form.telefone"
+            mask="(##) # #### - ####"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Informe seu telefone',
+            ]"
+          />
+          <q-input
+            label="WhatsApp"
+            v-model="form.whatsapp"
+            mask="(##) # #### - ####"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Informe seu WhatsApp',
+            ]"
+          />
+          <q-input
+            label="Email"
+            v-model="form.email"
+            type="email"
+            :rules="[(val) => (val && val.length > 0) || 'Informe seu email']"
+          />
+          <q-input
+            label="Cidade"
+            v-model="form.cidade"
+            :rules="[(val) => (val && val.length > 0) || 'Informe a cidade']"
+          />
 
-        <q-select v-model="form.estado" :options="options" label="Estado" />
+          <q-select v-model="form.estado" :options="options" label="Estado" />
 
-        <q-select
-          v-model="form.servicos"
-          :options="servicos"
-          label="Produtos e serviços que você vende atualmente"
-        />
-
-        <q-input v-model="text" filled autogrow readonly />
-
+          <q-select
+            v-model="form.servicos"
+            :options="servicos"
+            label="Produtos e serviços que você vende atualmente"
+          />
+        </div>
+        <div style="border: 2px solid #0B0B61; border-radius: 15px; padding: 30px">
+          <q-input v-model="text" filled autogrow readonly />
+        </div>
         <q-toggle
           v-model="accept"
           label="Estou de acôrdo em receber comunicações da Bentley."
@@ -118,7 +129,7 @@ export default defineComponent({
       email: "",
       cidade: "",
       estado: "",
-      servicos: ""
+      servicos: "",
     });
 
     onMounted(() => {
