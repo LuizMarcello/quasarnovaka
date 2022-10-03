@@ -33,6 +33,13 @@
       </q-carousel>
     </div>
 
+    <div class="col">
+      <q-card-media>
+        <!-- <q-img src="~assets/bentleybrasil.jpeg" style="min-width: 400px; max-width: 50rem;"></q-img> -->
+        <q-img src="~assets/bentleyGoogle.jpg"></q-img>
+      </q-card-media>
+    </div>
+
     <q-card>
       <q-card-actions class="q-gutter-md">
         <!-- <q-btn flat round dense icon="event"></q-btn> -->
