@@ -39,7 +39,7 @@ const routes = [{
   {
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
-    component: () => import("layouts/MainLayout.vue"),
+    component: () => import("src/layouts/MainLayout.vue"),
     children: [{
         path: '/',
         /* component: () => import('pages/IndexPage.vue') */

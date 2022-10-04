@@ -1,10 +1,8 @@
-const routes = [
-  {
+const routes = [{
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/LoginLayout.vue"),
-    children: [
-      {
+    children: [{
         path: "/",
         name: "/",
         component: () => import("pages/Home.vue"),
@@ -40,9 +38,19 @@ const routes = [
   {
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
+    component: () => import("src/layouts/MainLayout.vue"),
+    children: [{
+      path: "login",
+      name: "login",
+      component: () => import("pages/Login.vue"),
+    }, ],
+  },
+
+  {
+    /* Neste layout, todas as rotas estão abertas, são publicas */
+    path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
+    children: [{
         path: "/",
         name: "loginDefault",
         /* component: () => import('pages/Login.vue') */
@@ -82,9 +90,8 @@ const routes = [
   {
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
+    component: () => import("src/layouts/MainLayoutSair.vue"),
+    children: [{
         path: "me",
         name: "me",
         component: () => import("pages/Me.vue"),

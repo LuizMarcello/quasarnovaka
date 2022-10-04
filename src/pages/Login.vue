@@ -111,8 +111,8 @@ export default defineComponent({
       try {
         await login(form.value);
         notifySuccess("Logado com sucesso!");
-        
-        router.push({ name: "home" });
+
+        router.push({ name: "listarevendas" });
       } catch (error) {
         /* notifyError("Favor inserir seu e-mail e senha cadastrados!"); */
         notifyError(error.message);
