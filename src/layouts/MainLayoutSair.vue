@@ -87,8 +87,8 @@
               <q-icon name="list_alt" />
             </q-item-section>
             <q-item-section
-              ><q-item-label>Revendas cadastradas</q-item-label>
-              <q-item-label caption>Todas as revendas</q-item-label>
+              ><q-item-label>Adm</q-item-label>
+              <q-item-label caption>Administração</q-item-label>
             </q-item-section>
           </q-item>
 

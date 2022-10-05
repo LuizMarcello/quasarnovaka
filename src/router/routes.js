@@ -8,11 +8,6 @@ const routes = [{
         component: () => import("pages/Home.vue"),
       },
       {
-        path: "login",
-        name: "login",
-        component: () => import("pages/Login.vue"),
-      },
-      {
         path: "register",
         name: "register",
         component: () => import("pages/Register.vue"),
@@ -35,16 +30,6 @@ const routes = [{
     ],
   },
 
-  {
-    /* Neste layout, todas as rotas estão abertas, são publicas */
-    path: "/",
-    component: () => import("src/layouts/MainLayout.vue"),
-    children: [{
-      path: "login",
-      name: "login",
-      component: () => import("pages/Login.vue"),
-    }, ],
-  },
 
   {
     /* Neste layout, todas as rotas estão abertas, são publicas */
@@ -56,6 +41,7 @@ const routes = [{
         /* component: () => import('pages/Login.vue') */
         component: () => import("pages/Home.vue"),
       },
+
       {
         path: "home",
         name: "home",
@@ -65,6 +51,11 @@ const routes = [{
         path: "dashboard",
         name: "dashboard",
         component: () => import("pages/Dashboard.vue"),
+      },
+      {
+        path: "login",
+        name: "login",
+        component: () => import("pages/Login.vue"),
       },
       {
         path: "quemsomosnos",

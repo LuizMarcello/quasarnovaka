@@ -1,7 +1,7 @@
 <!-- eslint-disable -->
 <template>
   <!-- <q-page class="container q-pa-xs"> -->
-  <q-page adding>
+  <q-page padding>
     <!-- <div class="row q-gutter-lg"> -->
     <q-carousel
       animated

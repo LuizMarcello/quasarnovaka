@@ -2,9 +2,12 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
+        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
+
         <q-toolbar-title> Bentley Brasil </q-toolbar-title>
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
+
         <div>Nova Ka</div>
       </q-toolbar>
     </q-header>
@@ -65,16 +68,12 @@
               <q-icon name="list_alt" />
             </q-item-section>
             <q-item-section
-              ><q-item-label>Revendas cadastradas</q-item-label>
-              <q-item-label caption>Todas as revendas</q-item-label>
+              ><q-item-label>Adm</q-item-label>
+              <q-item-label caption>Administração</q-item-label>
             </q-item-section>
           </q-item>
 
-          <EssentialLink
-            v-for="link in essentialLinks"
-            :key="link.title"
-            v-bind="link"
-          />
+          <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
         </q-list>
       </q-list>
     </q-drawer>
@@ -95,12 +94,31 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import EssentialLink from "components/EssentialLink.vue";
+/* import useAuthUser from "src/composables/UseAuthUser"; */
+/* import { useRouter } from "vue-router"; */
+import { useQuasar } from "quasar";
+
 export default defineComponent({
   name: "LoginLayout",
-  components: {},
+
+  components: {
+    EssentialLink,
+  },
+
   setup() {
-    return {};
+    const leftDrawerOpen = ref(false);
+
+    const $q = useQuasar();
+
+    return {
+      
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
   },
 });
 </script>
