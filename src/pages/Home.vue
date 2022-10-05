@@ -20,7 +20,9 @@
       class="bg-grey-1 shadow-2 rounded-borders"
     >
       <q-carousel-slide :name="1" class="column no-wrap">
-        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+        <div
+          class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+        >
           <q-img
             class="rounded-borders col-6 full-height"
             src="~assets/imgbentley01.jpg"
@@ -32,7 +34,9 @@
         </div>
       </q-carousel-slide>
       <q-carousel-slide :name="2" class="column no-wrap">
-        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+        <div
+          class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+        >
           <q-img
             class="rounded-borders col-6 full-height"
             src="~assets/imgbentley03.jpg"
@@ -44,7 +48,9 @@
         </div>
       </q-carousel-slide>
       <q-carousel-slide :name="3" class="column no-wrap">
-        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+        <div
+          class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+        >
           <q-img
             class="rounded-borders col-6 full-height"
             src="~assets/imgbentley01.jpg"
@@ -56,7 +62,9 @@
         </div>
       </q-carousel-slide>
       <q-carousel-slide :name="4" class="column no-wrap">
-        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+        <div
+          class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+        >
           <q-img
             class="rounded-borders col-6 full-height"
             src="~assets/imgbentley07.jpg"
@@ -70,11 +78,13 @@
     </q-carousel>
 
     <div class="col">
-
       <q-card-media style="display: flex; justify-content: center">
         <!-- <q-img src="~assets/bentleybrasil.jpeg" style="min-width: 400px; max-width: 50rem;"></q-img> -->
         <!-- <q-img src="~assets/bentleybrasil.jpeg" style="display: block; text-align: center; width: 50%; margin:auto;" /> -->
-        <q-img src="~assets/bentleybrasil.jpeg" style="width: 50%; margin-top: 2%;" />
+        <q-img
+          src="~assets/bentleybrasil.jpeg"
+          style="width: 50%; margin-top: 2%"
+        />
       </q-card-media>
 
       <!-- <q-card-title>Título do artigo</q-card-title>
@@ -83,15 +93,17 @@
       <q-card-section>
         <div class="text-h6">Torne-se um parceiro da Bentley Brasil</div>
         <div class="text-subtitle2">
-          Venha fazer parte de nossa equipe. Estamos em busca de parceiros locais
-          talentosos em descobrir soluções inovadoras para integrar nosso time e levar
-          internet via satélite de excelente qualidade as comunidades, residências e
-          empresas do Brasil que mais necessitam. Inclua a internet da Bentley Brasil no
-          seu catálogo de produtos, expandindo seu negócio, aumentando seus lucros.
-          Integrar o time de parceiros da Bentley Brasil pode trazer inúmeros benefícios
-          para sua empresa: <br />
+          Venha fazer parte de nossa equipe. Estamos em busca de parceiros
+          locais talentosos em descobrir soluções inovadoras para integrar nosso
+          time e levar internet via satélite de excelente qualidade as
+          comunidades, residências e empresas do Brasil que mais necessitam.
+          Inclua a internet da Bentley Brasil no seu catálogo de produtos,
+          expandindo seu negócio, aumentando seus lucros. Integrar o time de
+          parceiros da Bentley Brasil pode trazer inúmeros benefícios para sua
+          empresa: <br />
           <br />
-          • Comercialização do serviço de internet Bentley Brasil de alta velocidade
+          • Comercialização do serviço de internet Bentley Brasil de alta
+          velocidade
           <br />
           • Networking qualificado <br />
           • Comissões com retorno rápido
@@ -106,12 +118,11 @@
     <q-card-actions class="q-gutter-xs">
       <div class="col">
         <q-btn
-          class="desktop-only"
-          label="Home"
+          label="Seja nossa revenda"
           color="primary"
-          icon="mdi-home"
+          icon="mdi-plus"
           dense
-          :to="{ name: 'home' }"
+          :to="{ name: 'form-revendas' }"
         />
         <!-- <q-btn
           class="desktop-only"

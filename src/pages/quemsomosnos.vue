@@ -108,7 +108,6 @@
     <q-card-actions class="q-gutter-xs">
       <div class="col">
         <q-btn
-          class="desktop-only"
           label="Seja nossa revenda"
           color="primary"
           icon="mdi-plus"

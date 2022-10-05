@@ -99,21 +99,17 @@ import EssentialLink from "components/EssentialLink.vue";
 /* import useAuthUser from "src/composables/UseAuthUser"; */
 /* import { useRouter } from "vue-router"; */
 import { useQuasar } from "quasar";
-
 export default defineComponent({
   name: "LoginLayout",
-
   components: {
     EssentialLink,
   },
-
   setup() {
     const leftDrawerOpen = ref(false);
-
     const $q = useQuasar();
-
+    /* const router = useRouter(); */
     return {
-      
+      /* essentialLinks: linksList, */
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;

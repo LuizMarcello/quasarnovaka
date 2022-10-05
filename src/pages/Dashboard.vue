@@ -35,7 +35,7 @@
         <div class="col">
           <!-- <q-btn flat label="Detalhes"></q-btn> -->
           <q-btn
-            class="desktop-only"
+            
             label="Seja nossa revenda"
             color="primary"
             icon="mdi-plus"
