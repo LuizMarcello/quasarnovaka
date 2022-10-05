@@ -2,6 +2,7 @@
 <template>
   <!-- <div class="q-pa-md"> -->
   <q-page padding>
+    <div class="q-pa-md" style="display: flex; justify-content: center">
     <q-carousel
       animated
       v-model="slide"
@@ -15,9 +16,8 @@
       @mouseleave="autoplay = true"
       swipeable
       control-color="primary"
-      padding
-      height="300px"
       class="bg-grey-1 shadow-2 rounded-borders"
+      style="width: 100%; height: 100%"
     >
       <q-carousel-slide :name="1" class="column no-wrap">
         <div
@@ -76,6 +76,7 @@
         </div>
       </q-carousel-slide>
     </q-carousel>
+  </div>
 
     <div class="col">
       <q-card-media style="display: flex; justify-content: center">

@@ -3,80 +3,82 @@
   <!-- <q-page class="container q-pa-xs"> -->
   <q-page padding>
     <!-- <div class="row q-gutter-lg"> -->
-    <q-carousel
-      animated
-      v-model="slide"
-      navigation
-      infinite
-      :autoplay="autoplay"
-      arrows
-      transition-prev="slide-right"
-      transition-next="slide-left"
-      @mouseenter="autoplay = false"
-      @mouseleave="autoplay = true"
-      swipeable
-      control-color="primary"
-      padding
-      height="300px"
-      class="bg-grey-1 shadow-2 rounded-borders"
-    >
-      <q-carousel-slide :name="1" class="column no-wrap">
-        <div
-          class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
-        >
-          <q-img
-            class="rounded-borders col-6 full-height"
-            src="~assets/imgbentley03.jpg"
-          />
-          <q-img
-            class="rounded-borders col-6 full-height"
-            src="~assets/imgbentley11.jpg"
-          />
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide :name="2" class="column no-wrap">
-        <div
-          class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
-        >
-          <q-img
-            class="rounded-borders col-6 full-height"
-            src="~assets/imgbentley03.jpg"
-          />
-          <q-img
-            class="rounded-borders col-6 full-height"
-            src="~assets/imgbentley08.jpg"
-          />
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide :name="3" class="column no-wrap">
-        <div
-          class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
-        >
-          <q-img
-            class="rounded-borders col-6 full-height"
-            src="~assets/imgbentley01.jpg"
-          />
-          <q-img
-            class="rounded-borders col-6 full-height"
-            src="~assets/imgbentley06.jpg"
-          />
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide :name="4" class="column no-wrap">
-        <div
-          class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
-        >
-          <q-img
-            class="rounded-borders col-6 full-height"
-            src="~assets/imgbentley07.jpg"
-          />
-          <q-img
-            class="rounded-borders col-6 full-height"
-            src="~assets/imgbentley08.jpg"
-          />
-        </div>
-      </q-carousel-slide>
-    </q-carousel>
+    <div class="q-pa-md" style="display: flex; justify-content: center">
+      <q-carousel
+        animated
+        v-model="slide"
+        navigation
+        infinite
+        :autoplay="autoplay"
+        arrows
+        transition-prev="slide-right"
+        transition-next="slide-left"
+        @mouseenter="autoplay = false"
+        @mouseleave="autoplay = true"
+        swipeable
+        control-color="primary"
+        padding
+        class="bg-grey-1 shadow-2 rounded-borders"
+        style="width: 100%; height: 100%"
+      >
+        <q-carousel-slide :name="1" class="column no-wrap">
+          <div
+            class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+          >
+            <q-img
+              class="rounded-borders col-6 full-height"
+              src="~assets/imgbentley03.jpg"
+            />
+            <q-img
+              class="rounded-borders col-6 full-height"
+              src="~assets/imgbentley11.jpg"
+            />
+          </div>
+        </q-carousel-slide>
+        <q-carousel-slide :name="2" class="column no-wrap">
+          <div
+            class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+          >
+            <q-img
+              class="rounded-borders col-6 full-height"
+              src="~assets/imgbentley03.jpg"
+            />
+            <q-img
+              class="rounded-borders col-6 full-height"
+              src="~assets/imgbentley08.jpg"
+            />
+          </div>
+        </q-carousel-slide>
+        <q-carousel-slide :name="3" class="column no-wrap">
+          <div
+            class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+          >
+            <q-img
+              class="rounded-borders col-6 full-height"
+              src="~assets/imgbentley01.jpg"
+            />
+            <q-img
+              class="rounded-borders col-6 full-height"
+              src="~assets/imgbentley06.jpg"
+            />
+          </div>
+        </q-carousel-slide>
+        <q-carousel-slide :name="4" class="column no-wrap">
+          <div
+            class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap"
+          >
+            <q-img
+              class="rounded-borders col-6 full-height"
+              src="~assets/imgbentley07.jpg"
+            />
+            <q-img
+              class="rounded-borders col-6 full-height"
+              src="~assets/imgbentley08.jpg"
+            />
+          </div>
+        </q-carousel-slide>
+      </q-carousel>
+    </div>
 
     <div class="row q-gutter q-pa-md">
       <div class="text-h6">Bentley Brasil</div>
