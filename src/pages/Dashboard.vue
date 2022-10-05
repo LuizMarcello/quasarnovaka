@@ -1,7 +1,7 @@
 <!-- eslint-disable -->
 <template>
   <q-page padding>
-    <div class="q-pa-md">
+    <div class="q-pa-md" style="display: flex; justify-content: center">
       <q-carousel
         animated
         v-model="slide"
@@ -13,30 +13,19 @@
         transition-next="slide-left"
         @mouseenter="autoplay = false"
         @mouseleave="autoplay = true"
+        style="width: 60%;"
       >
-        <q-carousel-slide
-          :name="1"
-          img-src="~assets/bentley29092205.jpeg"
-        />
-        <q-carousel-slide
-          :name="2"
-          img-src="~assets/bentley29092206.jpeg"
-        />
-        <q-carousel-slide
-          :name="3"
-          img-src="~assets/bentley29092207.jpeg"
-        />
-        <q-carousel-slide
-          :name="4"
-          img-src="~assets/bentley29092208.jpeg"
-        />
+        <q-carousel-slide :name="1" img-src="~assets/bentley29092205.jpeg" />
+        <q-carousel-slide :name="2" img-src="~assets/bentley29092206.jpeg" />
+        <q-carousel-slide :name="3" img-src="~assets/bentley29092207.jpeg" />
+        <q-carousel-slide :name="4" img-src="~assets/bentley29092208.jpeg" />
       </q-carousel>
     </div>
 
     <!-- <div class="col">
       <q-card-media> -->
-        <!-- <q-img src="~assets/bentleybrasil.jpeg" style="min-width: 400px; max-width: 50rem;"></q-img> -->
-        <!-- <q-img src="~assets/bentleyGoogle.jpg"></q-img>
+    <!-- <q-img src="~assets/bentleybrasil.jpeg" style="min-width: 400px; max-width: 50rem;"></q-img> -->
+    <!-- <q-img src="~assets/bentleyGoogle.jpg"></q-img>
       </q-card-media>
     </div> -->
 

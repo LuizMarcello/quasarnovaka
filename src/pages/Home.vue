@@ -70,10 +70,13 @@
     </q-carousel>
 
     <div class="col">
-      <q-card-media>
+
+      <q-card-media style="display: flex; justify-content: center">
         <!-- <q-img src="~assets/bentleybrasil.jpeg" style="min-width: 400px; max-width: 50rem;"></q-img> -->
-        <q-img src="~assets/bentleybrasil.jpeg" style="display: block; text-align: center;"></q-img>
+        <!-- <q-img src="~assets/bentleybrasil.jpeg" style="display: block; text-align: center; width: 50%; margin:auto;" /> -->
+        <q-img src="~assets/bentleybrasil.jpeg" style="width: 50%; margin-top: 2%;" />
       </q-card-media>
+
       <!-- <q-card-title>Título do artigo</q-card-title>
           <q-separator />
           <q-card-main>Aqui só um resumo breve do artigo em destaque.</q-card-main> -->
