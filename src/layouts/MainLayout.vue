@@ -31,7 +31,9 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered> -->
+      <!-- Sem a opção "show-if-above", ele inicia com o menu recolhido -->
+    <q-drawer v-model="leftDrawerOpen" bordered>
       <q-list>
         <q-item-label header>
           <!-- Essential Links -->
