@@ -37,7 +37,7 @@
       <q-list>
         <q-item-label header>
           <!-- Essential Links -->
-          Menu
+          <strong>Administração</strong>
         </q-item-label>
 
         <q-list bordered separator>
@@ -71,6 +71,17 @@
             <q-item-section
               ><q-item-label>Clientes</q-item-label>
               <q-item-label caption>Clientes cadastrados</q-item-label>
+            </q-item-section>
+          </q-item>
+
+          <q-item to="/Home" exact>
+            <q-item-section avatar>
+              <!-- <q-icon name="list_alt" /> -->
+              <q-icon name="mdi-signal" />
+            </q-item-section>
+            <q-item-section
+              ><q-item-label>Home</q-item-label>
+              <q-item-label caption>Voltar a home</q-item-label>
             </q-item-section>
           </q-item>
 
