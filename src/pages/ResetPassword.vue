@@ -23,7 +23,7 @@
             class="full-width"
             outline
             rounded
-            size="lg"
+            size="md"
             type="submit"
           ></q-btn>
         </div>

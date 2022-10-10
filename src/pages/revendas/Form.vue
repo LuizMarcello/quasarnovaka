@@ -100,7 +100,6 @@ import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
-
 export default defineComponent({
   nome: "PageFormRevenda",
   setup() {
@@ -111,15 +110,12 @@ export default defineComponent({
     const { post, getById, update } = useApi();
     const { notifyError, notifySuccess } = useNotify();
     const accept = ref(false);
-
     /* Verificando se na rota existe o "id" como parâmetro
        ou seja, se é para atualizar um "id", ou criar um registro novo.
        Se existir, "isUpdate" é true, senão é false.
        Para atualizar, vai ser usado o mesmo "form" do "cadastrar novo" */
     const isUpdate = computed(() => route.params.id);
-
     let revendaaa = {};
-
     const form = ref({
       nome: "",
       sobrenome: "",
@@ -131,13 +127,11 @@ export default defineComponent({
       estado: "",
       servicos: "",
     });
-
     onMounted(() => {
       if (isUpdate.value) {
         handleGetRevenda(isUpdate.value);
       }
     });
-
     const handleSubmit = async () => {
       try {
         if (isUpdate.value) {
@@ -152,7 +146,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleGetRevenda = async (id) => {
       try {
         revendaaa = await getById(table, id);
@@ -161,7 +154,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     return {
       handleSubmit,
       form,
