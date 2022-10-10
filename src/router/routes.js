@@ -27,9 +27,43 @@ const routes = [{
         name: "reset-password",
         component: () => import("pages/ResetPassword.vue"),
       },
+      {
+        path: "form",
+        name: "form",
+        component: () => import("src/pages/revendas/Form.vue"),
+      },
+      {
+        path: "form-revendas/:id?",
+        name: "form-revendas",
+        component: () => import("src/pages/revendas/Form.vue"),
+      },
     ],
   },
 
+  {
+    /* Neste layout, todas as rotas estão abertas, são publicas */
+    path: "/",
+    component: () => import("layouts/AdmLayout.vue"),
+    children: [{
+        path: "listarclientes",
+        name: "listarclientes",
+        component: () => import("pages/revendas/ListaClientes.vue"),
+      }, {
+        path: "listarevendas",
+        name: "listarevendas",
+        component: () => import("pages/revendas/ListaRevendas.vue"),
+      },
+      {
+        path: "charts",
+        name: "charts",
+        component: () => import("pages/Charts.vue"),
+      },
+
+    ],
+    meta: {
+      requiresAuth: true,
+    },
+  },
 
   {
     /* Neste layout, todas as rotas estão abertas, são publicas */
@@ -38,7 +72,7 @@ const routes = [{
     children: [{
         path: "/",
         name: "loginDefault",
-        component: () => import('pages/Login.vue')
+        component: () => import("pages/Login.vue"),
         /* component: () => import("pages/Home.vue"), */
       },
 
@@ -53,25 +87,16 @@ const routes = [{
         component: () => import("pages/Dashboard.vue"),
       },
       {
-        path: "login",
-        name: "login",
-        component: () => import("pages/Login.vue"),
-      },
-      {
         path: "quemsomosnos",
         name: "quemsomosnos",
         component: () => import("pages/Quemsomosnos.vue"),
       },
       {
-        path: "form",
-        name: "form",
-        component: () => import("src/pages/revendas/Form.vue"),
+        path: "login",
+        name: "login",
+        component: () => import("pages/Login.vue"),
       },
-      {
-        path: "form-revendas/:id?",
-        name: "form-revendas",
-        component: () => import("src/pages/revendas/Form.vue"),
-      },
+
     ],
     /* meta: {
       requiresAuth: true
@@ -83,16 +108,10 @@ const routes = [{
     path: "/",
     component: () => import("src/layouts/MainLayoutSair.vue"),
     children: [{
-        path: "me",
-        name: "me",
-        component: () => import("pages/Me.vue"),
-      },
-      {
-        path: "listarevendas",
-        name: "listarevendas",
-        component: () => import("pages/revendas/ListaRevendas.vue"),
-      },
-    ],
+      path: "me",
+      name: "me",
+      component: () => import("pages/Me.vue"),
+    }, ],
     meta: {
       requiresAuth: true,
     },

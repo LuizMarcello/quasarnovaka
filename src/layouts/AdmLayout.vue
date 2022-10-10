@@ -18,7 +18,7 @@
           </q-list>
         </q-btn-dropdown> -->
 
-        <!-- <q-btn-dropdown flat color="white" icon="person">
+        <q-btn-dropdown flat color="white" icon="person">
           <q-list>
             <q-item clickable v-close-popup @click="handleLogout">
               <q-item-section>
@@ -26,7 +26,7 @@
               </q-item-section>
             </q-item>
           </q-list>
-        </q-btn-dropdown> -->
+        </q-btn-dropdown>
 
       </q-toolbar>
     </q-header>
@@ -41,40 +41,40 @@
         </q-item-label>
 
         <q-list bordered separator>
-          <q-item to="home" exact>
+          <q-item to="charts" exact>
             <q-item-section avatar>
               <!-- <q-icon name="home" /> -->
               <q-icon name="mdi-home" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>Home</q-item-label>
-              <q-item-label caption>Voltar para a home</q-item-label>
+              <q-item-label>Charts</q-item-label>
+              <q-item-label caption>Nossos graficos</q-item-label>
             </q-item-section>
           </q-item>
 
-          <q-item to="/dashboard" exact>
+          <q-item to="/ListaRevendas" exact>
             <q-item-section avatar>
               <!-- <q-icon name="list_alt" /> -->
               <q-icon name="mdi-handshake-outline" />
             </q-item-section>
             <q-item-section
-              ><q-item-label>Bentley Brasil</q-item-label>
-              <q-item-label caption>Seja uma revenda Bentley</q-item-label>
+              ><q-item-label>Revendas</q-item-label>
+              <q-item-label caption>Revendas cadastradas</q-item-label>
             </q-item-section>
           </q-item>
 
-          <q-item to="/quemsomosnos" exact>
+          <q-item to="/ListaClientes" exact>
             <q-item-section avatar>
               <!-- <q-icon name="list_alt" /> -->
               <q-icon name="mdi-signal" />
             </q-item-section>
             <q-item-section
-              ><q-item-label>Quem somos nós</q-item-label>
-              <q-item-label caption>Bentley Brasil</q-item-label>
+              ><q-item-label>Clientes</q-item-label>
+              <q-item-label caption>Clientes cadastrados</q-item-label>
             </q-item-section>
           </q-item>
 
-          <q-item to="/form" exact>
+          <!-- <q-item to="/form" exact>
             <q-item-section avatar>
               <q-icon name="list_alt" />
             </q-item-section>
@@ -82,19 +82,9 @@
               ><q-item-label>Cadastrar revenda</q-item-label>
               <q-item-label caption>Preencha o formulário</q-item-label>
             </q-item-section>
-          </q-item>
+          </q-item> -->
 
-          <q-item to="/charts" exact>
-            <q-item-section avatar>
-              <q-icon name="list_alt" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Adm</q-item-label>
-              <q-item-label caption>Administração</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
+                    <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
         </q-list>
       </q-list>
     </q-drawer>

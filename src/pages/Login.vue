@@ -112,7 +112,7 @@ export default defineComponent({
         await login(form.value);
         notifySuccess("Logado com sucesso!");
 
-        router.push({ name: "listarevendas" });
+        router.push({ name: "charts" });
       } catch (error) {
         /* notifyError("Favor inserir seu e-mail e senha cadastrados!"); */
         notifyError(error.message);
