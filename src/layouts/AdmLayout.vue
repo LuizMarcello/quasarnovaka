@@ -52,7 +52,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item to="/ListaRevendas" exact>
+          <q-item to="/listarrevendas" exact>
             <q-item-section avatar>
               <!-- <q-icon name="list_alt" /> -->
               <q-icon name="mdi-handshake-outline" />
@@ -63,7 +63,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item to="/ListaClientes" exact>
+          <q-item to="/listarclientes" exact>
             <q-item-section avatar>
               <!-- <q-icon name="list_alt" /> -->
               <q-icon name="mdi-signal" />

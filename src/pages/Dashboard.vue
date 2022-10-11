@@ -13,7 +13,7 @@
         transition-next="slide-left"
         @mouseenter="autoplay = false"
         @mouseleave="autoplay = true"
-        style="width: 100%;"
+        style="width: 100%"
       >
         <q-carousel-slide :name="1" img-src="~assets/bentley29092205.jpeg" />
         <q-carousel-slide :name="2" img-src="~assets/bentley29092206.jpeg" />
@@ -35,7 +35,6 @@
         <div class="col">
           <!-- <q-btn flat label="Detalhes"></q-btn> -->
           <q-btn
-
             label="Seja nossa revenda"
             color="primary"
             icon="mdi-plus"

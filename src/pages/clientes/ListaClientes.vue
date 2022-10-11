@@ -3,23 +3,23 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="revendas"
+        :rows="clientes"
         :columns="columns"
         row-key="id"
         class="col-md-06 col-sm-08 col-xs-12"
         :loading="loading"
       >
         <template v-slot:top>
-          <span class="text-h6">Revenda</span>
+          <span class="text-h6">Clientes</span>
           <q-space />
           <!-- <q-btn
-            v-if="$q.platform.is.desktop"
-            label="Adicionar"
-            color="primary"
-            icon="mdi-plus"
-            dense
-            :to="{ name: 'form-revendas' }"
-          /> -->
+              v-if="$q.platform.is.desktop"
+              label="Adicionar"
+              color="primary"
+              icon="mdi-plus"
+              dense
+              :to="{ name: 'form-revendas' }"
+            /> -->
           <q-td class="q-gutter-x-sm">
             <q-btn
               class="desktop-only"
@@ -35,7 +35,7 @@
               color="primary"
               icon="mdi-plus"
               dense
-              :to="{ name: 'form-revendas' }"
+              :to="{ name: 'form-clientes' }"
             />
           </q-td>
         </template>
@@ -56,7 +56,7 @@
               color="negative"
               dense
               size="sm"
-              @click="handleRemoveRevenda(props.row)"
+              @click="handleRemoveCliente(props.row)"
               ><q-tooltip> Excluir </q-tooltip></q-btn
             >
           </q-td>
@@ -72,18 +72,18 @@
         @click="makePDF"
       />
       <!-- <q-btn
-        v-if="$q.platform.is.mobile"
-        fab
-        icon="mdi-plus"
-        color="primary"
-        :to="{ name: 'form-revendas' }"
-      /> -->
+          v-if="$q.platform.is.mobile"
+          fab
+          icon="mdi-plus"
+          color="primary"
+          :to="{ name: 'form-revendas' }"
+        /> -->
       <q-btn
         class="mobile-only"
         fab
         icon="mdi-plus"
         color="primary"
-        :to="{ name: 'form-revendas' }"
+        :to="{ name: 'form-clientes' }"
       />
     </q-page-sticky>
   </q-page>
@@ -95,31 +95,45 @@ import jsPDF from "jspdf";
 
 const columns = [
   {
-    name: "nome",
+    name: "razaosocial",
     align: "left",
-    label: "Nome",
-    field: "nome",
+    label: "Razão social*",
+    field: "razaosocial",
+    sortable: true,
+  },
+  /* {
+    name: "ie_rg",
+    align: "left",
+    label: "Ie Rg",
+    field: "ie_rg",
+    sortable: true,
+  }, */
+  {
+    name: "cnpj",
+    align: "left",
+    label: "CNPJ",
+    field: "cnpj",
     sortable: true,
   },
   {
-    name: "sobrenome",
+    name: "dataadesao",
     align: "left",
-    label: "Sobrenome",
-    field: "sobrenome",
+    label: "Data de adesão",
+    field: "dataadesao",
     sortable: true,
   },
   {
-    name: "nomedaempresa",
+    name: "nome_contato",
     align: "left",
-    label: "Nome da empresa",
-    field: "nomedaempresa",
+    label: "Nome do contato",
+    field: "nome_contato",
     sortable: true,
   },
   {
-    name: "telefone",
+    name: "celular",
     align: "left",
-    label: "Telefone",
-    field: "telefone",
+    label: "Celular",
+    field: "celular",
     sortable: true,
   },
   {
@@ -130,10 +144,87 @@ const columns = [
     sortable: true,
   },
   {
+    name: "fixo",
+    align: "left",
+    label: "Telefone fixo",
+    field: "fixo",
+    sortable: true,
+  },
+  {
     name: "email",
     align: "left",
     label: "Email",
     field: "email",
+    sortable: true,
+  },
+  {
+    name: "chave",
+    align: "left",
+    label: "Chave",
+    field: "chave",
+    sortable: true,
+  },
+  {
+    name: "status",
+    align: "left",
+    label: "Status",
+    field: "status",
+    sortable: true,
+  },
+  {
+    name: "formapagamento",
+    align: "left",
+    label: "Forma de pagamento",
+    field: "formapagamento",
+    sortable: true,
+  },
+  {
+    name: "instalador",
+    align: "left",
+    label: "Instalador",
+    field: "instalador",
+    sortable: true,
+  },
+  {
+    name: "revenda",
+    align: "left",
+    label: "Revenda",
+    field: "revenda",
+    sortable: true,
+  },
+  {
+    name: "observacao",
+    align: "left",
+    label: "Observacao",
+    field: "observacao",
+    sortable: true,
+  },
+  {
+    name: "cep",
+    align: "left",
+    label: "CEP",
+    field: "cep",
+    sortable: true,
+  },
+  {
+    name: "rua",
+    align: "left",
+    label: "Rua",
+    field: "rua",
+    sortable: true,
+  },
+  {
+    name: "numero",
+    align: "left",
+    label: "Número",
+    field: "numero",
+    sortable: true,
+  },
+  {
+    name: "bairro",
+    align: "left",
+    label: "Bairro",
+    field: "bairro",
     sortable: true,
   },
   {
@@ -176,7 +267,7 @@ import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
 export default defineComponent({
-  name: "PageRevendasList",
+  name: "PageClientesList",
 
   methods: {
     makePDF() {
@@ -185,14 +276,14 @@ export default defineComponent({
       var doc = new jsPDF("p", "pt", "a1");
       doc.html(document.querySelector("#app"), {
         callback: function (pdf) {
-          pdf.save("Revendas_cadastradas.pdf");
+          pdf.save("Clientes_cadastrados.pdf");
         },
       });
     },
   },
 
   setup() {
-    const revendas = ref([]);
+    const clientes = ref([]);
     const loading = ref(true);
     const router = useRouter();
     /* const table = "revendas"; */
@@ -200,10 +291,10 @@ export default defineComponent({
     const { list, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
 
-    const handleListRevendas = async () => {
+    const handleListClientes = async () => {
       try {
         loading.value = true;
-        revendas.value = await list("revendas");
+        clientes.value = await list("revendas");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
@@ -211,10 +302,10 @@ export default defineComponent({
     };
 
     const handleEdit = (revenda) => {
-      router.push({ name: "form-revendas", params: { id: revenda.id } });
+      router.push({ name: "form-clientes", params: { id: revenda.id } });
     };
 
-    const handleRemoveRevenda = async (revenda) => {
+    const handleRemoveCliente = async (revenda) => {
       try {
         $q.dialog({
           title: "Confirm",
@@ -222,7 +313,7 @@ export default defineComponent({
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("revendas", revenda.id);
+          await remove("clientes", revenda.id);
           notifySuccess("Removido com sucesso!");
           handleListRevendas();
         });
@@ -232,15 +323,15 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      handleListRevendas();
+      handleListClientes();
     });
 
     return {
       columns,
-      revendas,
+      clientes,
       loading,
       handleEdit,
-      handleRemoveRevenda,
+      handleRemoveCliente,
     };
   },
 });
