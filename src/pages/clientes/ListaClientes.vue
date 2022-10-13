@@ -294,7 +294,7 @@ export default defineComponent({
     const handleListClientes = async () => {
       try {
         loading.value = true;
-        clientes.value = await list("revendas");
+        clientes.value = await list("clientes");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);

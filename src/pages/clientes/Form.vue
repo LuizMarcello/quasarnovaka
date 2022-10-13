@@ -101,8 +101,12 @@
           <q-input
             label="Data de adesão"
             v-model="form.dataadesao"
+            type="date"
+            stack-label
+            mask="##/##/####"
             :rules="[(val) => (val && val.length > 0) || 'Data de adesão']"
           />
+
           <!-- ok -->
           <q-input
             label="Chave"
@@ -117,8 +121,8 @@
           />
           <!-- ok -->
           <q-select
-            v-model="form.opcoesstatus"
-            :options="status"
+            v-model="form.status"
+            :options="opcoesstatus"
             label="Status"
           />
           <!-- ok -->
@@ -231,6 +235,7 @@ export default defineComponent({
       revenda: "",
       servicos: "",
       obs: "",
+      status: "",
     });
     onMounted(() => {
       if (isUpdate.value) {
@@ -251,6 +256,7 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
     const handleGetCliente = async (id) => {
       try {
         clienteee = await getById(table, id);
@@ -298,7 +304,7 @@ export default defineComponent({
       opcoespagamento: ["Boleto", "Cartão de crédito/débito", "Pix"],
       opcoesinstalador: [],
 
-      opcoesstatus: [],
+      opcoesstatus: ["Ativo", "Aguardando", "Inativo"],
       opcoesrevenda: [],
 
       servicos: [
