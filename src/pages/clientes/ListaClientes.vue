@@ -186,10 +186,10 @@ const columns = [
     sortable: true,
   },
   {
-    name: "revenda",
+    name: "revenda_id",
     align: "left",
     label: "Revenda",
-    field: "revenda",
+    field: "revenda_id",
     sortable: true,
   },
   {

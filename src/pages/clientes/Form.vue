@@ -139,7 +139,7 @@
           />
           <!-- ok -->
           <q-select
-            v-model="form.revenda"
+            v-model="form.revenda_id"
             :options="opcoesrevenda"
             label="Revenda"
           />
@@ -232,7 +232,7 @@ export default defineComponent({
       nome_contato: "",
       formapagamento: "",
       instalador: "",
-      revenda: "",
+      revenda_id: "",
       servicos: "",
       obs: "",
       status: "",
@@ -302,9 +302,11 @@ export default defineComponent({
       ],
 
       opcoespagamento: ["Boleto", "Cartão de crédito/débito", "Pix"],
+
       opcoesinstalador: [],
 
       opcoesstatus: ["Ativo", "Aguardando", "Inativo"],
+
       opcoesrevenda: [],
 
       servicos: [
