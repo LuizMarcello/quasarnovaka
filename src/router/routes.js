@@ -52,11 +52,11 @@ const routes = [
         name: "listarclientes",
         component: () => import("pages/clientes/ListaClientes.vue"),
       },
-      {
+      /* {
         path: "form-clientes",
         name: "form-clientes",
         component: () => import("src/pages/clientes/Form.vue"),
-      },
+      }, */
       {
         path: "form-clientes/:id?",
         name: "form-clientes",
