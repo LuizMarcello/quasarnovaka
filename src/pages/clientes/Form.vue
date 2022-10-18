@@ -137,12 +137,10 @@
             :options="opcoesinstalador"
             label="Instalador"
           />
+
           <!-- ok -->
-          <q-select
-            v-model="form.revenda_id"
-            :options="opcoesrevenda"
-            label="Revenda"
-          />
+          <q-select v-model="form.revenda" label="Revenda" />
+
           <!-- ok -->
           <q-select
             v-model="form.servicos"
@@ -192,14 +190,19 @@
 </template>
 
 <script>
+import useSupabase from "src/boot/supabase";
 import { useQuasar } from "quasar";
 import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
+
 export default defineComponent({
   nome: "PageFormCliente",
+ 
+
   setup() {
+    const { supabase } = useSupabase();
     const $q = useQuasar();
     const table = "clientes";
     const router = useRouter();
@@ -232,7 +235,7 @@ export default defineComponent({
       nome_contato: "",
       formapagamento: "",
       instalador: "",
-      revenda_id: "",
+      revenda: "",
       servicos: "",
       obs: "",
       status: "",
@@ -256,7 +259,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleGetCliente = async (id) => {
       try {
         clienteee = await getById(table, id);
@@ -265,6 +267,14 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
+    const { data, error } = supabase.from("revendas").select(`
+    nomedaempresa,
+    clientes (
+      revenda
+    )
+  `);
+
     return {
       handleSubmit,
       form,
@@ -300,15 +310,10 @@ export default defineComponent({
         "Sergipe",
         "Tocantins",
       ],
-
       opcoespagamento: ["Boleto", "Cartão de crédito/débito", "Pix"],
-
       opcoesinstalador: [],
-
       opcoesstatus: ["Ativo", "Aguardando", "Inativo"],
-
-      opcoesrevenda: [],
-
+      /* opcoesrevenda: [], */
       servicos: [
         "Internet via satélite",
         "TV via satélite",

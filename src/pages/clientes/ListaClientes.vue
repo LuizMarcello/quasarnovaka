@@ -302,6 +302,7 @@ export default defineComponent({
     };
 
     const handleEdit = (revenda) => {
+    /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({ name: "form-clientes", params: { id: revenda.id } });
     };
 

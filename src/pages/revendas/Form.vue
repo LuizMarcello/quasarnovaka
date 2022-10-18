@@ -10,7 +10,9 @@
         class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md"
         @submit.prevent="handleSubmit"
       >
-        <div style="border: 2px solid #0B0B61;; border-radius: 15px; padding: 30px">
+        <div
+          style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
+        >
           <q-input
             label="Nome"
             v-model="form.nome"
@@ -60,14 +62,19 @@
 
           <q-select v-model="form.estado" :options="options" label="Estado" />
 
+          <!-- <q-input v-model="form.status" label="Status" /> -->
+
           <q-select
             v-model="form.servicos"
             :options="servicos"
             label="Produtos e serviços que você vende atualmente"
           />
         </div>
-        <div style="border: 2px solid #0B0B61; border-radius: 15px; padding: 30px">
+        <div
+          style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
+        >
           <q-input v-model="text" filled autogrow readonly />
+
         </div>
         <q-toggle
           v-model="accept"
@@ -86,8 +93,18 @@
           color="primary"
           class="full-width"
           rounded
+          size="sm"
           flat
           :to="{ name: 'home' }"
+        />
+        <q-btn
+          label="Voltar"
+          color="primary"
+          class="full-width"
+          rounded
+          size="sm"
+          flat
+          :to="{ name: 'listarrevendas' }"
         />
       </q-form>
     </div>
@@ -125,6 +142,7 @@ export default defineComponent({
       email: "",
       cidade: "",
       estado: "",
+      status: "",
       servicos: "",
     });
     onMounted(() => {
@@ -189,6 +207,11 @@ export default defineComponent({
         "Sergipe",
         "Tocantins",
       ],
+
+     /*  opcoesstatus: ["Aprovado", "Não Aprovado", "Aguardando", "Pendências"], */
+
+      /* opcoesstatus: ["Ativo", "Aguardando", "Inativo","Com pendência"], */
+
       servicos: [
         "Internet via satélite",
         "TV via satélite",

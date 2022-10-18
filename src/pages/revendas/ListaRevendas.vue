@@ -43,6 +43,15 @@
         <template v-slot:body-cell-actions="props">
           <q-td :props="props" class="q-gutter-x-sm">
             <q-btn
+              icon="mdi-list-status"
+              color="info"
+              dense
+              size="sm"
+              @click="handleAprovar(props.row)"
+            >
+              <q-tooltip> Aprovar revenda </q-tooltip></q-btn
+            >
+            <q-btn
               icon="mdi-pencil"
               color="info"
               dense
@@ -158,6 +167,20 @@ const columns = [
     sortable: true,
   },
   {
+    name: "status",
+    align: "left",
+    label: "Status",
+    field: "status",
+    sortable: true,
+  },
+  {
+    name: "obs",
+    align: "left",
+    label: "Obs:",
+    field: "obs",
+    sortable: true,
+  },
+  {
     name: "actions",
     align: "right",
     label: "Actions",
@@ -214,6 +237,10 @@ export default defineComponent({
       router.push({ name: "form-revendas", params: { id: revenda.id } });
     };
 
+    const handleAprovar = (revenda) => {
+      router.push({ name: "aprovarrevendas", params: { id: revenda.id } });
+    };
+
     const handleRemoveRevenda = async (revenda) => {
       try {
         $q.dialog({
@@ -240,6 +267,7 @@ export default defineComponent({
       revendas,
       loading,
       handleEdit,
+      handleAprovar,
       handleRemoveRevenda,
     };
   },
