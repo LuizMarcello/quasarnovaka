@@ -119,6 +119,7 @@ export default defineComponent({
         "Não Aprovado",
         "Aguardando",
         "Com pendências",
+        "Em análise"
       ],
 
       onSubmit() {
