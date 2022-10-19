@@ -38,6 +38,7 @@
         <q-item-label header>
           <!-- Essential Links -->
           <strong>Administração</strong>
+          <p>{{ user.user_metadata.name }}</p>
         </q-item-label>
 
         <q-list bordered separator>
@@ -112,7 +113,6 @@ import EssentialLink from "components/EssentialLink.vue";
 import useAuthUser from "src/composables/UseAuthUser";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
-
 const linksList = [
   /* {
      title: "Discord Chat Channel",
@@ -121,23 +121,17 @@ const linksList = [
      link: "https://chat.quasar.dev",
   }, */
 ];
-
 export default defineComponent({
   name: "MainLayout",
-
   components: {
     EssentialLink,
   },
-
   setup() {
+    const { user } = useAuthUser();
     const leftDrawerOpen = ref(false);
-
     const $q = useQuasar();
-
     const router = useRouter();
-
     const { logout } = useAuthUser();
-
     const handleLogout = async () => {
       $q.dialog({
         title: "Logout",
@@ -152,14 +146,13 @@ export default defineComponent({
         /* O "push" possibilita apertar em "voltar", porque
            ele adiciona todas as rotas na pilha */
         /* router.push({ name: 'login' }) */
-
         /* O "replace" substitui realmente */
         /* router.replace({ name: "login" }); */
         router.push({ name: "home" });
       });
     };
-
     return {
+      user,
       essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer() {

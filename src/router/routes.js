@@ -7,11 +7,11 @@ const routes = [{
         name: "/",
         component: () => import("pages/Home.vue"),
       },
-      {
+      /* {
         path: "register",
         name: "register",
         component: () => import("pages/Register.vue"),
-      },
+      }, */
       {
         path: "email-confirmation",
         name: "email-confirmation",
@@ -73,6 +73,11 @@ const routes = [{
         path: "charts",
         name: "charts",
         component: () => import("pages/Charts.vue"),
+      },
+      {
+        path: "register",
+        name: "register",
+        component: () => import("pages/Register.vue"),
       },
     ],
     meta: {
