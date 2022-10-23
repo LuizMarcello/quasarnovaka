@@ -61,6 +61,12 @@
             >
           </q-td>
         </template>
+
+
+        
+
+
+
       </q-table>
     </div>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
@@ -185,13 +191,15 @@ const columns = [
     field: "instalador",
     sortable: true,
   },
+
   {
     name: "revenda_id",
     align: "left",
-    label: "Revenda",
+    label: "Revenddda",
     field: "revenda_id",
     sortable: true,
   },
+
   {
     name: "observacao",
     align: "left",
@@ -302,7 +310,7 @@ export default defineComponent({
     };
 
     const handleEdit = (revenda) => {
-    /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
+      /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({ name: "form-clientes", params: { id: revenda.id } });
     };
 

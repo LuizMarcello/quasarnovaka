@@ -139,7 +139,24 @@
           />
 
           <!-- ok -->
-          <q-select v-model="form.revenda" label="Revenda" />
+          <!-- <q-select v-model="form.revenda" label="Revenda" /> -->
+
+          <!-- option-value: Qual o "id" da categoria que vai vir -->
+          <!-- option-label: O que vai ser exibido da categoria no select,
+                           no caso, o "name" -->
+          <!-- map-options: Para poder mapear as opções acima -->
+          <!-- emit-value: Para que no retôrno, seja emitido somente o valor
+                         desejado(id), e não o objeto completo. -->
+          <q-select
+            v-model="form.revenda_id"
+            :options="optionsRevenda"
+            label="Revenda"
+            option-value="id"
+            option-label="nome"
+            map-options
+            emit-value
+            :rules="[(val) => !!val || 'Informe a revenda']"
+          />
 
           <!-- ok -->
           <q-select
@@ -199,7 +216,6 @@ import useNotify from "src/composables/UseNotify";
 
 export default defineComponent({
   nome: "PageFormCliente",
- 
 
   setup() {
     const { supabase } = useSupabase();
@@ -207,9 +223,12 @@ export default defineComponent({
     const table = "clientes";
     const router = useRouter();
     const route = useRoute();
-    const { post, getById, update } = useApi();
+    const { post, getById, update, list } = useApi();
     const { notifyError, notifySuccess } = useNotify();
     const accept = ref(false);
+
+    const optionsRevenda = ref([]);
+
     /* Verificando se na rota existe o "id" como parâmetro
          ou seja, se é para atualizar um "id", ou criar um registro novo.
          Se existir, "isUpdate" é true, senão é false.
@@ -235,16 +254,23 @@ export default defineComponent({
       nome_contato: "",
       formapagamento: "",
       instalador: "",
-      revenda: "",
+      revenda_id: "",
       servicos: "",
       obs: "",
       status: "",
     });
+
     onMounted(() => {
+      handleListRevendas();
       if (isUpdate.value) {
         handleGetCliente(isUpdate.value);
       }
     });
+
+    const handleListRevendas = async () => {
+      optionsRevenda.value = await list("revendas");
+    };
+
     const handleSubmit = async () => {
       try {
         if (isUpdate.value) {
@@ -267,13 +293,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
-    const { data, error } = supabase.from("revendas").select(`
-    nomedaempresa,
-    clientes (
-      revenda
-    )
-  `);
 
     return {
       handleSubmit,
@@ -313,7 +332,7 @@ export default defineComponent({
       opcoespagamento: ["Boleto", "Cartão de crédito/débito", "Pix"],
       opcoesinstalador: [],
       opcoesstatus: ["Ativo", "Aguardando", "Inativo"],
-      /* opcoesrevenda: [], */
+
       servicos: [
         "Internet via satélite",
         "TV via satélite",
@@ -346,6 +365,8 @@ export default defineComponent({
         age.value = null;
         accept.value = false;
       },
+
+      optionsRevenda,
     };
   },
 });
