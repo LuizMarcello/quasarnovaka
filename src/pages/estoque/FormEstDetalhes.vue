@@ -13,28 +13,31 @@
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
-          <q-select
-            v-model="form.marca"
-            :rules="[(val) => (val && val.length > 0) || 'Informe a marca']"
-            :options="opcoesmarca"
+          <q-input
             label="Marca"
+            v-model="form.marca"
+            readonly
+            :rules="[(val) => (val && val.length > 0) || 'Informe o modelo']"
           />
 
           <q-input
             label="Modelo"
             v-model="form.modelo"
+            readonly
             :rules="[(val) => (val && val.length > 0) || 'Informe o modelo']"
           />
 
           <q-input
             label="Descrição"
             v-model="form.descricao"
+            readonly
             :rules="[(val) => (val && val.length > 0) || 'Informe a descrição']"
           />
 
           <q-input
             label="Número de série"
             v-model="form.numerodeserie"
+            readonly
             :rules="[
               (val) => (val && val.length > 0) || 'Informe o número de série',
             ]"
@@ -52,12 +55,14 @@
           <q-input
             label="Data da nota"
             v-model="form.datanota"
+            readonly
             type="date"
             stack-label
           />
 
           <q-input
             label="Endereço Mac"
+            readonly
             v-model="form.mac"
             mask="NN:NN:NN:NN:NN:NN"
           />
@@ -65,6 +70,7 @@
           <div>
             <q-input
               label="Histórico do produto"
+              readonly
               v-model="form.historico"
               type="date"
               stack-label
@@ -77,11 +83,7 @@
             /> -->
           </div>
 
-          <q-select
-            v-model="form.status"
-            :options="opcoesstatus"
-            label="Status"
-          />
+          <q-input label="Status" readonly v-model="form.status" />
         </div>
 
         <div
@@ -107,7 +109,7 @@
             :to="{ name: 'listarestoque' }"
           />
 
-          <q-btn 
+          <q-btn
             label="Voltar"
             color="primary"
             class="full-width q-gutter-y-sm"
@@ -116,7 +118,6 @@
             :to="{ name: 'listarestoque' }"
           />
         </div>
-        
       </q-form>
     </div>
   </q-page>

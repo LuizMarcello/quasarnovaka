@@ -13,6 +13,7 @@ import useAuthUser from "src/composables/UseAuthUser";
 
 export default defineComponent({
   name: "PageMe",
+  
   setup() {
     const { user } = useAuthUser();
 

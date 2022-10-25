@@ -15,15 +15,17 @@
         <q-toolbar-title> Bentley Brasil </q-toolbar-title>
         <!-- <div>Quasar v{{ $q.version }}</div> -->
 
-        <!-- <q-btn-dropdown flat color="white" icon="person">
-          <q-list>
-            <q-item to="login" exact>
-              <q-item-section>
-                <q-item-label> Entrar</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown> -->
+        <div v-if="!user">
+          <q-btn-dropdown flat color="white" icon="person">
+            <q-list>
+              <q-item to="login" exact>
+                <q-item-section>
+                  <q-item-label> Administração</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </div>
 
         <!-- <q-btn-dropdown flat color="white" icon="person">
           <q-list>
@@ -90,7 +92,7 @@
             </q-item-section>
           </q-item>
 
-          <q-item to="/charts" exact>
+          <!-- <q-item to="/charts" exact>
             <q-item-section avatar>
               <q-icon name="list_alt" />
             </q-item-section>
@@ -98,7 +100,7 @@
               ><q-item-label>Adm</q-item-label>
               <q-item-label caption>Administração</q-item-label>
             </q-item-section>
-          </q-item>
+          </q-item> -->
 
           <EssentialLink
             v-for="link in essentialLinks"

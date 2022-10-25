@@ -3,7 +3,14 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
+        <q-btn
+          flat
+          dense
+          round
+          icon="menu"
+          aria-label="Menu"
+          @click="toggleLeftDrawer"
+        />
 
         <q-toolbar-title> Bentley Brasil </q-toolbar-title>
         <!-- <div>Quasar v{{ $q.version }}</div> -->
@@ -27,12 +34,11 @@
             </q-item>
           </q-list>
         </q-btn-dropdown>
-
       </q-toolbar>
     </q-header>
 
     <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered> -->
-      <!-- Sem a opção "show-if-above", ele inicia com o menu recolhido -->
+    <!-- Sem a opção "show-if-above", ele inicia com o menu recolhido -->
     <q-drawer v-model="leftDrawerOpen" bordered>
       <q-list>
         <q-item-label header>
@@ -86,16 +92,15 @@
             </q-item-section>
           </q-item>
 
-          <q-item to="/Home" exact>
+          <!-- <q-item to="/Home" exact>
             <q-item-section avatar>
-              <!-- <q-icon name="list_alt" /> -->
               <q-icon name="mdi-signal" />
             </q-item-section>
             <q-item-section
               ><q-item-label>Home</q-item-label>
               <q-item-label caption>Voltar a home</q-item-label>
             </q-item-section>
-          </q-item>
+          </q-item> -->
 
           <!-- <q-item to="/form" exact>
             <q-item-section avatar>
@@ -107,7 +112,11 @@
             </q-item-section>
           </q-item> -->
 
-                    <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
+          <EssentialLink
+            v-for="link in essentialLinks"
+            :key="link.title"
+            v-bind="link"
+          />
         </q-list>
       </q-list>
     </q-drawer>

@@ -43,6 +43,15 @@
         <template v-slot:body-cell-actions="props">
           <q-td :props="props" class="q-gutter-x-sm">
             <q-btn
+              icon="mdi-feature-search-outline"
+              color="primary"
+              dense
+              size="sm"
+              @click="handleDetails(props.row)"
+            >
+              <q-tooltip> Detalhes </q-tooltip></q-btn
+            >
+            <q-btn
               icon="mdi-pencil"
               color="info"
               dense
@@ -123,48 +132,7 @@ const columns = [
     field: "numerodeserie",
     sortable: true,
   },
-  {
-    name: "mac",
-    align: "left",
-    label: "Endereço mac",
-    field: "mac",
-    sortable: true,
-  },
-  {
-    name: "notafiscal",
-    align: "left",
-    label: "Nota fiscal",
-    field: "notafiscal",
-    sortable: true,
-  },
-  {
-    name: "obs",
-    align: "left",
-    label: "Observação",
-    field: "obs",
-    sortable: true,
-  },
-  {
-    name: "datanota",
-    align: "left",
-    label: "Data da Nota",
-    field: "datanota",
-    sortable: true,
-  },
-  {
-    name: "historico",
-    align: "left",
-    label: "Histórico",
-    field: "historico",
-    sortable: true,
-  },
-  {
-    name: "status",
-    align: "left",
-    label: "Status",
-    field: "status",
-    sortable: true,
-  },
+
   {
     name: "actions",
     align: "right",
@@ -223,7 +191,15 @@ export default defineComponent({
       router.push({ name: "form-estoque", params: { id: estoque.id } });
     };
 
-    const handleRemoveEstoque= async (estoque) => {
+    const handleDetails = (estoque) => {
+      /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
+      router.push({
+        name: "form-estoque-detalhes",
+        params: { id: estoque.id },
+      });
+    };
+
+    const handleRemoveEstoque = async (estoque) => {
       try {
         $q.dialog({
           title: "Confirm",
@@ -249,6 +225,7 @@ export default defineComponent({
       estoque,
       loading,
       handleEdit,
+      handleDetails,
       handleListEstoque,
       handleRemoveEstoque,
     };
