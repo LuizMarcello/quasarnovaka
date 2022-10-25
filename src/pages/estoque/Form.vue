@@ -206,7 +206,7 @@ export default defineComponent({
       model: ref(null),
       options: [],
 
-      opcoesstatus: ["Opção1", "Opção2", "Opção3", "Opção4"],
+      opcoesstatus: ["Funcionamento OK", "Com defeito", "Enviado para garantia", "Na Bentley", "No cliente"],
 
       opcoesmarca: [
         "Gilat",
