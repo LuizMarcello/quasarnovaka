@@ -27,15 +27,17 @@
           </q-btn-dropdown>
         </div>
 
-        <!-- <q-btn-dropdown flat color="white" icon="person">
-          <q-list>
-            <q-item clickable v-close-popup @click="handleLogout">
-              <q-item-section>
-                <q-item-label> Sair</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown> -->
+        <div v-if="user">
+          <q-btn-dropdown flat color="white" icon="person">
+            <q-list>
+              <q-item clickable v-close-popup @click="handleLogout">
+                <q-item-section>
+                  <q-item-label> Sair</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -49,16 +51,16 @@
         </q-item-label>
 
         <q-list bordered separator>
-          <q-item to="home" exact>
+          <!--  <q-item to="home" exact>
             <q-item-section avatar>
-              <!-- <q-icon name="home" /> -->
+              
               <q-icon name="mdi-home" />
             </q-item-section>
             <q-item-section>
               <q-item-label>Home</q-item-label>
               <q-item-label caption>Voltar para a home</q-item-label>
             </q-item-section>
-          </q-item>
+          </q-item> -->
 
           <q-item to="/dashboard" exact>
             <q-item-section avatar>
@@ -92,15 +94,17 @@
             </q-item-section>
           </q-item>
 
-          <!-- <q-item to="/charts" exact>
-            <q-item-section avatar>
-              <q-icon name="list_alt" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Adm</q-item-label>
-              <q-item-label caption>Administração</q-item-label>
-            </q-item-section>
-          </q-item> -->
+          <div v-if="user">
+            <q-item to="/charts" exact>
+              <q-item-section avatar>
+                <q-icon name="list_alt" />
+              </q-item-section>
+              <q-item-section
+                ><q-item-label>Adm</q-item-label>
+                <q-item-label caption>Administração</q-item-label>
+              </q-item-section>
+            </q-item>
+          </div>
 
           <EssentialLink
             v-for="link in essentialLinks"

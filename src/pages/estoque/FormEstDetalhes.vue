@@ -94,22 +94,6 @@
 
         <div>
           <q-btn
-            :label="isUpdate ? 'Atualizar' : 'Enviar'"
-            color="primary"
-            class="full-width"
-            rounded
-            type="submit"
-          />
-          <q-btn
-            label="Cancelar"
-            color="primary"
-            class="full-width q-gutter-y-sm"
-            rounded
-            flat
-            :to="{ name: 'listarestoque' }"
-          />
-
-          <q-btn
             label="Voltar"
             color="primary"
             class="full-width q-gutter-y-sm"

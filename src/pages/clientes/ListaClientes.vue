@@ -43,6 +43,15 @@
         <template v-slot:body-cell-actions="props">
           <q-td :props="props" class="q-gutter-x-sm">
             <q-btn
+              icon="mdi-feature-search-outline"
+              color="primary"
+              dense
+              size="sm"
+              @click="handleDetails(props.row)"
+            >
+              <q-tooltip> Detalhes </q-tooltip></q-btn
+            >
+            <q-btn
               icon="mdi-pencil"
               color="info"
               dense
@@ -61,7 +70,6 @@
             >
           </q-td>
         </template>
-
       </q-table>
     </div>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
@@ -116,13 +124,13 @@ const columns = [
     field: "cnpj",
     sortable: true,
   },
-  {
+  /* {
     name: "dataadesao",
     align: "left",
     label: "Data de adesão",
     field: "dataadesao",
     sortable: true,
-  },
+  }, */
   {
     name: "nome_contato",
     align: "left",
@@ -130,27 +138,27 @@ const columns = [
     field: "nome_contato",
     sortable: true,
   },
-  {
+  /* {
     name: "celular",
     align: "left",
     label: "Celular",
     field: "celular",
     sortable: true,
-  },
-  {
+  }, */
+  /* {
     name: "whatsapp",
     align: "left",
     label: "WhatsApp",
     field: "whatsapp",
     sortable: true,
-  },
-  {
+  }, */
+  /* {
     name: "fixo",
     align: "left",
     label: "Telefone fixo",
     field: "fixo",
     sortable: true,
-  },
+  }, */
   {
     name: "email",
     align: "left",
@@ -158,78 +166,78 @@ const columns = [
     field: "email",
     sortable: true,
   },
-  {
+  /* {
     name: "chave",
     align: "left",
     label: "Chave",
     field: "chave",
     sortable: true,
-  },
-  {
+  }, */
+  /* {
     name: "status",
     align: "left",
     label: "Status",
     field: "status",
     sortable: true,
-  },
-  {
+  }, */
+  /* {
     name: "formapagamento",
     align: "left",
     label: "Forma de pagamento",
     field: "formapagamento",
     sortable: true,
-  },
-  {
+  }, */
+  /* {
     name: "instalador",
     align: "left",
     label: "Instalador",
     field: "instalador",
     sortable: true,
-  },
+  }, */
 
-  {
+  /* {
     name: "revenda_id",
     align: "left",
     label: "Revenddda",
     field: "revenda_id",
     sortable: true,
-  },
+  }, */
 
-  {
+  /* {
     name: "observacao",
     align: "left",
     label: "Observacao",
     field: "observacao",
     sortable: true,
-  },
-  {
+  }, */
+  /* {
     name: "cep",
     align: "left",
     label: "CEP",
     field: "cep",
     sortable: true,
-  },
-  {
+  }, */
+ /*  {
     name: "rua",
     align: "left",
     label: "Rua",
     field: "rua",
     sortable: true,
-  },
-  {
+  }, */
+  /* {
     name: "numero",
     align: "left",
     label: "Número",
     field: "numero",
     sortable: true,
-  },
-  {
+  }, */
+  /* {
     name: "bairro",
     align: "left",
     label: "Bairro",
     field: "bairro",
     sortable: true,
-  },
+  }, */
   {
     name: "cidade",
     align: "left",
@@ -309,15 +317,23 @@ export default defineComponent({
       router.push({ name: "form-clientes", params: { id: cliente.id } });
     };
 
-    const handleRemoveCliente = async (revenda) => {
+    const handleDetails = (cliente) => {
+      /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
+      router.push({
+        name: "form-clientes-detalhes",
+        params: { id: cliente.id },
+      });
+    };
+
+    const handleRemoveCliente = async (cliente) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${revenda.nome} ?`,
+          message: `Tem certeza que quer deletar ${cliente.nome} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("clientes", revenda.id);
+          await remove("clientes", cliente.id);
           notifySuccess("Removido com sucesso!");
           handleListRevendas();
         });
@@ -334,6 +350,7 @@ export default defineComponent({
       columns,
       clientes,
       loading,
+      handleDetails,
       handleEdit,
       handleRemoveCliente,
     };

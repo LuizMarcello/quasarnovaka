@@ -48,6 +48,16 @@
         </q-item-label>
 
         <q-list bordered separator>
+          <q-item to="/Home" exact>
+            <q-item-section avatar>
+              <q-icon name="mdi-signal" />
+            </q-item-section>
+            <q-item-section
+              ><q-item-label>Home</q-item-label>
+              <q-item-label caption>Voltar a home</q-item-label>
+            </q-item-section>
+          </q-item>
+          
           <q-item to="charts" exact>
             <q-item-section avatar>
               <!-- <q-icon name="home" /> -->
@@ -91,16 +101,6 @@
               <q-item-label caption>Controle de estoque</q-item-label>
             </q-item-section>
           </q-item>
-
-          <!-- <q-item to="/Home" exact>
-            <q-item-section avatar>
-              <q-icon name="mdi-signal" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Home</q-item-label>
-              <q-item-label caption>Voltar a home</q-item-label>
-            </q-item-section>
-          </q-item> -->
 
           <!-- <q-item to="/form" exact>
             <q-item-section avatar>

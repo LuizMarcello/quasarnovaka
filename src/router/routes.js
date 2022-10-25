@@ -77,6 +77,12 @@ const routes = [{
       },
 
       {
+        path: "form-clientes-detalhes/:id?",
+        name: "form-clientes-detalhes",
+        component: () => import("pages/clientes/FormClientesDetalhes.vue"),
+      },
+
+      {
         path: "form-estoque/:id?",
         name: "form-estoque",
         component: () => import("pages/estoque/Form.vue"),
@@ -96,6 +102,12 @@ const routes = [{
         path: "register",
         name: "register",
         component: () => import("pages/Register.vue"),
+      },
+
+      {
+        path: "barcode",
+        name: "barcode",
+        component: () => import("pages/scanner/BtnScannerWrapper.vue"),
       },
     ],
     meta: {
