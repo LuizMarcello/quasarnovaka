@@ -43,6 +43,15 @@
         <template v-slot:body-cell-actions="props">
           <q-td :props="props" class="q-gutter-x-sm">
             <q-btn
+              icon="mdi-feature-search-outline"
+              color="primary"
+              dense
+              size="sm"
+              @click="handleDetails(props.row)"
+            >
+              <q-tooltip> Detalhes </q-tooltip></q-btn
+            >
+            <q-btn
               icon="mdi-list-status"
               color="info"
               dense
@@ -104,40 +113,13 @@ import jsPDF from "jspdf";
 
 const columns = [
   {
-    name: "nome",
-    align: "left",
-    label: "Nome",
-    field: "nome",
-    sortable: true,
-  },
-  {
-    name: "sobrenome",
-    align: "left",
-    label: "Sobrenome",
-    field: "sobrenome",
-    sortable: true,
-  },
-  {
     name: "nomedaempresa",
     align: "left",
     label: "Nome da empresa",
     field: "nomedaempresa",
     sortable: true,
   },
-  {
-    name: "telefone",
-    align: "left",
-    label: "Telefone",
-    field: "telefone",
-    sortable: true,
-  },
-  {
-    name: "whatsapp",
-    align: "left",
-    label: "WhatsApp",
-    field: "whatsapp",
-    sortable: true,
-  },
+
   {
     name: "email",
     align: "left",
@@ -166,20 +148,7 @@ const columns = [
     field: "servicos",
     sortable: true,
   },
-  {
-    name: "status",
-    align: "left",
-    label: "Status",
-    field: "status",
-    sortable: true,
-  },
-  {
-    name: "obs",
-    align: "left",
-    label: "Obs:",
-    field: "obs",
-    sortable: true,
-  },
+
   {
     name: "actions",
     align: "right",
@@ -237,6 +206,14 @@ export default defineComponent({
       router.push({ name: "form-revendas", params: { id: revenda.id } });
     };
 
+    const handleDetails = (revenda) => {
+      /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
+      router.push({
+        name: "form-revenda-detalhes",
+        params: { id: revenda.id },
+      });
+    };
+
     const handleAprovar = (revenda) => {
       router.push({ name: "aprovarrevendas", params: { id: revenda.id } });
     };
@@ -267,6 +244,7 @@ export default defineComponent({
       revendas,
       loading,
       handleEdit,
+      handleDetails,
       handleAprovar,
       handleRemoveRevenda,
     };
