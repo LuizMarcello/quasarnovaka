@@ -3,14 +3,14 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="clientes"
+        :rows="estoque"
         :columns="columns"
         row-key="id"
         class="col-md-06 col-sm-08 col-xs-12"
         :loading="loading"
       >
         <template v-slot:top>
-          <span class="text-h6">Clientes</span>
+          <span class="text-h6">Estoque</span>
           <q-space />
           <!-- <q-btn
               v-if="$q.platform.is.desktop"
@@ -35,7 +35,7 @@
               color="primary"
               icon="mdi-plus"
               dense
-              :to="{ name: 'form-clientes' }"
+              :to="{ name: 'form-estoque' }"
             />
           </q-td>
         </template>
@@ -56,12 +56,11 @@
               color="negative"
               dense
               size="sm"
-              @click="handleRemoveCliente(props.row)"
+              @click="handleRemoveEstoque(props.row)"
               ><q-tooltip> Excluir </q-tooltip></q-btn
             >
           </q-td>
         </template>
-
       </q-table>
     </div>
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
@@ -84,7 +83,7 @@
         fab
         icon="mdi-plus"
         color="primary"
-        :to="{ name: 'form-clientes' }"
+        :to="{ name: 'form-estoque' }"
       />
     </q-page-sticky>
   </q-page>
@@ -96,73 +95,67 @@ import jsPDF from "jspdf";
 
 const columns = [
   {
-    name: "razaosocial",
+    name: "marca",
     align: "left",
-    label: "Razão social*",
-    field: "razaosocial",
+    label: "Marca*",
+    field: "marca",
     sortable: true,
   },
-  /* {
-    name: "ie_rg",
-    align: "left",
-    label: "Ie Rg",
-    field: "ie_rg",
-    sortable: true,
-  }, */
+
   {
-    name: "cnpj",
+    name: "modelo",
     align: "left",
-    label: "CNPJ",
-    field: "cnpj",
+    label: "Modelo",
+    field: "modelo",
     sortable: true,
   },
   {
-    name: "dataadesao",
+    name: "descricao",
     align: "left",
-    label: "Data de adesão",
-    field: "dataadesao",
+    label: "Descrição",
+    field: "descricao",
     sortable: true,
   },
   {
-    name: "nome_contato",
+    name: "numerodeserie",
     align: "left",
-    label: "Nome do contato",
-    field: "nome_contato",
+    label: "Número de série",
+    field: "numerodeserie",
     sortable: true,
   },
   {
-    name: "celular",
+    name: "mac",
     align: "left",
-    label: "Celular",
-    field: "celular",
+    label: "Endereço mac",
+    field: "mac",
     sortable: true,
   },
   {
-    name: "whatsapp",
+    name: "notafiscal",
     align: "left",
-    label: "WhatsApp",
-    field: "whatsapp",
+    label: "Nota fiscal",
+    field: "notafiscal",
     sortable: true,
   },
   {
-    name: "fixo",
+    name: "obs",
     align: "left",
-    label: "Telefone fixo",
-    field: "fixo",
+    label: "Observação",
+    field: "obs",
     sortable: true,
   },
   {
-    name: "email",
+    name: "datanota",
     align: "left",
-    label: "Email",
-    field: "email",
+    label: "Data da Nota",
+    field: "datanota",
     sortable: true,
   },
   {
-    name: "chave",
+    name: "historico",
     align: "left",
-    label: "Chave",
-    field: "chave",
+    label: "Histórico",
+    field: "historico",
     sortable: true,
   },
   {
@@ -170,85 +163,6 @@ const columns = [
     align: "left",
     label: "Status",
     field: "status",
-    sortable: true,
-  },
-  {
-    name: "formapagamento",
-    align: "left",
-    label: "Forma de pagamento",
-    field: "formapagamento",
-    sortable: true,
-  },
-  {
-    name: "instalador",
-    align: "left",
-    label: "Instalador",
-    field: "instalador",
-    sortable: true,
-  },
-
-  {
-    name: "revenda_id",
-    align: "left",
-    label: "Revenddda",
-    field: "revenda_id",
-    sortable: true,
-  },
-
-  {
-    name: "observacao",
-    align: "left",
-    label: "Observacao",
-    field: "observacao",
-    sortable: true,
-  },
-  {
-    name: "cep",
-    align: "left",
-    label: "CEP",
-    field: "cep",
-    sortable: true,
-  },
-  {
-    name: "rua",
-    align: "left",
-    label: "Rua",
-    field: "rua",
-    sortable: true,
-  },
-  {
-    name: "numero",
-    align: "left",
-    label: "Número",
-    field: "numero",
-    sortable: true,
-  },
-  {
-    name: "bairro",
-    align: "left",
-    label: "Bairro",
-    field: "bairro",
-    sortable: true,
-  },
-  {
-    name: "cidade",
-    align: "left",
-    label: "Cidade",
-    field: "cidade",
-    sortable: true,
-  },
-  {
-    name: "estado",
-    align: "left",
-    label: "Estado",
-    field: "estado",
-    sortable: true,
-  },
-  {
-    name: "servicos",
-    align: "left",
-    label: "Serviços já prestados",
-    field: "servicos",
     sortable: true,
   },
   {
@@ -270,7 +184,7 @@ import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
 export default defineComponent({
-  name: "PageClientesList",
+  name: "PageEstoqueList",
 
   methods: {
     makePDF() {
@@ -286,7 +200,7 @@ export default defineComponent({
   },
 
   setup() {
-    const clientes = ref([]);
+    const estoque = ref([]);
     const loading = ref(true);
     const router = useRouter();
     /* const table = "revendas"; */
@@ -294,32 +208,32 @@ export default defineComponent({
     const { list, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
 
-    const handleListClientes = async () => {
+    const handleListEstoque = async () => {
       try {
         loading.value = true;
-        clientes.value = await list("clientes");
+        estoque.value = await list("estoque");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleEdit = (cliente) => {
+    const handleEdit = (estoque) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-clientes", params: { id: cliente.id } });
+      router.push({ name: "form-estoque", params: { id: estoque.id } });
     };
 
-    const handleRemoveCliente = async (revenda) => {
+    const handleRemoveEstoque= async (estoque) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${revenda.nome} ?`,
+          message: `Tem certeza que quer deletar ${estoque.descricao} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("clientes", revenda.id);
+          await remove("estoque", estoque.id);
           notifySuccess("Removido com sucesso!");
-          handleListRevendas();
+          handleListEstoque();
         });
       } catch (error) {
         notifyError(error.message);
@@ -327,15 +241,16 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      handleListClientes();
+      handleListEstoque();
     });
 
     return {
       columns,
-      clientes,
+      estoque,
       loading,
       handleEdit,
-      handleRemoveCliente,
+      handleListEstoque,
+      handleRemoveEstoque,
     };
   },
 });

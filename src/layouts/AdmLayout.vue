@@ -75,6 +75,17 @@
             </q-item-section>
           </q-item>
 
+          <q-item to="/listarestoque" exact>
+            <q-item-section avatar>
+              <!-- <q-icon name="list_alt" /> -->
+              <q-icon name="mdi-nas" />
+            </q-item-section>
+            <q-item-section
+              ><q-item-label>Estoque</q-item-label>
+              <q-item-label caption>Controle de estoque</q-item-label>
+            </q-item-section>
+          </q-item>
+
           <q-item to="/Home" exact>
             <q-item-section avatar>
               <!-- <q-icon name="list_alt" /> -->
