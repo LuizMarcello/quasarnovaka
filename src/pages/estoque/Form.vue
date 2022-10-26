@@ -4,7 +4,17 @@
     <div class="row justify-center">
       <div class="col-12 text-center">
         <p class="text-h6">Formulário de estoque</p>
+
+        <div v-if="isUpdate">
+          <p class="text-h6">Editando produto</p>
+        </div>
+
+        <div v-if="!isUpdate">
+          <p class="text-h6">Adicionando produto</p>
+        </div>
       </div>
+
+      <!-- :label="isUpdate ? 'Atualizar' : 'Enviar'" -->
 
       <q-form
         class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md"
@@ -13,6 +23,21 @@
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
+          <q-input
+            label="Nota fiscal"
+            v-model="form.notafiscal"
+            readonly
+            :rules="[
+              (val) =>
+                (val && val.length > 0) || 'Informe o número da nota fiscal',
+            ]"
+          />
+          <q-input
+            label="Data da nota"
+            v-model="form.datanota"
+            type="date"
+            stack-label
+          />
           <q-select
             v-model="form.marca"
             :rules="[(val) => (val && val.length > 0) || 'Informe a marca']"
@@ -41,19 +66,11 @@
           />
 
           <q-input
-            label="Nota fiscal"
-            v-model="form.notafiscal"
-            readonly
+            label="Part Number"
+            v-model="form.partnumber"
             :rules="[
-              (val) =>
-                (val && val.length > 0) || 'Informe o número da nota fiscal',
+              (val) => (val && val.length > 0) || 'Informe o número de série',
             ]"
-          />
-          <q-input
-            label="Data da nota"
-            v-model="form.datanota"
-            type="date"
-            stack-label
           />
 
           <q-input
@@ -62,26 +79,49 @@
             mask="NN:NN:NN:NN:NN:NN"
           />
 
-          <div>
-            <q-input
-              label="Histórico do produto"
-              v-model="form.historico"
-              type="date"
-              stack-label
-            />
-            <!--  <q-input
-              label="Histórico do produto"
-              v-model="form.historico"
-              type="date"
-              stack-label
-            /> -->
-          </div>
-
           <q-select
             v-model="form.status"
             :options="opcoesstatus"
             label="Status"
           />
+        </div>
+
+        <div v-if="isUpdate">
+          <q-btn
+            label="Histórico"
+            color="primary"
+            size="sm"
+            rounded
+            class="q-gutter-x-y-sm"
+            @click="basic = true"
+          />
+
+          <q-dialog v-model="basic">
+            <q-card>
+              <q-card-section>
+                <div class="text-h6">Histórico do produto</div>
+              </q-card-section>
+
+              <q-card-section class="q-pt-none">
+                <!-- <p v-for="n in 15" :key="n"> -->
+                <q-input
+                  label="Data"
+                  v-model="form.historico"
+                  stack-label
+                  type="date"
+                />
+                <div class="q-pa-md" style="max-width: 300px">
+                  <q-input v-model="text" filled autogrow />
+                </div>
+                <!--  </p> -->
+              </q-card-section>
+
+              <q-card-actions align="right">
+                <q-btn flat label="Salvar" color="primary" v-close-popup />
+                <q-btn flat label="Cancelar" color="primary" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
         </div>
 
         <div
@@ -107,7 +147,7 @@
             :to="{ name: 'listarestoque' }"
           />
 
-          <q-btn 
+          <q-btn
             label="Voltar"
             color="primary"
             class="full-width q-gutter-y-sm"
@@ -116,7 +156,6 @@
             :to="{ name: 'listarestoque' }"
           />
         </div>
-        
       </q-form>
     </div>
   </q-page>
@@ -162,6 +201,7 @@ export default defineComponent({
       datanota: "",
       historico: "",
       status: "",
+      partnumber: "",
     });
 
     onMounted(() => {
@@ -206,7 +246,13 @@ export default defineComponent({
       model: ref(null),
       options: [],
 
-      opcoesstatus: ["Funcionamento OK", "Com defeito", "Enviado para garantia", "Na Bentley", "No cliente"],
+      opcoesstatus: [
+        "Funcionamento OK",
+        "Com defeito",
+        "Enviado para garantia",
+        "Na Bentley",
+        "No cliente",
+      ],
 
       opcoesmarca: [
         "Gilat",
@@ -247,6 +293,7 @@ export default defineComponent({
       },
 
       optionsEstoque,
+      basic: ref(false),
     };
   },
 });

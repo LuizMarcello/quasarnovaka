@@ -58,7 +58,7 @@
               size="sm"
               @click="handleAprovar(props.row)"
             >
-              <q-tooltip> Aprovar revenda </q-tooltip></q-btn
+              <q-tooltip> Alterar status </q-tooltip></q-btn
             >
             <q-btn
               icon="mdi-pencil"

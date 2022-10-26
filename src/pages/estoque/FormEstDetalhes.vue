@@ -3,7 +3,7 @@
   <q-page padding>
     <div class="row justify-center">
       <div class="col-12 text-center">
-        <p class="text-h6">Formulário de estoque</p>
+        <p class="text-h6">Detalhes do produto</p>
       </div>
 
       <q-form
@@ -13,45 +13,7 @@
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
-          <q-input
-            label="Marca"
-            v-model="form.marca"
-            readonly
-            :rules="[(val) => (val && val.length > 0) || 'Informe o modelo']"
-          />
-
-          <q-input
-            label="Modelo"
-            v-model="form.modelo"
-            readonly
-            :rules="[(val) => (val && val.length > 0) || 'Informe o modelo']"
-          />
-
-          <q-input
-            label="Descrição"
-            v-model="form.descricao"
-            readonly
-            :rules="[(val) => (val && val.length > 0) || 'Informe a descrição']"
-          />
-
-          <q-input
-            label="Número de série"
-            v-model="form.numerodeserie"
-            readonly
-            :rules="[
-              (val) => (val && val.length > 0) || 'Informe o número de série',
-            ]"
-          />
-
-          <q-input
-            label="Nota fiscal"
-            v-model="form.notafiscal"
-            readonly
-            :rules="[
-              (val) =>
-                (val && val.length > 0) || 'Informe o número da nota fiscal',
-            ]"
-          />
+          <q-input label="Nota fiscal" v-model="form.notafiscal" readonly />
           <q-input
             label="Data da nota"
             v-model="form.datanota"
@@ -59,6 +21,19 @@
             type="date"
             stack-label
           />
+          <q-input label="Marca" v-model="form.marca" readonly />
+
+          <q-input label="Modelo" v-model="form.modelo" readonly />
+
+          <q-input label="Descrição" v-model="form.descricao" readonly />
+
+          <q-input
+            label="Número de série"
+            v-model="form.numerodeserie"
+            readonly
+          />
+
+          <q-input label="Part Number" v-model="form.partnumber" />
 
           <q-input
             label="Endereço Mac"
@@ -69,7 +44,7 @@
 
           <div>
             <q-input
-              label="Histórico do produto"
+              label="Ultimo histórico"
               readonly
               v-model="form.historico"
               type="date"
