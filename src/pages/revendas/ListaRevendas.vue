@@ -2,6 +2,7 @@
   <q-page padding>
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
+
       <q-table
         :rows="revendas"
         :columns="columns"
@@ -41,7 +42,25 @@
         </template>
 
         <template v-slot:body-cell-actions="props">
+          <q-tr v-show="props.expand" :props="props">
+            <q-td colspan="100%">
+              <div class="text-left">
+                This is expand slot for row above: {{ props.row.name }}.
+              </div>
+            </q-td>
+          </q-tr>
+
           <q-td :props="props" class="q-gutter-x-sm">
+            
+           <!--  <q-btn
+              icon="mdi-feature-search-outline"
+              color="primary"
+              dense
+              size="sm"
+            >
+              <q-tooltip> Aprovada </q-tooltip></q-btn
+            > -->
+
             <q-btn
               icon="mdi-feature-search-outline"
               color="primary"
@@ -113,6 +132,13 @@ import jsPDF from "jspdf";
 
 const columns = [
   {
+    name: "status",
+    align: "left",
+    label: "",
+    field: "status",
+    sortable: true,
+  },
+  {
     name: "nomedaempresa",
     align: "left",
     label: "Nome da empresa",
@@ -152,7 +178,7 @@ const columns = [
   {
     name: "actions",
     align: "right",
-    label: "Actions",
+    label: "Ações",
     field: "actions",
     sortable: true,
   },

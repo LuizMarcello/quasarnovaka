@@ -26,7 +26,6 @@
           <q-input
             label="Nota fiscal"
             v-model="form.notafiscal"
-            readonly
             :rules="[
               (val) =>
                 (val && val.length > 0) || 'Informe o número da nota fiscal',
@@ -42,7 +41,7 @@
             v-model="form.marca"
             :rules="[(val) => (val && val.length > 0) || 'Informe a marca']"
             :options="opcoesmarca"
-            label="Marca"
+            label="Marca/Fabricante"
           />
 
           <q-input
@@ -86,69 +85,29 @@
           />
         </div>
 
-        <div v-if="isUpdate">
-          <q-btn
-            label="Histórico"
-            color="primary"
-            size="sm"
-            rounded
-            class="q-gutter-x-y-sm"
-            @click="basic = true"
-          />
-
-
-          <q-dialog v-model="basic">
-            <q-card>
-              <q-card-section>
-                <div class="text-h6">Histórico do produto</div>
-              </q-card-section>
-
-              <q-card-section class="q-pt-none">
-                <!-- <p v-for="n in 15" :key="n"> -->
-                <q-input
-                  label="Data"
-                  v-model="form.historicodata"
-                  stack-label
-                  type="date"
-                />
-                <div class="q-pa-md" style="max-width: 300px">
-                  <q-input v-model="form.historicotexto" autogrow />
-                </div>
-                <!--  </p> -->
-              </q-card-section>
-
-              <q-card-actions align="right">
-                <q-btn flat label="Salvar" color="primary" v-close-popup />
-                <q-btn flat label="Cancelar" color="primary" v-close-popup />
-              </q-card-actions>
-            </q-card>
-          </q-dialog>
-
-
-        </div>
-
-        <div
+        <!-- <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
           <q-input label="Observação" v-model="form.obs" />
-        </div>
+        </div> -->
 
         <div>
           <q-btn
-            :label="isUpdate ? 'Atualizar' : 'Enviar'"
+            :label="isUpdate ? 'Atualizar' : 'Salvar'"
             color="primary"
             class="full-width"
             rounded
             type="submit"
+            
           />
-          <q-btn
+          <!-- <q-btn
             label="Cancelar"
             color="primary"
             class="full-width q-gutter-y-sm"
             rounded
             flat
             :to="{ name: 'listarestoque' }"
-          />
+          /> -->
 
           <q-btn
             label="Voltar"
@@ -200,10 +159,7 @@ export default defineComponent({
       numerodeserie: "",
       mac: "",
       notafiscal: "",
-      obs: "",
       datanota: "",
-      historicodata: "",
-      historicotexto: "",
       status: "",
       partnumber: "",
     });

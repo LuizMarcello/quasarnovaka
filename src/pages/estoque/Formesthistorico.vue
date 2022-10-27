@@ -3,7 +3,11 @@
   <q-page padding>
     <div class="row justify-center">
       <div class="col-12 text-center">
-        <p class="text-h6">Detalhes do produto</p>
+        <p class="text-h6">Formulário de estoque</p>
+
+        <div v-if="isUpdate">
+          <p class="text-h6">Histórico do produto</p>
+        </div>
       </div>
 
       <q-form
@@ -13,61 +17,42 @@
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
-          <q-input label="Nota fiscal" v-model="form.notafiscal" readonly />
-          <q-input
-            label="Data da nota"
-            v-model="form.datanota"
-            readonly
-            type="date"
-            stack-label
-          />
-          <q-input label="Marca/Fabricante" v-model="form.marca" readonly />
+          <q-input v-model="form.historico1" type="date" />
 
-          <q-input label="Modelo" v-model="form.modelo" readonly />
-
-          <q-input label="Descrição" v-model="form.descricao" readonly />
-
-          <q-input
-            label="Número de série"
-            v-model="form.numerodeserie"
-            readonly
-          />
-
-          <q-input label="Part Number" v-model="form.partnumber" readonly />
-
-          <q-input
-            label="Endereço Mac"
-            readonly
-            v-model="form.mac"
-            mask="NN:NN:NN:NN:NN:NN"
-          />
-
-          <div>
-            <!-- <q-input
-              label="Ultimo histórico"
-              readonly
-              v-model="form.historico"
-              type="date"
-              stack-label
-            /> -->
-            <!--  <q-input
-              label="Histórico do produto"
-              v-model="form.historico"
-              type="date"
-              stack-label
-            /> -->
-          </div>
-
-          <q-input label="Status" readonly v-model="form.status" />
+          <q-input label="Histórico 01" v-model="form.obs1" />
         </div>
-
-        <!-- <div
+        <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
-          <q-input label="Observação" v-model="form.obs" />
-        </div> -->
+          <q-input v-model="form.historico2" type="date" />
+
+          <q-input label="Histórico 02" v-model="form.obs2" />
+        </div>
+        <div
+          style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
+        >
+          <q-input v-model="form.historico3" type="date" />
+
+          <q-input label="Histórico 03" v-model="form.obs3" />
+        </div>
 
         <div>
+          <q-btn
+            :label="isUpdate ? 'Atualizar' : 'Enviar'"
+            color="primary"
+            class="full-width"
+            rounded
+            type="submit"
+          />
+          <!-- <q-btn
+            label="Cancelar"
+            color="primary"
+            class="full-width q-gutter-y-sm"
+            rounded
+            flat
+            :to="{ name: 'listarestoque' }"
+          /> -->
+
           <q-btn
             label="Voltar"
             color="primary"
@@ -112,18 +97,12 @@ export default defineComponent({
     const isUpdate = computed(() => route.params.id);
     let estoqueee = {};
     const form = ref({
-      marca: "",
-      modelo: "",
-      descricao: "",
-      numerodeserie: "",
-      mac: "",
-      notafiscal: "",
-      obs: "",
-      datanota: "",
-      historicodata: "",
-      historicotexto: "",
-      historico: "",
-      status: "",
+      historico1: "",
+      historico2: "",
+      historico3: "",
+      obs1: "",
+      obs2: "",
+      obs3: "",
     });
 
     onMounted(() => {
@@ -168,40 +147,6 @@ export default defineComponent({
       model: ref(null),
       options: [],
 
-      opcoesstatus: ["Opção1", "Opção2", "Opção3", "Opção4"],
-
-      opcoesmarca: [
-        "Gilat",
-        "Viasat",
-        "iDirect",
-        "Hughes",
-        "Ubiquiti",
-        "Mikrotik",
-        "Dell",
-        "Intelbrás",
-        "Cisco",
-        "Tp-Link",
-      ],
-
-      servicos: [],
-
-      onSubmit() {
-        if (accept.value !== true) {
-          $q.notify({
-            color: "red-5",
-            textColor: "white",
-            icon: "warning",
-            message: "You need to accept the license and terms first",
-          });
-        } else {
-          $q.notify({
-            color: "green-4",
-            textColor: "white",
-            icon: "cloud_done",
-            message: "Submitted",
-          });
-        }
-      },
       onReset() {
         /* name.value = null; */
         age.value = null;
@@ -209,7 +154,6 @@ export default defineComponent({
       },
 
       optionsEstoque,
-      basic: ref(false),
     };
   },
 });

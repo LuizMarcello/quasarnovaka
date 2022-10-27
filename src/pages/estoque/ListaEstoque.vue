@@ -52,6 +52,15 @@
               <q-tooltip> Detalhes </q-tooltip></q-btn
             >
             <q-btn
+              icon="mdi-pillar"
+              color="primary"
+              dense
+              size="sm"
+              @click="handleHistorico(props.row)"
+            >
+              <q-tooltip> Histórico </q-tooltip></q-btn
+            >
+            <q-btn
               icon="mdi-pencil"
               color="info"
               dense
@@ -106,7 +115,7 @@ const columns = [
   {
     name: "marca",
     align: "left",
-    label: "Marca*",
+    label: "Marca/Fabricante",
     field: "marca",
     sortable: true,
   },
@@ -136,7 +145,7 @@ const columns = [
   {
     name: "actions",
     align: "right",
-    label: "Actions",
+    label: "Ações",
     field: "actions",
     sortable: true,
   },
@@ -199,6 +208,14 @@ export default defineComponent({
       });
     };
 
+    const handleHistorico = (estoque) => {
+      /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
+      router.push({
+        name: "form-estoque-historico",
+        params: { id: estoque.id },
+      });
+    };
+
     const handleRemoveEstoque = async (estoque) => {
       try {
         $q.dialog({
@@ -227,6 +244,7 @@ export default defineComponent({
       handleEdit,
       handleDetails,
       handleListEstoque,
+      handleHistorico,
       handleRemoveEstoque,
     };
   },

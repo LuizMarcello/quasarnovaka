@@ -87,6 +87,12 @@ const routes = [{
         component: () => import("pages/revendas/FormRevendaDetalhes.vue"),
       },
 
+      {
+        path: "form-estoque-historico/:id?",
+        name: "form-estoque-historico",
+        component: () => import("pages/estoque/Formesthistorico.vue"),
+      },
+
 
       {
         path: "form-estoque/:id?",

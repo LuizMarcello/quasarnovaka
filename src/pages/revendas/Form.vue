@@ -88,7 +88,7 @@
           rounded
           type="submit"
         />
-        <q-btn
+       <!--  <q-btn
           label="Cancelar"
           color="primary"
           class="full-width"
@@ -96,7 +96,7 @@
           size="sm"
           flat
           :to="{ name: 'home' }"
-        />
+        /> -->
         <q-btn
           label="Voltar"
           color="primary"

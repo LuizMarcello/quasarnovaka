@@ -29,7 +29,7 @@
           rounded
           type="submit"
         />
-        <q-btn
+        <!-- <q-btn
           label="Cancelar"
           color="primary"
           class="full-width"
@@ -37,7 +37,7 @@
           flat
           size="sm"
           :to="{ name: 'listarrevendas' }"
-        />
+        /> -->
         <q-btn
           label="Voltar"
           color="primary"
