@@ -96,6 +96,7 @@
             @click="basic = true"
           />
 
+
           <q-dialog v-model="basic">
             <q-card>
               <q-card-section>
@@ -106,12 +107,12 @@
                 <!-- <p v-for="n in 15" :key="n"> -->
                 <q-input
                   label="Data"
-                  v-model="form.historico"
+                  v-model="form.historicodata"
                   stack-label
                   type="date"
                 />
                 <div class="q-pa-md" style="max-width: 300px">
-                  <q-input v-model="text" filled autogrow />
+                  <q-input v-model="form.historicotexto" autogrow />
                 </div>
                 <!--  </p> -->
               </q-card-section>
@@ -122,6 +123,8 @@
               </q-card-actions>
             </q-card>
           </q-dialog>
+
+
         </div>
 
         <div
@@ -199,7 +202,8 @@ export default defineComponent({
       notafiscal: "",
       obs: "",
       datanota: "",
-      historico: "",
+      historicodata: "",
+      historicotexto: "",
       status: "",
       partnumber: "",
     });

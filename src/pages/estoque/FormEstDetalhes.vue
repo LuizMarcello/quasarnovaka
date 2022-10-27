@@ -33,7 +33,7 @@
             readonly
           />
 
-          <q-input label="Part Number" v-model="form.partnumber" />
+          <q-input label="Part Number" v-model="form.partnumber" readonly />
 
           <q-input
             label="Endereço Mac"
@@ -43,13 +43,13 @@
           />
 
           <div>
-            <q-input
+            <!-- <q-input
               label="Ultimo histórico"
               readonly
               v-model="form.historico"
               type="date"
               stack-label
-            />
+            /> -->
             <!--  <q-input
               label="Histórico do produto"
               v-model="form.historico"
@@ -60,6 +60,47 @@
 
           <q-input label="Status" readonly v-model="form.status" />
         </div>
+
+
+        <div>
+          <q-btn
+            label="Histórico"
+            color="primary"
+            size="sm"
+            readonly
+            rounded
+            class="q-gutter-x-y-sm"
+            @click="basic = true"
+          />
+
+          <q-dialog v-model="basic">
+            <q-card>
+              <q-card-section>
+                <div class="text-h6">Histórico do produto</div>
+              </q-card-section>
+
+              <q-card-section class="q-pt-none">
+                <!-- <p v-for="n in 15" :key="n"> -->
+                <q-input
+                  label="Data"
+                  v-model="form.historicodata"
+                  stack-label
+                  type="date"
+                />
+                <div class="q-pa-md" style="max-width: 300px">
+                  <q-input readonly v-model="form.historicotexto" autogrow />
+                </div>
+                <!--  </p> -->
+              </q-card-section>
+
+              <q-card-actions align="right">
+                <q-btn flat label="Salvar" color="primary" v-close-popup />
+                <q-btn flat label="Cancelar" color="primary" v-close-popup />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
+        </div>
+
 
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
@@ -120,6 +161,8 @@ export default defineComponent({
       notafiscal: "",
       obs: "",
       datanota: "",
+      historicodata: "",
+      historicotexto: "",
       historico: "",
       status: "",
     });
@@ -207,6 +250,7 @@ export default defineComponent({
       },
 
       optionsEstoque,
+      basic: ref(false),
     };
   },
 });
