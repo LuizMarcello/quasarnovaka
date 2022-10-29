@@ -34,6 +34,10 @@ export default function useApi() {
       error
     } = await supabase.from(table).insert({
       ...form,
+       /* Passando o valor do id do usuário logado no momento,
+           para o "user_id" da tabela, no supabase, porque este
+           será o usuário que efetuou o registro */
+       user_id: user.value.id
     });
     if (error) throw error;
     return data;

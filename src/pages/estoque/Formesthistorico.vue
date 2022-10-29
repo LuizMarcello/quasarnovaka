@@ -19,6 +19,8 @@
         >
           <q-input v-model="form.historico1" type="date" />
 
+          <!-- <p>user.value.id</p> -->
+
           <q-input label="Histórico 01" v-model="form.obs1" />
         </div>
         <div
@@ -75,6 +77,8 @@ import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 
+import useAuthUser from "src/composables/UseAuthUser";
+
 export default defineComponent({
   nome: "PageFormEstoque",
 
@@ -87,6 +91,8 @@ export default defineComponent({
     const { post, getById, update, list } = useApi();
     const { notifyError, notifySuccess } = useNotify();
     const accept = ref(false);
+
+    const { user } = useAuthUser();
 
     const optionsEstoque = ref([]);
 
