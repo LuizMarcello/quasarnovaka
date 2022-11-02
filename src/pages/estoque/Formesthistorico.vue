@@ -3,10 +3,19 @@
   <q-page padding>
     <div class="row justify-center">
       <div class="col-12 text-center">
-        <p class="text-h6">Formulário de estoque</p>
+        <!-- <p class="text-h6">Formulário de estoque</p> -->
 
-        <div v-if="isUpdate">
+        <div class="row" v-if="isUpdate" style="display: inline-block">
           <p class="text-h6">Histórico do produto</p>
+          <div class="col">
+            <q-input label="Marca" v-model="form.marca" readonly />
+          </div>
+          <div class="col">
+            <q-input label="Modelo" v-model="form.modelo" readonly />
+          </div>
+          <div class="col">
+            <q-input label="Descrição" v-model="form.descricao" readonly />
+          </div>
         </div>
       </div>
 

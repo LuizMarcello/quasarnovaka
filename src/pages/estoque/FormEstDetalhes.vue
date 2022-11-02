@@ -3,7 +3,7 @@
   <q-page padding>
     <div class="row justify-center">
       <div class="col-12 text-center">
-        <p class="text-h6">Detalhes do produto</p>
+        <p class="text-h6">Detalhes do Produto</p>
       </div>
 
       <q-form
@@ -94,6 +94,7 @@ export default defineComponent({
   nome: "PageFormEstoque",
 
   setup() {
+    const estoque = ref([]);
     const { supabase } = useSupabase();
     const $q = useQuasar();
     const table = "estoque";
@@ -111,6 +112,7 @@ export default defineComponent({
          Para atualizar, vai ser usado o mesmo "form" do "cadastrar novo" */
     const isUpdate = computed(() => route.params.id);
     let estoqueee = {};
+
     const form = ref({
       marca: "",
       modelo: "",
@@ -163,6 +165,7 @@ export default defineComponent({
     return {
       handleSubmit,
       form,
+      //estoque,
       isUpdate,
       accept,
       model: ref(null),

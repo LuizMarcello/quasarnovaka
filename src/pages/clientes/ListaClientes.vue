@@ -8,6 +8,7 @@
         row-key="id"
         class="col-md-06 col-sm-08 col-xs-12"
         :loading="loading"
+        :filter="filter"
       >
         <template v-slot:top>
           <span class="text-h6">Clientes</span>
@@ -21,6 +22,19 @@
               :to="{ name: 'form-revendas' }"
             /> -->
           <q-td class="q-gutter-x-sm">
+            <q-input
+              outlined
+              dense
+              debounce="300"
+              v-model="filter"
+              placeholder="Pesquisar clientes"
+              color="primary"
+              class="q-mb-sm"
+            >
+              <template v-slot:append>
+                <q-icon name="mdi-magnify" />
+              </template>
+            </q-input>
             <q-btn
               class="desktop-only"
               label="Gerar pdf"
@@ -217,7 +231,7 @@ const columns = [
     field: "cep",
     sortable: true,
   }, */
- /*  {
+  /*  {
     name: "rua",
     align: "left",
     label: "Rua",
@@ -297,6 +311,7 @@ export default defineComponent({
     const clientes = ref([]);
     const loading = ref(true);
     const router = useRouter();
+    const filter = ref("");
     /* const table = "revendas"; */
     const $q = useQuasar();
     const { list, remove } = useApi();
@@ -350,6 +365,7 @@ export default defineComponent({
       columns,
       clientes,
       loading,
+      filter,
       handleDetails,
       handleEdit,
       handleRemoveCliente,

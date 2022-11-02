@@ -8,6 +8,7 @@
         row-key="id"
         class="col-md-06 col-sm-08 col-xs-12"
         :loading="loading"
+        :filter="filter"
       >
         <template v-slot:top>
           <span class="text-h6">Estoque</span>
@@ -21,6 +22,20 @@
               :to="{ name: 'form-revendas' }"
             /> -->
           <q-td class="q-gutter-x-sm">
+            <q-input
+              outlined
+              dense
+              debounce="300"
+              v-model="filter"
+              placeholder="Pesquisar produtos"
+              color="primary"
+              class="q-mb-sm"
+            >
+              <template v-slot:append>
+                <q-icon name="mdi-magnify" />
+              </template>
+            </q-input>
+            <q-space />
             <q-btn
               class="desktop-only"
               label="Gerar pdf"
@@ -44,10 +59,11 @@
           <q-td :props="props" class="q-gutter-x-sm">
             <q-btn
               icon="mdi-feature-search-outline"
-              color="primary"
+            color="primary"
               dense
               size="sm"
               @click="handleDetails(props.row)"
+
             >
               <q-tooltip> Detalhes </q-tooltip></q-btn
             >
@@ -181,6 +197,7 @@ export default defineComponent({
     const loading = ref(true);
     const router = useRouter();
     /* const table = "revendas"; */
+    const filter = ref("");
     const $q = useQuasar();
     const { list, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
@@ -241,6 +258,7 @@ export default defineComponent({
       columns,
       estoque,
       loading,
+      filter,
       handleEdit,
       handleDetails,
       handleListEstoque,

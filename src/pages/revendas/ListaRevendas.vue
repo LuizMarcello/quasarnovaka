@@ -9,6 +9,7 @@
         row-key="id"
         class="col-md-06 col-sm-08 col-xs-12"
         :loading="loading"
+        :filter="filter"
       >
         <template v-slot:top>
           <span class="text-h6">Revenda</span>
@@ -22,6 +23,19 @@
             :to="{ name: 'form-revendas' }"
           /> -->
           <q-td class="q-gutter-x-sm">
+            <q-input
+              outlined
+              dense
+              debounce="300"
+              v-model="filter"
+              placeholder="Pesquisar revendas"
+              color="primary"
+              class="q-mb-sm"
+            >
+              <template v-slot:append>
+                <q-icon name="mdi-magnify" />
+              </template>
+            </q-input>
             <q-btn
               class="desktop-only"
               label="Gerar pdf"
@@ -51,8 +65,7 @@
           </q-tr>
 
           <q-td :props="props" class="q-gutter-x-sm">
-            
-           <!--  <q-btn
+            <!--  <q-btn
               icon="mdi-feature-search-outline"
               color="primary"
               dense
@@ -134,7 +147,7 @@ const columns = [
   {
     name: "status",
     align: "left",
-    label: "",
+    label: "Status",
     field: "status",
     sortable: true,
   },
@@ -213,6 +226,7 @@ export default defineComponent({
     const revendas = ref([]);
     const loading = ref(true);
     const router = useRouter();
+    const filter = ref("");
     /* const table = "revendas"; */
     const $q = useQuasar();
     const { list, remove } = useApi();
@@ -269,6 +283,7 @@ export default defineComponent({
       columns,
       revendas,
       loading,
+      filter,
       handleEdit,
       handleDetails,
       handleAprovar,
