@@ -74,7 +74,6 @@
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
           <q-input v-model="text" filled autogrow readonly />
-
         </div>
         <q-toggle
           v-model="accept"
@@ -88,7 +87,7 @@
           rounded
           type="submit"
         />
-       <!--  <q-btn
+        <!--  <q-btn
           label="Cancelar"
           color="primary"
           class="full-width"
@@ -142,14 +141,17 @@ export default defineComponent({
       email: "",
       cidade: "",
       estado: "",
-      status: "",
       servicos: "",
     });
+
+    console.log(form.value);
+
     onMounted(() => {
       if (isUpdate.value) {
         handleGetRevenda(isUpdate.value);
       }
     });
+
     const handleSubmit = async () => {
       try {
         if (isUpdate.value) {
@@ -164,6 +166,7 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
     const handleGetRevenda = async (id) => {
       try {
         revendaaa = await getById(table, id);
@@ -208,7 +211,7 @@ export default defineComponent({
         "Tocantins",
       ],
 
-     /*  opcoesstatus: ["Aprovado", "Não Aprovado", "Aguardando", "Pendências"], */
+      /*  opcoesstatus: ["Aprovado", "Não Aprovado", "Aguardando", "Pendências"], */
 
       /* opcoesstatus: ["Ativo", "Aguardando", "Inativo","Com pendência"], */
 

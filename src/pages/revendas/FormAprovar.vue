@@ -3,7 +3,13 @@
   <q-page padding>
     <div class="row justify-center">
       <div class="col-12 text-center">
-        <p class="text-h6">Alterar status da revenda</p>
+        <p class="text-h6">Alterar status da revenda:</p>
+
+        <div class="row" style="display: inline-block">
+          <div class="col-mb-06 col-sm-08 col-xs-12">
+            <q-input label="" v-model="form.nomedaempresa" readonly />
+          </div>
+        </div>
       </div>
 
       <q-form
@@ -19,8 +25,18 @@
             label="Status"
           />
 
-          <q-input label="Obs:" v-model="form.obs" autogrow />
+          <q-input
+            label="Ultimo status alterado por:"
+            v-model="form.statusalteradopor"
+          />
 
+          <!-- <div v-if="user">
+            <p class="text-body3">
+              Status alterado por: {{ user.user_metadata.name }}
+            </p>
+          </div> -->
+
+          <q-input label="Obs:" v-model="form.obs" autogrow />
         </div>
         <q-btn
           label="Salvar"
@@ -57,12 +73,14 @@ import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
+import useAuthUser from "src/composables/UseAuthUser";
 export default defineComponent({
   nome: "PageFormAprovarRevenda",
 
   setup() {
     const $q = useQuasar();
     const table = "revendas";
+    const { user } = useAuthUser();
     const router = useRouter();
     const route = useRoute();
     const { post, getById, update } = useApi();
@@ -73,17 +91,29 @@ export default defineComponent({
        Se existir, "isUpdate" é true, senão é false.
        Para atualizar, vai ser usado o mesmo "form" do "cadastrar novo" */
     const isUpdate = computed(() => route.params.id);
+
+    const alteroustatus = user.value.user_metadata.name;
+    /*  alert(alteroustatus); */
+    /* console.log(alteroustatus) */
+    /*  console.log(form.value) */
+
     let revendaaa = {};
+
     const form = ref({
       status: "",
       obs: "",
+      statusalteradopor: String(alteroustatus),
+      /* statusalteradopor: alteroustatus, */
     });
+
+    console.log(form.value);
 
     onMounted(() => {
       if (isUpdate.value) {
         handleGetRevenda(isUpdate.value);
       }
     });
+
     const handleSubmit = async () => {
       try {
         if (isUpdate.value) {
@@ -107,11 +137,15 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
     return {
       handleSubmit,
       form,
+      user,
       isUpdate,
       accept,
+      alteroustatus,
+
       model: ref(null),
 
       opcoesstatus: [
@@ -119,7 +153,7 @@ export default defineComponent({
         "Não Aprovado",
         "Aguardando",
         "Com pendências",
-        "Em análise"
+        "Em análise",
       ],
 
       onSubmit() {
