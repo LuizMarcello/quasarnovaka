@@ -116,6 +116,7 @@ import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
+
 export default defineComponent({
   nome: "PageFormRevenda",
   setup() {
@@ -132,6 +133,7 @@ export default defineComponent({
        Para atualizar, vai ser usado o mesmo "form" do "cadastrar novo" */
     const isUpdate = computed(() => route.params.id);
     let revendaaa = {};
+        
     const form = ref({
       nome: "",
       sobrenome: "",
@@ -142,6 +144,9 @@ export default defineComponent({
       cidade: "",
       estado: "",
       servicos: "",
+      status: "",
+      obs: "",
+      statusalteradopor: "",
     });
 
     console.log(form.value);
@@ -180,6 +185,7 @@ export default defineComponent({
       form,
       isUpdate,
       accept,
+
       model: ref(null),
       options: [
         "Acre",

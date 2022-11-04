@@ -25,10 +25,10 @@
             label="Status"
           />
 
-          <q-input
+          <!-- <q-input
             label="Ultimo status alterado por:"
             v-model="form.statusalteradopor"
-          />
+          /> -->
 
           <!-- <div v-if="user">
             <p class="text-body3">
@@ -45,15 +45,7 @@
           rounded
           type="submit"
         />
-        <!-- <q-btn
-          label="Cancelar"
-          color="primary"
-          class="full-width"
-          rounded
-          flat
-          size="sm"
-          :to="{ name: 'listarrevendas' }"
-        /> -->
+        
         <q-btn
           label="Voltar"
           color="primary"
@@ -93,17 +85,20 @@ export default defineComponent({
     const isUpdate = computed(() => route.params.id);
 
     const alteroustatus = user.value.user_metadata.name;
-    /*  alert(alteroustatus); */
-    /* console.log(alteroustatus) */
-    /*  console.log(form.value) */
+    /* alert(alteroustatus); */
+    /* console.log(alteroustatus); */
+
+    const statusalteradopor = alteroustatus;
 
     let revendaaa = {};
 
     const form = ref({
       status: "",
       obs: "",
-      statusalteradopor: String(alteroustatus),
+      /* statusalteradopor: String(alteroustatus), */
       /* statusalteradopor: alteroustatus, */
+      /*  statusalteradopor: "", */
+      statusalteradopor: "",
     });
 
     console.log(form.value);
@@ -117,10 +112,10 @@ export default defineComponent({
     const handleSubmit = async () => {
       try {
         if (isUpdate.value) {
-          await update(table, form.value);
+          await update(table, form.value, statusalteradopor);
           notifySuccess("Atualizado com sucesso");
         } else {
-          await post(table, form.value);
+          await post(table, form.value, statusalteradopor);
           notifySuccess("Enviado com sucesso");
         }
         router.push({ nome: "form-revendas" });
