@@ -27,8 +27,10 @@
           <q-input
             label="Ultimo status alterado por:"
             v-model="form.statusalteradopor"
-            readonly=""
+            readonly
           />
+
+          <q-input label="Em:" v-model="form.dataalteracaostatus" readonly />
 
           <!-- <div v-if="user">
             <p class="text-body3">
@@ -85,20 +87,34 @@ export default defineComponent({
     const isUpdate = computed(() => route.params.id);
 
     const alteroustatus = user.value.user_metadata.name;
+
+    const statusalteradopor = alteroustatus;
     /* alert(alteroustatus); */
     /* console.log(alteroustatus); */
 
-    const statusalteradopor = alteroustatus;
+    function formatDate(date) {
+      let dia = date.getDate();
+      let mes = date.getMonth();
+      let ano = date.getFullYear();
+
+      return `${dia} de ${mes} de ${ano}`;
+    }
+
+    let hoje = new Date();
+
+    const datastatus = formatDate(hoje);
+
+    console.log(datastatus);
+
+    const dataalteracaostatus = datastatus;
 
     let revendaaa = {};
 
     const form = ref({
       status: "",
       obs: "",
-      /* statusalteradopor: String(alteroustatus), */
-      /* statusalteradopor: alteroustatus, */
-      /*  statusalteradopor: "", */
       statusalteradopor: "",
+      dataalteracaostatus: "",
     });
 
     console.log(form.value);
@@ -112,10 +128,18 @@ export default defineComponent({
     const handleSubmit = async () => {
       try {
         if (isUpdate.value) {
-          await update(table, { ...form.value, statusalteradopor });
+          await update(table, {
+            ...form.value,
+            statusalteradopor,
+            dataalteracaostatus,
+          });
           notifySuccess("Atualizado com sucesso");
         } else {
-          await post(table, { ...form.value, statusalteradopor });
+          await post(table, {
+            ...form.value,
+            statusalteradopor,
+            dataalteracaostatus,
+          });
           notifySuccess("Enviado com sucesso");
         }
         router.push({ nome: "form-revendas" });
@@ -140,6 +164,8 @@ export default defineComponent({
       isUpdate,
       accept,
       alteroustatus,
+      datastatus,
+      /* hoje */
 
       model: ref(null),
 
