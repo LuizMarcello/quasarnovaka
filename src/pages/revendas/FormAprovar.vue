@@ -24,11 +24,11 @@
             :options="opcoesstatus"
             label="Status"
           />
-
-          <!-- <q-input
+          <q-input
             label="Ultimo status alterado por:"
             v-model="form.statusalteradopor"
-          /> -->
+            readonly=""
+          />
 
           <!-- <div v-if="user">
             <p class="text-body3">
@@ -45,7 +45,7 @@
           rounded
           type="submit"
         />
-        
+
         <q-btn
           label="Voltar"
           color="primary"
@@ -112,10 +112,10 @@ export default defineComponent({
     const handleSubmit = async () => {
       try {
         if (isUpdate.value) {
-          await update(table, form.value, statusalteradopor);
+          await update(table, { ...form.value, statusalteradopor });
           notifySuccess("Atualizado com sucesso");
         } else {
-          await post(table, form.value, statusalteradopor);
+          await post(table, { ...form.value, statusalteradopor });
           notifySuccess("Enviado com sucesso");
         }
         router.push({ nome: "form-revendas" });
