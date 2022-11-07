@@ -159,13 +159,13 @@ const columns = [
     sortable: true,
   },
 
-  {
+  /* {
     name: "email",
     align: "left",
     label: "Email",
     field: "email",
     sortable: true,
-  },
+  }, */
   {
     name: "cidade",
     align: "left",

@@ -30,14 +30,8 @@
             readonly
           />
 
-          <q-input label="Em:" v-model="form.dataalteracaostatus" readonly />
-
-          <!-- <div v-if="user">
-            <p class="text-body3">
-              Status alterado por: {{ user.user_metadata.name }}
-            </p>
-          </div> -->
-
+          <q-input type="date" stack-label label="Em:" v-model="form.dataalteracaostatus" readonly />
+          
           <q-input label="Obs:" v-model="form.obs" autogrow />
         </div>
         <q-btn
@@ -62,7 +56,7 @@
 </template>
 
 <script>
-import { useQuasar } from "quasar";
+import { date, useQuasar } from "quasar";
 import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
@@ -89,22 +83,12 @@ export default defineComponent({
     const alteroustatus = user.value.user_metadata.name;
 
     const statusalteradopor = alteroustatus;
-    /* alert(alteroustatus); */
-    /* console.log(alteroustatus); */
-
-    function formatDate(date) {
-      let dia = date.getDate();
-      let mes = date.getMonth();
-      let ano = date.getFullYear();
-
-      return `${dia} de ${mes} de ${ano}`;
-    }
 
     let hoje = new Date();
 
-    const datastatus = formatDate(hoje);
+    const datastatus = hoje;
 
-    console.log(datastatus);
+    /* console.log(datastatus); */
 
     const dataalteracaostatus = datastatus;
 
