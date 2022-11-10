@@ -98,7 +98,6 @@
             class="full-width"
             rounded
             type="submit"
-            
           />
           <!-- <q-btn
             label="Cancelar"

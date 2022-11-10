@@ -87,6 +87,7 @@
           rounded
           type="submit"
         />
+
         <!--  <q-btn
           label="Cancelar"
           color="primary"
@@ -114,7 +115,7 @@
 import { useQuasar } from "quasar";
 import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import useApi from "src/composables/UseApi";
+import useApi from "src/composables/useApiRevendas";
 import useNotify from "src/composables/UseNotify";
 
 export default defineComponent({
@@ -133,7 +134,7 @@ export default defineComponent({
        Para atualizar, vai ser usado o mesmo "form" do "cadastrar novo" */
     const isUpdate = computed(() => route.params.id);
     let revendaaa = {};
-        
+
     const form = ref({
       nome: "",
       sobrenome: "",
@@ -149,7 +150,7 @@ export default defineComponent({
       statusalteradopor: "",
     });
 
-    console.log(form.value);
+    /* console.log(form.value); */
 
     onMounted(() => {
       if (isUpdate.value) {

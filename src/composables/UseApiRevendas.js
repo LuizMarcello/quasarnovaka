@@ -1,7 +1,7 @@
 import useSupabase from "src/boot/supabase";
 import useAuthUser from "./UseAuthUser";
 
-export default function useApi() {
+export default function useApiRevendas() {
   const { supabase } = useSupabase();
   const { user } = useAuthUser();
 
@@ -25,7 +25,7 @@ export default function useApi() {
       /* Passando o valor do id do usuário logado no momento,
            para o "user_id" da tabela, no supabase, porque este
            será o usuário que efetuou o registro */
-      user_id: user.value.id,
+      /* user_id: user.value.id, */
     });
     if (error) throw error;
     return data;
