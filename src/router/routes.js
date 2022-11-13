@@ -115,12 +115,6 @@ const routes = [{
         name: "register",
         component: () => import("pages/Register.vue"),
       },
-
-      {
-        path: "barcode",
-        name: "barcode",
-        component: () => import("pages/scanner/BtnScannerWrapper.vue"),
-      },
     ],
     meta: {
       requiresAuth: true,
@@ -162,6 +156,20 @@ const routes = [{
     /* meta: {
       requiresAuth: true
     } */
+  },
+
+  {
+    /* Neste layout, todas as rotas precisam estar logadas */
+    path: "/",
+    component: () => import("src/layouts/MainLayout.vue"),
+    children: [{
+      path: "barcode",
+      name: "barcode",
+      component: () => import("src/components/barcodeScanner/BtnScannerWrapper.vue"),
+    }, ],
+    meta: {
+      requiresAuth: true,
+    },
   },
 
   {
