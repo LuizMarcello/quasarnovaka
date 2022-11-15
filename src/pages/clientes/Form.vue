@@ -9,6 +9,7 @@
       <q-form
         class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md"
         @submit.prevent="handleSubmit"
+        @reset="onReset"
       >
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
@@ -186,21 +187,32 @@
           label="Estou de acôrdo em receber comunicações da Bentley."
         />
 
-        <q-btn
-          :label="isUpdate ? 'Atualizar' : 'Enviar'"
-          color="primary"
-          class="full-width"
-          rounded
-          type="submit"
-        />
-        <q-btn
-          label="Cancelar"
-          color="primary"
-          class="full-width"
-          rounded
-          flat
-          :to="{ name: 'home' }"
-        />
+        <div class="q-gutter-y-md">
+          <q-btn
+            :label="isUpdate ? 'Atualizar' : 'Enviar'"
+            color="primary"
+            class="full-width"
+            rounded
+            type="submit"
+          />
+
+          <q-btn
+            label="Limpar dados"
+            color="primary"
+            class="full-width"
+            rounded
+            type="reset"
+          />
+
+          <q-btn
+            label="Cancelar"
+            color="primary"
+            class="full-width"
+            rounded
+            flat
+            :to="{ name: 'home' }"
+          />
+        </div>
       </q-form>
     </div>
   </q-page>
@@ -285,6 +297,35 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
+    // Para limpar os campos
+    const onReset = async () => {
+      form.value = {
+        razaosocial: "",
+        /* ie_rg: "", */
+        cnpj: "",
+        celular: "",
+        whatsapp: "",
+        fixo: "",
+        email: "",
+        rua: "",
+        numero: "",
+        bairro: "",
+        cidade: "",
+        estado: "",
+        cep: "",
+        dataadesao: "",
+        chave: "",
+        nome_contato: "",
+        formapagamento: "",
+        instalador: "",
+        revenda_id: "",
+        servicos: "",
+        obs: "",
+        status: "",
+      };
+    };
+
     const handleGetCliente = async (id) => {
       try {
         clienteee = await getById(table, id);
@@ -298,6 +339,7 @@ export default defineComponent({
       handleSubmit,
       form,
       isUpdate,
+      onReset,
       accept,
       model: ref(null),
       options: [
@@ -359,11 +401,6 @@ export default defineComponent({
             message: "Submitted",
           });
         }
-      },
-      onReset() {
-        /* name.value = null; */
-        age.value = null;
-        accept.value = false;
       },
 
       optionsRevenda,

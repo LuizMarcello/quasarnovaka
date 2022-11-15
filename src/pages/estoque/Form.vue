@@ -19,6 +19,7 @@
       <q-form
         class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md"
         @submit.prevent="handleSubmit"
+        @reset="onReset"
       >
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
@@ -91,13 +92,21 @@
           <q-input label="Observação" v-model="form.obs" />
         </div> -->
 
-        <div>
+        <div class="q-gutter-y-md">
           <q-btn
             :label="isUpdate ? 'Atualizar' : 'Salvar'"
             color="primary"
             class="full-width"
             rounded
             type="submit"
+          />
+
+          <q-btn
+            label="Limpar dados"
+            color="primary"
+            class="full-width"
+            rounded
+            type="reset"
           />
           <!-- <q-btn
             label="Cancelar"
@@ -188,6 +197,22 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
+    // Para limpar os campos
+    const onReset = async () => {
+      form.value = {
+        marca: "",
+        modelo: "",
+        descricao: "",
+        numerodeserie: "",
+        mac: "",
+        notafiscal: "",
+        datanota: "",
+        status: "",
+        partnumber: "",
+      };
+    };
+
     const handleGetEstoque = async (id) => {
       try {
         estoqueee = await getById(table, id);
@@ -202,6 +227,7 @@ export default defineComponent({
       form,
       isUpdate,
       accept,
+      onReset,
       model: ref(null),
       options: [],
 
@@ -245,12 +271,7 @@ export default defineComponent({
           });
         }
       },
-      onReset() {
-        /* name.value = null; */
-        age.value = null;
-        accept.value = false;
-      },
-
+      
       optionsEstoque,
       basic: ref(false),
     };

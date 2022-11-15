@@ -9,6 +9,7 @@
       <q-form
         class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md"
         @submit.prevent="handleSubmit"
+        @reset="onReset"
       >
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
@@ -88,6 +89,14 @@
           type="submit"
         />
 
+        <q-btn
+          label="Limpar dados"
+          color="primary"
+          class="full-width"
+          rounded
+          type="reset"
+        />
+
         <!--  <q-btn
           label="Cancelar"
           color="primary"
@@ -115,7 +124,7 @@
 import { useQuasar } from "quasar";
 import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import useApi from "src/composables/useApiRevendas";
+import useApi from "src/composables/UseApiRevendas";
 import useNotify from "src/composables/UseNotify";
 
 export default defineComponent({
@@ -173,6 +182,21 @@ export default defineComponent({
       }
     };
 
+    // Para limpar os campos
+    const onReset = async () => {
+      form.value = {
+        nome: "",
+        sobrenome: "",
+        nomedaempresa: "",
+        telefone: "",
+        whatsapp: "",
+        email: "",
+        cidade: "",
+        estado: "",
+        servicos: "",
+      };
+    };
+
     const handleGetRevenda = async (id) => {
       try {
         revendaaa = await getById(table, id);
@@ -186,6 +210,7 @@ export default defineComponent({
       form,
       isUpdate,
       accept,
+      onReset,
 
       model: ref(null),
       options: [
@@ -248,11 +273,6 @@ export default defineComponent({
             message: "Submitted",
           });
         }
-      },
-      onReset() {
-        /* name.value = null; */
-        age.value = null;
-        accept.value = false;
       },
     };
   },
