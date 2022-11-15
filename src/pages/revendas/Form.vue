@@ -143,6 +143,7 @@ export default defineComponent({
        Se existir, "isUpdate" é true, senão é false.
        Para atualizar, vai ser usado o mesmo "form" do "cadastrar novo" */
     const isUpdate = computed(() => route.params.id);
+    const accept = ref(false);
     let revendaaa = {};
 
     const form = ref({
@@ -159,22 +160,6 @@ export default defineComponent({
       obs: "",
       statusalteradopor: "",
     });
-
-    const nome = ref(null);
-    const sobrenome = ref(null);
-    const nomedaempresa = ref(null);
-    const telefone = ref(null);
-    const whatsapp = ref(null);
-    const email = ref(null);
-    const cidade = ref(null);
-    const estado = ref(null);
-    const servicos = ref(null);
-    const status = ref(null);
-    const obs = ref(null);
-    const statusalteradopor = ref(null);
-    const accept = ref(false);
-
-    /* console.log(form.value); */
 
     onMounted(() => {
       if (isUpdate.value) {
@@ -198,6 +183,20 @@ export default defineComponent({
       }
     };
 
+    // Para limpar os campos
+    const onReset = async () => {
+      form.value = {
+        nome: "",
+        sobrenome: "",
+        nomedaempresa: "",
+        telefone: "",
+        whatsapp: "",
+        email: "",
+        cidade: "",
+        estado: "",
+        servicos: "",
+      };
+    };
 
     const handleGetRevenda = async (id) => {
       try {
@@ -213,18 +212,7 @@ export default defineComponent({
       form,
       isUpdate,
       accept,
-      nome,
-      sobrenome,
-      nomedaempresa,
-      telefone,
-      whatsapp,
-      email,
-      cidade,
-      estado,
-      servicos,
-      status,
-      obs,
-      statusalteradopor,
+      onReset,
 
       model: ref(null),
       options: [
@@ -256,23 +244,6 @@ export default defineComponent({
         "Sergipe",
         "Tocantins",
       ],
-
-       onReset() {
-        nome.value = null;
-        sobrenome.value = null;
-        nomedaempresa.value = null;
-        telefone.value = null;
-        whatsapp.value = null;
-        email.value = null;
-        cidade.value = null;
-        estado.value = null;
-        servicos.value = null;
-        status.value = null;
-        obs.value = null;
-        statusalteradopor.value = null;
-
-        accept.value = false;
-      }
 
       /*  opcoesstatus: ["Aprovado", "Não Aprovado", "Aguardando", "Pendências"], */
 
