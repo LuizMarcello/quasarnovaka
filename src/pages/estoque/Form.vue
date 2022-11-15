@@ -1,8 +1,8 @@
 <!-- eslint-disable -->
 <template>
   <q-page padding>
-    <div class="row justify-center">
-      <div class="col-12 text-center">
+    <div class="row justify-center q-gutter-y-md">
+      <div class="col-6 text-center">
         <p class="text-h6">Formulário de estoque</p>
 
         <div v-if="isUpdate">
@@ -11,6 +11,16 @@
 
         <div v-if="!isUpdate">
           <p class="text-h6">Adicionando produto</p>
+
+          <div class="q-gutter-x-md">
+            <q-btn
+              label="Código de barras"
+              color="primary"
+              class="full-width"
+              rounded
+              :to="{ name: 'barcode' }"
+            />
+          </div>
         </div>
       </div>
 

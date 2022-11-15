@@ -67,7 +67,7 @@
 
           <q-select
             v-model="form.servicos"
-            :options="servicos"
+            :options="servicosss"
             label="Produtos e serviços que você vende atualmente"
           />
         </div>
@@ -81,22 +81,23 @@
           label="Estou de acôrdo em receber comunicações da Bentley."
         />
 
-        <q-btn
-          :label="isUpdate ? 'Atualizar' : 'Enviar'"
-          color="primary"
-          class="full-width"
-          rounded
-          type="submit"
-        />
+        <div class="q-gutter-y-md">
+          <q-btn
+            :label="isUpdate ? 'Atualizar' : 'Enviar'"
+            color="primary"
+            class="full-width"
+            rounded
+            type="submit"
+          />
 
-        <q-btn
-          label="Limpar dados"
-          color="primary"
-          class="full-width"
-          rounded
-          type="reset"
-        />
-
+          <q-btn
+            label="Limpar campos"
+            color="primary"
+            class="full-width"
+            rounded
+            type="reset"
+          />
+        </div>
         <!--  <q-btn
           label="Cancelar"
           color="primary"
@@ -136,7 +137,7 @@ export default defineComponent({
     const route = useRoute();
     const { post, getById, update } = useApi();
     const { notifyError, notifySuccess } = useNotify();
-    const accept = ref(false);
+
     /* Verificando se na rota existe o "id" como parâmetro
        ou seja, se é para atualizar um "id", ou criar um registro novo.
        Se existir, "isUpdate" é true, senão é false.
@@ -159,6 +160,20 @@ export default defineComponent({
       statusalteradopor: "",
     });
 
+    const nome = ref(null);
+    const sobrenome = ref(null);
+    const nomedaempresa = ref(null);
+    const telefone = ref(null);
+    const whatsapp = ref(null);
+    const email = ref(null);
+    const cidade = ref(null);
+    const estado = ref(null);
+    const servicos = ref(null);
+    const status = ref(null);
+    const obs = ref(null);
+    const statusalteradopor = ref(null);
+    const accept = ref(false);
+
     /* console.log(form.value); */
 
     onMounted(() => {
@@ -174,6 +189,7 @@ export default defineComponent({
           notifySuccess("Atualizado com sucesso");
         } else {
           await post(table, form.value);
+
           notifySuccess("Enviado com sucesso");
         }
         router.push({ nome: "form-revendas" });
@@ -182,20 +198,6 @@ export default defineComponent({
       }
     };
 
-    // Para limpar os campos
-    const onReset = async () => {
-      form.value = {
-        nome: "",
-        sobrenome: "",
-        nomedaempresa: "",
-        telefone: "",
-        whatsapp: "",
-        email: "",
-        cidade: "",
-        estado: "",
-        servicos: "",
-      };
-    };
 
     const handleGetRevenda = async (id) => {
       try {
@@ -205,12 +207,24 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
     return {
       handleSubmit,
       form,
       isUpdate,
       accept,
-      onReset,
+      nome,
+      sobrenome,
+      nomedaempresa,
+      telefone,
+      whatsapp,
+      email,
+      cidade,
+      estado,
+      servicos,
+      status,
+      obs,
+      statusalteradopor,
 
       model: ref(null),
       options: [
@@ -243,11 +257,28 @@ export default defineComponent({
         "Tocantins",
       ],
 
+       onReset() {
+        nome.value = null;
+        sobrenome.value = null;
+        nomedaempresa.value = null;
+        telefone.value = null;
+        whatsapp.value = null;
+        email.value = null;
+        cidade.value = null;
+        estado.value = null;
+        servicos.value = null;
+        status.value = null;
+        obs.value = null;
+        statusalteradopor.value = null;
+
+        accept.value = false;
+      }
+
       /*  opcoesstatus: ["Aprovado", "Não Aprovado", "Aguardando", "Pendências"], */
 
       /* opcoesstatus: ["Ativo", "Aguardando", "Inativo","Com pendência"], */
 
-      servicos: [
+      servicosss: [
         "Internet via satélite",
         "TV via satélite",
         "Segurança residencial",

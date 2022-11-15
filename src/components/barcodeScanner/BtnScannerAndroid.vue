@@ -58,7 +58,8 @@ export default defineComponent({
       videoEl.srcObject = stream
       await videoEl.play()
       // eslint-disable-next-line
-      const barcodeDetector = new BarcodeDetector({ formats: ['ean_13', 'codabar', 'ean_8'] })
+      /* const barcodeDetector = new BarcodeDetector({ formats: ['ean_13', 'codabar', 'ean_8'] }) */
+      const barcodeDetector = new barcodeDetector({ formats: ['ean_13', 'codabar', 'ean_8'] })
       window.setInterval(async () => {
         const barcodes = await barcodeDetector.detect(videoEl)
         if (barcodes.length <= 0) return
