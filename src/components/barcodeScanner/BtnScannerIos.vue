@@ -35,6 +35,10 @@ export default defineComponent({
     const barcode = ref("");
     const showCam = ref(false);
 
+    const Quagga = require('quagga').default;
+
+
+
     const initBarcode = () => {
       barcode.value = "";
       showCam.value = true;
@@ -74,6 +78,9 @@ export default defineComponent({
         }
       );
     };
+
+
+    
     const onDetected = (data) => {
       onStop();
       barcode.value = data.codeResult.code;
