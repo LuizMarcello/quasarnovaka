@@ -34,6 +34,7 @@ export default defineComponent({
     const showCam = ref(false)
     const widthVideo = window.screen.width - 45
     let stream = null
+
     const initBarcode = async () => {
       showCam.value = true
       // verify web API userMedia
@@ -69,6 +70,7 @@ export default defineComponent({
         onStop()
       }, 1500)
     }
+    
     const onStop = () => {
       emit('clearBarcode')
       const track = stream.getTracks()[0]
