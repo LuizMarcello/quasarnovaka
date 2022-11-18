@@ -1,6 +1,7 @@
 <template>
   <div class="row">
     <div class="col-12">
+      <p class="text-center">Android Foque a câmera no código de barras do produto</p>
       <video
         v-show="showCam"
         :width="widthVideo"
