@@ -166,6 +166,7 @@ const routes = [{
       path: "barcode",
       name: "barcode",
       component: () => import("src/components/barcodeScanner/BtnScannerWrapper.vue"),
+      /* component: () => import("src/components/barcodeScanner/BtnScannerDesktop.vue"), */
     }, ],
     meta: {
       requiresAuth: true,
