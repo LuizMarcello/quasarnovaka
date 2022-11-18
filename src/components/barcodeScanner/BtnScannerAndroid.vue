@@ -54,10 +54,26 @@ export default {
             // },
             target: document.querySelector("#scan"),
           },
+
+          /*
+             code_128_reader (default)
+             ean_reader
+             ean_8_reader
+             code_39_reader
+             code_39_vin_reader
+             codabar_reader
+             upc_reader
+             upc_e_reader
+             i2of5_reader
+             2of5_reader
+             code_93_reader
+            */
+
           frequency: 10,
           decoder: {
             readers: ["ean_reader"],
             multiple: false,
+            /* multiple: true, */
           },
           // numOfWorkers: navigator.hardwareConcurrency,
           // locate: false

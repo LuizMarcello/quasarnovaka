@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <p class="text-center">
-        Foque Iosss a câmera no código de barras do produto
+        Ios Foque a câmera no código de barras do produto
       </p>
       <div v-show="showCam" id="scan" class="full-width col-12" />
     </div>
