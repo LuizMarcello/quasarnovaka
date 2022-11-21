@@ -1,7 +1,9 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <p class="text-center">Foque a câmera no código de barras do produto</p>
+      <p class="text-center">
+        Ios Foque a câmera no código de barras do produto
+      </p>
       <div v-show="showCam" id="scan" class="full-width col-12" />
     </div>
     <q-btn
@@ -13,6 +15,7 @@
       size="md"
       @click="initBarcode()"
     />
+
     <!-- <q-page-sticky position="bottom-right" :offset="[18, 18]"> -->
     <q-btn
       v-show="showCam"
@@ -35,13 +38,12 @@ export default defineComponent({
     const barcode = ref("");
     const showCam = ref(false);
 
-    const Quagga = require('quagga').default;
-
-
+    const Quagga = require("quagga").default;
 
     const initBarcode = () => {
       barcode.value = "";
       showCam.value = true;
+      
       Quagga.init(
         {
           inputStream: {
@@ -79,8 +81,6 @@ export default defineComponent({
       );
     };
 
-
-    
     const onDetected = (data) => {
       onStop();
       barcode.value = data.codeResult.code;
