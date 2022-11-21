@@ -6,10 +6,12 @@
       <q-table
         :rows="revendas"
         :columns="columns"
+        v-model:pagination="initialPagination"
         row-key="id"
         class="col-md-06 col-sm-08 col-xs-12"
         :loading="loading"
         :filter="filter"
+        hide-pagination
       >
         <template v-slot:top>
           <span class="text-h6">Revenda</span>
@@ -113,6 +115,15 @@
         </template>
       </q-table>
     </div>
+
+    <div class="row justify-center q-mt-md">
+      <q-pagination
+        v-model="initialPagination.page"
+        :max="pagesNumber"
+        direction-links
+      />
+    </div>
+    
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <q-btn
         class="mobile-only"
@@ -197,8 +208,13 @@ const columns = [
   },
 ];
 
+const initialPagination = ref({
+  page: 1,
+  rowPerPage: 5,
+});
+
 /* "defineComponent": Porque é vuejs 3 */
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, onMounted, computed } from "vue";
 
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
@@ -288,6 +304,10 @@ export default defineComponent({
       handleDetails,
       handleAprovar,
       handleRemoveRevenda,
+      initialPagination,
+      pagesNumber: computed(() =>
+        Math.ceil(revendas.value.length / initialPagination.value.rowPerPage)
+      ),
     };
   },
 });

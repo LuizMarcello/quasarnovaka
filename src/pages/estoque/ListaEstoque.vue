@@ -5,10 +5,12 @@
       <q-table
         :rows="estoque"
         :columns="columns"
+        v-model:pagination="initialPagination"
         row-key="id"
         class="col-md-06 col-sm-08 col-xs-12"
         :loading="loading"
         :filter="filter"
+        hide-pagination
       >
         <template v-slot:top>
           <span class="text-h6">Estoque</span>
@@ -59,11 +61,10 @@
           <q-td :props="props" class="q-gutter-x-sm">
             <q-btn
               icon="mdi-feature-search-outline"
-            color="primary"
+              color="primary"
               dense
               size="sm"
               @click="handleDetails(props.row)"
-
             >
               <q-tooltip> Detalhes </q-tooltip></q-btn
             >
@@ -97,6 +98,16 @@
         </template>
       </q-table>
     </div>
+
+    <div class="row justify-center q-mt-md">
+      <q-pagination
+        v-model="initialPagination.page"
+        :max="pagesNumber"
+        direction-links
+
+      />
+    </div>
+
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <q-btn
         class="mobile-only"
@@ -167,8 +178,13 @@ const columns = [
   },
 ];
 
+const initialPagination = ref({
+  page: 1,
+  rowPerPage: 5,
+});
+
 /* "defineComponent": Porque é vuejs 3 */
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, onMounted, computed } from "vue";
 
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
@@ -254,6 +270,11 @@ export default defineComponent({
       handleListEstoque();
     });
 
+    /* "export": Para ser usado em "outro" componente */
+    /* "return": Para ser usado no "mesmo" componente */
+
+    /* export{}: Só pode ser importado exatamente com o mesmo nome */
+    /* export default: Pode ser importando com qualquer nome */
     return {
       columns,
       estoque,
@@ -264,6 +285,10 @@ export default defineComponent({
       handleListEstoque,
       handleHistorico,
       handleRemoveEstoque,
+      initialPagination,
+      pagesNumber: computed(() =>
+        Math.ceil(estoque.value.length / initialPagination.value.rowPerPage)
+      ),
     };
   },
 });

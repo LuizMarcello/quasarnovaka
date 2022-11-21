@@ -205,12 +205,12 @@
           />
 
           <q-btn
-            label="Cancelar"
+            label="Voltar"
             color="primary"
             class="full-width"
             rounded
             flat
-            :to="{ name: 'home' }"
+            :to="{ name: 'listarclientes' }"
           />
         </div>
       </q-form>
