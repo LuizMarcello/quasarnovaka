@@ -91,7 +91,7 @@
 
           <q-input
             label="Código de barras"
-            v-model="form.barcode"
+            v-model="form.bar_code"
             :rules="[
               (val) => (val && val.length > 0) || 'Informe o código de barras',
             ]"
@@ -158,6 +158,9 @@ import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 export default defineComponent({
   nome: "PageFormEstoque",
+
+  emits:  ['code'],
+
   setup() {
     const { supabase } = useSupabase();
     const $q = useQuasar();
@@ -184,7 +187,7 @@ export default defineComponent({
       datanota: "",
       status: "",
       partnumber: "",
-      barcode: "",
+      bar_code: "",
     });
     onMounted(() => {
       handleListEstoque();
@@ -194,7 +197,7 @@ export default defineComponent({
     });
     const handleListEstoque = async () => {
       optionsEstoque.value = await list("estoque");
-      this.barcode.value = code;
+      this.bar_code = code;
     };
 
     const handleSubmit = async () => {
