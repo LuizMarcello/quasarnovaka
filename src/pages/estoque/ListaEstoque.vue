@@ -217,7 +217,7 @@ export default defineComponent({
     const $q = useQuasar();
     const { list, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
-
+    
     const handleListEstoque = async () => {
       try {
         loading.value = true;

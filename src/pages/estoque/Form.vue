@@ -89,6 +89,14 @@
             mask="NN:NN:NN:NN:NN:NN"
           />
 
+          <q-input
+            label="Código de barras"
+            v-model="form.barcode"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Informe o código de barras',
+            ]"
+          />
+
           <q-select
             v-model="form.status"
             :options="opcoesstatus"
@@ -148,10 +156,8 @@ import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
-
 export default defineComponent({
   nome: "PageFormEstoque",
-
   setup() {
     const { supabase } = useSupabase();
     const $q = useQuasar();
@@ -161,9 +167,7 @@ export default defineComponent({
     const { post, getById, update, list } = useApi();
     const { notifyError, notifySuccess } = useNotify();
     const accept = ref(false);
-
     const optionsEstoque = ref([]);
-
     /* Verificando se na rota existe o "id" como parâmetro
          ou seja, se é para atualizar um "id", ou criar um registro novo.
          Se existir, "isUpdate" é true, senão é false.
@@ -180,17 +184,17 @@ export default defineComponent({
       datanota: "",
       status: "",
       partnumber: "",
+      barcode: "",
     });
-
     onMounted(() => {
       handleListEstoque();
       if (isUpdate.value) {
         handleGetEstoque(isUpdate.value);
       }
     });
-
     const handleListEstoque = async () => {
       optionsEstoque.value = await list("estoque");
+      this.barcode.value = code;
     };
 
     const handleSubmit = async () => {
@@ -207,7 +211,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     // Para limpar os campos
     const onReset = async () => {
       form.value = {
@@ -222,7 +225,6 @@ export default defineComponent({
         partnumber: "",
       };
     };
-
     const handleGetEstoque = async (id) => {
       try {
         estoqueee = await getById(table, id);
@@ -231,7 +233,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     return {
       handleSubmit,
       form,
@@ -240,7 +241,6 @@ export default defineComponent({
       onReset,
       model: ref(null),
       options: [],
-
       opcoesstatus: [
         "Funcionamento OK",
         "Com defeito",
@@ -248,7 +248,6 @@ export default defineComponent({
         "Na Bentley",
         "No cliente",
       ],
-
       opcoesmarca: [
         "Gilat",
         "Viasat",
@@ -261,9 +260,7 @@ export default defineComponent({
         "Cisco",
         "Tp-Link",
       ],
-
       servicos: [],
-
       onSubmit() {
         if (accept.value !== true) {
           $q.notify({
@@ -281,7 +278,7 @@ export default defineComponent({
           });
         }
       },
-      
+
       optionsEstoque,
       basic: ref(false),
     };

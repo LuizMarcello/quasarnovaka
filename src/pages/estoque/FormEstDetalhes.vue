@@ -42,6 +42,13 @@
             mask="NN:NN:NN:NN:NN:NN"
           />
 
+          <q-input
+            label="Código de barras"
+            readonly
+            v-model="form.barcode"
+            mask="NN:NN:NN:NN:NN:NN"
+          />
+
           <div>
             <!-- <q-input
               label="Ultimo histórico"
@@ -126,6 +133,7 @@ export default defineComponent({
       historicotexto: "",
       historico: "",
       status: "",
+      barcode: "",
     });
 
     onMounted(() => {

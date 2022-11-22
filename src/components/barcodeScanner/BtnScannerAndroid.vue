@@ -31,8 +31,16 @@
 
 <script>
 import Quagga from "quagga";
+
+/* Importando este componente */
+import Form from "src/pages/estoque/Form.vue";
+
 export default {
   name: "BtnScannerAndroid",
+
+  /* Registrando este componente */
+  components: Form ,
+
   data() {
     return {
       code: "",
