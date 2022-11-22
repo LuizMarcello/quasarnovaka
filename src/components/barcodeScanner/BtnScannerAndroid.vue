@@ -67,7 +67,7 @@ export default {
              i2of5_reader
              2of5_reader
              code_93_reader
-            */
+          */
 
           frequency: 10,
           decoder: {
