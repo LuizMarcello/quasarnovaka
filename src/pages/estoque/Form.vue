@@ -159,7 +159,7 @@ import useNotify from "src/composables/UseNotify";
 export default defineComponent({
   nome: "PageFormEstoque",
 
-  emits:  ['code'],
+  emits: ["code"],
 
   setup() {
     const { supabase } = useSupabase();
@@ -177,6 +177,7 @@ export default defineComponent({
          Para atualizar, vai ser usado o mesmo "form" do "cadastrar novo" */
     const isUpdate = computed(() => route.params.id);
     let estoqueee = {};
+
     const form = ref({
       marca: "",
       modelo: "",
@@ -189,15 +190,17 @@ export default defineComponent({
       partnumber: "",
       bar_code: "",
     });
+
     onMounted(() => {
       handleListEstoque();
       if (isUpdate.value) {
         handleGetEstoque(isUpdate.value);
       }
     });
+
     const handleListEstoque = async () => {
       optionsEstoque.value = await list("estoque");
-      this.bar_code = code;
+      /* this.bar_code.value = code; */
     };
 
     const handleSubmit = async () => {

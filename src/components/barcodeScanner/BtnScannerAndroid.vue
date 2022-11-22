@@ -39,7 +39,7 @@ export default {
   name: "BtnScannerAndroid",
 
   /* Registrando este componente */
-  components: Form ,
+  components: Form,
 
   data() {
     return {
