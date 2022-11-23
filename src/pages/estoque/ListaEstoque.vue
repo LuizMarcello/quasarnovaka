@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <template>
   <q-page padding>
     <div class="row">
@@ -104,7 +105,6 @@
         v-model="initialPagination.page"
         :max="pagesNumber"
         direction-links
-
       />
     </div>
 
@@ -135,6 +135,7 @@
 </template>
 
 <script>
+
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -217,7 +218,7 @@ export default defineComponent({
     const $q = useQuasar();
     const { list, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
-    
+
     const handleListEstoque = async () => {
       try {
         loading.value = true;
