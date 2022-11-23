@@ -200,7 +200,7 @@ export default defineComponent({
 
     const handleListEstoque = async () => {
       optionsEstoque.value = await list("estoque");
-      /* this.bar_code.value = code; */
+      this.bar_code.value = code;
     };
 
     const handleSubmit = async () => {
