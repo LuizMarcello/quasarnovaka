@@ -12,7 +12,7 @@
         <div v-if="!isUpdate">
           <p class="text-h6">Adicionando produto</p>
 
-          <div class="q-gutter-x-md">
+          <!--  <div class="q-gutter-x-md">
             <q-btn
               label="Código de barras"
               color="primary"
@@ -20,7 +20,19 @@
               rounded
               :to="{ name: 'barcode' }"
             />
+          </div> -->
+
+          <div class="q-gutter-x-md">
+            <q-btn
+              label="Continuar"
+              color="primary"
+              class="full-width"
+              rounded
+              @iniciar-leitor="capcodbarras"
+            >
+            </q-btn>
           </div>
+
         </div>
       </div>
 
@@ -156,10 +168,12 @@ import { defineComponent, ref, onMounted, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
+
 export default defineComponent({
   nome: "PageFormEstoque",
 
-  emits: ["code"],
+  /* emits: ["code"], */
+  emits: ["iniciar-leitor"],
 
   setup() {
     const { supabase } = useSupabase();
@@ -200,8 +214,15 @@ export default defineComponent({
 
     const handleListEstoque = async () => {
       optionsEstoque.value = await list("estoque");
-      this.bar_code.value = code;
+
+      /*  if (code > 0) {
+        bar_code.value = code;
+      } */
     };
+
+    const capcodbarras = async (code) => {
+      bar_code.value = await code;
+    }
 
     const handleSubmit = async () => {
       try {
@@ -240,6 +261,7 @@ export default defineComponent({
       }
     };
     return {
+      capcodbarras,
       handleSubmit,
       form,
       isUpdate,
@@ -287,6 +309,7 @@ export default defineComponent({
 
       optionsEstoque,
       basic: ref(false),
+      /* code */
     };
   },
 });

@@ -47,14 +47,25 @@
               dense
               @click="makePDF"
             />
-            <q-btn
+
+           <!--  <q-btn
               class="desktop-only"
               label="Adicionar"
               color="primary"
               icon="mdi-plus"
               dense
               :to="{ name: 'form-estoque' }"
-            />
+            /> -->
+
+            <q-btn
+              class="desktop-only"
+              label="Adicionar"
+              color="primary"
+              icon="mdi-plus"
+              dense
+              :to="{ name: 'barcode' }"
+            /> 
+
           </q-td>
         </template>
 

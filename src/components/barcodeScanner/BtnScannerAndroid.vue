@@ -31,16 +31,13 @@
 
 <script>
 import Quagga from "quagga";
-
 /* Importando este componente */
-import Form from "src/pages/estoque/Form.vue";
-
+/* import Form from "src/pages/estoque/Form.vue"; */
+import { useRouter } from "vue-router";
 export default {
   name: "BtnScannerAndroid",
-
   /* Registrando este componente */
-  components: Form,
-
+  /* components: Form, */
   data() {
     return {
       code: "",
@@ -48,8 +45,13 @@ export default {
       cameraStatus: 0,
     };
   },
+
+  setup() {
+    const router = useRouter();
+  },
+
   methods: {
-    iniciarLeitor() {
+    iniciarLeitor(code) {
       this.cameraStatus = 1;
       Quagga.init(
         {
@@ -62,7 +64,6 @@ export default {
             // },
             target: document.querySelector("#scan"),
           },
-
           /*
              code_128_reader (default)
              ean_reader
@@ -76,7 +77,6 @@ export default {
              2of5_reader
              code_93_reader
           */
-
           frequency: 10,
           decoder: {
             readers: ["ean_reader"],
@@ -96,15 +96,20 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
+      this.$emit("iniciar-leitor", code);
+      router.push({ name: "form-estoque" });
     },
+
     onDetected(data) {
       this.code = data.codeResult.code;
       this.cameraStatus = 0;
       this.onStop();
     },
+
     onStop() {
       Quagga.stop();
       this.cameraStatus = 0;
+      /*  router.push({ name: "form-estoque" }); */
     },
   },
 };
