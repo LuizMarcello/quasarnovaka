@@ -96,8 +96,8 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
-      this.$emit("iniciar-leitor", code);
-      router.push({ name: "form-estoque" });
+      this.$emit("lerCodigo", code);
+      this.$router.push({ name: "form-estoque" });
     },
 
     onDetected(data) {
@@ -109,7 +109,6 @@ export default {
     onStop() {
       Quagga.stop();
       this.cameraStatus = 0;
-      /*  router.push({ name: "form-estoque" }); */
     },
   },
 };
