@@ -39,8 +39,17 @@
               </template>
             </q-input>
             <q-space />
-            <q-btn
+
+            <!-- <q-btn
               class="desktop-only"
+              label="Gerar pdf"
+              color="primary"
+              icon="mdi-file-pdf-box"
+              dense
+              @click="makePDF"
+            /> -->
+
+            <q-btn
               label="Gerar pdf"
               color="primary"
               icon="mdi-file-pdf-box"
@@ -48,7 +57,7 @@
               @click="makePDF"
             />
 
-           <!--  <q-btn
+            <!--  <q-btn
               class="desktop-only"
               label="Adicionar"
               color="primary"
@@ -57,15 +66,22 @@
               :to="{ name: 'form-estoque' }"
             /> -->
 
-            <q-btn
+            <!--  <q-btn
               class="desktop-only"
               label="Adicionar"
               color="primary"
               icon="mdi-plus"
               dense
               :to="{ name: 'barcode' }"
-            />
+            /> -->
 
+            <q-btn
+              label="Adicionar"
+              color="primary"
+              icon="mdi-plus"
+              dense
+              :to="{ name: 'barcode' }"
+            />
           </q-td>
         </template>
 
@@ -134,19 +150,19 @@
           color="primary"
           :to="{ name: 'form-revendas' }"
         /> -->
-      <q-btn
+
+      <!-- <q-btn
         class="mobile-only"
         fab
         icon="mdi-plus"
         color="primary"
         :to="{ name: 'barcode' }"
-      />
+      /> -->
     </q-page-sticky>
   </q-page>
 </template>
 
 <script>
-
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
