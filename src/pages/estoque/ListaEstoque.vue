@@ -64,7 +64,7 @@
               icon="mdi-plus"
               dense
               :to="{ name: 'barcode' }"
-            /> 
+            />
 
           </q-td>
         </template>
@@ -139,7 +139,7 @@
         fab
         icon="mdi-plus"
         color="primary"
-        :to="{ name: 'form-estoque' }"
+        :to="{ name: 'barcode' }"
       />
     </q-page-sticky>
   </q-page>
