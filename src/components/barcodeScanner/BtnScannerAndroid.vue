@@ -91,7 +91,7 @@ export default {
   },
 
   methods: {
-    iniciarLeitor() {
+    iniciarLeitor(code) {
       this.cameraStatus = 1;
       Quagga.init(
         {
@@ -140,6 +140,7 @@ export default {
         this.$emit("lerCodigo", code);
         this.$router.push({ name: "form-estoque" });
       }
+      
       /* } else { */
       /* this.$router.push({ name: "form-estoque" }); */
       /* router.push({ name: "form-estoque" }); */
