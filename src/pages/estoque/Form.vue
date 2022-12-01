@@ -23,14 +23,14 @@
           </div> -->
 
           <div class="q-gutter-x-md">
-            <q-btn
+            <!-- <q-btn
               label="Continuar"
               color="primary"
               class="full-width"
               rounded
               @iniciar-leitor="capcodbarras"
             >
-            </q-btn>
+            </q-btn> -->
           </div>
 
         </div>

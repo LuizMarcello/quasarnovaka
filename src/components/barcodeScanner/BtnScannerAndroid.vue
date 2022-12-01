@@ -14,16 +14,37 @@
         @click="iniciarLeitor()"
         v-show="cameraStatus === 0"
       />
+
       <div class="text-h6" v-if="code">Codigo: {{ code }}</div>
+
       <div id="scan" v-show="cameraStatus === 1"></div>
+
       <q-page-sticky position="bottom-right" :offset="[18, 18]">
-        <q-btn
-          icon="cancel"
-          color="negative"
-          label="Fechar"
-          v-show="cameraStatus === 1"
-          @click="onStop"
-        />
+        <div class="q-gutter-x-md">
+          <q-btn
+            icon="cancel"
+            color="negative"
+            label="Fechar"
+            v-show="cameraStatus === 1"
+            @click="onStop"
+          />
+
+          <!-- <q-btn
+            icon="mdi-page-next"
+            color="positive"
+            label="Continuar"
+            v-show="cameraStatus === 1"
+            v-on:click="handleContinuar()"
+          /> -->
+
+          <q-btn
+            icon="mdi-page-next"
+            color="positive"
+            label="Continuar"
+            v-show="cameraStatus === 1"
+            @click="handleContinuar()"
+          />
+        </div>
       </q-page-sticky>
     </div>
   </div>
@@ -34,10 +55,14 @@ import Quagga from "quagga";
 /* Importando este componente */
 /* import Form from "src/pages/estoque/Form.vue"; */
 import { useRouter } from "vue-router";
+
 export default {
   name: "BtnScannerAndroid",
+
+
   /* Registrando este componente */
   /* components: Form, */
+
   data() {
     return {
       code: "",
@@ -46,12 +71,8 @@ export default {
     };
   },
 
-  setup() {
-    const router = useRouter();
-  },
-
   methods: {
-    iniciarLeitor(code) {
+    iniciarLeitor() {
       this.cameraStatus = 1;
       Quagga.init(
         {
@@ -96,21 +117,36 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
-      this.$emit("iniciar-leitor", code);
-      router.push({ name: "form-estoque" });
+
     },
 
     onDetected(data) {
       this.code = data.codeResult.code;
       this.cameraStatus = 0;
       this.onStop();
+      handleContinuar();
     },
 
     onStop() {
       Quagga.stop();
       this.cameraStatus = 0;
-      /*  router.push({ name: "form-estoque" }); */
     },
+  },
+
+  setup() {
+    const router = useRouter();
+
+     const handleContinuar = () => {
+    /* const handleContinuar = (code) => { */
+      /* this.$emit("iniciarLeitor", this.code); */
+      /* this.$emit("iniciarLeitor", code); */
+      /* $emit("iniciar-leitor", code); */
+      router.push({ name: "form-estoque" });
+    };
+
+    return {
+      handleContinuar,
+    };
   },
 };
 </script>
