@@ -23,14 +23,14 @@
           </div> -->
 
           <div class="q-gutter-x-md">
-            <!-- <q-btn
-              label="Continuar"
+            <q-btn
+              label="Atualizar código de barras"
               color="primary"
               class="full-width"
               rounded
               @lerCodigo="capcodbarras()"
             >
-            </q-btn> -->
+            </q-btn>
           </div>
         </div>
       </div>

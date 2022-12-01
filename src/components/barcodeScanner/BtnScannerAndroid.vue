@@ -1,17 +1,37 @@
 <!-- eslint-disable -->
 <template>
   <div class="row items-center" style="height: 100vh">
-    <div class="col text-center q-pa-sm">
+    <div class="col text-center q-pa-lg q-gutter-y-md">
       <p class="text-center">
         Android Foque a câmera no código de barras do produto
       </p>
       <q-btn
         color="primary"
-        icon="camera_alt"
+        icon="mdi-barcode-scan"
         label="Ler Código de Barras"
         class="full-width"
         size="lg"
         @click="iniciarLeitor()"
+        v-show="cameraStatus === 0"
+      />
+
+      <q-btn
+        color="primary"
+        icon="mdi-barcode-off"
+        label="Continuar sem código de barras"
+        class="full-width"
+        size="lg"
+        @click="continuarsemcodigo()"
+        v-show="cameraStatus === 0"
+      />
+
+      <q-btn
+        color="primary"
+        icon="mdi-close-box-multiple-outline"
+        label="Cancelar"
+        class="full-width"
+        size="lg"
+        @click="cancelar()"
         v-show="cameraStatus === 0"
       />
 
@@ -37,13 +57,13 @@
             v-on:click="handleContinuar()"
           /> -->
 
-          <q-btn
+         <!--  <q-btn
             icon="mdi-page-next"
             color="positive"
             label="Continuar"
             v-show="cameraStatus === 1"
             @click="handleContinuar()"
-          />
+          /> -->
         </div>
       </q-page-sticky>
     </div>
@@ -58,7 +78,6 @@ import { useRouter } from "vue-router";
 
 export default {
   name: "BtnScannerAndroid",
-
 
   /* Registrando este componente */
   /* components: Form, */
@@ -117,12 +136,24 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
-<<<<<<< HEAD
+      if (code > 0) {
+        this.$emit("lerCodigo", code);
+        this.$router.push({ name: "form-estoque" });
+      }
+      /* } else { */
+      /* this.$router.push({ name: "form-estoque" }); */
+      /* router.push({ name: "form-estoque" }); */
+      /*  } */
+    },
 
-=======
-      this.$emit("lerCodigo", code);
+    continuarsemcodigo() {
       this.$router.push({ name: "form-estoque" });
->>>>>>> 392975aec5da411753726d217597b9b1fa0967b8
+    },
+
+    cancelar() {
+      /* router.push({ name: "form-estoque" }); */
+     /*  this.$router.push({ name: "form-estoque" }); */
+      this.$router.push({ name: "listarestoque" });
     },
 
     onDetected(data) {
@@ -141,11 +172,7 @@ export default {
   setup() {
     const router = useRouter();
 
-     const handleContinuar = () => {
-    /* const handleContinuar = (code) => { */
-      /* this.$emit("iniciarLeitor", this.code); */
-      /* this.$emit("iniciarLeitor", code); */
-      /* $emit("iniciar-leitor", code); */
+    const handleContinuar = () => {
       router.push({ name: "form-estoque" });
     };
 
