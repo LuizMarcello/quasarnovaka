@@ -117,7 +117,12 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
+<<<<<<< HEAD
 
+=======
+      this.$emit("lerCodigo", code);
+      this.$router.push({ name: "form-estoque" });
+>>>>>>> 392975aec5da411753726d217597b9b1fa0967b8
     },
 
     onDetected(data) {

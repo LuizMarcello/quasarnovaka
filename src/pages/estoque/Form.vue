@@ -28,11 +28,10 @@
               color="primary"
               class="full-width"
               rounded
-              @iniciar-leitor="capcodbarras"
+              @lerCodigo="capcodbarras()"
             >
             </q-btn> -->
           </div>
-
         </div>
       </div>
 
@@ -169,11 +168,18 @@ import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 
+import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.vue";
+
 export default defineComponent({
   nome: "PageFormEstoque",
 
-  /* emits: ["code"], */
-  emits: ["iniciar-leitor"],
+  components: BtnScannerAndroid,
+
+  methods: {
+    capcodbarras(code) {
+      this.bar_code.value = code;
+    },
+  },
 
   setup() {
     const { supabase } = useSupabase();
@@ -220,9 +226,9 @@ export default defineComponent({
       } */
     };
 
-    const capcodbarras = async (code) => {
+    /* const capcodbarras = async (code) => {
       bar_code.value = await code;
-    }
+    } */
 
     const handleSubmit = async () => {
       try {
@@ -261,7 +267,6 @@ export default defineComponent({
       }
     };
     return {
-      capcodbarras,
       handleSubmit,
       form,
       isUpdate,
