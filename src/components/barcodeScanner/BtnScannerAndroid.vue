@@ -136,11 +136,14 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
+
       /* if (code > 0) { */
-      /* this.$emit("lerCodigo", code); */
-      alert(code);
-      this.$router.push({ name: "form-estoque" });
-      /* } */
+      if (code) {
+        this.$emit("lerCodigo", code);
+        alert(code);
+      } else {
+        this.$router.push({ name: "form-estoque" });
+      }
 
       /* } else { */
       /* this.$router.push({ name: "form-estoque" }); */
