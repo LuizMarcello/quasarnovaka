@@ -138,12 +138,12 @@ export default {
       );
 
       /* if (code > 0) { */
-      if (code) {
-        this.$emit("lerCodigo", code);
+      /* if (code) { */
+        /* this.$emit("lerCodigo", code);
         alert(code);
       } else {
         this.$router.push({ name: "form-estoque" });
-      }
+      } */
 
       /* } else { */
       /* this.$router.push({ name: "form-estoque" }); */
