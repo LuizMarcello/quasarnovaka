@@ -57,7 +57,7 @@
             v-on:click="handleContinuar()"
           /> -->
 
-         <!--  <q-btn
+          <!--  <q-btn
             icon="mdi-page-next"
             color="positive"
             label="Continuar"
@@ -136,11 +136,12 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
-      if (code > 0) {
-        this.$emit("lerCodigo", code);
-        this.$router.push({ name: "form-estoque" });
-      }
-      
+      /* if (code > 0) { */
+      /* this.$emit("lerCodigo", code); */
+      alert(code);
+      this.$router.push({ name: "form-estoque" });
+      /* } */
+
       /* } else { */
       /* this.$router.push({ name: "form-estoque" }); */
       /* router.push({ name: "form-estoque" }); */
@@ -153,7 +154,7 @@ export default {
 
     cancelar() {
       /* router.push({ name: "form-estoque" }); */
-     /*  this.$router.push({ name: "form-estoque" }); */
+      /*  this.$router.push({ name: "form-estoque" }); */
       this.$router.push({ name: "listarestoque" });
     },
 
@@ -161,7 +162,6 @@ export default {
       this.code = data.codeResult.code;
       this.cameraStatus = 0;
       this.onStop();
-      handleContinuar();
     },
 
     onStop() {

@@ -28,7 +28,7 @@
               color="primary"
               class="full-width"
               rounded
-              @lerCodigo="capcodbarras()"
+              @ler-codigo="capcodbarras"
             >
             </q-btn>
           </div>
@@ -175,12 +175,6 @@ export default defineComponent({
 
   components: BtnScannerAndroid,
 
-  methods: {
-    capcodbarras(code) {
-      this.bar_code.value = code;
-    },
-  },
-
   setup() {
     const { supabase } = useSupabase();
     const $q = useQuasar();
@@ -317,5 +311,14 @@ export default defineComponent({
       /* code */
     };
   },
+
+  methods: {
+    capcodbarras(n) {
+      alert(n);
+      this.bar_code.value = n;
+      alert(n)
+    },
+  },
+
 });
 </script>
