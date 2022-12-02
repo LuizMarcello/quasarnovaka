@@ -136,10 +136,10 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
-
+      alert(code);
       /* if (code > 0) { */
       /* if (code) { */
-        /* this.$emit("lerCodigo", code);
+      /* this.$emit("lerCodigo", code);
         alert(code);
       } else {
         this.$router.push({ name: "form-estoque" });
