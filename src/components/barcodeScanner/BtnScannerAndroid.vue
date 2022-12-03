@@ -38,11 +38,12 @@
         v-show="cameraStatus === 0"
       />
 
-      <div class="text-h6" v-if="code">Codigo12345:{{ code }}</div>
+      <!-- <div class="text-h6" v-if="code">Codigo12345:{{ code }}</div> -->
 
       <div id="scan" v-show="cameraStatus === 1"></div>
 
       <q-page-sticky position="bottom-right" :offset="[18, 18]">
+        <div class="text-h6" v-if="code">Codigo12345:{{ code }}</div>
         <div class="q-gutter-x-md">
           <q-btn
             icon="cancel"
