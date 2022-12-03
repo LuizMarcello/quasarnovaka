@@ -15,6 +15,9 @@
         v-show="cameraStatus === 0"
       />
 
+      <!-- @click="iniciarLeitor(), $emit('lerCodigo', code)" -->
+      <!-- @click="$emit('lerCodigo', code)" -->
+
       <q-btn
         color="primary"
         icon="mdi-barcode-off"
@@ -49,13 +52,13 @@
             @click="onStop"
           />
 
-          <!-- <q-btn
+          <q-btn
             icon="mdi-page-next"
             color="positive"
             label="Continuar"
             v-show="cameraStatus === 1"
-            v-on:click="handleContinuar()"
-          /> -->
+            @click="handleContinuar(), $emit('lerCodigo', code)"
+          />
 
           <!--  <q-btn
             icon="mdi-page-next"
@@ -91,7 +94,20 @@ export default {
   },
 
   methods: {
-    iniciarLeitor(code) {
+    /* if (code > 0) { */
+    /* if (code) { */
+    /* this.$emit("lerCodigo", code);
+        alert(code);
+      } else {
+        this.$router.push({ name: "form-estoque" });
+      } */
+
+    /* } else { */
+    /* this.$router.push({ name: "form-estoque" }); */
+    /* router.push({ name: "form-estoque" }); */
+    /*  } */
+
+    iniciarLeitor() {
       this.cameraStatus = 1;
       Quagga.init(
         {
@@ -136,19 +152,8 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
-      alert(code);
-      /* if (code > 0) { */
-      /* if (code) { */
-      /* this.$emit("lerCodigo", code);
-        alert(code);
-      } else {
-        this.$router.push({ name: "form-estoque" });
-      } */
-
-      /* } else { */
-      /* this.$router.push({ name: "form-estoque" }); */
+     /*  this.$router.push({ name: "form-estoque" }); */
       /* router.push({ name: "form-estoque" }); */
-      /*  } */
     },
 
     continuarsemcodigo() {
@@ -175,7 +180,6 @@ export default {
 
   setup() {
     const router = useRouter();
-
     const handleContinuar = () => {
       router.push({ name: "form-estoque" });
     };
