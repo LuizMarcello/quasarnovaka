@@ -314,9 +314,9 @@ export default defineComponent({
 
   methods: {
     capcodbarras(n) {
-      alert(n);
+      alert("123", n);
       this.bar_code.value = n;
-      alert(n)
+      alert("1234", n)
     },
   },
 

@@ -38,7 +38,7 @@
         v-show="cameraStatus === 0"
       />
 
-      <div class="text-h6" v-if="code">Codigo: {{ code }}</div>
+      <div class="text-h6" v-if="code">Codigo12345:{{ code }}</div>
 
       <div id="scan" v-show="cameraStatus === 1"></div>
 
