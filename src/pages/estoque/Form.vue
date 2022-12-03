@@ -28,7 +28,7 @@
               color="primary"
               class="full-width"
               rounded
-              @ler-codigo="capcodbarras"
+              @ler-codigo="capcodbarras($event)"
             >
             </q-btn>
           </div>
@@ -313,10 +313,10 @@ export default defineComponent({
   },
 
   methods: {
-    capcodbarras(n) {
-      alert("123", n);
-      this.bar_code.value = n;
-      alert("1234", n)
+    capcodbarras(e) {
+      /* alert("123", e); */
+      this.bar_code.value = e;
+      /* alert("1234", e) */
     },
   },
 
