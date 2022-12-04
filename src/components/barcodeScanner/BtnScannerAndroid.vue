@@ -2,9 +2,9 @@
 <template>
   <div class="row items-center" style="height: 100vh">
     <div class="col text-center q-pa-lg q-gutter-y-md">
-      <p class="text-center">
-        Android Foque a câmera no código de barras do produto
-      </p>
+      <!-- <p class="text-center">
+        Android Foque a câmera no código de barras do produtoooo
+      </p> -->
       <q-btn
         color="primary"
         icon="mdi-barcode-scan"
@@ -29,8 +29,11 @@
 
       <div id="scan" v-show="cameraStatus === 1"></div>
 
+
       <q-page-sticky position="bottom-right" :offset="[18, 18]">
-        <div class="text-h6" v-if="code">Codigo12345:{{ code }}</div>
+        <!-- <div class="text-h6" v-if="code">Codigo12345:{{ code }}</div> -->
+
+
         <div class="q-gutter-x-md">
           <q-btn
             icon="cancel"
@@ -40,17 +43,35 @@
             @click="onStop"
           />
 
-          <q-btn
+          <!-- <q-btn
             icon="mdi-page-next"
             color="positive"
             label="Continuar"
             v-show="cameraStatus === 1"
             @click="handleContinuar(), $emit('lerCodigo', code)"
+          /> -->
+
+          <q-btn
+            icon="mdi-page-next"
+            color="positive"
+            label="Continuar"
+            v-show="cameraStatus === 1"
+            @click="handleContinuar()"
+          />
+
+           <q-btn
+            icon="mdi-page-next"
+            color="positive"
+            label="ContinuarEmit"
+            v-show="cameraStatus === 1"
+            @click="$emit('lerCodigo', code)"
           />
         </div>
       </q-page-sticky>
     </div>
   </div>
+
+
 </template>
 
 <script>
@@ -121,6 +142,11 @@ export default {
     continuarsemcodigo() {
       this.$router.push({ name: "form-estoque" });
     },
+
+    /* handleContinuar() {
+      this.$emit('lerCodigo', code)
+      router.push({ name: "form-estoque" });
+    }, */
 
     cancelar() {
       this.$router.push({ name: "listarestoque" });
