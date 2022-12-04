@@ -230,6 +230,11 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
+    const capcodbarras = async (n) => {
+      form.value.bar_code = n;
+    };
+
     // Para limpar os campos
     const onReset = async () => {
       form.value = {
@@ -254,6 +259,7 @@ export default defineComponent({
       }
     };
     return {
+      capcodbarras,
       handleSubmit,
       form,
       isUpdate,
@@ -304,14 +310,5 @@ export default defineComponent({
       /* code */
     };
   },
-
-  methods: {
-    capcodbarras(n) {
-      alert("123", n);
-      this.bar_code.value = n;
-      alert("1234", n)
-    },
-  },
-
 });
 </script>
