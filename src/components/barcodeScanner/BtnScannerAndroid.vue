@@ -15,19 +15,6 @@
         v-show="cameraStatus === 0"
       />
 
-      <!-- @click="iniciarLeitor(), $emit('lerCodigo', code)" -->
-      <!-- @click="$emit('lerCodigo', code)" -->
-
-      <q-btn
-        color="primary"
-        icon="mdi-barcode-off"
-        label="Continuar sem código de barras"
-        class="full-width"
-        size="lg"
-        @click="continuarsemcodigo()"
-        v-show="cameraStatus === 0"
-      />
-
       <q-btn
         color="primary"
         icon="mdi-close-box-multiple-outline"
@@ -38,7 +25,7 @@
         v-show="cameraStatus === 0"
       />
 
-      <!-- <div class="text-h6" v-if="code">Codigo12345:{{ code }}</div> -->
+      <div class="text-h6" v-if="code">{{ code }}</div>
 
       <div id="scan" v-show="cameraStatus === 1"></div>
 
@@ -60,14 +47,6 @@
             v-show="cameraStatus === 1"
             @click="handleContinuar(), $emit('lerCodigo', code)"
           />
-
-          <!--  <q-btn
-            icon="mdi-page-next"
-            color="positive"
-            label="Continuar"
-            v-show="cameraStatus === 1"
-            @click="handleContinuar()"
-          /> -->
         </div>
       </q-page-sticky>
     </div>
@@ -76,15 +55,10 @@
 
 <script>
 import Quagga from "quagga";
-/* Importando este componente */
-/* import Form from "src/pages/estoque/Form.vue"; */
 import { useRouter } from "vue-router";
 
 export default {
   name: "BtnScannerAndroid",
-
-  /* Registrando este componente */
-  /* components: Form, */
 
   data() {
     return {
@@ -95,19 +69,6 @@ export default {
   },
 
   methods: {
-    /* if (code > 0) { */
-    /* if (code) { */
-    /* this.$emit("lerCodigo", code);
-        alert(code);
-      } else {
-        this.$router.push({ name: "form-estoque" });
-      } */
-
-    /* } else { */
-    /* this.$router.push({ name: "form-estoque" }); */
-    /* router.push({ name: "form-estoque" }); */
-    /*  } */
-
     iniciarLeitor() {
       this.cameraStatus = 1;
       Quagga.init(
@@ -153,8 +114,8 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
-     /*  this.$router.push({ name: "form-estoque" }); */
-      /* router.push({ name: "form-estoque" }); */
+       /* this.$router.push({ name: "form-estoque" }); */
+
     },
 
     continuarsemcodigo() {
@@ -162,8 +123,6 @@ export default {
     },
 
     cancelar() {
-      /* router.push({ name: "form-estoque" }); */
-      /*  this.$router.push({ name: "form-estoque" }); */
       this.$router.push({ name: "listarestoque" });
     },
 

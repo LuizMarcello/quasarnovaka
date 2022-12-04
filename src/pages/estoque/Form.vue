@@ -214,15 +214,7 @@ export default defineComponent({
 
     const handleListEstoque = async () => {
       optionsEstoque.value = await list("estoque");
-
-      /*  if (code > 0) {
-        bar_code.value = code;
-      } */
     };
-
-    /* const capcodbarras = async (code) => {
-      bar_code.value = await code;
-    } */
 
     const handleSubmit = async () => {
       try {
@@ -250,6 +242,7 @@ export default defineComponent({
         datanota: "",
         status: "",
         partnumber: "",
+        bar_code: "",
       };
     };
     const handleGetEstoque = async (id) => {
