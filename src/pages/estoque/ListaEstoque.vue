@@ -75,12 +75,20 @@
               :to="{ name: 'barcode' }"
             /> -->
 
-            <q-btn
+            <!-- <q-btn
               label="Adicionar"
               color="primary"
               icon="mdi-plus"
               dense
               :to="{ name: 'barcode' }"
+            /> -->
+
+            <q-btn
+              label="Adicionar"
+              color="primary"
+              icon="mdi-plus"
+              dense
+              :to="{ name: 'form-estoque' }"
             />
           </q-td>
         </template>
