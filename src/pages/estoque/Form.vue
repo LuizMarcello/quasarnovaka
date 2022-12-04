@@ -24,14 +24,13 @@
 
           <div class="q-gutter-x-md">
             <q-btn
-              icon="mdi-barcode-scan"
-              label="Código de barras"
+              label="Atualizar código de barras"
               color="primary"
               class="full-width"
               rounded
-              @click="iniciarLeitor()"
-              v-show="cameraStatus === 0"
-            />
+              @ler-codigo="capcodbarras"
+            >
+            </q-btn>
           </div>
         </div>
       </div>
@@ -159,64 +158,9 @@
       </q-form>
     </div>
   </q-page>
-
-  <div class="row items-center" style="height: 100vh">
-    <div class="col text-center q-pa-lg q-gutter-y-md">
-      <div id="scan" v-show="cameraStatus === 1"></div>
-
-      <div class="text-h6" v-if="code">Codigo123:{{ code }}</div>
-
-      <q-page-sticky position="bottom-right" :offset="[18, 18]">
-        <!-- <div class="text-h6" v-if="code">Codigo12345:{{ code }}</div> -->
-
-        <div class="q-gutter-x-md">
-          <q-btn
-            icon="cancel"
-            color="negative"
-            label="Fechar"
-            v-show="cameraStatus === 1"
-            @click="onStop"
-          />
-
-          <!-- <q-btn
-            icon="mdi-page-next"
-            color="positive"
-            label="Continuar"
-            v-show="cameraStatus === 1"
-            @click="handleContinuar(), $emit('lerCodigo', code)"
-          /> -->
-
-          <!--  <q-btn
-            icon="mdi-page-next"
-            color="positive"
-            label="Continuar"
-            v-show="cameraStatus === 1"
-            @click="handleContinuar()"
-          /> -->
-
-          <!-- <q-btn
-            icon="mdi-page-next"
-            color="positive"
-            label="ContinuarEmit"
-            v-show="cameraStatus === 1"
-            @click="$emit('lerCodigo', code)"
-          /> -->
-
-          <!--  <q-btn
-            icon="mdi-page-next"
-            color="positive"
-            label="Continuar"
-            v-show="cameraStatus === 1"
-            @click="handleContinuar()"
-          /> -->
-        </div>
-      </q-page-sticky>
-    </div>
-  </div>
 </template>
 
 <script>
-import Quagga from "quagga";
 import useSupabase from "src/boot/supabase";
 import { useQuasar } from "quasar";
 import { defineComponent, ref, onMounted, computed } from "vue";
@@ -224,20 +168,12 @@ import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 
-/* import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.vue"; */
+import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.vue";
 
 export default defineComponent({
   nome: "PageFormEstoque",
 
-  data() {
-    return {
-      code: "",
-      dialog: false,
-      cameraStatus: 0,
-    };
-  },
-
-  /* components: BtnScannerAndroid, */
+  components: BtnScannerAndroid,
 
   setup() {
     const { supabase } = useSupabase();
@@ -370,71 +306,12 @@ export default defineComponent({
   },
 
   methods: {
-    iniciarLeitor() {
-      this.cameraStatus = 1;
-      Quagga.init(
-        {
-          inputStream: {
-            name: "Live",
-            type: "LiveStream",
-            // constraints: {
-            //   width: 300,
-            //   height: 300
-            // },
-            target: document.querySelector("#scan"),
-          },
-          /*
-             code_128_reader (default)
-             ean_reader
-             ean_8_reader
-             code_39_reader
-             code_39_vin_reader
-             codabar_reader
-             upc_reader
-             upc_e_reader
-             i2of5_reader
-             2of5_reader
-             code_93_reader
-          */
-          frequency: 10,
-          decoder: {
-            readers: ["ean_reader"],
-            multiple: false,
-            /* multiple: true, */
-          },
-          // numOfWorkers: navigator.hardwareConcurrency,
-          // locate: false
-        },
-        (err) => {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          console.log("Initialization finished. Ready to start");
-          Quagga.start();
-          Quagga.onDetected(this.onDetected);
-        }
-      );
-      /*  this.$router.push({ name: "form-estoque" }); */
-      /* router.push({ name: "form-estoque" }); */
+    capcodbarras(n) {
+      alert("123", n);
+      this.bar_code.value = n;
+      alert("1234", n)
     },
-
-    onDetected(data) {
-      this.code = data.codeResult.code;
-      this.cameraStatus = 0;
-      this.onStop();
-    },
-
-    onStop() {
-      Quagga.stop();
-      this.cameraStatus = 0;
-    },
-
-    /* capcodbarras(e) { */
-    /* alert("123", e); */
-    /* this.bar_code.value = e; */
-    /* alert("1234", e) */
-    /* }, */
   },
+
 });
 </script>
