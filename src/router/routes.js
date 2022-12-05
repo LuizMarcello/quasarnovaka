@@ -95,9 +95,10 @@ const routes = [{
 
 
       {
-        path: "form-estoque/:id?",
+        path: "form-estoque/:id?/:barcode?",
         name: "form-estoque",
         component: () => import("pages/estoque/Form.vue"),
+        props: true
       },
       {
         path: "listarestoque",

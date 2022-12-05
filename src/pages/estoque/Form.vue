@@ -172,10 +172,16 @@ import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.v
 
 export default defineComponent({
   nome: "PageFormEstoque",
-
+  props: {
+    barcode: {
+      type: String,
+      required: false,
+      default: ''
+    }
+  },
   components: BtnScannerAndroid,
 
-  setup() {
+  setup(props) {
     const { supabase } = useSupabase();
     const $q = useQuasar();
     const table = "estoque";
@@ -210,6 +216,9 @@ export default defineComponent({
       handleListEstoque();
       if (isUpdate.value) {
         handleGetEstoque(isUpdate.value);
+      }
+      if (props.barcode) {
+        form.value.bar_code = props.barcode
       }
     });
 

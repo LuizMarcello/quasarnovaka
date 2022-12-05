@@ -13,6 +13,7 @@
 
 <script>
 import { defineComponent, defineAsyncComponent, ref } from "vue";
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: "BtnScannerWrapper",
@@ -26,8 +27,9 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const barcodeNumber = ref("");
+    const router = useRouter();
     const handleSetBarcode = (barcode) => {
-      emit("barcode", barcode);
+      router.push({ name: 'form-estoque', params: { barcode: barcode }})
     };
     return {
       handleSetBarcode,

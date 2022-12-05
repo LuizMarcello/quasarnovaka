@@ -123,6 +123,7 @@ export default {
 
     onDetected(data) {
       this.code = data.codeResult.code;
+      this.$emit('barcodeAndroid', data.codeResult.code)
       this.cameraStatus = 0;
       this.onStop();
     },
