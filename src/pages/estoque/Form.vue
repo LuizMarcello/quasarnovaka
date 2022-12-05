@@ -28,7 +28,7 @@
               color="primary"
               class="full-width"
               rounded
-              @ler-codigo="capcodbarras"
+              @ler-codigo="copcodbarras()"
             >
             </q-btn>
           </div>
@@ -190,6 +190,7 @@ export default defineComponent({
          Se existir, "isUpdate" é true, senão é false.
          Para atualizar, vai ser usado o mesmo "form" do "cadastrar novo" */
     const isUpdate = computed(() => route.params.id);
+
     let estoqueee = {};
 
     const form = ref({
@@ -231,7 +232,7 @@ export default defineComponent({
       }
     };
 
-    const capcodbarras = async (n) => {
+    const copcodbarras = async (n) => {
       form.value.bar_code = n;
     };
 
@@ -259,7 +260,7 @@ export default defineComponent({
       }
     };
     return {
-      capcodbarras,
+      copcodbarras,
       handleSubmit,
       form,
       isUpdate,
