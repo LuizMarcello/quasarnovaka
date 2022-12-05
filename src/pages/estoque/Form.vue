@@ -172,6 +172,8 @@ import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.v
 
 export default defineComponent({
   nome: "PageFormEstoque",
+
+  /* Esta props:{} foi acrescentada pelo Patrick */
   props: {
     barcode: {
       type: String,
@@ -217,6 +219,7 @@ export default defineComponent({
       if (isUpdate.value) {
         handleGetEstoque(isUpdate.value);
       }
+      /* Este if(){} foi acrescentado pelo Patrick */
       if (props.barcode) {
         form.value.bar_code = props.barcode
       }
@@ -240,7 +243,7 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
+/* Obs: Depois do Patrick Retirar ??? */
     const copcodbarras = (n) => {
       form.value.bar_code = n;
     };

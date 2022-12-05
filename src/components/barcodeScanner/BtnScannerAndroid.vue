@@ -45,6 +45,15 @@
             v-show="cameraStatus === 0"
             @click="handleContinuar(), $emit('lerCodigo', code)"
           />
+
+          <!-- Depois do Patrick Retirar este $emit() no @click ? -->
+          <!-- <q-btn
+            icon="mdi-page-next"
+            color="positive"
+            label="Continuar"
+            v-show="cameraStatus === 0"
+            @click="handleContinuar()"
+          /> -->
         </div>
       </q-page-sticky>
     </div>
@@ -121,9 +130,16 @@ export default {
       this.$router.push({ name: "listarestoque" });
     },
 
+    /* Antes do Patrick alterar */
+    /* onDetected(data) {
+      this.code = data.codeResult.code;
+      this.cameraStatus = 0;
+      this.onStop();
+    }, */
+
     onDetected(data) {
       this.code = data.codeResult.code;
-      this.$emit('barcodeAndroid', data.codeResult.code)
+      this.$emit("barcodeAndroid", data.codeResult.code);
       this.cameraStatus = 0;
       this.onStop();
     },
