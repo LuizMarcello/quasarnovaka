@@ -232,7 +232,7 @@ export default defineComponent({
       }
     };
 
-    const copcodbarras = async (n) => {
+    const copcodbarras = (n) => {
       form.value.bar_code = n;
     };
 
