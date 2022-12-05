@@ -24,13 +24,15 @@
         v-show="cameraStatus === 0"
       />
 
-      <div class="text-h6" v-if="code">Código: {{ code }}</div>
+      <!-- <div class="text-h6" v-if="code">Código: {{ code }}</div> -->
 
       <div id="scan" v-show="cameraStatus === 1"></div>
 
       <q-page-sticky position="bottom-right" :offset="[18, 18]">
-
         <div class="q-gutter-x-md">
+
+           <div class="text-h6" v-if="code">Código: {{ code }}</div>
+
           <q-btn
             icon="cancel"
             color="negative"
@@ -55,10 +57,8 @@
 <script>
 import Quagga from "quagga";
 import { useRouter } from "vue-router";
-
 export default {
   name: "BtnScannerAndroid",
-
   data() {
     return {
       code: "",
@@ -66,7 +66,6 @@ export default {
       cameraStatus: 0,
     };
   },
-
   methods: {
     iniciarLeitor() {
       this.cameraStatus = 1;
@@ -113,8 +112,7 @@ export default {
           Quagga.onDetected(this.onDetected);
         }
       );
-       /* this.$router.push({ name: "form-estoque" }); */
-
+      /* this.$router.push({ name: "form-estoque" }); */
     },
 
     continuarsemcodigo() {
@@ -139,10 +137,10 @@ export default {
 
   setup() {
     const router = useRouter();
+
     const handleContinuar = () => {
       router.push({ name: "form-estoque" });
     };
-
     return {
       handleContinuar,
     };
