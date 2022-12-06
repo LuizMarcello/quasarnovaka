@@ -23,14 +23,14 @@
           </div> -->
 
           <div class="q-gutter-x-md">
-            <q-btn
+            <!-- <q-btn
               label="Atualizar código de barras"
               color="primary"
               class="full-width"
               rounded
               @ler-codigo="copcodbarras()"
             >
-            </q-btn>
+            </q-btn> -->
           </div>
         </div>
       </div>
@@ -244,9 +244,9 @@ export default defineComponent({
       }
     };
 /* Obs: Depois do Patrick Retirar ??? */
-    const copcodbarras = (n) => {
+    /* const copcodbarras = (n) => {
       form.value.bar_code = n;
-    };
+    }; */
 
     // Para limpar os campos
     const onReset = async () => {
@@ -271,8 +271,9 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
     return {
-      copcodbarras,
+      /* copcodbarras, */
       handleSubmit,
       form,
       isUpdate,

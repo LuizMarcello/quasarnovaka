@@ -93,8 +93,8 @@ const routes = [{
         component: () => import("pages/estoque/Formesthistorico.vue"),
       },
 
-      /* Antes do Patrick alterar */
-     /*  {
+      /* Antes do Patrick alterar? */
+      /* {
         path: "form-estoque/:id?",
         name: "form-estoque",
         component: () => import("pages/estoque/Form.vue"),
@@ -106,7 +106,6 @@ const routes = [{
         component: () => import("pages/estoque/Form.vue"),
         props: true
       },
-
 
       {
         path: "listarestoque",

@@ -2,7 +2,7 @@
   <div class="row items-center" style="height: 100vh">
     <div class="col text-center q-pa-lg q-gutter-y-md">
       <p class="text-center">
-        Android Foque a câmera no código de barras do produto
+        Foque a câmera no código de barras do produto
       </p>
       <q-btn
         color="primary"
@@ -12,6 +12,16 @@
         size="lg"
         @click="iniciarLeitor()"
         v-show="cameraStatus === 0"
+      />
+
+      <q-btn
+        color="primary"
+        icon="mdi-barcode-off"
+        label="Continuar sem código de Barras"
+        class="full-width"
+        size="lg"
+        @click="continuarsemcodigo()"
+         v-show="cameraStatus === 0"
       />
 
       <q-btn
@@ -30,21 +40,21 @@
 
       <q-page-sticky position="bottom-right" :offset="[18, 18]">
         <div class="q-gutter-x-md">
-          <q-btn
+          <!-- <q-btn
             icon="cancel"
             color="negative"
             label="Fechar"
             v-show="cameraStatus === 0"
             @click="onStop"
-          />
+          /> -->
 
-          <q-btn
+          <!-- <q-btn
             icon="mdi-page-next"
             color="positive"
             label="Continuar"
             v-show="cameraStatus === 0"
             @click="handleContinuar(), $emit('lerCodigo', code)"
-          />
+          /> -->
 
           <!-- Depois do Patrick Retirar este $emit() no @click ? -->
           <!-- <q-btn
