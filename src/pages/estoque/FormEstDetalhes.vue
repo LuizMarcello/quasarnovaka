@@ -44,9 +44,10 @@
 
           <q-input
             label="Código de barras"
-            readonly
-            v-model="form.barcode"
-            mask="NN:NN:NN:NN:NN:NN"
+            v-model="form.bar_code"
+            :rules="[
+              (val) => (val && val.length > 0) || 'Informe o código de barras',
+            ]"
           />
 
           <div>
@@ -97,10 +98,23 @@ import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 
+import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.vue";
+
 export default defineComponent({
   nome: "PageFormEstoque",
 
-  setup() {
+  /* Esta props:{} foi acrescentada pelo Patrick */
+  props: {
+    barcode: {
+      type: String,
+      required: false,
+      default: "",
+    },
+  },
+
+  components: BtnScannerAndroid,
+
+  setup(props) {
     const estoque = ref([]);
     const { supabase } = useSupabase();
     const $q = useQuasar();
@@ -133,13 +147,17 @@ export default defineComponent({
       historicotexto: "",
       historico: "",
       status: "",
-      barcode: "",
+      bar_code: "",
     });
 
     onMounted(() => {
       handleListEstoque();
       if (isUpdate.value) {
         handleGetEstoque(isUpdate.value);
+      }
+      /* Este if(){} foi acrescentado pelo Patrick */
+      if (props.barcode) {
+        form.value.bar_code = props.barcode;
       }
     });
 
