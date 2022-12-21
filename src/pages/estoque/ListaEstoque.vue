@@ -24,7 +24,17 @@
               dense
               :to="{ name: 'form-revendas' }"
             /> -->
-          <q-td class="q-gutter-x-sm">
+          <q-td class="q-gutter-x-md q-gutter-y-sm">
+            <div>
+              <q-btn
+                label="Pesquisar código de barras"
+                color="primary"
+                icon="mdi-barcode"
+                dense
+                :to="{ name: 'barcode' }"
+              />
+            </div>
+
             <q-input
               outlined
               dense
