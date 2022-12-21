@@ -157,7 +157,7 @@ export default defineComponent({
       }
       /* Este if(){} foi acrescentado pelo Patrick */
       if (props.barcode) {
-        form.value.bar_code = props.barcode;
+        /* form.value.bar_code = props.barcode; */
       }
     });
 
@@ -179,6 +179,7 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
+
     const handleGetEstoque = async (id) => {
       try {
         estoqueee = await getById(table, id);

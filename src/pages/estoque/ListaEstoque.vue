@@ -27,7 +27,7 @@
           <q-td class="q-gutter-x-md q-gutter-y-sm">
             <div>
               <q-btn
-                label="Pesquisar código de barras"
+                label="Consultar código de barras"
                 color="primary"
                 icon="mdi-barcode"
                 dense
@@ -35,12 +35,20 @@
               />
             </div>
 
+            <!-- <q-btn
+              icon="mdi-feature-search-outline"
+              color="primary"
+              dense
+              size="sm"
+              @click="handleDetails(props.row)"
+            ></q-btn> -->
+
             <q-input
               outlined
               dense
               debounce="300"
               v-model="filter"
-              placeholder="Pesquisar produtos"
+              placeholder="Pesquisar produtosss"
               color="primary"
               class="q-mb-sm"
             >
@@ -238,8 +246,23 @@ import useNotify from "src/composables/UseNotify";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
+/* Copiei do Form.vue */
+import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.vue";
+
 export default defineComponent({
   name: "PageEstoqueList",
+
+  /* Copiei do Form.vue */
+  /* Esta props:{} foi acrescentada pelo Patrick */
+  /* props: {
+    barcode: {
+      type: String,
+      required: false,
+      default: ''
+    }
+  }, */
+  /* Copiei do Form.vue */
+  /* components: BtnScannerAndroid, */
 
   methods: {
     makePDF() {
@@ -254,7 +277,8 @@ export default defineComponent({
     },
   },
 
-  setup() {
+  /* Este props foi acrescentado depois */
+  setup(props) {
     const estoque = ref([]);
     const loading = ref(true);
     const router = useRouter();
@@ -314,6 +338,11 @@ export default defineComponent({
 
     onMounted(() => {
       handleListEstoque();
+      /* Copiei do Form.vue */
+      /* Este if(){} foi acrescentado pelo Patrick */
+      /* if (props.barcode) {
+        filter.value = props.barcode
+      } */
     });
 
     /* "export": Para ser usado em "outro" componente */
