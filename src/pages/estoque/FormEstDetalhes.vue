@@ -121,7 +121,7 @@ export default defineComponent({
     const table = "estoque";
     const router = useRouter();
     const route = useRoute();
-    const { post, getById, update, list } = useApi();
+    const { post, getById, getByBrCode, update, list } = useApi();
     const { notifyError, notifySuccess } = useNotify();
     const accept = ref(false);
 
@@ -156,9 +156,9 @@ export default defineComponent({
         handleGetEstoque(isUpdate.value);
       }
       /* Este if(){} foi acrescentado pelo Patrick */
-      if (props.barcode) {
+      /* if (props.barcode) { */
         /* form.value.bar_code = props.barcode; */
-      }
+      /* } */
     });
 
     const handleListEstoque = async () => {
@@ -180,10 +180,25 @@ export default defineComponent({
       }
     };
 
-    const handleGetEstoque = async (id) => {
+    /*  const handleGetEstoque = async (id) => {
       try {
         estoqueee = await getById(table, id);
         form.value = estoqueee;
+      } catch (error) {
+        notifyError(error.message);
+      }
+    }; */
+
+    const handleGetEstoque = async (id, bar_code) => {
+      try {
+        /* Este if(){} foi acrescentado pelo Patrick */
+        if (!props.barcode) {
+          estoqueee = await getById(table, id);
+          form.value = estoqueee;
+        } else {
+          estoqueee = await getByBrCode(table, bar_code);
+          form.value = estoqueee;
+        }
       } catch (error) {
         notifyError(error.message);
       }

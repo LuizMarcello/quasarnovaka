@@ -18,6 +18,12 @@ export default function useApi() {
     return data[0];
   };
 
+  const getByBrCode = async (table, bar_code) => {
+    const { data, error } = await supabase.from(table).select("*").eq("bar_code", bar_code);
+    if (error) throw error;
+    return data[0];
+  };
+
   const post = async (table, form) => {
     const { data, error } = await supabase.from(table).insert({
       ...form,
@@ -57,6 +63,7 @@ export default function useApi() {
   return {
     list,
     getById,
+    getByBrCode,
     post,
     update,
     remove,
