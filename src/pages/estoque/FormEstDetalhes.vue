@@ -157,7 +157,7 @@ export default defineComponent({
       }
       /* Este if(){} foi acrescentado pelo Patrick */
       /* if (props.barcode) { */
-        /* form.value.bar_code = props.barcode; */
+      /* form.value.bar_code = props.barcode; */
       /* } */
     });
 
@@ -192,11 +192,11 @@ export default defineComponent({
     const handleGetEstoque = async (id, bar_code) => {
       try {
         /* Este if(){} foi acrescentado pelo Patrick */
-        if (!props.barcode) {
-          estoqueee = await getById(table, id);
+        if (props.barcode) {
+          estoqueee = await getByBrCode(table, bar_code);
           form.value = estoqueee;
         } else {
-          estoqueee = await getByBrCode(table, bar_code);
+          estoqueee = await getById(table, id);
           form.value = estoqueee;
         }
       } catch (error) {

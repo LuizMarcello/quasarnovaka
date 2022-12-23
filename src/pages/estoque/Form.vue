@@ -214,6 +214,7 @@ export default defineComponent({
       bar_code: "",
     });
 
+    
     onMounted(() => {
       handleListEstoque();
       if (isUpdate.value) {

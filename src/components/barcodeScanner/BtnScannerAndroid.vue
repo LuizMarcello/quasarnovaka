@@ -1,9 +1,7 @@
 <template>
   <div class="row items-center" style="height: 100vh">
     <div class="col text-center q-pa-lg q-gutter-y-md">
-      <p class="text-center">
-        Foque a câmera no código de barras do produto
-      </p>
+      <p class="text-center">Foque a câmera no código de barras do produto</p>
       <q-btn
         color="primary"
         icon="mdi-barcode-scan"
@@ -17,11 +15,11 @@
       <q-btn
         color="primary"
         icon="mdi-barcode-off"
-        label="Continuar sem código de Barras"
+        label="Cadastrar manualmente"
         class="full-width"
         size="lg"
         @click="continuarsemcodigo()"
-         v-show="cameraStatus === 0"
+        v-show="cameraStatus === 0"
       />
 
       <q-btn
@@ -164,7 +162,8 @@ export default {
     const router = useRouter();
 
     const handleContinuar = () => {
-      router.push({ name: "form-estoque" });
+      /* router.push({ name: "form-estoque" }); */
+      router.push({ name: "form-revenda-detalhes" });
     };
     return {
       handleContinuar,
