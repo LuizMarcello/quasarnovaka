@@ -171,11 +171,12 @@ const routes = [{
     path: "/",
     component: () => import("src/layouts/MainLayout.vue"),
     children: [{
-      path: "barcode",
-      name: "barcode",
-      component: () => import("src/components/barcodeScanner/BtnScannerWrapper.vue"),
-      /* component: () => import("src/components/barcodeScanner/BtnScannerDesktop.vue"), */
-    }, ],
+        path: "barcode",
+        name: "barcode",
+        component: () => import("src/components/barcodeScanner/BtnScannerWrapper.vue"),
+        /* component: () => import("src/components/barcodeScanner/BtnScannerDesktop.vue"), */
+      },
+    ],
     meta: {
       requiresAuth: true,
     },

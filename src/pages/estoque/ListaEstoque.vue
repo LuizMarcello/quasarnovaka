@@ -254,15 +254,16 @@ export default defineComponent({
 
   /* Copiei do Form.vue */
   /* Esta props:{} foi acrescentada pelo Patrick */
-  /* props: {
+  props: {
     barcode: {
       type: String,
       required: false,
       default: ''
     }
-  }, */
+  },
+
   /* Copiei do Form.vue */
-  /* components: BtnScannerAndroid, */
+  components: BtnScannerAndroid,
 
   methods: {
     makePDF() {
@@ -340,9 +341,9 @@ export default defineComponent({
       handleListEstoque();
       /* Copiei do Form.vue */
       /* Este if(){} foi acrescentado pelo Patrick */
-      /* if (props.barcode) {
+      if (props.barcode) {
         filter.value = props.barcode
-      } */
+      }
     });
 
     /* "export": Para ser usado em "outro" componente */
