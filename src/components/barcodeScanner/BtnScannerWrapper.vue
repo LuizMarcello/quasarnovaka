@@ -43,6 +43,7 @@ export default defineComponent({
     const router = useRouter();
     const handleSetBarcode = (barcode) => {
       router.push({ name: "form-estoque", params: { barcode: barcode } });
+      
     };
     return {
       handleSetBarcode,
