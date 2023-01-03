@@ -161,13 +161,13 @@ export default {
   setup() {
     const router = useRouter();
 
-    const handleContinuar = () => {
-      /* router.push({ name: "form-estoque" }); */
-      router.push({ name: "form-revenda-detalhes" });
-    };
-    return {
-      handleContinuar,
-    };
+    //const handleContinuar = () => {
+    /* router.push({ name: "form-estoque" }); */
+    //router.push({ name: "form-revenda-detalhes" });
+    //};
+    //return {
+    //handleContinuar,
+    //};
   },
 }; //Fim export default{}
 </script>
