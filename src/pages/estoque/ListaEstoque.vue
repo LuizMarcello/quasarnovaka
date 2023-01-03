@@ -215,7 +215,6 @@ const columns = [
     field: "descricao",
     sortable: true,
   },
-
   /* {
     name: "numerodeserie",
     align: "left",
@@ -223,8 +222,6 @@ const columns = [
     field: "numerodeserie",
     sortable: true,
   }, */
-
-
   {
     name: "bar_code",
     align: "left",
@@ -232,7 +229,6 @@ const columns = [
     field: "bar_code",
     sortable: true,
   },
-
 
   {
     name: "actions",
@@ -269,9 +265,9 @@ export default defineComponent({
     barcode: {
       type: String,
       required: false,
-      default: ''
-    }
-  } ,
+      default: "",
+    },
+  },
 
   /* Copiei do Form.vue */
   components: BtnScannerAndroid,
@@ -353,7 +349,7 @@ export default defineComponent({
       /* Copiei do Form.vue */
       /* Este if(){} foi acrescentado pelo Patrick */
       if (props.barcode) {
-        filter.value = props.barcode
+        filter.value = props.barcode;
       }
     });
 
