@@ -112,7 +112,7 @@ export default {
           decoder: {
             readers: ["ean_reader"],
             multiple: false,
-            /* multiple: true, */
+            //multiple: true,
           },
           // numOfWorkers: navigator.hardwareConcurrency,
           // locate: false

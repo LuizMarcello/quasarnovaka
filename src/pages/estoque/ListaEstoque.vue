@@ -245,7 +245,7 @@ const initialPagination = ref({
 });
 
 /* "defineComponent": Porque é vuejs 3 */
-import { defineComponent, ref, onMounted, computed } from "vue";
+import { defineComponent, ref, onMounted, computed, watch } from "vue";
 
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
@@ -348,9 +348,13 @@ export default defineComponent({
       handleListEstoque();
       /* Copiei do Form.vue */
       /* Este if(){} foi acrescentado pelo Patrick */
-      if (props.barcode) {
-        filter.value = props.barcode;
-      }
+      //if (props.barcode) {
+      //filter.value = props.barcode;
+      //}
+    });
+
+    watch(barcode, (newBarcode) => {
+      filter.value = newBarcode;
     });
 
     /* "export": Para ser usado em "outro" componente */
