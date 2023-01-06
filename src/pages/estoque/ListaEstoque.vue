@@ -353,7 +353,7 @@ export default defineComponent({
       //}
     });
 
-    watch(barcode, (newBarcode) => {
+    watch(props.barcode, (newBarcode) => {
       filter.value = newBarcode;
     });
 
