@@ -245,7 +245,14 @@ const initialPagination = ref({
 });
 
 /* "defineComponent": Porque é vuejs 3 */
-import { defineComponent, ref, onMounted, computed, watch } from "vue";
+import {
+  defineComponent,
+  ref,
+  onMounted,
+  computed,
+  watch,
+  watchEffect,
+} from "vue";
 
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
@@ -353,8 +360,12 @@ export default defineComponent({
       //}
     });
 
-    watch(props.barcode, (newbarcode) => {
-      filter.value = newbarcode;
+    //watch(props.barcode, (value, oldValue) => {
+    //filter.value = value;
+    //});
+
+    watchEffect(() => {
+      filter.value = props.barcode;
     });
 
     /* "export": Para ser usado em "outro" componente */
