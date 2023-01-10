@@ -353,8 +353,8 @@ export default defineComponent({
       //}
     });
 
-    watch(props.barcode, (newBarcode) => {
-      filter.value = newBarcode;
+    watch(props.barcode, (newbarcode) => {
+      filter.value = newbarcode;
     });
 
     /* "export": Para ser usado em "outro" componente */
