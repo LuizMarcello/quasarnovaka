@@ -257,7 +257,7 @@ import {
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 /* import router from "src/router"; */
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { useQuasar } from "quasar";
 
 /* Copiei do Form.vue */
@@ -297,6 +297,7 @@ export default defineComponent({
     const estoque = ref([]);
     const loading = ref(true);
     const router = useRouter();
+    const route = useRoute();
     /* const table = "revendas"; */
     const filter = ref("");
     const $q = useQuasar();
@@ -351,12 +352,13 @@ export default defineComponent({
       }
     };
 
-    onMounted(() => {
-      handleListEstoque();
+    onMounted(async () => {
+      await handleListEstoque();
       /* Copiei do Form.vue */
       /* Este if(){} foi acrescentado pelo Patrick */
-      //if (props.barcode) {
-      //filter.value = props.barcode;
+      if (route.params.barcode) {
+        filter.value = route.params.barcode;
+      }
       //}
     });
 
@@ -364,9 +366,9 @@ export default defineComponent({
     //filter.value = value;
     //});
 
-    watchEffect(() => {
-      filter.value = props.barcode;
-    });
+    // watchEffect(() => {
+    //   filter.value = props.barcode;
+    // });
 
     /* "export": Para ser usado em "outro" componente */
     /* "return": Para ser usado no "mesmo" componente */

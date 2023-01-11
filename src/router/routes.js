@@ -108,9 +108,10 @@ const routes = [{
       },
 
       {
-        path: "listarestoque",
+        path: "listarestoque/:barcode?",
         name: "listarestoque",
         component: () => import("pages/estoque/ListaEstoque.vue"),
+        props: true
       },
 
       {
