@@ -5,7 +5,7 @@
       <q-btn
         color="primary"
         icon="mdi-barcode-scan"
-        label="Ler Código de Barras"
+        label="Android"
         class="full-width"
         size="lg"
         @click="iniciarLeitor()"
@@ -14,8 +14,8 @@
 
       <q-btn
         color="primary"
-        icon="mdi-barcode-off"
-        label="Cadastrar manualmente"
+        icon="mdi-barcode-scan"
+        label="Desktop"
         class="full-width"
         size="lg"
         @click="continuarsemcodigo()"

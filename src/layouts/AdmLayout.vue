@@ -50,18 +50,18 @@
         <q-list bordered separator>
           <q-item to="/Home" exact>
             <q-item-section avatar>
-              <q-icon name="mdi-signal" />
+              <q-icon name="mdi-home" />
             </q-item-section>
             <q-item-section
               ><q-item-label>Home</q-item-label>
               <q-item-label caption>Voltar a home</q-item-label>
             </q-item-section>
           </q-item>
-          
+
           <q-item to="charts" exact>
             <q-item-section avatar>
               <!-- <q-icon name="home" /> -->
-              <q-icon name="mdi-home" />
+              <q-icon name="mdi-chart-sankey" />
             </q-item-section>
             <q-item-section>
               <q-item-label>Charts</q-item-label>
@@ -83,7 +83,7 @@
           <q-item to="/listarclientes" exact>
             <q-item-section avatar>
               <!-- <q-icon name="list_alt" /> -->
-              <q-icon name="mdi-signal" />
+              <q-icon name="mdi-face-agent" />
             </q-item-section>
             <q-item-section
               ><q-item-label>Clientes</q-item-label>
@@ -94,7 +94,7 @@
           <q-item to="/listarestoque" exact>
             <q-item-section avatar>
               <!-- <q-icon name="list_alt" /> -->
-              <q-icon name="mdi-nas" />
+              <q-icon name="mdi-router-wireless-settings" />
             </q-item-section>
             <q-item-section
               ><q-item-label>Estoque</q-item-label>
