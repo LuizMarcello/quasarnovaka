@@ -24,7 +24,6 @@ export default defineComponent({
     BtnScannerAndroid: defineAsyncComponent(() =>
       import("src/components/barcodeScanner/BtnScannerAndroid.vue"),
       //import("src/components/barcodeScanner/BtnScannerAndroidSearch.vue")
-
     ),
   },
 
@@ -44,11 +43,11 @@ export default defineComponent({
     const barcodeNumber = ref("");
     const router = useRouter();
     const handleSetBarcode = (barcode) => {
-      router.push({ name: "form-estoque", params: { barcode: barcode } });
+      //router.push({ name: "form-estoque", params: { barcode: barcode } });
       //router.push({ name: "listarestoque", params: { barcode: barcode } });
       /* Patrick acrescentou este "console.log" abaixo em 10.01.23 */
-      //console.log('barcodeWraper', barcode);
-      //router.push({ name: "listarestoque", params: { barcode: barcode } });
+      console.log("barcodeWraper", barcode);
+      router.push({ name: "listarestoque", params: { barcode: barcode } });
     };
     return {
       handleSetBarcode,

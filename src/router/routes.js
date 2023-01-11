@@ -1,8 +1,10 @@
-const routes = [{
+const routes = [
+  {
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{
+    children: [
+      {
         path: "/",
         name: "/",
         component: () => import("pages/Home.vue"),
@@ -44,7 +46,8 @@ const routes = [{
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/AdmLayout.vue"),
-    children: [{
+    children: [
+      {
         path: "listarclientes",
         name: "listarclientes",
         component: () => import("pages/clientes/ListaClientes.vue"),
@@ -104,7 +107,7 @@ const routes = [{
         path: "form-estoque/:id?/:barcode?",
         name: "form-estoque",
         component: () => import("pages/estoque/Form.vue"),
-        props: true
+        props: true,
       },
 
       /* Patrick acrescentou "/:barcode?" em 10.01.23 */
@@ -113,7 +116,7 @@ const routes = [{
         name: "listarestoque",
         component: () => import("pages/estoque/ListaEstoque.vue"),
         /* Patrick acrescentou este "props: true" em 10.01.23 */
-        props: true
+        props: true,
       },
 
       {
@@ -136,7 +139,8 @@ const routes = [{
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{
+    children: [
+      {
         path: "/",
         name: "loginDefault",
         component: () => import("pages/Login.vue"),
@@ -173,10 +177,19 @@ const routes = [{
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
     component: () => import("src/layouts/MainLayout.vue"),
-    children: [{
+    children: [
+      {
         path: "barcode",
         name: "barcode",
-        component: () => import("src/components/barcodeScanner/BtnScannerWrapper.vue"),
+        component: () =>
+          import("src/components/barcodeScanner/BtnScannerWrapper.vue"),
+        /* component: () => import("src/components/barcodeScanner/BtnScannerDesktop.vue"), */
+      },
+      {
+        path: "barcodesearch",
+        name: "barcodesearch",
+        component: () =>
+          import("src/components/barcodeScanner/BtnScannerWrapperSearch.vue"),
         /* component: () => import("src/components/barcodeScanner/BtnScannerDesktop.vue"), */
       },
     ],
@@ -189,11 +202,13 @@ const routes = [{
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
     component: () => import("src/layouts/MainLayoutSair.vue"),
-    children: [{
-      path: "me",
-      name: "me",
-      component: () => import("pages/Me.vue"),
-    }, ],
+    children: [
+      {
+        path: "me",
+        name: "me",
+        component: () => import("pages/Me.vue"),
+      },
+    ],
     meta: {
       requiresAuth: true,
     },

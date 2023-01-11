@@ -31,7 +31,7 @@
                 color="primary"
                 icon="mdi-barcode"
                 dense
-                :to="{ name: 'barcode' }"
+                :to="{ name: 'barcodesearch' }"
               />
             </div>
 
