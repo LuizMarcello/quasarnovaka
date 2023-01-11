@@ -257,6 +257,7 @@ import {
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 /* import router from "src/router"; */
+/* Patrick incluiu aqui "useRoute" também, em 10.01.23 */
 import { useRouter, useRoute } from "vue-router";
 import { useQuasar } from "quasar";
 
@@ -297,6 +298,7 @@ export default defineComponent({
     const estoque = ref([]);
     const loading = ref(true);
     const router = useRouter();
+    /* Patrick acrescentou esta linha em 10.01.23 */
     const route = useRoute();
     /* const table = "revendas"; */
     const filter = ref("");
@@ -352,10 +354,23 @@ export default defineComponent({
       }
     };
 
+    /* Patrick modificou em 10.01.23 */
+    /* Antes: */
+    //onMounted(() => {
+    //handleListEstoque();
+    /* Copiei do Form.vue */
+    /* Este if(){} foi acrescentado pelo Patrick */
+    //if (props.barcode) {
+    //filter.value = props.barcode;
+    //}
+    //});
+
+    /* Depois */
     onMounted(async () => {
       await handleListEstoque();
       /* Copiei do Form.vue */
       /* Este if(){} foi acrescentado pelo Patrick */
+      /* Patrick alterou esta linha em 10.01.23 */
       if (route.params.barcode) {
         filter.value = route.params.barcode;
       }
@@ -366,6 +381,7 @@ export default defineComponent({
     //filter.value = value;
     //});
 
+    /* Patrick retirou(comentou) este "watchEffect" em 10.01.23 */
     // watchEffect(() => {
     //   filter.value = props.barcode;
     // });

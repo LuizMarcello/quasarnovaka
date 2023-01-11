@@ -107,10 +107,12 @@ const routes = [{
         props: true
       },
 
+      /* Patrick acrescentou "/:barcode?" em 10.01.23 */
       {
         path: "listarestoque/:barcode?",
         name: "listarestoque",
         component: () => import("pages/estoque/ListaEstoque.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
         props: true
       },
 

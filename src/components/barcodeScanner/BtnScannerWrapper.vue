@@ -44,6 +44,7 @@ export default defineComponent({
     const handleSetBarcode = (barcode) => {
       //router.push({ name: "form-estoque", params: { barcode: barcode } });
       //router.push({ name: "listarestoque", params: { barcode: barcode } });
+      /* Patrick acrescentou este "console.log" abaixo em 10.01.23 */
       console.log('barcodeWraper', barcode);
       router.push({ name: "listarestoque", params: { barcode: barcode } });
     };
