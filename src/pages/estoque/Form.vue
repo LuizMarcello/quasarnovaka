@@ -79,7 +79,7 @@
           />
 
           <q-input
-            label="Número de série"
+            label="S/N Serial number"
             v-model="form.numerodeserie"
             :rules="[
               (val) => (val && val.length > 0) || 'Informe o número de série',
@@ -87,7 +87,7 @@
           />
 
           <q-input
-            label="Part Number"
+            label="P/N Part number"
             v-model="form.partnumber"
             :rules="[
               (val) => (val && val.length > 0) || 'Informe o número de série',
@@ -95,18 +95,18 @@
           />
 
           <q-input
-            label="Endereço Mac"
+            label="M/A Mac address"
             v-model="form.mac"
             mask="NN:NN:NN:NN:NN:NN"
           />
 
-          <q-input
+          <!-- <q-input
             label="Código de barras"
             v-model="form.bar_code"
             :rules="[
               (val) => (val && val.length > 0) || 'Informe o código de barras',
             ]"
-          />
+          /> -->
 
           <q-select
             v-model="form.status"
@@ -211,10 +211,10 @@ export default defineComponent({
       datanota: "",
       status: "",
       partnumber: "",
-      bar_code: "",
+      /* bar_code: "", */
     });
 
-    
+
     onMounted(() => {
       handleListEstoque();
       if (isUpdate.value) {

@@ -215,20 +215,20 @@ const columns = [
     field: "descricao",
     sortable: true,
   },
-  /* {
+  {
     name: "numerodeserie",
     align: "left",
     label: "Número de série",
     field: "numerodeserie",
     sortable: true,
-  }, */
-  {
+  },
+ /*  {
     name: "bar_code",
     align: "left",
     label: "Código de barras",
     field: "bar_code",
     sortable: true,
-  },
+  }, */
 
   {
     name: "actions",

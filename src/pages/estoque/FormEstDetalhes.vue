@@ -42,13 +42,13 @@
             mask="NN:NN:NN:NN:NN:NN"
           />
 
-          <q-input
+          <!-- <q-input
             label="Código de barras"
             v-model="form.bar_code"
             :rules="[
               (val) => (val && val.length > 0) || 'Informe o código de barras',
             ]"
-          />
+          /> -->
 
           <div>
             <!-- <q-input

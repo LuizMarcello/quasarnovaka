@@ -12,7 +12,7 @@
         v-show="cameraStatus === 0"
       />
 
-      <!-- <q-btn
+      <q-btn
         color="primary"
         icon="mdi-barcode-off"
         label="Cadastrar manualmente"
@@ -20,7 +20,7 @@
         size="lg"
         @click="continuarsemcodigo()"
         v-show="cameraStatus === 0"
-      /> -->
+      />
 
       <q-btn
         color="primary"
