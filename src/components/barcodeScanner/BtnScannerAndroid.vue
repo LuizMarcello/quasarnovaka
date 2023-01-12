@@ -3,9 +3,10 @@
     <div class="col text-center q-pa-lg q-gutter-y-md">
       <p class="text-center">Foque a câmera no código de barras do produto</p>
       <q-btn
+        v-if="$q.platform.is.mobile"
         color="primary"
         icon="mdi-barcode-scan"
-        label="Android"
+        label="Ler Código de barras"
         class="full-width"
         size="lg"
         @click="iniciarLeitor()"
@@ -13,9 +14,10 @@
       />
 
       <q-btn
+        v-if="$q.platform.is.desktop"
         color="primary"
         icon="mdi-barcode-scan"
-        label="Desktop"
+        label="Adicionar produto"
         class="full-width"
         size="lg"
         @click="continuarsemcodigo()"

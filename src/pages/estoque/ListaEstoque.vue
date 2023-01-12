@@ -27,6 +27,7 @@
           <q-td class="q-gutter-x-md q-gutter-y-sm">
             <div>
               <q-btn
+                v-if="$q.platform.is.mobile"
                 label="Consultar código de barras"
                 color="primary"
                 icon="mdi-barcode"
@@ -94,6 +95,7 @@
             /> -->
 
             <q-btn
+              v-if="$q.platform.is.desktop"
               label="Adicionar"
               color="primary"
               icon="mdi-plus"
@@ -222,7 +224,7 @@ const columns = [
     field: "numerodeserie",
     sortable: true,
   },
- /*  {
+  /*  {
     name: "bar_code",
     align: "left",
     label: "Código de barras",
