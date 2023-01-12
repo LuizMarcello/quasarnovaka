@@ -178,8 +178,8 @@ export default defineComponent({
     barcode: {
       type: String,
       required: false,
-      default: ''
-    }
+      default: "",
+    },
   },
   components: BtnScannerAndroid,
 
@@ -211,18 +211,18 @@ export default defineComponent({
       datanota: "",
       status: "",
       partnumber: "",
-      /* bar_code: "", */
+      bar_code: "",
     });
-
 
     onMounted(() => {
       handleListEstoque();
       if (isUpdate.value) {
         handleGetEstoque(isUpdate.value);
       }
+
       /* Este if(){} foi acrescentado pelo Patrick */
       if (props.barcode) {
-        form.value.bar_code = props.barcode
+        form.value.bar_code = props.barcode;
       }
     });
 
@@ -244,7 +244,8 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-/* Obs: Depois do Patrick Retirar ??? */
+
+    /* Obs: Depois do Patrick Retirar ??? */
     /* const copcodbarras = (n) => {
       form.value.bar_code = n;
     }; */
@@ -264,6 +265,7 @@ export default defineComponent({
         bar_code: "",
       };
     };
+    
     const handleGetEstoque = async (id) => {
       try {
         estoqueee = await getById(table, id);
