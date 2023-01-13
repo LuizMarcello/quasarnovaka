@@ -296,6 +296,7 @@ export default defineComponent({
       onReset,
       model: ref(null),
       options: [],
+
       opcoesstatus: [
         "Funcionamento OK",
         "Com defeito",
