@@ -66,6 +66,16 @@
             label="Marca/Fabricante"
           />
 
+          <q-select
+            v-model="form.tipo_equipamento"
+            :rules="[
+              (val) =>
+                (val && val.length > 0) || 'Informe o tipo de equipamento',
+            ]"
+            :options="tipoequipamento"
+            label="Tipo de equipamento"
+          />
+
           <q-input
             label="Modelo"
             v-model="form.modelo"
@@ -212,6 +222,7 @@ export default defineComponent({
       status: "",
       partnumber: "",
       bar_code: "",
+      tipo_equipamento: ""
     });
 
     onMounted(() => {
@@ -263,9 +274,10 @@ export default defineComponent({
         status: "",
         partnumber: "",
         bar_code: "",
+        tipo_equipamento: ""
       };
     };
-    
+
     const handleGetEstoque = async (id) => {
       try {
         estoqueee = await getById(table, id);
@@ -302,6 +314,19 @@ export default defineComponent({
         "Intelbrás",
         "Cisco",
         "Tp-Link",
+      ],
+      tipoequipamento: [
+        "Antena",
+        "Buc",
+        "Etria",
+        "Fonte",
+        "Groove",
+        "Ilb",
+        "Ilnb",
+        "Lnb",
+        "Modem",
+        "Rádio",
+        "Roteador",
       ],
       servicos: [],
       onSubmit() {
