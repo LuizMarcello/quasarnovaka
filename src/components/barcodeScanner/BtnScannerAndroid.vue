@@ -112,7 +112,7 @@ export default {
           */
           frequency: 10,
           decoder: {
-            readers: ["ean_reader"],
+            readers: ["code_128_reader"],
             multiple: false,
             //multiple: true,
           },

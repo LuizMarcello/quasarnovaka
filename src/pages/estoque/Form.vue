@@ -178,7 +178,7 @@ import { useRouter, useRoute } from "vue-router";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 
-import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.vue";
+//import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.vue";
 
 export default defineComponent({
   nome: "PageFormEstoque",
@@ -191,7 +191,8 @@ export default defineComponent({
       default: "",
     },
   },
-  components: BtnScannerAndroid,
+  
+  //components: BtnScannerAndroid,
 
   setup(props) {
     const { supabase } = useSupabase();
@@ -222,7 +223,7 @@ export default defineComponent({
       status: "",
       partnumber: "",
       bar_code: "",
-      tipo_equipamento: ""
+      tipo_equipamento: "",
     });
 
     onMounted(() => {
@@ -274,7 +275,7 @@ export default defineComponent({
         status: "",
         partnumber: "",
         bar_code: "",
-        tipo_equipamento: ""
+        tipo_equipamento: "",
       };
     };
 
