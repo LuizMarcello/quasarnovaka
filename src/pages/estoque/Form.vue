@@ -76,17 +76,14 @@
             label="Tipo de equipamento"
           />
 
-          <q-input
-            label="Modelo"
-            v-model="form.modelo"
-            :rules="[(val) => (val && val.length > 0) || 'Informe o modelo']"
-          />
-
-          <q-input
-            label="Descrição"
-            v-model="form.descricao"
-            :rules="[(val) => (val && val.length > 0) || 'Informe a descrição']"
-          />
+          <div v-if="form.tipo_equipamento == 'Modem'">
+            <q-select
+              v-model="form.modelo"
+              :rules="[(val) => (val && val.length > 0) || 'Informe o modelo']"
+              :options="opcoesmodelo"
+              label="Modelo"
+            />
+          </div>
 
           <q-input
             label="S/N Serial number"
@@ -123,6 +120,8 @@
             :options="opcoesstatus"
             label="Status"
           />
+
+          <q-input label="Observação" v-model="form.observacao" />
         </div>
 
         <!-- <div
@@ -191,7 +190,7 @@ export default defineComponent({
       default: "",
     },
   },
-  
+
   //components: BtnScannerAndroid,
 
   setup(props) {
@@ -215,7 +214,7 @@ export default defineComponent({
     const form = ref({
       marca: "",
       modelo: "",
-      descricao: "",
+      observacao: "",
       numerodeserie: "",
       mac: "",
       notafiscal: "",
@@ -267,7 +266,7 @@ export default defineComponent({
       form.value = {
         marca: "",
         modelo: "",
-        descricao: "",
+        observacao: "",
         numerodeserie: "",
         mac: "",
         notafiscal: "",
@@ -305,6 +304,15 @@ export default defineComponent({
         "Na Bentley",
         "No cliente",
       ],
+
+      opcoesmodelo: [
+        "HT-2010",
+        "NewTec",
+        "SurfBeam-2",
+        "Gemini S2X",
+        "IQ Series",
+      ],
+
       opcoesmarca: [
         "Gilat",
         "Viasat",
@@ -317,19 +325,20 @@ export default defineComponent({
         "Cisco",
         "Tp-Link",
       ],
+
       tipoequipamento: [
         "Antena",
         "Buc",
+        "Modem",
         "Etria",
         "Fonte",
         "Groove",
         "Ilb",
-        "Ilnb",
         "Lnb",
-        "Modem",
         "Rádio",
         "Roteador",
       ],
+
       servicos: [],
       onSubmit() {
         if (accept.value !== true) {

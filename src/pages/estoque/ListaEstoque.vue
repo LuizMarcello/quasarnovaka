@@ -211,10 +211,10 @@ const columns = [
     sortable: true,
   },
   {
-    name: "descricao",
+    name: "observacao",
     align: "left",
-    label: "Descrição",
-    field: "descricao",
+    label: "Observação",
+    field: "observacao",
     sortable: true,
   },
   {
@@ -343,7 +343,7 @@ export default defineComponent({
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${estoque.descricao} ?`,
+          message: `Tem certeza que quer deletar ${estoque.marca} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {

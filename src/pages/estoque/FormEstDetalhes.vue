@@ -25,7 +25,7 @@
 
           <q-input label="Modelo" v-model="form.modelo" readonly />
 
-          <q-input label="Descrição" v-model="form.descricao" readonly />
+          <q-input label="Observação" v-model="form.observacao" readonly />
 
           <q-input
             label="Número de série"
@@ -137,7 +137,7 @@ export default defineComponent({
     const form = ref({
       marca: "",
       modelo: "",
-      descricao: "",
+      observacao: "",
       numerodeserie: "",
       mac: "",
       notafiscal: "",
