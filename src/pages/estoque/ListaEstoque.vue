@@ -204,19 +204,28 @@ const columns = [
   },
 
   {
+    name: "tipo_equipamento",
+    align: "left",
+    label: "Tipo de equipamento",
+    field: "tipo_equipamento",
+    sortable: true,
+  },
+
+  {
     name: "modelo",
     align: "left",
     label: "Modelo",
     field: "modelo",
     sortable: true,
   },
-  {
+  /* {
     name: "observacao",
     align: "left",
     label: "Observação",
     field: "observacao",
     sortable: true,
-  },
+  }, */
+
   {
     name: "numerodeserie",
     align: "left",
@@ -352,7 +361,6 @@ export default defineComponent({
           handleListEstoque();
         });
       } catch (error) {
-
         notifyError(error.message);
       }
     };
