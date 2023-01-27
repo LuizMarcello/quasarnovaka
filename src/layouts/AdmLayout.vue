@@ -80,9 +80,18 @@
             </q-item-section>
           </q-item>
 
-          <q-item to="/listarclientes" exact>
+          <!-- <q-item to="/listarclientes" exact>
             <q-item-section avatar>
-              <!-- <q-icon name="list_alt" /> -->
+              <q-icon name="mdi-face-agent" />
+            </q-item-section>
+            <q-item-section
+              ><q-item-label>Clientes</q-item-label>
+              <q-item-label caption>Clientes cadastrados</q-item-label>
+            </q-item-section>
+          </q-item> -->
+
+          <q-item to="/inicioclientes" exact>
+            <q-item-section avatar>
               <q-icon name="mdi-face-agent" />
             </q-item-section>
             <q-item-section

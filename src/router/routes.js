@@ -52,6 +52,11 @@ const routes = [
         name: "listarclientes",
         component: () => import("pages/clientes/ListaClientes.vue"),
       },
+      {
+        path: "inicioclientes",
+        name: "inicioclientes",
+        component: () => import("pages/clientes/InicioClientes.vue"),
+      },
       /* {
         path: "form-clientes",
         name: "form-clientes",
