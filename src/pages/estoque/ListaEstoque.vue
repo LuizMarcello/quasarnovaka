@@ -212,6 +212,7 @@ const columns = [
   },
 
   {
+    
     name: "modelo",
     align: "left",
     label: "Modelo",
