@@ -105,7 +105,6 @@ export default defineComponent({
       } catch (error) {
         notifyError(error.message);
       }
-      console.log(ativosTotal);
     };
 
     const handleStatusAguardando = async () => {
@@ -139,10 +138,10 @@ export default defineComponent({
     //ativosInativos.value = "???";
 
     onMounted(() => {
-      handleStatusTotal;
-      handleStatusAguardando;
-      handleStatusAtivos;
-      handleStatusInativos;
+      handleStatusTotal,
+      handleStatusAguardando,
+      handleStatusAtivos,
+      handleStatusInativos
     });
 
     //console.log(ativosTotal);
