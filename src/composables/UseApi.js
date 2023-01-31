@@ -68,6 +68,8 @@ export default function useApi() {
       count: "exact",
     });
     if (error) throw error;
+    return count;
+
   };
 
   const statusAtivo = async (table) => {
@@ -81,6 +83,7 @@ export default function useApi() {
       })
       .gt("views", 1000);
     if (error) throw error;
+    return count;
   };
 
   const statusAguardando = async (table) => {
@@ -94,6 +97,7 @@ export default function useApi() {
       })
       .gt("views", 1000);
     if (error) throw error;
+    return count;
   };
 
   const statusInativo = async (table) => {
@@ -107,6 +111,7 @@ export default function useApi() {
       })
       .gt("views", 1000);
     if (error) throw error;
+    return count;
   };
 
   return {

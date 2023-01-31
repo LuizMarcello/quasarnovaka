@@ -79,6 +79,11 @@ import { useQuasar } from "quasar";
 
 export default defineComponent({
   setup() {
+    const ativosTotal = ref(0);
+    const ativosAguardando = ref(0);
+    const ativosAtivos = ref(0);
+    const ativosInativos = ref(0);
+
     const router = useRouter();
 
     //const { supabase } = useSupabase();
@@ -89,11 +94,6 @@ export default defineComponent({
 
     const { statusTotal, statusAguardando, statusAtivo, statusInativo } =
       useApi();
-
-    const ativosTotal = ref(0);
-    const ativosAguardando = ref(0);
-    const ativosAtivos = ref(0);
-    const ativosInativos = ref(0);
 
     function linkClick(e, go) {
       e.preventDefault(); // we choose when we navigate
@@ -138,10 +138,10 @@ export default defineComponent({
     //ativosInativos.value = "???";
 
     onMounted(() => {
-      handleStatusTotal();
-      handleStatusAguardando();
-      handleStatusAtivos();
-      handleStatusInativos();
+      handleStatusTotal;
+      handleStatusAguardando;
+      handleStatusAtivos;
+      handleStatusInativos;
     });
 
     return {
