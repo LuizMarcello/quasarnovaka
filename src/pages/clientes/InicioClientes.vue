@@ -137,15 +137,22 @@ export default defineComponent({
     //ativosAtivos.value = "???";
     //ativosInativos.value = "???";
 
-    /* onMounted(() => {
-      handleStatus();
-    }); */
+    onMounted(() => {
+      handleStatusTotal();
+      handleStatusAguardando();
+      handleStatusAtivos();
+      handleStatusInativos();
+    });
 
     return {
       handleStatusTotal,
       handleStatusAguardando,
       handleStatusAtivos,
       handleStatusInativos,
+      ativosTotal,
+      ativosAguardando,
+      ativosAtivos,
+      ativosInativos,
     };
   },
 });
