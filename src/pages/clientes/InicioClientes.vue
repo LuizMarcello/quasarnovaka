@@ -138,10 +138,10 @@ export default defineComponent({
     //ativosInativos.value = "???";
 
     onMounted(() => {
-      handleStatusTotal,
-      handleStatusAguardando,
-      handleStatusAtivos,
-      handleStatusInativos
+      handleStatusTotal;
+      handleStatusAguardando;
+      handleStatusAtivos;
+      handleStatusInativos;
     });
 
     //console.log(ativosTotal);
