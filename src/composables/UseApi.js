@@ -66,10 +66,9 @@ export default function useApi() {
   const statusTotal = async (table) => {
     const { error, data, count } = await supabase.from(table).select("*", {
       count: "exact",
+      head: true,
     });
     if (error) throw error;
-    return count;
-
   };
 
   const statusAtivo = async (table) => {
@@ -77,13 +76,13 @@ export default function useApi() {
       .from(table)
       .select("*", {
         count: "exact",
+        head: true,
       })
       .match({
         status: "Ativo",
       })
       .gt("views", 1000);
     if (error) throw error;
-    return count;
   };
 
   const statusAguardando = async (table) => {
@@ -91,13 +90,13 @@ export default function useApi() {
       .from(table)
       .select("*", {
         count: "exact",
+        head: true,
       })
       .match({
         status: "Aguardando",
       })
       .gt("views", 1000);
     if (error) throw error;
-    return count;
   };
 
   const statusInativo = async (table) => {
@@ -105,13 +104,13 @@ export default function useApi() {
       .from(table)
       .select("*", {
         count: "exact",
+        head: true,
       })
       .match({
         status: "Inativo",
       })
       .gt("views", 1000);
     if (error) throw error;
-    return count;
   };
 
   return {
