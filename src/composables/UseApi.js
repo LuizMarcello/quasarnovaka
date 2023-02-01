@@ -69,6 +69,7 @@ export default function useApi() {
       head: true,
     });
     if (error) throw error;
+    return count;
   };
 
   const statusAtivo = async (table) => {
