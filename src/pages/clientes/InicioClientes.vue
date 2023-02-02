@@ -131,11 +131,7 @@ export default defineComponent({
       }
     };
 
-    /* Duvida aqui */
-    //ativosTotal.value = "???";
-    //ativosAguardando.value = "???";
-    //ativosAtivos.value = "???";
-    //ativosInativos.value = "???";
+    //console.log(ativosTotal);
 
     onMounted(() => {
       handleStatusTotal();
@@ -156,6 +152,8 @@ export default defineComponent({
       ativosAtivos,
       ativosInativos,
     };
+
+
   },
 });
 </script>
