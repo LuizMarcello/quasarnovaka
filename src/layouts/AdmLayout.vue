@@ -39,48 +39,51 @@
 
     <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered> -->
     <!-- Sem a opção "show-if-above", ele inicia com o menu recolhido -->
-    <q-drawer v-model="leftDrawerOpen" bordered>
-      <q-list>
-        <q-item-label header>
-          <!-- Essential Links -->
-          <strong>Administração</strong>
-          <p>{{ user.user_metadata.name }}</p>
-        </q-item-label>
+    <q-drawer v-model="leftDrawerOpen" behavior="mobile" bordered>
 
-        <q-list bordered separator>
-          <q-item to="/Home" exact>
-            <q-item-section avatar>
-              <q-icon name="mdi-home" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Home</q-item-label>
-              <q-item-label caption>Voltar a home</q-item-label>
-            </q-item-section>
-          </q-item>
+    <!-- <q-drawer v-model="leftDrawerOpen" :width="200" behavior="mobile" bordered> -->
+      <q-scroll-area class="fit">
+        <q-list>
+          <q-item-label header>
+            <!-- Essential Links -->
+            <strong>Administração</strong>
+            <p>{{ user.user_metadata.name }}</p>
+          </q-item-label>
 
-          <q-item to="charts" exact>
-            <q-item-section avatar>
-              <!-- <q-icon name="home" /> -->
-              <q-icon name="mdi-chart-sankey" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label>Charts</q-item-label>
-              <q-item-label caption>Nossos graficos</q-item-label>
-            </q-item-section>
-          </q-item>
+          <q-list bordered separator>
+            <q-item to="/Home" exact>
+              <q-item-section avatar>
+                <q-icon name="mdi-home" />
+              </q-item-section>
+              <q-item-section
+                ><q-item-label>Home</q-item-label>
+                <q-item-label caption>Voltar a home</q-item-label>
+              </q-item-section>
+            </q-item>
 
-          <q-item to="/listarrevendas" exact>
-            <q-item-section avatar>
-              <!-- <q-icon name="list_alt" /> -->
-              <q-icon name="mdi-handshake-outline" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Revendas</q-item-label>
-              <q-item-label caption>Revendas cadastradas</q-item-label>
-            </q-item-section>
-          </q-item>
+            <q-item to="charts" exact>
+              <q-item-section avatar>
+                <!-- <q-icon name="home" /> -->
+                <q-icon name="mdi-chart-sankey" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Charts</q-item-label>
+                <q-item-label caption>Nossos graficos</q-item-label>
+              </q-item-section>
+            </q-item>
 
-          <!-- <q-item to="/listarclientes" exact>
+            <q-item to="/listarrevendas" exact>
+              <q-item-section avatar>
+                <!-- <q-icon name="list_alt" /> -->
+                <q-icon name="mdi-handshake-outline" />
+              </q-item-section>
+              <q-item-section
+                ><q-item-label>Revendas</q-item-label>
+                <q-item-label caption>Revendas cadastradas</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <!-- <q-item to="/listarclientes" exact>
             <q-item-section avatar>
               <q-icon name="mdi-face-agent" />
             </q-item-section>
@@ -90,28 +93,28 @@
             </q-item-section>
           </q-item> -->
 
-          <q-item to="/inicioclientes" exact>
-            <q-item-section avatar>
-              <q-icon name="mdi-face-agent" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Clientes</q-item-label>
-              <q-item-label caption>Clientes cadastrados</q-item-label>
-            </q-item-section>
-          </q-item>
+            <q-item to="/inicioclientes" exact>
+              <q-item-section avatar>
+                <q-icon name="mdi-face-agent" />
+              </q-item-section>
+              <q-item-section
+                ><q-item-label>Clientes</q-item-label>
+                <q-item-label caption>Clientes cadastrados</q-item-label>
+              </q-item-section>
+            </q-item>
 
-          <q-item to="/listarestoque" exact>
-            <q-item-section avatar>
-              <!-- <q-icon name="list_alt" /> -->
-              <q-icon name="mdi-router-wireless-settings" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Estoque</q-item-label>
-              <q-item-label caption>Controle de estoque</q-item-label>
-            </q-item-section>
-          </q-item>
+            <q-item to="/listarestoque" exact>
+              <q-item-section avatar>
+                <!-- <q-icon name="list_alt" /> -->
+                <q-icon name="mdi-router-wireless-settings" />
+              </q-item-section>
+              <q-item-section
+                ><q-item-label>Estoque</q-item-label>
+                <q-item-label caption>Controle de estoque</q-item-label>
+              </q-item-section>
+            </q-item>
 
-          <!-- <q-item to="/form" exact>
+            <!-- <q-item to="/form" exact>
             <q-item-section avatar>
               <q-icon name="list_alt" />
             </q-item-section>
@@ -121,13 +124,14 @@
             </q-item-section>
           </q-item> -->
 
-          <EssentialLink
-            v-for="link in essentialLinks"
-            :key="link.title"
-            v-bind="link"
-          />
+            <EssentialLink
+              v-for="link in essentialLinks"
+              :key="link.title"
+              v-bind="link"
+            />
+          </q-list>
         </q-list>
-      </q-list>
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
@@ -167,7 +171,7 @@ export default defineComponent({
         message: "Deseja realmente fazer logout ?",
         /* Botão de cancelar como ativo */
         cancel: true,
-        /* Se clicar fora dfo dialog, a mensagem não desaparece */
+        /* Se clicar fora do dialog, a mensagem não desaparece */
         persistent: true,
         /* "onOk" Se realmente apertar o "OK", fará o logout */
       }).onOk(async () => {
@@ -181,6 +185,10 @@ export default defineComponent({
       });
     };
     return {
+      /* dialog: ref(false),
+      drawerLeft: ref(false),
+      drawerRight: ref(false), */
+
       user,
       essentialLinks: linksList,
       leftDrawerOpen,

@@ -12,22 +12,41 @@
       <q-icon name="mdi-human-male-female" />
     </q-btn>
   </div>
-  <div style="margin-left: 30%; margin-right: 30%; text-align: center">
-    <q-card class="my-card text-white" style="background: blue">
-      <q-card-section>
-        <div class="text-h6">Total de clientes novaka</div>
-      </q-card-section>
 
-      <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
-      </q-card-section>
+  <div style="margin-left: 30%; margin-right: 30%; text-align: center">
+
+    <q-card class="my-card text-white" style="background: blue">
+
+      <div class="flex-container">
+
+        <div>
+          <q-card-section>
+            <div class="text-h6">Total de clientes novaka</div>
+          </q-card-section>
+
+          <q-card-section class="q-pt-none">
+            <div class="text-h5">{{ ativosTotal }}</div>
+          </q-card-section>
+        </div>
+
+        <div>
+          <q-card-section>
+            <q-icon name="img:clientesss.jpg" size="85px" />
+          </q-card-section>
+        </div>
+
+      </div>
+      
     </q-card>
 
     <br />
 
     <q-card class="my-card text-white" style="background: green">
       <q-card-section class="">
-        <div class="text-h6">Total ativos</div>
+        <div class="text-h6">
+          Ativos
+          <i class="fa-solid fa-user"></i>
+        </div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
@@ -39,7 +58,10 @@
 
     <q-card class="my-card text-white" style="background: #0d084f">
       <q-card-section>
-        <div class="text-h6">Total Inativos</div>
+        <div class="text-h6">
+          Inativos
+          <i class="fa-solid fa-user-large-slash"></i>
+        </div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
@@ -51,7 +73,10 @@
 
     <q-card class="my-card text-white" style="background: #0d084f">
       <q-card-section>
-        <div class="text-h6">Total Aguardando</div>
+        <div class="text-h6">
+          Aguardando
+          <i class="fa-regular fa-hourglass"></i>
+        </div>
       </q-card-section>
 
       <q-card-section class="q-pt-none">
@@ -135,9 +160,9 @@ export default defineComponent({
 
     onMounted(() => {
       handleStatusTotal();
-      handleStatusAguardando;
-      handleStatusAtivos;
-      handleStatusInativos;
+      handleStatusAguardando();
+      handleStatusAtivos();
+      handleStatusInativos();
     });
 
     //console.log(ativosTotal);
@@ -152,8 +177,13 @@ export default defineComponent({
       ativosAtivos,
       ativosInativos,
     };
-
-
   },
 });
 </script>
+
+<style scoped>
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+</style>

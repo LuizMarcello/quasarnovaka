@@ -142,13 +142,13 @@ const columns = [
     field: "ie_rg",
     sortable: true,
   }, */
-  {
+  /* {
     name: "cnpj",
     align: "left",
     label: "CNPJ",
     field: "cnpj",
     sortable: true,
-  },
+  }, */
   /* {
     name: "dataadesao",
     align: "left",
@@ -156,13 +156,13 @@ const columns = [
     field: "dataadesao",
     sortable: true,
   }, */
-  {
+  /* {
     name: "nome_contato",
     align: "left",
     label: "Nome do contato",
     field: "nome_contato",
     sortable: true,
-  },
+  }, */
   /* {
     name: "celular",
     align: "left",
@@ -198,13 +198,7 @@ const columns = [
     field: "chave",
     sortable: true,
   }, */
-  /* {
-    name: "status",
-    align: "left",
-    label: "Status",
-    field: "status",
-    sortable: true,
-  }, */
+
   /* {
     name: "formapagamento",
     align: "left",
@@ -282,6 +276,13 @@ const columns = [
     align: "left",
     label: "Serviços já prestados",
     field: "servicos",
+    sortable: true,
+  },
+  {
+    name: "status",
+    align: "left",
+    label: "Status",
+    field: "status",
     sortable: true,
   },
   {
