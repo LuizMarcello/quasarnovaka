@@ -14,14 +14,11 @@
   </div>
 
   <div style="margin-left: 30%; margin-right: 30%; text-align: center">
-
     <q-card class="my-card text-white" style="background: blue">
-
       <div class="flex-container">
-
-        <div>
+        <div style="margin-left: 4%">
           <q-card-section>
-            <div class="text-h6">Total de clientes novaka</div>
+            <div class="text-h6">Total</div>
           </q-card-section>
 
           <q-card-section class="q-pt-none">
@@ -29,59 +26,93 @@
           </q-card-section>
         </div>
 
-        <div>
+        <div class="col">
           <q-card-section>
-            <q-icon name="img:clientesss.jpg" size="85px" />
+            <q-card-media
+              ><q-img src="~assets/clientes050223.jpg"></q-img
+            ></q-card-media>
           </q-card-section>
         </div>
-
       </div>
-      
     </q-card>
 
     <br />
 
     <q-card class="my-card text-white" style="background: green">
-      <q-card-section class="">
-        <div class="text-h6">
-          Ativos
-          <i class="fa-solid fa-user"></i>
-        </div>
-      </q-card-section>
+      <div class="flex-container">
+        <div style="margin-left: 4%">
+          <q-card-section>
+            <div class="text-h6">
+              Ativos
+              <!-- <i class="fa-solid fa-user"></i> -->
+            </div>
+          </q-card-section>
 
-      <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosAtivos }}</div>
-      </q-card-section>
+          <q-card-section class="q-pt-none">
+            <div class="text-h5">{{ ativosAtivos }}</div>
+          </q-card-section>
+        </div>
+
+        <div class="col">
+          <q-card-section>
+            <q-card-media
+              ><q-img src="~assets/clientes050223.jpg"></q-img
+            ></q-card-media>
+          </q-card-section>
+        </div>
+      </div>
     </q-card>
 
     <br />
 
-    <q-card class="my-card text-white" style="background: #0d084f">
-      <q-card-section>
-        <div class="text-h6">
-          Inativos
-          <i class="fa-solid fa-user-large-slash"></i>
-        </div>
-      </q-card-section>
+    <q-card class="my-card text-white" style="background: green">
+      <div class="flex-container">
+        <div style="margin-left: 3%">
+          <q-card-section>
+            <div class="text-h6">
+              Inativos
+              <!-- <i class="fa-solid fa-user"></i> -->
+            </div>
+          </q-card-section>
 
-      <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosInativos }}</div>
-      </q-card-section>
+          <q-card-section class="q-pt-none">
+            <div class="text-h5">{{ ativosInativos }}</div>
+          </q-card-section>
+        </div>
+        <div class="col">
+          <q-card-section>
+            <q-card-media style="padding: 5%"
+              ><q-img src="~assets/clientes050223.jpg"></q-img
+            ></q-card-media>
+          </q-card-section>
+        </div>
+      </div>
     </q-card>
 
     <br />
 
-    <q-card class="my-card text-white" style="background: #0d084f">
-      <q-card-section>
-        <div class="text-h6">
-          Aguardando
-          <i class="fa-regular fa-hourglass"></i>
-        </div>
-      </q-card-section>
+    <q-card class="my-card text-white" style="background: green">
+      <div class="flex-container">
+        <div>
+          <q-card-section>
+            <div class="text-h6">
+              Aguardando
+              <!-- <i class="fa-solid fa-user"></i> -->
+            </div>
+          </q-card-section>
 
-      <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosAguardando }}</div>
-      </q-card-section>
+          <q-card-section class="q-pt-none">
+            <div class="text-h5">{{ ativosAguardando }}</div>
+          </q-card-section>
+        </div>
+        <div class="col">
+          <q-card-section>
+            <q-card-media
+              ><q-img src="~assets/clientes050223.jpg"></q-img
+            ></q-card-media>
+          </q-card-section>
+        </div>
+      </div>
     </q-card>
   </div>
 
@@ -186,4 +217,11 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
 }
+
+@media only screen and (max-width: 600px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
 </style>

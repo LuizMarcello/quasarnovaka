@@ -11,21 +11,35 @@
           label="Email"
           v-model="form.email"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Por favor, digite seu email']"
+          :rules="[
+            (val) => (val && val.length > 0) || 'Por favor, digite seu email',
+          ]"
           type="email"
           outlined
           rounded
         />
+
         <!-- <q-input label="Password" v-model="form.password" /> -->
         <!-- <q-input label="Password" v-model="form.password" outlined /> -->
         <q-input
-          label="Password"
           v-model="form.password"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Por favor, digite sua senha']"
+          :rules="[
+            (val) => (val && val.length > 0) || 'Por favor, digite sua senha',
+          ]"
+          :type="isPwd ? 'password' : 'text'"
+          label="Password"
           outlined
           rounded
-        />
+        >
+          <template v-slot:append>
+            <q-icon
+              :name="isPwd ? 'visibility_off' : 'visibility'"
+              class="cursor-pointer"
+              @click="isPwd = !isPwd"
+            />
+          </template>
+        </q-input>
 
         <div class="full-width q-pt-md">
           <q-btn
@@ -81,6 +95,7 @@ import useAuthUser from "src/composables/UseAuthUser";
 import useNotify from "src/composables/UseNotify";
 /* Para redicionar para algumas rotas */
 import { useRouter } from "vue-router";
+import { GoTrueClient } from "@supabase/gotrue-js";
 
 export default defineComponent({
   name: "PageLogin",
@@ -120,9 +135,9 @@ export default defineComponent({
       }
     };
 
-    return { form, handleLogin };
+    return { form, handleLogin, password: ref(""), isPwd: ref(), };
   },
 });
 </script>
 
-<style></style>
+<style scoped></style>
