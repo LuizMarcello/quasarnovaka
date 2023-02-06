@@ -8,14 +8,17 @@
         <div class="row" v-if="isUpdate" style="display: inline-block">
           <p class="text-h6">Histórico do produto</p>
           <div class="col">
+            <q-input label="ID" v-model="form.id" readonly />
+          </div>
+          <div class="col">
             <q-input label="Marca" v-model="form.marca" readonly />
           </div>
-          <div class="col">
+          <div class="col" style="margin-bottom: 7%">
             <q-input label="Modelo" v-model="form.modelo" readonly />
           </div>
-          <div class="col">
+          <!-- <div class="col">
             <q-input label="Descrição" v-model="form.descricao" readonly />
-          </div>
+          </div> -->
         </div>
       </div>
 

@@ -196,6 +196,14 @@ import jsPDF from "jspdf";
 
 const columns = [
   {
+    name: "id",
+    align: "left",
+    label: "ID",
+    field: "id",
+    sortable: true,
+  },
+
+  {
     name: "marca",
     align: "left",
     label: "Marca/Fabricante",
@@ -212,7 +220,6 @@ const columns = [
   },
 
   {
-    
     name: "modelo",
     align: "left",
     label: "Modelo",

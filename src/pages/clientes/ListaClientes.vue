@@ -129,6 +129,13 @@ import jsPDF from "jspdf";
 
 const columns = [
   {
+    name: "id",
+    align: "left",
+    label: "ID",
+    field: "id",
+    sortable: true,
+  },
+  {
     name: "razaosocial",
     align: "left",
     label: "Razão social*",

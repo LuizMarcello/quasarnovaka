@@ -13,6 +13,7 @@
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
+          <q-input label="Id" v-model="form.id" readonly />
           <q-input label="Nota fiscal" v-model="form.notafiscal" readonly />
           <q-input
             label="Data da nota"

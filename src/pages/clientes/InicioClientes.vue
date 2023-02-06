@@ -81,7 +81,7 @@
         </div>
         <div class="col">
           <q-card-section>
-            <q-card-media style="padding: 5%"
+            <q-card-media
               ><q-img src="~assets/clientes050223.jpg"></q-img
             ></q-card-media>
           </q-card-section>

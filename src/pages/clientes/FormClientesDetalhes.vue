@@ -5,6 +5,14 @@
       <div class="col-12 text-center">
         <p class="text-h6">Formulário de clientes</p>
       </div>
+      <q-btn
+        label="Voltar"
+        color="primary"
+        class="full-width"
+        rounded
+        flat
+        :to="{ name: 'listarclientes' }"
+      />
 
       <q-form
         class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md"
@@ -13,6 +21,7 @@
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
+          <q-input label="ID" v-model="form.id" readonly />
           <!-- ok -->
           <q-input label="Razão social" v-model="form.razaosocial" readonly />
           <!-- ok -->
