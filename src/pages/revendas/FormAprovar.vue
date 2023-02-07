@@ -31,7 +31,7 @@
           />
 
           <q-input type="date" stack-label label="Em:" v-model="form.dataalteracaostatus" readonly />
-          
+
           <q-input label="Obs:" v-model="form.obs" autogrow />
         </div>
         <q-btn
@@ -47,7 +47,7 @@
           color="primary"
           class="full-width"
           flat
-          :to="{ name: 'listarrevendas' }"
+          :to="{ name: 'listarevendas' }"
           size="sm"
         ></q-btn>
       </q-form>

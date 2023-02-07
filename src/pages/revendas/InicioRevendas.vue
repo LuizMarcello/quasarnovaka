@@ -4,8 +4,8 @@
     style="display: flex; justify-content: center; text-align: center"
   >
     <q-btn
-      to="/listarclientes"
-      label="Listar todos clientes"
+      to="/listarevendas"
+      label="Listar todas revendas"
       exact
       style="background: #0d084f; color: white; width: 41%"
     >
@@ -16,9 +16,9 @@
   <div style="margin-left: 30%; margin-right: 30%; text-align: center">
     <q-card class="my-card text-white" style="background: blue">
       <div class="flex-container">
-        <div style="margin-left: 4%">
+        <div class="col" style="margin-left: 4%">
           <q-card-section>
-            <div class="text-h6">Total</div>
+            <div class="text-h6">Aprovadas</div>
           </q-card-section>
 
           <q-card-section class="q-pt-none">
@@ -29,7 +29,12 @@
         <div class="col">
           <q-card-section>
             <q-card-media
-              ><q-img src="~assets/clientes050223.jpg"></q-img
+              ><q-img
+                src="~assets/revendas_2_06.02.23.png"
+                style="max-width: 60px; height: 60px"
+                :fit="fill"
+              >
+              </q-img
             ></q-card-media>
           </q-card-section>
         </div>
@@ -40,10 +45,10 @@
 
     <q-card class="my-card text-white" style="background: green">
       <div class="flex-container">
-        <div style="margin-left: 4%">
+        <div class="col" style="margin-left: 4%">
           <q-card-section>
             <div class="text-h6">
-              Ativos
+              Reprovadas
               <!-- <i class="fa-solid fa-user"></i> -->
             </div>
           </q-card-section>
@@ -56,7 +61,12 @@
         <div class="col">
           <q-card-section>
             <q-card-media
-              ><q-img src="~assets/clientes050223.jpg"></q-img
+              ><q-img
+                src="~assets/revendas_2_06.02.23.png"
+                style="max-width: 60px; height: 60px"
+                :fit="fill"
+              >
+              </q-img
             ></q-card-media>
           </q-card-section>
         </div>
@@ -67,10 +77,10 @@
 
     <q-card class="my-card text-white" style="background: green">
       <div class="flex-container">
-        <div style="margin-left: 3%">
+        <div class="col" style="margin-left: 3%">
           <q-card-section>
             <div class="text-h6">
-              Inativos
+              Pendências
               <!-- <i class="fa-solid fa-user"></i> -->
             </div>
           </q-card-section>
@@ -82,7 +92,12 @@
         <div class="col">
           <q-card-section>
             <q-card-media
-              ><q-img src="~assets/clientes050223.jpg"></q-img
+              ><q-img
+                src="~assets/revendas_2_06.02.23.png"
+                style="max-width: 60px; height: 60px"
+                :fit="fill"
+              >
+              </q-img
             ></q-card-media>
           </q-card-section>
         </div>
@@ -93,7 +108,7 @@
 
     <q-card class="my-card text-white" style="background: green">
       <div class="flex-container">
-        <div>
+        <div class="col" style="margin-left: 3%">
           <q-card-section>
             <div class="text-h6">
               Aguardando
@@ -108,12 +123,19 @@
         <div class="col">
           <q-card-section>
             <q-card-media
-              ><q-img src="~assets/clientes050223.jpg"></q-img
+              ><q-img
+                src="~assets/revendas_2_06.02.23.png"
+                style="max-width: 60px; height: 60px"
+                :fit="fill"
+              >
+              </q-img
             ></q-card-media>
           </q-card-section>
         </div>
       </div>
     </q-card>
+
+    <br />
   </div>
 
   <q-page-container>
@@ -207,7 +229,7 @@ export default defineComponent({
       ativosAguardando,
       ativosAtivos,
       ativosInativos,
-      
+      fitModes: ["cover", "fill", "contain", "none", "scale-down"],
     };
   },
 });
@@ -224,5 +246,4 @@ export default defineComponent({
     flex-direction: column;
   }
 }
-
 </style>

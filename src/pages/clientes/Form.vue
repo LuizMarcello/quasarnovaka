@@ -5,6 +5,14 @@
       <div class="col-12 text-center">
         <p class="text-h6">Formulário de clientes</p>
       </div>
+      <q-btn
+            label="Voltar"
+            color="primary"
+            class="full-width q-gutter-y-sm"
+            rounded
+            flat
+            :to="{ name: 'listarclientes' }"
+          />
 
       <q-form
         class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md"
