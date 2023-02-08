@@ -125,12 +125,10 @@
 /* "defineComponent": Porque é vuejs 3 */
 import { defineComponent, ref, onMounted } from "vue";
 
-//import useSupabase from "src/boot/supabase";
-
 import useApi from "src/composables/UseApi";
 
 /* import router from "src/router"; */
-import { useRouter } from "vue-router";
+/* import { useRouter } from "vue-router"; */
 import { useQuasar } from "quasar";
 
 export default defineComponent({
@@ -140,12 +138,8 @@ export default defineComponent({
     const ativosAtivos = ref(0);
     const ativosInativos = ref(0);
 
-    const router = useRouter();
-
-    //const { supabase } = useSupabase();
-
-    //const table = "clientes";
-
+   /*  const router = useRouter(); */
+    
     const $q = useQuasar();
 
     const { statusTotal, statusAguardando, statusAtivo, statusInativo } =
@@ -207,7 +201,7 @@ export default defineComponent({
       ativosAguardando,
       ativosAtivos,
       ativosInativos,
-      
+
     };
   },
 });
