@@ -139,6 +139,11 @@ const routes = [
         name: "register",
         component: () => import("pages/Register.vue"),
       },
+      {
+        path: "inicioestoque",
+        name: "inicioestoque",
+        component: () => import("pages/estoque/InicioEstoque.vue"),
+      },
     ],
     meta: {
       requiresAuth: true,

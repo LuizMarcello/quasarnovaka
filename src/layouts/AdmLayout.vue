@@ -103,7 +103,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item to="/listarestoque" exact>
+            <q-item to="/inicioestoque" exact>
               <q-item-section avatar>
                 <!-- <q-icon name="list_alt" /> -->
                 <q-icon name="mdi-router-wireless-settings" />

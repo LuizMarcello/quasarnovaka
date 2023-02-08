@@ -123,7 +123,7 @@
         direction-links
       />
     </div>
-    
+
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <q-btn
         class="mobile-only"
@@ -147,7 +147,19 @@
         :to="{ name: 'form-revendas' }"
       />
     </q-page-sticky>
+<br>
+    <q-btn
+          label="Voltar"
+          color="primary"
+          class="full-width"
+          rounded
+          size="sm"
+          flat
+          :to="{ name: 'iniciorevendas' }"
+        />
   </q-page>
+
+
 </template>
 
 <script>
@@ -155,6 +167,13 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const columns = [
+{
+    name: "id",
+    align: "left",
+    label: "ID",
+    field: "id",
+    sortable: true,
+  },
   {
     name: "status",
     align: "left",

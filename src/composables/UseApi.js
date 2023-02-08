@@ -114,6 +114,62 @@ export default function useApi() {
     return count;
   };
 
+  const revendasAprovadas = async (table) => {
+    const { error, data, count } = await supabase
+      .from(table)
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .match({
+        status: "Aprovado",
+      });
+    if (error) throw error;
+    return count;
+  };
+
+  const revendasReprovadas = async (table) => {
+    const { error, data, count } = await supabase
+      .from(table)
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .match({
+        status: "Não Aprovado",
+      });
+    if (error) throw error;
+    return count;
+  };
+
+  const revendasAguardando = async (table) => {
+    const { error, data, count } = await supabase
+      .from(table)
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .match({
+        status: "Aguardando",
+      });
+    if (error) throw error;
+    return count;
+  };
+
+  const revendasPendencia = async (table) => {
+    const { error, data, count } = await supabase
+      .from(table)
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .match({
+        status: "Com pendências",
+      });
+    if (error) throw error;
+    return count;
+  };
+
   return {
     list,
     getById,
@@ -125,5 +181,9 @@ export default function useApi() {
     statusAtivo,
     statusAguardando,
     statusInativo,
+    revendasAprovadas,
+    revendasReprovadas,
+    revendasAguardando,
+    revendasPendencia
   };
 }

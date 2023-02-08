@@ -22,7 +22,7 @@
           </q-card-section>
 
           <q-card-section class="q-pt-none">
-            <div class="text-h5">{{ ativosTotal }}</div>
+            <div class="text-h5">{{ ativosAprovado }}</div>
           </q-card-section>
         </div>
 
@@ -54,7 +54,7 @@
           </q-card-section>
 
           <q-card-section class="q-pt-none">
-            <div class="text-h5">{{ ativosAtivos }}</div>
+            <div class="text-h5">{{ ativosNaoAprovado }}</div>
           </q-card-section>
         </div>
 
@@ -86,7 +86,7 @@
           </q-card-section>
 
           <q-card-section class="q-pt-none">
-            <div class="text-h5">{{ ativosInativos }}</div>
+            <div class="text-h5">{{ ativosPendencia }}</div>
           </q-card-section>
         </div>
         <div class="col">
@@ -157,10 +157,10 @@ import { useQuasar } from "quasar";
 
 export default defineComponent({
   setup() {
-    const ativosTotal = ref(0);
+    const ativosAprovado = ref(0);
+    const ativosNaoAprovado = ref(0);
     const ativosAguardando = ref(0);
-    const ativosAtivos = ref(0);
-    const ativosInativos = ref(0);
+    const ativosPendencia = ref(0);
 
     const router = useRouter();
 
@@ -170,16 +170,28 @@ export default defineComponent({
 
     const $q = useQuasar();
 
-    const { statusTotal, statusAguardando, statusAtivo, statusInativo } =
-      useApi();
+    const {
+      revendasAprovadas,
+      revendasReprovadas,
+      revendasAguardando,
+      revendasPendencia,
+    } = useApi();
 
     function linkClick(e, go) {
       e.preventDefault(); // we choose when we navigate
     }
 
-    const handleStatusTotal = async () => {
+    const handleStatusAprovado = async () => {
       try {
-        ativosTotal.value = await statusTotal("clientes");
+        ativosAprovado.value = await revendasAprovadas("revendas");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleStatusNaoAprovado = async () => {
+      try {
+        ativosNaoAprovado.value = await revendasReprovadas("revendas");
       } catch (error) {
         notifyError(error.message);
       }
@@ -187,23 +199,15 @@ export default defineComponent({
 
     const handleStatusAguardando = async () => {
       try {
-        ativosAguardando.value = await statusAguardando("clientes");
+        ativosAguardando.value = await revendasAguardando("revendas");
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleStatusAtivos = async () => {
+    const handleStatusPendencia = async () => {
       try {
-        ativosAtivos.value = await statusAtivo("clientes");
-      } catch (error) {
-        notifyError(error.message);
-      }
-    };
-
-    const handleStatusInativos = async () => {
-      try {
-        ativosInativos.value = await statusInativo("clientes");
+        ativosPendencia.value = await revendasPendencia("revendas");
       } catch (error) {
         notifyError(error.message);
       }
@@ -212,23 +216,23 @@ export default defineComponent({
     //console.log(ativosTotal);
 
     onMounted(() => {
-      handleStatusTotal();
       handleStatusAguardando();
-      handleStatusAtivos();
-      handleStatusInativos();
+      handleStatusAprovado();
+      handleStatusNaoAprovado();
+      handleStatusPendencia();
     });
 
     //console.log(ativosTotal);
 
     return {
-      handleStatusTotal,
+      handleStatusAprovado,
       handleStatusAguardando,
-      handleStatusAtivos,
-      handleStatusInativos,
-      ativosTotal,
+      handleStatusNaoAprovado,
+      handleStatusPendencia,
+      ativosAprovado,
+      ativosNaoAprovado,
       ativosAguardando,
-      ativosAtivos,
-      ativosInativos,
+      ativosPendencia,
       fitModes: ["cover", "fill", "contain", "none", "scale-down"],
     };
   },
