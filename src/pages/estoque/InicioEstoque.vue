@@ -23,8 +23,14 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosAntena }}</div>
       </q-card-section>
+
+      <!-- <q-card-section>
+          <q-card-media
+            ><q-img src="~assets/icone-57.png"></q-img
+          ></q-card-media>
+        </q-card-section> -->
 
       <q-card-section>
         <q-btn
@@ -37,12 +43,9 @@
         </q-btn>
       </q-card-section>
 
-      <!-- <div class="col">
-          <q-card-section>
-            <q-card-media
-              ><q-img src="~assets/clientes050223.jpg"></q-img
-            ></q-card-media>
-          </q-card-section> -->
+      <div class="col">
+
+      </div>
     </q-card>
 
     <br />
@@ -53,7 +56,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosBuc }}</div>
       </q-card-section>
 
       <q-card-section>
@@ -83,7 +86,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosModem }}</div>
       </q-card-section>
 
       <q-card-section>
@@ -113,7 +116,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosEtria }}</div>
       </q-card-section>
 
       <q-card-section>
@@ -143,7 +146,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosFonte }}</div>
       </q-card-section>
 
       <q-card-section>
@@ -173,7 +176,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosGroove }}</div>
       </q-card-section>
 
       <q-card-section>
@@ -203,7 +206,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosIlb }}</div>
       </q-card-section>
 
       <q-card-section>
@@ -233,7 +236,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosLnb }}</div>
       </q-card-section>
 
       <q-card-section>
@@ -263,7 +266,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosRadio }}</div>
       </q-card-section>
 
       <q-card-section>
@@ -293,7 +296,7 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <div class="text-h5">{{ ativosTotal }}</div>
+        <div class="text-h5">{{ ativosRoteador }}</div>
       </q-card-section>
 
       <q-card-section>
@@ -361,49 +364,109 @@ export default defineComponent({
       estoqueRoteador,
     } = useApi();
 
-    function linkClick(e, go) {
+    /*  function linkClick(e, go) {
       e.preventDefault(); // we choose when we navigate
-    }
+    } */
 
-    const handleStatusTotal = async () => {
-      try {
-        ativosTotal.value = await statusTotal("clientes");
-      } catch (error) {
-        notifyError(error.message);
-      }
-    };
-
-    const handleStatusAguardando = async () => {
+    /* const handleStatusAguardando = async () => {
       try {
         ativosAguardando.value = await statusAguardando("clientes");
       } catch (error) {
         notifyError(error.message);
       }
-    };
+    }; */
 
-    const handleStatusAtivos = async () => {
+    const handleEstoqueAntena = async () => {
       try {
-        ativosAtivos.value = await statusAtivo("clientes");
+        ativosAntena.value = await estoqueAntena("estoque");
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleStatusInativos = async () => {
+    const handleEstoqueBuc = async () => {
       try {
-        ativosInativos.value = await statusInativo("clientes");
+        ativosBuc.value = await estoqueBuc("estoque");
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    //console.log(ativosTotal);
+    const handleEstoqueModem = async () => {
+      try {
+        ativosModem.value = await estoqueModem("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleEstoqueEtria = async () => {
+      try {
+        ativosEtria.value = await estoqueEtria("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleEstoqueFonte = async () => {
+      try {
+        ativosFonte.value = await estoqueFonte("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleEstoqueGroove = async () => {
+      try {
+        ativosGroove.value = await estoqueGroove("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleEstoqueIlb = async () => {
+      try {
+        ativosIlb.value = await estoqueIlb("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleEstoqueLnb = async () => {
+      try {
+        ativosLnb.value = await estoqueLnb("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleEstoqueRadio = async () => {
+      try {
+        ativosRadio.value = await estoqueRadio("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleEstoqueRoteador = async () => {
+      try {
+        ativosRoteador.value = await estoqueRoteador("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
 
     onMounted(() => {
-      handleStatusTotal();
-      handleStatusAguardando();
-      handleStatusAtivos();
-      handleStatusInativos();
+      handleEstoqueAntena();
+      handleEstoqueBuc();
+      handleEstoqueModem();
+      handleEstoqueEtria();
+      handleEstoqueFonte();
+      handleEstoqueGroove();
+      handleEstoqueIlb();
+      handleEstoqueLnb();
+      handleEstoqueRadio();
+      handleEstoqueRoteador();
     });
 
     //console.log(ativosTotal);
@@ -418,7 +481,17 @@ export default defineComponent({
       ativosIlb,
       ativosLnb,
       ativosRadio,
-      ativosRoteador
+      ativosRoteador,
+      handleEstoqueAntena,
+      handleEstoqueBuc,
+      handleEstoqueModem,
+      handleEstoqueEtria,
+      handleEstoqueFonte,
+      handleEstoqueGroove,
+      handleEstoqueIlb,
+      handleEstoqueLnb,
+      handleEstoqueRadio,
+      handleEstoqueRoteador,
     };
   },
 });

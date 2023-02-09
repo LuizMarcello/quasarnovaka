@@ -13,7 +13,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Antena",
+        tipo_equipamento: "Antena",
       });
     if (error) throw error;
     return count;
@@ -27,7 +27,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Buc",
+        tipo_equipamento: "Buc",
       });
     if (error) throw error;
     return count;
@@ -41,7 +41,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Modem",
+        tipo_equipamento: "Modem",
       });
     if (error) throw error;
     return count;
@@ -55,7 +55,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Etria",
+        tipo_equipamento: "Etria",
       });
     if (error) throw error;
     return count;
@@ -69,7 +69,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Fonte",
+        tipo_equipamento: "Fonte",
       });
     if (error) throw error;
     return count;
@@ -83,7 +83,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Groove",
+        tipo_equipamento: "Groove",
       });
     if (error) throw error;
     return count;
@@ -97,7 +97,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Ilb",
+        tipo_equipamento: "Ilb",
       });
     if (error) throw error;
     return count;
@@ -111,7 +111,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Lnb",
+        tipo_equipamento: "Lnb",
       });
     if (error) throw error;
     return count;
@@ -125,7 +125,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Rádio",
+        tipo_equipamento: "Rádio",
       });
     if (error) throw error;
     return count;
@@ -139,7 +139,7 @@ export default function useApi() {
         head: true,
       })
       .match({
-        status: "Roteador",
+        tipo_equipamento: "Roteador",
       });
     if (error) throw error;
     return count;
