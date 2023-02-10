@@ -4,7 +4,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="estoqueAntena"
+        :rows="estoqueIlb"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -291,7 +291,7 @@ import { useRouter, useRoute } from "vue-router";
 import { useQuasar } from "quasar";
 
 export default defineComponent({
-  name: "PageEstoqueAntena",
+  name: "PageEstoqueGroove",
 
   methods: {
     makePDF() {
@@ -308,7 +308,7 @@ export default defineComponent({
 
   /* Este props foi acrescentado depois */
   setup(props) {
-    const estoqueAntena = ref([]);
+    const estoqueIlb = ref([]);
     const loading = ref(true);
     const router = useRouter();
     /* Patrick acrescentou esta linha em 10.01.23 */
@@ -316,49 +316,49 @@ export default defineComponent({
     /* const table = "revendas"; */
     const filter = ref("");
     const $q = useQuasar();
-    const { handleListAntena, remove } = useApi();
+    const { handleListIlb, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
 
-    const handleListEstoqueAntena = async () => {
+    const handleListEstoqueIlb = async () => {
       try {
         loading.value = true;
-        estoqueAntena.value = await handleListAntena("estoque");
+        estoqueIlb.value = await handleListIlb("estoque");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleEdit = (estoqueAntena) => {
+    const handleEdit = (estoqueIlb) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-estoque", params: { id: estoqueAntena.id } });
+      router.push({ name: "form-estoque", params: { id: estoqueIlb.id } });
     };
 
-    const handleDetails = (estoqueAntena) => {
+    const handleDetails = (estoqueIlb) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-detalhes",
-        params: { id: estoqueAntena.id },
+        params: { id: estoqueIlb.id },
       });
     };
 
-    const handleHistorico = (estoqueAntena) => {
+    const handleHistorico = (estoqueIlb) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-historico",
-        params: { id: estoqueAntena.id },
+        params: { id: estoqueIlb.id },
       });
     };
 
-    const handleRemoveEstoque = async (estoqueAntena) => {
+    const handleRemoveEstoque = async (estoqueIlb) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${estoqueAntena.marca} ?`,
+          message: `Tem certeza que quer deletar ${estoqueIlb.marca} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("estoque", estoqueAntena.id);
+          await remove("estoque", estoqueIlb.id);
           notifySuccess("Removido com sucesso!");
           handleListEstoque();
         });
@@ -368,7 +368,7 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      handleListEstoqueAntena();
+      handleListEstoqueIlb();
     });
 
     /* "export": Para ser usado em "outro" componente */
@@ -380,16 +380,16 @@ export default defineComponent({
       columns,
       loading,
       filter,
-      estoqueAntena,
+      estoqueIlb,
       handleEdit,
       handleDetails,
-      handleListEstoqueAntena,
+      handleListEstoqueIlb,
       handleHistorico,
       handleRemoveEstoque,
       initialPagination,
       pagesNumber: computed(() =>
         Math.ceil(
-          estoqueAntena.value.length / initialPagination.value.rowPerPage
+          estoqueIlb.value.length / initialPagination.value.rowPerPage
         )
       ),
     };

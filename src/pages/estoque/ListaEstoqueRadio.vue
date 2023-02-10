@@ -4,7 +4,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="estoqueAntena"
+        :rows="estoqueRadio"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -291,7 +291,7 @@ import { useRouter, useRoute } from "vue-router";
 import { useQuasar } from "quasar";
 
 export default defineComponent({
-  name: "PageEstoqueAntena",
+  name: "PageEstoqueGroove",
 
   methods: {
     makePDF() {
@@ -308,7 +308,7 @@ export default defineComponent({
 
   /* Este props foi acrescentado depois */
   setup(props) {
-    const estoqueAntena = ref([]);
+    const estoqueRadio = ref([]);
     const loading = ref(true);
     const router = useRouter();
     /* Patrick acrescentou esta linha em 10.01.23 */
@@ -316,49 +316,49 @@ export default defineComponent({
     /* const table = "revendas"; */
     const filter = ref("");
     const $q = useQuasar();
-    const { handleListAntena, remove } = useApi();
+    const { handleListRadio, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
 
-    const handleListEstoqueAntena = async () => {
+    const handleListEstoqueRadio = async () => {
       try {
         loading.value = true;
-        estoqueAntena.value = await handleListAntena("estoque");
+        estoqueRadio.value = await handleListRadio("estoque");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleEdit = (estoqueAntena) => {
+    const handleEdit = (estoqueRadio) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-estoque", params: { id: estoqueAntena.id } });
+      router.push({ name: "form-estoque", params: { id: estoqueRadio.id } });
     };
 
-    const handleDetails = (estoqueAntena) => {
+    const handleDetails = (estoqueRadio) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-detalhes",
-        params: { id: estoqueAntena.id },
+        params: { id: estoqueRadio.id },
       });
     };
 
-    const handleHistorico = (estoqueAntena) => {
+    const handleHistorico = (estoqueRadio) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-historico",
-        params: { id: estoqueAntena.id },
+        params: { id: estoqueRadio.id },
       });
     };
 
-    const handleRemoveEstoque = async (estoqueAntena) => {
+    const handleRemoveEstoque = async (estoqueRadio) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${estoqueAntena.marca} ?`,
+          message: `Tem certeza que quer deletar ${estoqueRadio.marca} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("estoque", estoqueAntena.id);
+          await remove("estoque", estoqueRadio.id);
           notifySuccess("Removido com sucesso!");
           handleListEstoque();
         });
@@ -368,7 +368,7 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      handleListEstoqueAntena();
+      handleListEstoqueRadio();
     });
 
     /* "export": Para ser usado em "outro" componente */
@@ -380,17 +380,15 @@ export default defineComponent({
       columns,
       loading,
       filter,
-      estoqueAntena,
+      estoqueRadio,
       handleEdit,
       handleDetails,
-      handleListEstoqueAntena,
+      handleListEstoqueRadio,
       handleHistorico,
       handleRemoveEstoque,
       initialPagination,
       pagesNumber: computed(() =>
-        Math.ceil(
-          estoqueAntena.value.length / initialPagination.value.rowPerPage
-        )
+        Math.ceil(estoqueRadio.value.length / initialPagination.value.rowPerPage)
       ),
     };
   },

@@ -138,6 +138,78 @@ const routes = [
       },
 
       {
+        path: "listarestoquebuc",
+        name: "listarestoquebuc",
+        component: () => import("pages/estoque/ListaEstoqueBuc.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoquemodem",
+        name: "listarestoquemodem",
+        component: () => import("pages/estoque/ListaEstoqueModem.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoqueetria",
+        name: "listarestoqueetria",
+        component: () => import("pages/estoque/ListaEstoqueEtria.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoquefonte",
+        name: "listarestoquefonte",
+        component: () => import("pages/estoque/ListaEstoqueFonte.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoquegroove",
+        name: "listarestoquegroove",
+        component: () => import("pages/estoque/ListaEstoqueGroove.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoqueilb",
+        name: "listarestoqueilb",
+        component: () => import("pages/estoque/ListaEstoqueIlb.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoquelnb",
+        name: "listarestoquelnb",
+        component: () => import("pages/estoque/ListaEstoqueLnb.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoqueradio",
+        name: "listarestoqueradio",
+        component: () => import("pages/estoque/ListaEstoqueRadio.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoqueroteador",
+        name: "listarestoqueroteador",
+        component: () => import("pages/estoque/ListaEstoqueRoteador.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
         path: "charts",
         name: "charts",
         component: () => import("pages/Charts.vue"),

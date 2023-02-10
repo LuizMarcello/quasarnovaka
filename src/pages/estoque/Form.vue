@@ -161,7 +161,7 @@
             class="full-width q-gutter-y-sm"
             rounded
             flat
-            :to="{ name: 'listarestoque' }"
+            :to="{ name: 'inicioestoque' }"
           />
         </div>
       </q-form>

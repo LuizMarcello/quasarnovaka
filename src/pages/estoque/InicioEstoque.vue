@@ -9,7 +9,7 @@
       exact
       style="background: #0d084f; color: white; width: 41%"
     >
-      <q-icon name="mdi-human-male-female" />
+      <q-icon name="mdi-satellite-variant" style="margin-left: 3%" />
     </q-btn>
   </div>
 
@@ -18,12 +18,22 @@
     style="justify-content: center; text-align: center"
   >
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Antena</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosAntena }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <!-- <q-card-section>
@@ -43,25 +53,33 @@
         </q-btn>
       </q-card-section>
 
-      <div class="col">
-
-      </div>
+      <!-- <div class="col"></div> -->
     </q-card>
 
     <br />
 
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Buc</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosBuc }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoquebuc"
           label="Listar Bucs"
           style="background-color: #070719"
           exact
@@ -81,17 +99,28 @@
     <br />
 
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Modem</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%"
+      >
         <div class="text-h5">{{ ativosModem }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoquemodem"
           label="Listar Modens"
           style="background-color: #0a0a2a"
           exact
@@ -121,7 +150,7 @@
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoqueetria"
           label="Listar Etrias"
           style="background-color: #0a0a2a"
           exact
@@ -151,7 +180,7 @@
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoquefonte"
           label="Listar Fontes"
           style="background-color: #0a0a2a"
           exact
@@ -181,7 +210,7 @@
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoquegroove"
           label="Listar Grooves"
           style="background-color: #0a0a2a"
           exact
@@ -211,7 +240,7 @@
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoqueilb"
           label="Listar Ilbs"
           style="background-color: #0a0a2a"
           exact
@@ -241,7 +270,7 @@
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoquelnb"
           label="Listar Lnbs"
           style="background-color: #0a0a2a"
           exact
@@ -271,7 +300,7 @@
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoqueradio"
           label="Listar Rádios"
           style="background-color: #0a0a2a"
           exact
@@ -301,7 +330,7 @@
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoqueroteador"
           label="Listar Roteadores"
           style="background-color: #0a0a2a"
           exact

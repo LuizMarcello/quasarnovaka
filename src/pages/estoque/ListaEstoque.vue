@@ -162,7 +162,16 @@
         direction-links
       />
     </div>
-
+    <br />
+    <q-btn
+      label="Voltar"
+      color="primary"
+      class="full-width"
+      rounded
+      size="md"
+      flat
+      :to="{ name: 'inicioestoque' }"
+    />
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
       <q-btn
         class="mobile-only"

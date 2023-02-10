@@ -29,6 +29,12 @@
           <q-input label="Observação" v-model="form.observacao" readonly />
 
           <q-input
+            label="Tipo de equipamento"
+            v-model="form.tipo_equipamento"
+            readonly
+          />
+
+          <q-input
             label="Número de série"
             v-model="form.numerodeserie"
             readonly
@@ -83,7 +89,7 @@
             class="full-width q-gutter-y-sm"
             rounded
             flat
-            :to="{ name: 'listarestoque' }"
+            :to="{ name: 'inicioestoque' }"
           />
         </div>
       </q-form>

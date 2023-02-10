@@ -4,7 +4,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="estoqueAntena"
+        :rows="estoqueBuc"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -290,8 +290,11 @@ import useNotify from "src/composables/UseNotify";
 import { useRouter, useRoute } from "vue-router";
 import { useQuasar } from "quasar";
 
+/* Copiei do Form.vue */
+/* import BtnScannerAndroid from "src/components/barcodeScanner/BtnScannerAndroid.vue"; */
+
 export default defineComponent({
-  name: "PageEstoqueAntena",
+  name: "PageEstoqueBuc",
 
   methods: {
     makePDF() {
@@ -308,7 +311,7 @@ export default defineComponent({
 
   /* Este props foi acrescentado depois */
   setup(props) {
-    const estoqueAntena = ref([]);
+    const estoqueBuc = ref([]);
     const loading = ref(true);
     const router = useRouter();
     /* Patrick acrescentou esta linha em 10.01.23 */
@@ -316,49 +319,49 @@ export default defineComponent({
     /* const table = "revendas"; */
     const filter = ref("");
     const $q = useQuasar();
-    const { handleListAntena, remove } = useApi();
+    const { handleListBuc, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
 
-    const handleListEstoqueAntena = async () => {
+    const handleListEstoqueBuc = async () => {
       try {
         loading.value = true;
-        estoqueAntena.value = await handleListAntena("estoque");
+        estoqueBuc.value = await handleListBuc("estoque");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleEdit = (estoqueAntena) => {
+    const handleEdit = (estoqueBuc) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-estoque", params: { id: estoqueAntena.id } });
+      router.push({ name: "form-estoque", params: { id: estoqueBuc.id } });
     };
 
-    const handleDetails = (estoqueAntena) => {
+    const handleDetails = (estoqueBuc) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-detalhes",
-        params: { id: estoqueAntena.id },
+        params: { id: estoqueBuc.id },
       });
     };
 
-    const handleHistorico = (estoqueAntena) => {
+    const handleHistorico = (estoqueBuc) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-historico",
-        params: { id: estoqueAntena.id },
+        params: { id: estoqueBuc.id },
       });
     };
 
-    const handleRemoveEstoque = async (estoqueAntena) => {
+    const handleRemoveEstoque = async (estoqueBuc) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${estoqueAntena.marca} ?`,
+          message: `Tem certeza que quer deletar ${estoqueBuc.marca} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("estoque", estoqueAntena.id);
+          await remove("estoque", estoqueBuc.id);
           notifySuccess("Removido com sucesso!");
           handleListEstoque();
         });
@@ -367,9 +370,38 @@ export default defineComponent({
       }
     };
 
+    /* Patrick modificou em 10.01.23 */
+    /* Antes: */
     onMounted(() => {
-      handleListEstoqueAntena();
+      handleListEstoqueBuc();
+      //handleListEstoque();
+      /* Copiei do Form.vue */
+      /* Este if(){} foi acrescentado pelo Patrick */
+      //if (props.barcode) {
+      //filter.value = props.barcode;
+      //}
     });
+
+    /* Depois */
+    //onMounted(async () => {
+    //await handleListEstoqueAntena();
+    /* Copiei do Form.vue */
+    /* Este if(){} foi acrescentado pelo Patrick */
+    /* Patrick alterou esta linha em 10.01.23 */
+    //if (route.params.barcode) {
+    //filter.value = route.params.barcode;
+    //}
+    //}
+    //});
+
+    //watch(props.barcode, (value, oldValue) => {
+    //filter.value = value;
+    //});
+
+    /* Patrick retirou(comentou) este "watchEffect" em 10.01.23 */
+    // watchEffect(() => {
+    //   filter.value = props.barcode;
+    // });
 
     /* "export": Para ser usado em "outro" componente */
     /* "return": Para ser usado no "mesmo" componente */
@@ -380,16 +412,16 @@ export default defineComponent({
       columns,
       loading,
       filter,
-      estoqueAntena,
+      estoqueBuc,
       handleEdit,
       handleDetails,
-      handleListEstoqueAntena,
+      handleListEstoqueBuc,
       handleHistorico,
       handleRemoveEstoque,
       initialPagination,
       pagesNumber: computed(() =>
         Math.ceil(
-          estoqueAntena.value.length / initialPagination.value.rowPerPage
+          estoqueBuc.value.length / initialPagination.value.rowPerPage
         )
       ),
     };
