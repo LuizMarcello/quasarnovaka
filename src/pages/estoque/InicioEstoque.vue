@@ -34,7 +34,7 @@
 
       <q-card-section>
         <q-btn
-          to="/listarestoque"
+          to="/listarestoqueantena"
           label="Listar antenas"
           style="background-color: #0a0a2a"
           exact

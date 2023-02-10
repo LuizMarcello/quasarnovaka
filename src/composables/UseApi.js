@@ -170,6 +170,39 @@ export default function useApi() {
     return count;
   };
 
+
+   const handleListAntena = async (table) => {
+     const {
+       error,
+       data,
+       count
+     } = await supabase
+       .from(table)
+       .select("*", {
+         count: "exact",
+         head: true,
+       })
+       .match({
+         tipo_equipamento: "Antena",
+       });
+     if (error) throw error;
+     return count;
+   };
+
+
+  /*  const list = async (table) => {
+     const {
+       data,
+       error
+     } = await supabase.from(table).select("*");
+
+     if (error) throw error;
+     return data;
+   }; */
+
+
+
+
   return {
     list,
     getById,
@@ -184,6 +217,7 @@ export default function useApi() {
     revendasAprovadas,
     revendasReprovadas,
     revendasAguardando,
-    revendasPendencia
+    revendasPendencia,
+    handleListAntena,
   };
 }

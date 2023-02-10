@@ -130,6 +130,14 @@ const routes = [
       },
 
       {
+        path: "listarestoqueantena",
+        name: "listarestoqueantena",
+        component: () => import("pages/estoque/ListaEstoqueAntena.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
         path: "charts",
         name: "charts",
         component: () => import("pages/Charts.vue"),
