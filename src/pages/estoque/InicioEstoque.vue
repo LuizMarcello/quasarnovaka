@@ -103,8 +103,7 @@
         <div class="text-h6">Modem</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none" style="padding: 2%"
-      >
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosModem }}</div>
       </q-card-section>
 
@@ -140,12 +139,22 @@
     <br />
 
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Etria</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosEtria }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <q-card-section>
@@ -170,12 +179,22 @@
     <br />
 
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Fonte</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosFonte }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <q-card-section>
@@ -200,12 +219,22 @@
     <br />
 
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Groove</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosGroove }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <q-card-section>
@@ -230,12 +259,22 @@
     <br />
 
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Ilb</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosIlb }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <q-card-section>
@@ -260,12 +299,22 @@
     <br />
 
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Lnb</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosLnb }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <q-card-section>
@@ -290,12 +339,22 @@
     <br />
 
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Radio</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosRadio }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <q-card-section>
@@ -320,12 +379,22 @@
     <br />
 
     <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section>
+      <q-card-section style="padding: 2%">
         <div class="text-h6">Roteador</div>
       </q-card-section>
 
-      <q-card-section class="q-pt-none">
+      <q-card-section class="q-pt-none" style="padding: 2%">
         <div class="text-h5">{{ ativosRoteador }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/satelite.png"
+            style="max-width: 30px; height: 30px"
+          >
+          </q-img
+        ></q-card-media>
       </q-card-section>
 
       <q-card-section>
@@ -351,6 +420,16 @@
   <q-page-container>
     <router-view />
   </q-page-container>
+
+  <q-footer elevated>
+    <q-toolbar class="q-gutter-md">
+      <q-icon name="facebook" />
+      <q-icon name="mdi-twitter" />
+      <q-icon name="mdi-instagram" />
+      <q-icon name="mdi-linkedin" />
+      <q-toolbar-title>Internet via satélite</q-toolbar-title>
+    </q-toolbar>
+  </q-footer>
 </template>
 
 <script>

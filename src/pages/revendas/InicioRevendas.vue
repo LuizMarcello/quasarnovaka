@@ -141,6 +141,16 @@
   <q-page-container>
     <router-view />
   </q-page-container>
+
+  <q-footer elevated>
+    <q-toolbar class="q-gutter-md">
+      <q-icon name="facebook" />
+      <q-icon name="mdi-twitter" />
+      <q-icon name="mdi-instagram" />
+      <q-icon name="mdi-linkedin" />
+      <q-toolbar-title>Internet via satélite</q-toolbar-title>
+    </q-toolbar>
+  </q-footer>
 </template>
 
 <script>
