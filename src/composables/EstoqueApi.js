@@ -142,7 +142,30 @@ export default function useApi() {
         tipo_equipamento: "Roteador",
       });
     if (error) throw error;
+    /* return count; */
     return count;
+  };
+
+  const listaEstoqueOk = async (table) => {
+    const { error, data, count } = await supabase
+      .from(table)
+      .select("*", )
+      .match({
+        status: "Funcionamento OK",
+      });
+    if (error) throw error;
+    return data;
+  };
+
+  const listaEstoqueDefeito = async (table) => {
+    const { error, data, count } = await supabase
+      .from(table)
+      .select("*", )
+      .match({
+        status: "Com defeito",
+      });
+    if (error) throw error;
+    return data;
   };
 
   return {
@@ -155,6 +178,8 @@ export default function useApi() {
     estoqueIlb,
     estoqueLnb,
     estoqueRadio,
-    estoqueRoteador
+    estoqueRoteador,
+    listaEstoqueOk,
+    listaEstoqueDefeito,
   };
 }

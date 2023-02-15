@@ -5,8 +5,9 @@
   >
     <q-btn
       to="/listarclientes"
-      label="Listar todos clientes"
+      label="Listar todos os clientes"
       exact
+      no-caps=""
       style="background: #0d084f; color: white; width: 41%"
     >
       <q-icon name="mdi-human-male-female" />

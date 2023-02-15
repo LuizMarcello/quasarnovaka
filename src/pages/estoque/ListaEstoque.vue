@@ -32,7 +32,7 @@
             <q-card class="item my-card text-white" style="margin-bottom: 8%">
               <q-card-section class="q-gutter-x-md q-gutter-y-sm">
                 <q-btn
-                  to="/listarestoqueantena"
+                  to="/listarestoqueok"
                   size="14px"
                   label="Equipamento OK"
                   color="primary"
@@ -42,7 +42,7 @@
                 />
 
                 <q-btn
-                  to="/listarestoqueantena"
+                  to="/listarestoquedefeito"
                   size="13.2px"
                   label="Equip com defeito"
                   color="primary"

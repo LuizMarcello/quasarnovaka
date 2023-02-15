@@ -4,7 +4,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="estoqueFonte"
+        :rows="estoqueOk"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -16,14 +16,7 @@
         <template v-slot:top>
           <span class="text-h6">Estoque</span>
           <q-space />
-          <!-- <q-btn
-              v-if="$q.platform.is.desktop"
-              label="Adicionar"
-              color="primary"
-              icon="mdi-plus"
-              dense
-              :to="{ name: 'form-revendas' }"
-            /> -->
+
           <q-td class="q-gutter-x-md q-gutter-y-sm">
             <div>
               <q-btn
@@ -35,14 +28,6 @@
                 :to="{ name: 'barcodesearch' }"
               />
             </div>
-
-            <!-- <q-btn
-              icon="mdi-feature-search-outline"
-              color="primary"
-              dense
-              size="sm"
-              @click="handleDetails(props.row)"
-            ></q-btn> -->
 
             <q-input
               outlined
@@ -59,15 +44,6 @@
             </q-input>
             <q-space />
 
-            <!-- <q-btn
-              class="desktop-only"
-              label="Gerar pdf"
-              color="primary"
-              icon="mdi-file-pdf-box"
-              dense
-              @click="makePDF"
-            /> -->
-
             <q-btn
               label="Gerar pdf"
               color="primary"
@@ -75,24 +51,6 @@
               dense
               @click="makePDF"
             />
-
-            <!--  <q-btn
-              class="desktop-only"
-              label="Adicionar"
-              color="primary"
-              icon="mdi-plus"
-              dense
-              :to="{ name: 'form-estoque' }"
-            /> -->
-
-            <!--  <q-btn
-              class="desktop-only"
-              label="Adicionar"
-              color="primary"
-              icon="mdi-plus"
-              dense
-              :to="{ name: 'barcode' }"
-            /> -->
 
             <q-btn
               v-if="$q.platform.is.desktop"
@@ -102,14 +60,6 @@
               dense
               :to="{ name: 'barcode' }"
             />
-
-            <!-- <q-btn
-              label="Adicionar"
-              color="primary"
-              icon="mdi-plus"
-              dense
-              :to="{ name: 'form-estoque' }"
-            /> -->
           </q-td>
         </template>
 
@@ -181,21 +131,6 @@
         color="primary"
         @click="makePDF"
       />
-      <!-- <q-btn
-          v-if="$q.platform.is.mobile"
-          fab
-          icon="mdi-plus"
-          color="primary"
-          :to="{ name: 'form-revendas' }"
-        /> -->
-
-      <!-- <q-btn
-        class="mobile-only"
-        fab
-        icon="mdi-plus"
-        color="primary"
-        :to="{ name: 'barcode' }"
-      /> -->
     </q-page-sticky>
   </q-page>
 </template>
@@ -244,13 +179,6 @@ const columns = [
     field: "modelo",
     sortable: true,
   },
-  /* {
-    name: "observacao",
-    align: "left",
-    label: "Observação",
-    field: "observacao",
-    sortable: true,
-  }, */
 
   {
     name: "numerodeserie",
@@ -259,13 +187,6 @@ const columns = [
     field: "numerodeserie",
     sortable: true,
   },
-  /*  {
-    name: "bar_code",
-    align: "left",
-    label: "Código de barras",
-    field: "bar_code",
-    sortable: true,
-  }, */
 
   {
     name: "actions",
@@ -291,6 +212,7 @@ import {
   watchEffect,
 } from "vue";
 
+import estoqueApi from "src/composables/EstoqueApi";
 import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 /* import router from "src/router"; */
@@ -299,7 +221,7 @@ import { useRouter, useRoute } from "vue-router";
 import { useQuasar } from "quasar";
 
 export default defineComponent({
-  name: "PageEstoqueFonte",
+  name: "PageEstoqueOk",
 
   methods: {
     makePDF() {
@@ -316,7 +238,7 @@ export default defineComponent({
 
   /* Este props foi acrescentado depois */
   setup(props) {
-    const estoqueFonte = ref([]);
+    const estoqueOk = ref([]);
     const loading = ref(true);
     const router = useRouter();
     /* Patrick acrescentou esta linha em 10.01.23 */
@@ -324,51 +246,51 @@ export default defineComponent({
     /* const table = "revendas"; */
     const filter = ref("");
     const $q = useQuasar();
-    const { handleListFonte, remove } = useApi();
+    const { remove } = useApi();
+    const { listaEstoqueOk } = estoqueApi();
     const { notifyError, notifySuccess } = useNotify;
 
-    const handleListEstoqueFonte = async () => {
+    const handleListEstoqueOk = async () => {
       try {
         loading.value = true;
-        estoqueFonte.value = await handleListFonte("estoque");
+        estoqueOk.value = await listaEstoqueOk("estoque");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleEdit = (estoqueFonte) => {
+    const handleEdit = (estoqueOk) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-estoque", params: { id: estoqueFonte.id } });
+      router.push({ name: "form-estoque", params: { id: estoqueOk.id } });
     };
 
-    const handleDetails = (estoqueFonte) => {
+    const handleDetails = (estoqueOk) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-detalhes",
-        params: { id: estoqueFonte.id },
+        params: { id: estoqueOk.id },
       });
     };
 
-    const handleHistorico = (estoqueFonte) => {
+    const handleHistorico = (estoqueOk) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-historico",
-        params: { id: estoqueFonte.id },
+        params: { id: estoqueOk.id },
       });
     };
 
-    const handleRemoveEstoque = async (estoqueFonte) => {
+    const handleRemoveEstoque = async (estoqueOk) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${estoqueFonte.marca} ?`,
+          message: `Tem certeza que quer deletar ${estoqueOk.marca} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("estoque", estoqueFonte.id);
+          await remove("estoque", estoqueOk.id);
           notifySuccess("Removido com sucesso!");
-          handleListEstoque();
         });
       } catch (error) {
         notifyError(error.message);
@@ -376,7 +298,7 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      handleListEstoqueFonte();
+      handleListEstoqueOk();
     });
 
     /* "export": Para ser usado em "outro" componente */
@@ -388,17 +310,15 @@ export default defineComponent({
       columns,
       loading,
       filter,
-      estoqueFonte,
+      estoqueOk,
       handleEdit,
       handleDetails,
-      handleListEstoqueFonte,
+      handleListEstoqueOk,
       handleHistorico,
       handleRemoveEstoque,
       initialPagination,
       pagesNumber: computed(() =>
-        Math.ceil(
-          estoqueFonte.value.length / initialPagination.value.rowPerPage
-        )
+        Math.ceil(estoqueOk.value.length / initialPagination.value.rowPerPage)
       ),
     };
   },

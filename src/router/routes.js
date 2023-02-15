@@ -210,6 +210,22 @@ const routes = [
       },
 
       {
+        path: "listarestoqueok",
+        name: "listarestoqueok",
+        component: () => import("pages/estoque/ListaEstoqueOk.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoquedefeito",
+        name: "listarestoquedefeito",
+        component: () => import("pages/estoque/ListaEstoqueDefeito.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
         path: "charts",
         name: "charts",
         component: () => import("pages/Charts.vue"),

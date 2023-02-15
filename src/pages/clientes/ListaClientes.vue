@@ -39,10 +39,11 @@
             </q-input>
             <q-btn
               class="desktop-only"
-              label="Gerar pdf"
+              label="Gerar Pdf"
               color="primary"
               icon="mdi-file-pdf-box"
               dense
+              no-caps=""
               @click="makePDF"
             />
             <q-btn
@@ -51,6 +52,7 @@
               color="primary"
               icon="mdi-plus"
               dense
+              no-caps=""
               :to="{ name: 'form-clientes' }"
             />
           </q-td>

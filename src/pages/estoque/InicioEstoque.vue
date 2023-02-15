@@ -7,6 +7,7 @@
       to="/listarestoque"
       label="Listar todo estoque"
       exact
+      no-caps
       style="background: #0d084f; color: white; width: 41%"
     >
       <q-icon name="mdi-satellite-variant" style="margin-left: 3%" />
@@ -48,6 +49,7 @@
           label="Listar antenas"
           style="background-color: #0a0a2a"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>
@@ -83,6 +85,7 @@
           label="Listar Bucs"
           style="background-color: #070719"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>
@@ -123,6 +126,7 @@
           label="Listar Modens"
           style="background-color: #0a0a2a"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>
@@ -163,6 +167,7 @@
           label="Listar Etrias"
           style="background-color: #0a0a2a"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>
@@ -203,6 +208,7 @@
           label="Listar Fontes"
           style="background-color: #0a0a2a"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>
@@ -243,6 +249,7 @@
           label="Listar Grooves"
           style="background-color: #0a0a2a"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>
@@ -283,6 +290,7 @@
           label="Listar Ilbs"
           style="background-color: #0a0a2a"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>
@@ -323,6 +331,7 @@
           label="Listar Lnbs"
           style="background-color: #0a0a2a"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>
@@ -363,6 +372,7 @@
           label="Listar Rádios"
           style="background-color: #0a0a2a"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>
@@ -403,6 +413,7 @@
           label="Listar Roteadores"
           style="background-color: #0a0a2a"
           exact
+          no-caps
         >
           <!-- <q-icon name="mdi-human-male-female" /> -->
         </q-btn>

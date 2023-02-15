@@ -230,6 +230,14 @@ const columns = [
   },
 
   {
+    name: "status",
+    align: "left",
+    label: "Status",
+    field: "status",
+    sortable: true,
+  },
+
+  {
     name: "modelo",
     align: "left",
     label: "Modelo",
