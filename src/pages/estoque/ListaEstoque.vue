@@ -38,41 +38,46 @@
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
+                  no-caps
                 />
 
                 <q-btn
                   to="/listarestoqueantena"
-                  size="13px"
+                  size="13.2px"
                   label="Equip com defeito"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
+                  no-caps
                 />
 
                 <q-btn
                   to="/listarestoqueantena"
-                  size="13px"
+                  size="13.5px"
                   label="Equip na garantia"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
+                  no-caps
                 />
 
                 <q-btn
                   to="/listarestoqueantena"
-                  size="13.3px"
+                  size="13.6px"
                   label="Equip no Estoque"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
+                  no-caps
                 />
                 <q-btn
                   to="/listarestoqueantena"
-                  size="14.1px"
+                  size="14.5px"
                   label="Equip no cliente"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
+                  no-caps
                 />
               </q-card-section>
             </q-card>
@@ -90,6 +95,7 @@
                   color="primary"
                   icon="mdi-barcode"
                   dense
+                  no-caps
                   :to="{ name: 'barcodesearch' }"
                 />
 
@@ -130,6 +136,7 @@
                   color="primary"
                   icon="mdi-file-pdf-box"
                   dense
+                  no-caps
                   @click="makePDF"
                 />
 
@@ -157,6 +164,7 @@
                   color="primary"
                   icon="mdi-plus"
                   dense
+                  no-caps
                   :to="{ name: 'barcode' }"
                 />
 
