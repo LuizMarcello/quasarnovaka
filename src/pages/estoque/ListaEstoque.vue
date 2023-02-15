@@ -1,7 +1,7 @@
 <!-- eslint-disable -->
 <template>
   <q-page padding>
-    <div class="row">
+    <div>
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
         :rows="estoque"
@@ -14,8 +14,8 @@
         hide-pagination
       >
         <template v-slot:top>
-          <span class="text-h6">Estoque</span>
-          <q-space />
+          <!-- <span class="text-h6">Estoque</span>
+          <q-space /> -->
           <!-- <q-btn
               v-if="$q.platform.is.desktop"
               label="Adicionar"
@@ -24,19 +24,76 @@
               dense
               :to="{ name: 'form-revendas' }"
             /> -->
-          <q-td class="q-gutter-x-md q-gutter-y-sm">
-            <div>
-              <q-btn
-                v-if="$q.platform.is.mobile"
-                label="Consultar código de barras"
-                color="primary"
-                icon="mdi-barcode"
-                dense
-                :to="{ name: 'barcodesearch' }"
-              />
-            </div>
 
-            <!-- <q-btn
+          <div
+            class="container flex flex-wrap"
+            style="justify-content: center; text-align: center"
+          >
+            <q-card class="item my-card text-white" style="margin-bottom: 8%">
+              <q-card-section class="q-gutter-x-md q-gutter-y-sm">
+                <q-btn
+                  to="/listarestoqueantena"
+                  size="14px"
+                  label="Equipamento OK"
+                  color="primary"
+                  icon="mdi-satellite-variant"
+                  dense
+                />
+
+                <q-btn
+                  to="/listarestoqueantena"
+                  size="13px"
+                  label="Equip com defeito"
+                  color="primary"
+                  icon="mdi-satellite-variant"
+                  dense
+                />
+
+                <q-btn
+                  to="/listarestoqueantena"
+                  size="13px"
+                  label="Equip na garantia"
+                  color="primary"
+                  icon="mdi-satellite-variant"
+                  dense
+                />
+
+                <q-btn
+                  to="/listarestoqueantena"
+                  size="13.3px"
+                  label="Equip no Estoque"
+                  color="primary"
+                  icon="mdi-satellite-variant"
+                  dense
+                />
+                <q-btn
+                  to="/listarestoqueantena"
+                  size="14.1px"
+                  label="Equip no cliente"
+                  color="primary"
+                  icon="mdi-satellite-variant"
+                  dense
+                />
+              </q-card-section>
+            </q-card>
+          </div>
+
+          <div
+            class="container flex flex-wrap"
+            style="justify-content: center; text-align: center"
+          >
+            <q-card class="item my-card text-white" style="margin-bottom: 8%">
+              <q-card-section class="q-gutter-x-md q-gutter-y-sm">
+                <q-btn
+                  v-if="$q.platform.is.mobile"
+                  label="Consultar código de barras"
+                  color="primary"
+                  icon="mdi-barcode"
+                  dense
+                  :to="{ name: 'barcodesearch' }"
+                />
+
+                <!-- <q-btn
               icon="mdi-feature-search-outline"
               color="primary"
               dense
@@ -44,22 +101,22 @@
               @click="handleDetails(props.row)"
             ></q-btn> -->
 
-            <q-input
-              outlined
-              dense
-              debounce="300"
-              v-model="filter"
-              placeholder="Pesquisar produtosss"
-              color="primary"
-              class="q-mb-sm"
-            >
-              <template v-slot:append>
-                <q-icon name="mdi-magnify" />
-              </template>
-            </q-input>
-            <q-space />
+                <q-input
+                  outlined
+                  dense
+                  debounce="300"
+                  v-model="filter"
+                  placeholder="Pesquisar produtosss"
+                  color="primary"
+                  class="q-mb-sm"
+                >
+                  <template v-slot:append>
+                    <q-icon name="mdi-magnify" />
+                  </template>
+                </q-input>
+                <q-space />
 
-            <!-- <q-btn
+                <!-- <q-btn
               class="desktop-only"
               label="Gerar pdf"
               color="primary"
@@ -68,15 +125,15 @@
               @click="makePDF"
             /> -->
 
-            <q-btn
-              label="Gerar pdf"
-              color="primary"
-              icon="mdi-file-pdf-box"
-              dense
-              @click="makePDF"
-            />
+                <q-btn
+                  label="Gerar pdf"
+                  color="primary"
+                  icon="mdi-file-pdf-box"
+                  dense
+                  @click="makePDF"
+                />
 
-            <!--  <q-btn
+                <!--  <q-btn
               class="desktop-only"
               label="Adicionar"
               color="primary"
@@ -85,7 +142,7 @@
               :to="{ name: 'form-estoque' }"
             /> -->
 
-            <!--  <q-btn
+                <!--  <q-btn
               class="desktop-only"
               label="Adicionar"
               color="primary"
@@ -94,23 +151,25 @@
               :to="{ name: 'barcode' }"
             /> -->
 
-            <q-btn
-              v-if="$q.platform.is.desktop"
-              label="Adicionar"
-              color="primary"
-              icon="mdi-plus"
-              dense
-              :to="{ name: 'barcode' }"
-            />
+                <q-btn
+                  v-if="$q.platform.is.desktop"
+                  label="Adicionar"
+                  color="primary"
+                  icon="mdi-plus"
+                  dense
+                  :to="{ name: 'barcode' }"
+                />
 
-            <!-- <q-btn
+                <!-- <q-btn
               label="Adicionar"
               color="primary"
               icon="mdi-plus"
               dense
               :to="{ name: 'form-estoque' }"
             /> -->
-          </q-td>
+              </q-card-section>
+            </q-card>
+          </div>
         </template>
 
         <template v-slot:body-cell-actions="props">
@@ -437,3 +496,39 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  /* border: 4px solid #ccc; */
+  align-items: center;
+  align-content: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.item {
+  margin: 6px;
+  /* background: tomato; */
+  text-align: center;
+  font-size: 1em;
+  min-width: 200px;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+body {
+  font-family: monospace;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
+</style>
