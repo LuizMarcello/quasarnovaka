@@ -226,6 +226,30 @@ const routes = [
       },
 
       {
+        path: "listarestoquegarantia",
+        name: "listarestoquegarantia",
+        component: () => import("pages/estoque/ListaEstoqueGarantia.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoqueestoque",
+        name: "listarestoqueestoque",
+        component: () => import("pages/estoque/ListaEstoqueEstoque.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
+        path: "listarestoquecliente",
+        name: "listarestoquecliente",
+        component: () => import("pages/estoque/ListaEstoqueCliente.vue"),
+        /* Patrick acrescentou este "props: true" em 10.01.23 */
+        props: true,
+      },
+
+      {
         path: "charts",
         name: "charts",
         component: () => import("pages/Charts.vue"),

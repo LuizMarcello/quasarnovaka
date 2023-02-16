@@ -52,7 +52,7 @@
                 />
 
                 <q-btn
-                  to="/listarestoqueantena"
+                  to="/listarestoquegarantia"
                   size="13.5px"
                   label="Equip na garantia"
                   color="primary"
@@ -62,7 +62,7 @@
                 />
 
                 <q-btn
-                  to="/listarestoqueantena"
+                  to="/listarestoqueestoque"
                   size="13.6px"
                   label="Equip no Estoque"
                   color="primary"
@@ -71,7 +71,7 @@
                   no-caps
                 />
                 <q-btn
-                  to="/listarestoqueantena"
+                  to="/listarestoquecliente"
                   size="14.5px"
                   label="Equip no cliente"
                   color="primary"
@@ -292,6 +292,14 @@ const columns = [
     align: "left",
     label: "Tipo de equipamento",
     field: "tipo_equipamento",
+    sortable: true,
+  },
+
+  {
+    name: "status",
+    align: "left",
+    label: "Status",
+    field: "status",
     sortable: true,
   },
 
