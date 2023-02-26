@@ -338,9 +338,9 @@ const routes = [{
       name: "me",
       component: () => import("pages/Me.vue"),
     }, ],
-    meta: {
-      requiresAuth: true,
-    },
+    /* meta: {
+      requiresAuth: true
+    } */
   },
 
   // Always leave this as last one,
