@@ -94,7 +94,7 @@
             </q-item-section>
           </q-item>
 
-          <div v-if="!user">
+          <div v-if="user">
             <q-item to="/charts" exact>
               <q-item-section avatar>
                 <q-icon name="list_alt" />
