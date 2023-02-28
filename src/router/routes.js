@@ -1,19 +1,17 @@
-const routes = [
-  {
+const routes = [{
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
+    children: [{
         path: "/",
         name: "/",
         component: () => import("pages/Home.vue"),
       },
-      /* {
+      {
         path: "register",
         name: "register",
         component: () => import("pages/Register.vue"),
-      }, */
+      },
       {
         path: "email-confirmation",
         name: "email-confirmation",
@@ -39,6 +37,7 @@ const routes = [
         name: "form-revendas",
         component: () => import("src/pages/revendas/Form.vue"),
       },
+
     ],
   },
 
@@ -46,8 +45,7 @@ const routes = [
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/AdmLayout.vue"),
-    children: [
-      {
+    children: [{
         path: "listarclientes",
         name: "listarclientes",
         component: () => import("pages/clientes/ListaClientes.vue"),
@@ -254,11 +252,11 @@ const routes = [
         name: "charts",
         component: () => import("pages/Charts.vue"),
       },
-      {
+      /* {
         path: "register",
         name: "register",
         component: () => import("pages/Register.vue"),
-      },
+      }, */
       {
         path: "inicioestoque",
         name: "inicioestoque",
@@ -274,8 +272,7 @@ const routes = [
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [
-      {
+    children: [{
         path: "/",
         name: "loginDefault",
         component: () => import("pages/Login.vue"),
@@ -312,8 +309,7 @@ const routes = [
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
     component: () => import("src/layouts/MainLayout.vue"),
-    children: [
-      {
+    children: [{
         path: "barcode",
         name: "barcode",
         component: () =>
@@ -337,16 +333,14 @@ const routes = [
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
     component: () => import("src/layouts/MainLayoutSair.vue"),
-    children: [
-      {
-        path: "me",
-        name: "me",
-        component: () => import("pages/Me.vue"),
-      },
-    ],
+    children: [{
+      path: "me",
+      name: "me",
+      component: () => import("pages/Me.vue"),
+    }, ],
     meta: {
-      requiresAuth: true,
-    },
+      requiresAuth: true
+    }
   },
 
   // Always leave this as last one,
