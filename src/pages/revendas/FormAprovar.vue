@@ -29,9 +29,13 @@
             v-model="form.statusalteradopor"
             readonly
           />
-
-          <q-input type="date" stack-label label="Em:" v-model="form.dataalteracaostatus" readonly />
-
+          <q-input
+            type="date"
+            stack-label
+            label="Em:"
+            v-model="form.dataalteracaostatus"
+            readonly
+          />
           <q-input label="Obs:" v-model="form.obs" autogrow />
         </div>
         <q-btn
@@ -41,7 +45,6 @@
           rounded
           type="submit"
         />
-
         <q-btn
           label="Voltar"
           color="primary"
@@ -80,6 +83,7 @@ export default defineComponent({
        Para atualizar, vai ser usado o mesmo "form" do "cadastrar novo" */
     const isUpdate = computed(() => route.params.id);
 
+     /* Obtendo qual usuário está logado */
     const alteroustatus = user.value.user_metadata.name;
 
     const statusalteradopor = alteroustatus;

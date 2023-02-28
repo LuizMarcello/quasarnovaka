@@ -7,22 +7,63 @@
       <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
         <!-- <q-input label="Name" v-model="form.email" /> -->
         <!-- <q-input label="Name" v-model="form.email" outlined /> -->
-        <q-input label="Name" v-model="form.name" lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Por favor, digite seu nome']" outlined rounded />
+        <q-input
+          label="Name"
+          v-model="form.name"
+          lazy-rules
+          :rules="[
+            (val) => (val && val.length > 0) || 'Por favor, digite seu nome',
+          ]"
+          outlined
+          rounded
+        />
         <!-- <q-input label="Email" v-model="form.email" /> -->
         <!-- <q-input label="Email" v-model="form.email" outlined /> -->
-        <q-input label="Email" v-model="form.email" lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Por favor, digite seu email']" type="email" outlined rounded />
+        <q-input
+          label="Email"
+          v-model="form.email"
+          lazy-rules
+          :rules="[
+            (val) => (val && val.length > 0) || 'Por favor, digite seu email',
+          ]"
+          type="email"
+          outlined
+          rounded
+        />
         <!-- <q-input label="Password" v-model="form.password" /> -->
         <!-- <q-input label="Password" v-model="form.password" outlined /> -->
-        <q-input label="Password" v-model="form.password" lazy-rules
-          :rules="[(val) => (val && val.length >= 6) || 'A nova senha deve ter no mínimo 6 caracteres ']" outlined
-          rounded />
+        <q-input
+          label="Password"
+          v-model="form.password"
+          lazy-rules
+          :rules="[
+            (val) =>
+              (val && val.length >= 6) ||
+              'A nova senha deve ter no mínimo 6 caracteres ',
+          ]"
+          outlined
+          rounded
+        />
 
         <div class="full-width q-pt-md q-gutter-y-sm">
-          <q-btn label="Registrar" color="primary" class="full-width" outline rounded size="lg" type="submit"></q-btn>
+          <q-btn
+            label="Registrar"
+            color="primary"
+            class="full-width"
+            outline
+            rounded
+            size="lg"
+            type="submit"
+          ></q-btn>
 
-          <q-btn label="Voltar" color="primary" class="full-width" flat :to="{ name: 'login' }" size="sm"></q-btn>
+          <q-btn
+            label="Voltar"
+            color="primary"
+            class="full-width"
+            flat
+            :to="{ name: 'login' }"
+            size="sm"
+          ></q-btn>
         </div>
       </div>
     </q-form>
@@ -58,13 +99,13 @@ export default defineComponent({
     const handleRegister = async () => {
       try {
         await register(form.value);
-        notifySuccess('Dados inseridos com sucesso!')
+        notifySuccess("Dados inseridos com sucesso!");
         router.push({
           name: "email-confirmation",
           query: { email: form.value.email },
         });
       } catch (error) {
-        notifyError(error.message)
+        notifyError(error.message);
         /* alert(error.message); */
       }
     };
@@ -74,6 +115,4 @@ export default defineComponent({
 });
 </script>
 
-<style>
-
-</style>
+<style></style>

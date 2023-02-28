@@ -40,8 +40,7 @@
     <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered> -->
     <!-- Sem a opção "show-if-above", ele inicia com o menu recolhido -->
     <q-drawer v-model="leftDrawerOpen" behavior="mobile" bordered>
-
-    <!-- <q-drawer v-model="leftDrawerOpen" :width="200" behavior="mobile" bordered> -->
+      <!-- <q-drawer v-model="leftDrawerOpen" :width="200" behavior="mobile" bordered> -->
       <q-scroll-area class="fit">
         <q-list>
           <q-item-label header>
@@ -72,16 +71,26 @@
               </q-item-section>
             </q-item>
 
-            <q-item to="/inicioRevendas" exact>
-              <q-item-section avatar>
-                <!-- <q-icon name="list_alt" /> -->
-                <q-icon name="mdi-handshake-outline" />
-              </q-item-section>
-              <q-item-section
-                ><q-item-label>Revendas</q-item-label>
-                <q-item-label caption>Revendas cadastradas</q-item-label>
-              </q-item-section>
-            </q-item>
+            <!-- <div v-if="!user"> -->
+            <div
+              v-if="
+                userlogado == 'Luiz Marcello' ||
+                userlogado == 'Ederson Bentley' ||
+                userlogado == 'adm'
+              "
+            >
+              <q-item to="/inicioRevendas" exact>
+                <q-item-section avatar>
+                  <!-- <q-icon name="list_alt" /> -->
+                  <q-icon name="mdi-handshake-outline" />
+                </q-item-section>
+                <q-item-section
+                  ><q-item-label>Revendas</q-item-label>
+                  <q-item-label caption>Revendas cadastradas</q-item-label>
+                </q-item-section>
+              </q-item>
+            </div>
+            <!-- </div> -->
 
             <!-- <q-item to="/listarclientes" exact>
             <q-item-section avatar>
@@ -93,26 +102,45 @@
             </q-item-section>
           </q-item> -->
 
-            <q-item to="/inicioclientes" exact>
-              <q-item-section avatar>
-                <q-icon name="mdi-face-agent" />
-              </q-item-section>
-              <q-item-section
-                ><q-item-label>Clientes</q-item-label>
-                <q-item-label caption>Clientes cadastrados</q-item-label>
-              </q-item-section>
-            </q-item>
+            <!-- <div v-if="!user"> -->
+            <div
+              v-if="
+                userlogado == 'Luiz Marcello' ||
+                userlogado == 'Ederson Bentley' ||
+                userlogado == 'adm'
+              "
+            >
+              <q-item to="/inicioclientes" exact>
+                <q-item-section avatar>
+                  <q-icon name="mdi-face-agent" />
+                </q-item-section>
+                <q-item-section
+                  ><q-item-label>Clientes</q-item-label>
+                  <q-item-label caption>Clientes cadastrados</q-item-label>
+                </q-item-section>
+              </q-item>
+            </div>
+            <!--  </div> -->
 
-            <q-item to="/inicioestoque" exact>
-              <q-item-section avatar>
-                <!-- <q-icon name="list_alt" /> -->
-                <q-icon name="mdi-router-wireless-settings" />
-              </q-item-section>
-              <q-item-section
-                ><q-item-label>Estoque</q-item-label>
-                <q-item-label caption>Controle de estoque</q-item-label>
-              </q-item-section>
-            </q-item>
+            <!-- <div v-if="!user"> -->
+            <div
+              v-if="
+                userlogado == 'Luiz Marcello' ||
+                userlogado == 'André Romera' ||
+                userlogado == 'adm'
+              "
+            >
+              <q-item to="/inicioestoque" exact>
+                <q-item-section avatar>
+                  <!-- <q-icon name="list_alt" /> -->
+                  <q-icon name="mdi-router-wireless-settings" />
+                </q-item-section>
+                <q-item-section
+                  ><q-item-label>Estoque</q-item-label>
+                  <q-item-label caption>Controle de estoque</q-item-label>
+                </q-item-section>
+              </q-item>
+            </div>
 
             <!-- <q-item to="/form" exact>
             <q-item-section avatar>
@@ -146,6 +174,7 @@ import EssentialLink from "components/EssentialLink.vue";
 import useAuthUser from "src/composables/UseAuthUser";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
+
 const linksList = [
   /* {
      title: "Discord Chat Channel",
@@ -165,6 +194,10 @@ export default defineComponent({
     const $q = useQuasar();
     const router = useRouter();
     const { logout } = useAuthUser();
+
+    /* Obtendo qual usuário está logado */
+    const userlogado = user.value.user_metadata.name;
+
     const handleLogout = async () => {
       $q.dialog({
         title: "Logout",
@@ -188,7 +221,7 @@ export default defineComponent({
       /* dialog: ref(false),
       drawerLeft: ref(false),
       drawerRight: ref(false), */
-
+      userlogado,
       user,
       essentialLinks: linksList,
       leftDrawerOpen,
