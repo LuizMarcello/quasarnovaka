@@ -76,7 +76,8 @@
               v-if="
                 userlogado == 'Luiz Marcello' ||
                 userlogado == 'Ederson Bentley' ||
-                userlogado == 'adm'
+                userlogado == 'adm' ||
+                userlogado == 'Luiz Bentley'
               "
             >
               <q-item to="/inicioRevendas" exact>
@@ -107,7 +108,8 @@
               v-if="
                 userlogado == 'Luiz Marcello' ||
                 userlogado == 'Ederson Bentley' ||
-                userlogado == 'adm'
+                userlogado == 'adm' ||
+                userlogado == 'Luiz Bentley'
               "
             >
               <q-item to="/inicioclientes" exact>
@@ -127,7 +129,8 @@
               v-if="
                 userlogado == 'Luiz Marcello' ||
                 userlogado == 'André Romera' ||
-                userlogado == 'adm'
+                userlogado == 'adm' ||
+                userlogado == 'Luiz Bentley'
               "
             >
               <q-item to="/inicioestoque" exact>
