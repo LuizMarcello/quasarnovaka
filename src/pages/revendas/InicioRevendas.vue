@@ -13,126 +13,94 @@
     </q-btn>
   </div>
 
-  <div style="margin-left: 30%; margin-right: 30%; text-align: center">
-    <q-card class="my-card text-white" style="background: blue">
-      <div class="flex-container">
-        <div class="col" style="margin-left: 4%">
-          <q-card-section>
-            <div class="text-h6">Aprovadas</div>
-          </q-card-section>
+  <div
+    class="container flex flex-wrap"
+    style="justify-content: center; text-align: center"
+  >
+    <q-card class="item my-card text-white" style="background: green">
+      <q-card-section style="padding: 2%">
+        <div class="text-h6">Aprovadas</div>
+      </q-card-section>
 
-          <q-card-section class="q-pt-none">
-            <div class="text-h5">{{ ativosAprovado }}</div>
-          </q-card-section>
-        </div>
+      <q-card-section class="q-pt-none" style="padding: 2%">
+        <div class="text-h5">{{ ativosAprovado }}</div>
+      </q-card-section>
 
-        <div class="col">
-          <q-card-section>
-            <q-card-media
-              ><q-img
-                src="~assets/revendas_2_06.02.23.png"
-                style="max-width: 60px; height: 60px"
-                :fit="fill"
-              >
-              </q-img
-            ></q-card-media>
-          </q-card-section>
-        </div>
-      </div>
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/revendas_2_06.02.23.png"
+            style="max-width: 60px; height: 60px"
+          >
+          </q-img
+        ></q-card-media>
+      </q-card-section>
     </q-card>
 
     <br />
 
-    <q-card class="my-card text-white" style="background: green">
-      <div class="flex-container">
-        <div class="col" style="margin-left: 4%">
-          <q-card-section>
-            <div class="text-h6">
-              Reprovadas
-              <!-- <i class="fa-solid fa-user"></i> -->
-            </div>
-          </q-card-section>
+    <q-card class="item my-card text-white" style="background: green">
+      <q-card-section style="padding: 2%">
+        <div class="text-h6">Reprovadas</div>
+      </q-card-section>
 
-          <q-card-section class="q-pt-none">
-            <div class="text-h5">{{ ativosNaoAprovado }}</div>
-          </q-card-section>
-        </div>
+      <q-card-section class="q-pt-none" style="padding: 2%">
+        <div class="text-h5">{{ ativosNaoAprovado }}</div>
+      </q-card-section>
 
-        <div class="col">
-          <q-card-section>
-            <q-card-media
-              ><q-img
-                src="~assets/revendas_2_06.02.23.png"
-                style="max-width: 60px; height: 60px"
-                :fit="fill"
-              >
-              </q-img
-            ></q-card-media>
-          </q-card-section>
-        </div>
-      </div>
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/revendas_2_06.02.23.png"
+            style="max-width: 60px; height: 60px"
+          >
+          </q-img
+        ></q-card-media>
+      </q-card-section>
     </q-card>
 
     <br />
 
-    <q-card class="my-card text-white" style="background: green">
-      <div class="flex-container">
-        <div class="col" style="margin-left: 3%">
-          <q-card-section>
-            <div class="text-h6">
-              Pendências
-              <!-- <i class="fa-solid fa-user"></i> -->
-            </div>
-          </q-card-section>
+    <q-card class="item my-card text-white" style="background: green">
+      <q-card-section style="padding: 2%">
+        <div class="text-h6">Pendências</div>
+      </q-card-section>
 
-          <q-card-section class="q-pt-none">
-            <div class="text-h5">{{ ativosPendencia }}</div>
-          </q-card-section>
-        </div>
-        <div class="col">
-          <q-card-section>
-            <q-card-media
-              ><q-img
-                src="~assets/revendas_2_06.02.23.png"
-                style="max-width: 60px; height: 60px"
-                :fit="fill"
-              >
-              </q-img
-            ></q-card-media>
-          </q-card-section>
-        </div>
-      </div>
+      <q-card-section class="q-pt-none" style="padding: 2%">
+        <div class="text-h5">{{ ativosPendencia }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/revendas_2_06.02.23.png"
+            style="max-width: 60px; height: 60px"
+          >
+          </q-img
+        ></q-card-media>
+      </q-card-section>
     </q-card>
 
     <br />
 
-    <q-card class="my-card text-white" style="background: green">
-      <div class="flex-container">
-        <div class="col" style="margin-left: 3%">
-          <q-card-section>
-            <div class="text-h6">
-              Aguardando
-              <!-- <i class="fa-solid fa-user"></i> -->
-            </div>
-          </q-card-section>
+    <q-card class="item my-card text-white" style="background: green">
+      <q-card-section style="padding: 2%">
+        <div class="text-h6">Aguardando</div>
+      </q-card-section>
 
-          <q-card-section class="q-pt-none">
-            <div class="text-h5">{{ ativosAguardando }}</div>
-          </q-card-section>
-        </div>
-        <div class="col">
-          <q-card-section>
-            <q-card-media
-              ><q-img
-                src="~assets/revendas_2_06.02.23.png"
-                style="max-width: 60px; height: 60px"
-                :fit="fill"
-              >
-              </q-img
-            ></q-card-media>
-          </q-card-section>
-        </div>
-      </div>
+      <q-card-section class="q-pt-none" style="padding: 2%">
+        <div class="text-h5">{{ ativosAguardando }}</div>
+      </q-card-section>
+
+      <q-card-section style="padding: 2%">
+        <q-card-media
+          ><q-img
+            src="~assets/revendas_2_06.02.23.png"
+            style="max-width: 60px; height: 60px"
+          >
+          </q-img
+        ></q-card-media>
+      </q-card-section>
     </q-card>
 
     <br />
@@ -173,10 +141,6 @@ export default defineComponent({
     const ativosPendencia = ref(0);
 
     const router = useRouter();
-
-    //const { supabase } = useSupabase();
-
-    //const table = "clientes";
 
     const $q = useQuasar();
 
@@ -250,13 +214,31 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.flex-container {
-  display: flex;
-  justify-content: space-between;
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  /* border: 4px solid #ccc; */
+  align-items: center;
+  align-content: center;
 }
-
+.flex {
+  display: flex;
+}
+.item {
+  margin: 6px;
+  /* background: tomato; */
+  text-align: center;
+  font-size: 1em;
+  min-width: 200px;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+body {
+  font-family: monospace;
+}
 @media only screen and (max-width: 600px) {
-  .flex-container {
+  .container {
     flex-direction: column;
   }
 }

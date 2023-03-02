@@ -37,9 +37,10 @@
       </q-toolbar>
     </q-header>
 
-    <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered> -->
-    <!-- Sem a opção "show-if-above", ele inicia com o menu recolhido -->
-    <q-drawer v-model="leftDrawerOpen" behavior="mobile" bordered>
+    <q-drawer v-model="leftDrawerOpen" bordered>
+      <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered> -->
+      <!-- Sem a opção "show-if-above", ele inicia com o menu recolhido -->
+      <!-- <q-drawer v-model="leftDrawerOpen" behavior="mobile" bordered> -->
       <!-- <q-drawer v-model="leftDrawerOpen" :width="200" behavior="mobile" bordered> -->
       <q-scroll-area class="fit">
         <q-list>

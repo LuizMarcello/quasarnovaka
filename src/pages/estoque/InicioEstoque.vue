@@ -446,13 +446,10 @@
 <script>
 /* "defineComponent": Porque é vuejs 3 */
 import { defineComponent, ref, onMounted } from "vue";
-
 import useApi from "src/composables/EstoqueApi";
-
 /* import router from "src/router"; */
 /* import { useRouter } from "vue-router"; */
 import { useQuasar } from "quasar";
-
 export default defineComponent({
   setup() {
     const ativosAntena = ref(0);
@@ -465,11 +462,8 @@ export default defineComponent({
     const ativosLnb = ref(0);
     const ativosRadio = ref(0);
     const ativosRoteador = ref(0);
-
     /* const router = useRouter(); */
-
     const $q = useQuasar();
-
     const {
       estoqueAntena,
       estoqueBuc,
@@ -482,11 +476,9 @@ export default defineComponent({
       estoqueRadio,
       estoqueRoteador,
     } = useApi();
-
     /*  function linkClick(e, go) {
       e.preventDefault(); // we choose when we navigate
     } */
-
     /* const handleStatusAguardando = async () => {
       try {
         ativosAguardando.value = await statusAguardando("clientes");
@@ -494,7 +486,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     }; */
-
     const handleEstoqueAntena = async () => {
       try {
         ativosAntena.value = await estoqueAntena("estoque");
@@ -502,7 +493,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleEstoqueBuc = async () => {
       try {
         ativosBuc.value = await estoqueBuc("estoque");
@@ -510,7 +500,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleEstoqueModem = async () => {
       try {
         ativosModem.value = await estoqueModem("estoque");
@@ -518,7 +507,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleEstoqueEtria = async () => {
       try {
         ativosEtria.value = await estoqueEtria("estoque");
@@ -526,7 +514,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleEstoqueFonte = async () => {
       try {
         ativosFonte.value = await estoqueFonte("estoque");
@@ -534,7 +521,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleEstoqueGroove = async () => {
       try {
         ativosGroove.value = await estoqueGroove("estoque");
@@ -542,7 +528,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleEstoqueIlb = async () => {
       try {
         ativosIlb.value = await estoqueIlb("estoque");
@@ -550,7 +535,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleEstoqueLnb = async () => {
       try {
         ativosLnb.value = await estoqueLnb("estoque");
@@ -558,7 +542,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleEstoqueRadio = async () => {
       try {
         ativosRadio.value = await estoqueRadio("estoque");
@@ -566,7 +549,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     const handleEstoqueRoteador = async () => {
       try {
         ativosRoteador.value = await estoqueRoteador("estoque");
@@ -574,7 +556,6 @@ export default defineComponent({
         notifyError(error.message);
       }
     };
-
     onMounted(() => {
       handleEstoqueAntena();
       handleEstoqueBuc();
@@ -587,9 +568,7 @@ export default defineComponent({
       handleEstoqueRadio();
       handleEstoqueRoteador();
     });
-
     //console.log(ativosTotal);
-
     return {
       ativosAntena,
       ativosBuc,
@@ -624,11 +603,9 @@ export default defineComponent({
   align-items: center;
   align-content: center;
 }
-
 .flex {
   display: flex;
 }
-
 .item {
   margin: 6px;
   /* background: tomato; */
@@ -636,15 +613,12 @@ export default defineComponent({
   font-size: 1em;
   min-width: 200px;
 }
-
 .flex-wrap {
   flex-wrap: wrap;
 }
-
 body {
   font-family: monospace;
 }
-
 @media only screen and (max-width: 600px) {
   .container {
     flex-direction: column;
