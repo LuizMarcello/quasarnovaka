@@ -3,7 +3,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="clientes"
+        :rows="contratos"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -13,7 +13,7 @@
         hide-pagination
       >
         <template v-slot:top>
-          <span class="text-h6">Clientes</span>
+          <span class="text-h6">Contratos</span>
           <q-space />
           <!-- <q-btn
               v-if="$q.platform.is.desktop"
@@ -29,7 +29,7 @@
               dense
               debounce="300"
               v-model="filter"
-              placeholder="Pesquisar clientes"
+              placeholder="Pesquisar contratos"
               color="primary"
               class="q-mb-sm"
             >
@@ -53,7 +53,7 @@
               icon="mdi-plus"
               dense
               no-caps=""
-              :to="{ name: 'form-clientes' }"
+              :to="{ name: 'form-contratos' }"
             />
           </q-td>
         </template>
@@ -119,7 +119,7 @@
         fab
         icon="mdi-plus"
         color="primary"
-        :to="{ name: 'form-clientes' }"
+        :to="{ name: 'form-contratos' }"
       />
     </q-page-sticky>
     <br />
@@ -148,166 +148,53 @@ const columns = [
     sortable: true,
   },
   {
-    name: "razaosocial",
+    name: "nome",
     align: "left",
-    label: "Razão social*",
-    field: "razaosocial",
+    label: "Nome",
+    field: "nome",
     sortable: true,
   },
-  /* {
-    name: "ie_rg",
-    align: "left",
-    label: "Ie Rg",
-    field: "ie_rg",
-    sortable: true,
-  }, */
-  /* {
-    name: "cnpj",
-    align: "left",
-    label: "CNPJ",
-    field: "cnpj",
-    sortable: true,
-  }, */
-  /* {
-    name: "dataadesao",
-    align: "left",
-    label: "Data de adesão",
-    field: "dataadesao",
-    sortable: true,
-  }, */
-  /* {
-    name: "nome_contato",
-    align: "left",
-    label: "Nome do contato",
-    field: "nome_contato",
-    sortable: true,
-  }, */
-  /* {
-    name: "celular",
-    align: "left",
-    label: "Celular",
-    field: "celular",
-    sortable: true,
-  }, */
-  /* {
-    name: "whatsapp",
-    align: "left",
-    label: "WhatsApp",
-    field: "whatsapp",
-    sortable: true,
-  }, */
-  /* {
-    name: "fixo",
-    align: "left",
-    label: "Telefone fixo",
-    field: "fixo",
-    sortable: true,
-  }, */
-  {
-    name: "email",
-    align: "left",
-    label: "Email",
-    field: "email",
-    sortable: true,
-  },
-  /* {
-    name: "chave",
-    align: "left",
-    label: "Chave",
-    field: "chave",
-    sortable: true,
-  }, */
 
-  /* {
-    name: "formapagamento",
+  {
+    name: "formapgto",
     align: "left",
     label: "Forma de pagamento",
-    field: "formapagamento",
+    field: "formapgto",
     sortable: true,
-  }, */
-  /* {
-    name: "instalador",
-    align: "left",
-    label: "Instalador",
-    field: "instalador",
-    sortable: true,
-  }, */
+  },
 
-  /* {
-    name: "revenda_id",
-    align: "left",
-    label: "Revenddda",
-    field: "revenda_id",
-    sortable: true,
-  }, */
-
-  /* {
-    name: "observacao",
-    align: "left",
-    label: "Observacao",
-    field: "observacao",
-    sortable: true,
-  }, */
-  /* {
-    name: "cep",
-    align: "left",
-    label: "CEP",
-    field: "cep",
-    sortable: true,
-  }, */
-  /*  {
-    name: "rua",
-    align: "left",
-    label: "Rua",
-    field: "rua",
-    sortable: true,
-  }, */
-  /* {
-    name: "numero",
-    align: "left",
-    label: "Número",
-    field: "numero",
-    sortable: true,
-  }, */
-  /* {
-    name: "bairro",
-    align: "left",
-    label: "Bairro",
-    field: "bairro",
-    sortable: true,
-  }, */
   {
-    name: "cidade",
+    name: "vencimento",
     align: "left",
-    label: "Cidade",
-    field: "cidade",
+    label: "Vencimento",
+    field: "vencimento",
     sortable: true,
   },
   {
-    name: "estado",
+    name: "valor",
     align: "left",
-    label: "Estado",
-    field: "estado",
+    label: "Valor",
+    field: "valor",
     sortable: true,
   },
   {
-    name: "servicos",
+    name: "datacriacao",
     align: "left",
-    label: "Serviços já prestados",
-    field: "servicos",
+    label: "Criado em",
+    field: "datacriacao",
     sortable: true,
   },
   {
-    name: "status",
+    name: "databloqpend",
     align: "left",
-    label: "Status",
-    field: "status",
+    label: "Data Bloq/Pend",
+    field: "databloqpend",
     sortable: true,
   },
   {
     name: "actions",
     align: "right",
-    label: "Actions",
+    label: "Ações",
     field: "actions",
     sortable: true,
   },
@@ -328,7 +215,7 @@ import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
 export default defineComponent({
-  name: "PageClientesList",
+  name: "ListaContratos",
 
   methods: {
     makePDF() {
@@ -337,7 +224,7 @@ export default defineComponent({
       var doc = new jsPDF("p", "pt", "a1");
       doc.html(document.querySelector("#app"), {
         callback: function (pdf) {
-          pdf.save("Clientes_cadastrados.pdf");
+          pdf.save("Contratos_cadastrados.pdf");
         },
       });
     },

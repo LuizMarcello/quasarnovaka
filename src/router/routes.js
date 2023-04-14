@@ -55,6 +55,11 @@ const routes = [{
         name: "inicioclientes",
         component: () => import("pages/clientes/InicioClientes.vue"),
       },
+      {
+        path: "listarcontratos",
+        name: "listarcontratos",
+        component: () => import("pages/clientes/ListaContratos.vue"),
+      },
       /* {
         path: "form-clientes",
         name: "form-clientes",
@@ -64,6 +69,11 @@ const routes = [{
         path: "form-clientes/:id?",
         name: "form-clientes",
         component: () => import("src/pages/clientes/Form.vue"),
+      },
+      {
+        path: "form-contratos/:id?",
+        name: "form-contratos",
+        component: () => import("src/pages/clientes/FormContratos.vue"),
       },
       {
         path: "listarevendas",

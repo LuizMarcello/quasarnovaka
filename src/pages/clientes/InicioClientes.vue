@@ -10,7 +10,17 @@
       no-caps=""
       style="background: #0d084f; color: white; width: 41%"
     >
-      <q-icon name="mdi-human-male-female" />
+      <q-icon name="mdi-human-male-female" style="margin-left: 2%" />
+    </q-btn>
+
+    <q-btn
+      to="/listarcontratos"
+      label="Contratos"
+      exact
+      no-caps=""
+      style="background: #0d084f; color: white; width: 41%"
+    >
+      <q-icon name="newspaper" style="margin-left: 2%" />
     </q-btn>
   </div>
 
@@ -149,7 +159,7 @@ export default defineComponent({
     const ativosAtivos = ref(0);
     const ativosInativos = ref(0);
 
-   /*  const router = useRouter(); */
+    /*  const router = useRouter(); */
 
     const $q = useQuasar();
 
@@ -212,7 +222,6 @@ export default defineComponent({
       ativosAguardando,
       ativosAtivos,
       ativosInativos,
-
     };
   },
 });
@@ -229,5 +238,4 @@ export default defineComponent({
     flex-direction: column;
   }
 }
-
 </style>
