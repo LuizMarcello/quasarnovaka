@@ -280,7 +280,7 @@ export default function useApi() {
     return data;
   };
 
-  /*  const list = async (table) => {
+   /* const list = async (table) => {
      const {
        data,
        error

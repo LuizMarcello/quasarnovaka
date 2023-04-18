@@ -60,6 +60,11 @@ const routes = [{
         name: "listarcontratos",
         component: () => import("pages/clientes/ListaContratos.vue"),
       },
+      {
+        path: "listartemplatecontratos",
+        name: "listartemplatecontratos",
+        component: () => import("pages/clientes/ListaTemplateContratos.vue"),
+      },
       /* {
         path: "form-clientes",
         name: "form-clientes",
@@ -74,6 +79,11 @@ const routes = [{
         path: "form-contratos/:id?",
         name: "form-contratos",
         component: () => import("src/pages/clientes/FormContratos.vue"),
+      },
+      {
+        path: "form-templatecontrato/:id?",
+        name: "form-templatecontrato",
+        component: () => import("src/pages/clientes/FormTemplateContratos.vue"),
       },
       {
         path: "listarevendas",

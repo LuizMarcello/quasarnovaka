@@ -3,7 +3,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="contratos"
+        :rows="templatecontratos"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -13,7 +13,7 @@
         hide-pagination
       >
         <template v-slot:top>
-          <span class="text-h6">Contratos</span>
+          <span class="text-h6">Modelos de contratos</span>
           <q-space />
           <!-- <q-btn
               v-if="$q.platform.is.desktop"
@@ -29,7 +29,7 @@
               dense
               debounce="300"
               v-model="filter"
-              placeholder="Pesquisar contratos"
+              placeholder="Pesquisar modelos de contratos"
               color="primary"
               class="q-mb-sm"
             >
@@ -48,22 +48,15 @@
             /> -->
             <q-btn
               class="desktop-only"
-              label="Novo contrato"
+              label="Novo template de contrato"
               color="primary"
               icon="mdi-plus"
               dense
               no-caps=""
-              :to="{ name: 'form-contratos' }"
+              :to="{ name: 'form-templatecontrato' }"
             />
 
-            <q-btn
-              class="desktop-only"
-              label="Layouts de Contratos"
-              color="primary"
-              dense
-              no-caps=""
-              :to="{ name: 'listartemplatecontratos' }"
-            />
+
           </q-td>
         </template>
 
@@ -92,7 +85,7 @@
               color="negative"
               dense
               size="sm"
-              @click="handleRemoveContrato(props.row)"
+              @click="handleRemovetemplateContrato(props.row)"
               ><q-tooltip> Excluir </q-tooltip></q-btn
             >
           </q-td>
@@ -128,7 +121,7 @@
         fab
         icon="mdi-plus"
         color="primary"
-        :to="{ name: 'form-contratos' }"
+        :to="{ name: 'form-templatecontrato' }"
       />
     </q-page-sticky>
     <br />
@@ -157,49 +150,13 @@ const columns = [
     sortable: true,
   },
   {
-    name: "nome",
+    name: "descricao",
     align: "left",
-    label: "Nome",
+    label: "Descrição",
     field: "nome",
     sortable: true,
   },
 
-  {
-    name: "formapgto",
-    align: "left",
-    label: "Forma de pagamento",
-    field: "formapgto",
-    sortable: true,
-  },
-
-  {
-    name: "vencimento",
-    align: "left",
-    label: "Vencimento",
-    field: "vencimento",
-    sortable: true,
-  },
-  {
-    name: "valor",
-    align: "left",
-    label: "Valor",
-    field: "valor",
-    sortable: true,
-  },
-  {
-    name: "datacriacao",
-    align: "left",
-    label: "Criado em",
-    field: "datacriacao",
-    sortable: true,
-  },
-  {
-    name: "databloqpend",
-    align: "left",
-    label: "Data Bloq/Pend",
-    field: "databloqpend",
-    sortable: true,
-  },
   {
     name: "actions",
     align: "right",
@@ -224,7 +181,7 @@ import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
 export default defineComponent({
-  name: "ListaContratos",
+  name: "ListaTemplateContratos",
 
   methods: {
     makePDF() {
@@ -233,54 +190,57 @@ export default defineComponent({
       var doc = new jsPDF("p", "pt", "a1");
       doc.html(document.querySelector("#app"), {
         callback: function (pdf) {
-          pdf.save("Contratos_cadastrados.pdf");
+          pdf.save("ModeloContratos_cadastrados.pdf");
         },
       });
     },
   },
 
   setup() {
-    const contratos = ref([]);
+    const templatecontratos = ref([]);
     const loading = ref(true);
     const router = useRouter();
     const filter = ref("");
     /* const table = "revendas"; */
     const $q = useQuasar();
     const { list, remove } = useApi();
-    const { notifyError, notifySuccess } = useNotify;
+    const { notifySuccess, notifyError } = useNotify;
 
-    const handleListContratos = async () => {
+    const handleListTemplateContratos = async () => {
       try {
         loading.value = true;
-        contratos.value = await list("contratos");
+        contratos.value = await list("templatecontrato");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleEdit = (contrato) => {
-      /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-clientes", params: { id: contrato.id } });
-    };
-
-    const handleDetails = (contrato) => {
+    const handleEdit = (templatecontrato) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
-        name: "form-clientes-detalhes",
-        params: { id: contrato.id },
+        name: "form-clientes",
+        params: { id: templatecontrato.id },
       });
     };
 
-    const handleRemoveContrato = async (contrato) => {
+    const handleDetails = (templatecontrato) => {
+      /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
+      router.push({
+        name: "form-clientes-detalhes",
+        params: { id: templatecontrato.id },
+      });
+    };
+
+    const handleRemovetemplateContrato = async (templatecontrato) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${contrato.nome} ?`,
+          message: `Tem certeza que quer deletar ${templatecontrato.nome} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("contratos", contrato.id);
+          await remove("contratos", templatecontrato.id);
           notifySuccess("Removido com sucesso!");
           handleListRevendas();
         });
@@ -290,20 +250,22 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      handleListContratos();
+      handleListTemplateContratos();
     });
 
     return {
       columns,
-      contratos,
+      templatecontratos,
       loading,
       filter,
       handleDetails,
       handleEdit,
-      handleRemoveContrato,
+      handleRemovetemplateContrato,
       initialPagination,
       pagesNumber: computed(() =>
-        Math.ceil(contratos.value.length / initialPagination.value.rowPerPage)
+        Math.ceil(
+          templatecontratos.value.length / initialPagination.value.rowPerPage
+        )
       ),
     };
   },

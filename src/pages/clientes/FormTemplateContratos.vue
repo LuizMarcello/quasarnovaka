@@ -3,7 +3,7 @@
   <q-page padding>
     <div class="row justify-center">
       <div class="col-12 text-center">
-        <p class="text-h6">Cadastrar Contrato</p>
+        <p class="text-h6">Cadastrar modelo de contrato</p>
       </div>
       <q-btn
         label="Voltar"
@@ -23,78 +23,37 @@
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
           <!-- ok -->
-          <q-input class="q-pb-md"
-            label="Cliente"
-            v-model="form.nome"
+          <q-input
+            label="Descrição"
+            v-model="form.descricao"
             :rules="[
               (val) => (val && val.length > 0) || 'Informe o nome do cliente',
             ]"
           />
-          <q-item-label caption class="q-gutter-y-sm q-pb-xs"
-            >Buscar por cliente...</q-item-label
-          >
 
           <q-select
-            v-model="form.formapgto"
-            :options="opcoespgto"
-            label="Forma de pagamento"
+            v-model="form.variaveis"
+            :options="variaveis"
+            label="Variáveis"
           />
-          <q-item-label caption class="q-pt-xs q-pb-xs"
-            >Padrão* Cobrança informal</q-item-label
-          >
+        </div>
 
-          <q-input
-            class="q-pt-md q-pb-xs"
-            label="Vencimento"
-            type="date"
-            stack-label
-            v-model="form.vencimento"
-            mask="##/##/####"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Informe o vencimento',
-            ]"
-          />
-          <!-- ok -->
-          <q-input
-            class="q-pt-xs"
-            label="Valor"
-            type="number"
-            v-model="form.valor"
-            :rules="[(val) => (val && val.length > 0) || 'Informe o valor']"
-          />
-          <!-- ok -->
-          <q-input
-            label="Criado em"
-            type="date"
-            stack-label
-            v-model="form.datacriacao"
-            mask="##/##/####"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Informe a data de criação',
-            ]"
-          />
-          <!-- ok -->
-          <q-input
-            label="Data Bloq/Pend"
-            type="date"
-            stack-label
-            v-model="form.databloqpend"
-            mask="##/##/####"
-            :rules="[
-              (val) =>
-                (val && val.length > 0) ||
-                'Informe a data de bloqueio/pendente',
-            ]"
-          />
+        <div>
+          <p>Contrato</p>
+        </div>
 
-          <!-- <q-select v-model="form.revenda" label="Revenda" /> -->
+        <div class="q-mt-sm q-gutter-sm">
+          <q-editor v-model="form.editor" min-height="18rem" />
 
-          <!-- option-value: Qual o "id" da categoria que vai vir -->
-          <!-- option-label: O que vai ser exibido da categoria no select,
-                           no caso, o "name" -->
-          <!-- map-options: Para poder mapear as opções acima -->
-          <!-- emit-value: Para que no retôrno, seja emitido somente o valor
-                         desejado(id), e não o objeto completo. -->
+          <!-- <q-card flat bordered>
+            <q-card-section>
+              <pre style="white-space: pre-line">{{ editor }}</pre>
+            </q-card-section>
+          </q-card> -->
+
+          <!-- <q-card flat bordered>
+            <q-card-section v-html="editor" />
+          </q-card> -->
         </div>
 
         <div class="q-gutter-y-md">
@@ -137,12 +96,12 @@ import useApi from "src/composables/UseApi";
 import useNotify from "src/composables/UseNotify";
 
 export default defineComponent({
-  nome: "PageFormContratos",
+  nome: "PageFormTemplateContrato",
 
   setup() {
     const { supabase } = useSupabase();
     const $q = useQuasar();
-    const table = "contratos";
+    const table = "clientes";
     const router = useRouter();
     const route = useRoute();
     const { post, getById, update, list } = useApi();
@@ -158,12 +117,9 @@ export default defineComponent({
     const isUpdate = computed(() => route.params.id);
     let contratooo = {};
     const form = ref({
-      nome: "",
-      formapgto: "",
-      vencimento: "",
-      valor: "",
-      datacriacao: "",
-      databloqpend: "",
+      descricao: "",
+      variaveis: "",
+      editor: "",
     });
 
     onMounted(() => {
@@ -195,12 +151,9 @@ export default defineComponent({
     // Para limpar os campos
     const onReset = async () => {
       form.value = {
-        nome: "",
-        formapgto: "",
-        vencimento: "",
-        valor: "",
-        datacriacao: "",
-        databloqpend: "",
+        descricao: "",
+        variaveis: "",
+        editor: "",
       };
     };
 
@@ -221,14 +174,31 @@ export default defineComponent({
       accept,
       model: ref(null),
 
-      opcoespgto: [
-        "Gerencia Net",
-        "Radio_Juno",
-        "Nova Ka",
-        "Nova Ka_v2",
-        "Nova Ka_v3",
-        "Sencinet",
-        "Filial_MT",
+      variaveis: [
+        "Nome Cliente",
+        "Email Cliente",
+        "CPF/CNPJ Cliente",
+        "RG/Inscrição Estadual Cliente",
+        "Telefone Cliente",
+        "NúmeroEndereço Cliente",
+        "CEP Endereço Cliente",
+        "Rua Endereço Cliente",
+        "Bairro Endereço Cliente",
+        "Cidade Endereço Cliente",
+        "Esta Endereço Cliente",
+        "Complemento Endereço Cliente",
+        "Nome Cliente",
+        "ID Contrato",
+        "Dia de vencimento Contrato",
+        "Valor Contrato",
+        "Desconto Contrato",
+        "Acréscimo Contrato",
+        "Forma de pagamento Contrato",
+        "Data de cadastro Contrato",
+        "Login Cliente",
+        "Senha login cliente",
+        "Assinatura Usuário",
+        "Assinatura Cliente",
       ],
 
       /* onSubmit() {
@@ -250,6 +220,7 @@ export default defineComponent({
       }, */
 
       optionsContrato,
+      editor: ref(""),
     };
   },
 });
