@@ -15,66 +15,89 @@
       />
 
       <q-form
-        class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md"
+        class="col-md-6 col-xs-12 col-sm-12 q-gutter-y-md"
         @submit.prevent="handleSubmit"
         @reset="onReset"
       >
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
-          <!-- ok -->
-          <q-input class="q-pb-md"
-            label="Cliente"
+          <q-select
+            class="q-pt-md"
             v-model="form.nome"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Informe o nome do cliente',
-            ]"
+            :options="teste"
+            label="Cliente"
+            hint="Buscar por cliente..."
           />
-          <q-item-label caption class="q-gutter-y-sm q-pb-xs"
-            >Buscar por cliente...</q-item-label
-          >
 
           <q-select
+            class="q-pt-md"
+            v-model="form.vencimento"
+            stack-label
+            :options="diadomes"
+            label="Dia de pagamento"
+          />
+
+          <q-select
+            class="q-pt-md"
             v-model="form.formapgto"
             :options="opcoespgto"
             label="Forma de pagamento"
+            hint="Padrão* Cobrança Informal"
           />
-          <q-item-label caption class="q-pt-xs q-pb-xs"
-            >Padrão* Cobrança informal</q-item-label
-          >
+
+          <q-select
+            class="q-pt-md"
+            label="Modelo de contrato"
+            type="number"
+            v-model="form.modelocontrato"
+            :options="teste"
+            hint="Pesquisar"
+          />
+
+          <q-select
+            class="q-pt-md"
+            label="Msg. pendência - automática?"
+            v-model="form.msgpendenciaautomatica"
+            :options="pendenciasimounao"
+            hint="Padrão* usa as config. predefinidas"
+          />
+
+          <q-select
+            class="q-pt-md"
+            label="Msg. bloqueio - automática?"
+            v-model="form.msgbloqueioautomatica"
+            :options="bloqueiosimounao"
+            hint="Padrão* usa as config. predefinidas"
+          />
+
+          <q-select
+            class="q-pt-md"
+            label="Modelo de contrato"
+            type="number"
+            v-model="form.modelocontrato"
+            hint="Pesquisar"
+          />
 
           <q-input
-            class="q-pt-md q-pb-xs"
-            label="Vencimento"
-            type="date"
-            stack-label
-            v-model="form.vencimento"
-            mask="##/##/####"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Informe o vencimento',
-            ]"
-          />
-          <!-- ok -->
-          <q-input
-            class="q-pt-xs"
-            label="Valor"
+            class="q-pt-md"
+            label="Dias para pendência"
             type="number"
-            v-model="form.valor"
-            :rules="[(val) => (val && val.length > 0) || 'Informe o valor']"
+            v-model="form.diaspendencia"
+            hint="Deixe em branco para usar config. padrão"
           />
-          <!-- ok -->
+
           <q-input
-            label="Criado em"
-            type="date"
-            stack-label
-            v-model="form.datacriacao"
-            mask="##/##/####"
-            :rules="[
-              (val) => (val && val.length > 0) || 'Informe a data de criação',
-            ]"
+            class="q-pt-md"
+            label="Dias para bloqueio"
+            type="number"
+            v-model="form.diasbloqueio"
+            hint="Deixe em branco para usar config. padrão"
           />
+
           <!-- ok -->
-          <q-input
+          <!-- <q-input
+            class="q-pt-sm"
             label="Data Bloq/Pend"
             type="date"
             stack-label
@@ -85,7 +108,7 @@
                 (val && val.length > 0) ||
                 'Informe a data de bloqueio/pendente',
             ]"
-          />
+          /> -->
 
           <!-- <q-select v-model="form.revenda" label="Revenda" /> -->
 
@@ -159,11 +182,16 @@ export default defineComponent({
     let contratooo = {};
     const form = ref({
       nome: "",
-      formapgto: "",
-      vencimento: "",
+      formapgto: "Cobrança informal",
+      vencimento: "1",
       valor: "",
       datacriacao: "",
       databloqpend: "",
+      modelocontrato: "",
+      diaspendencia: "",
+      diasbloqueio: "",
+      msgpendenciaautomatica: "Padrão",
+      msgbloqueioautomatica: "Padrão",
     });
 
     onMounted(() => {
@@ -201,6 +229,10 @@ export default defineComponent({
         valor: "",
         datacriacao: "",
         databloqpend: "",
+        modelocontrato: "",
+        diaspendencia: "",
+        diasbloqueio: "",
+        msgpendenciaautomatica: "",
       };
     };
 
@@ -222,6 +254,7 @@ export default defineComponent({
       model: ref(null),
 
       opcoespgto: [
+        "Cobrança informal",
         "Gerencia Net",
         "Radio_Juno",
         "Nova Ka",
@@ -230,6 +263,11 @@ export default defineComponent({
         "Sencinet",
         "Filial_MT",
       ],
+
+      diadomes: ["01", "05", "10", "15", "20", "25"],
+
+      pendenciasimounao: ["sim", "não", "Padrão"],
+      bloqueiosimounao: ["sim", "não", "Padrão"],
 
       /* onSubmit() {
         if (accept.value !== true) {
