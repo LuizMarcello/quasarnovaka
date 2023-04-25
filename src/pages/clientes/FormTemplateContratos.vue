@@ -11,7 +11,7 @@
         class="full-width q-gutter-y-sm"
         rounded
         flat
-        :to="{ name: 'listarcontratos' }"
+        :to="{ name: 'listartemplatecontratos' }"
       />
 
       <q-form
@@ -79,7 +79,7 @@
             class="full-width"
             rounded
             flat
-            :to="{ name: 'listarcontratos' }"
+            :to="{ name: 'listartemplatecontratos' }"
           />
         </div>
       </q-form>
@@ -101,7 +101,7 @@ export default defineComponent({
   setup() {
     const { supabase } = useSupabase();
     const $q = useQuasar();
-    const table = "clientes";
+    const table = "templatecontrato";
     const router = useRouter();
     const route = useRoute();
     const { post, getById, update, list } = useApi();

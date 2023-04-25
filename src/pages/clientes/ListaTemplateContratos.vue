@@ -1,9 +1,10 @@
+<!-- eslint-disable -->
 <template>
   <q-page padding>
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="templatecontratos"
+        :rows="templatecontrato"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -55,8 +56,6 @@
               no-caps=""
               :to="{ name: 'form-templatecontrato' }"
             />
-
-
           </q-td>
         </template>
 
@@ -132,12 +131,13 @@
       rounded
       size="sm"
       flat
-      :to="{ name: 'inicioclientes' }"
+      :to="{ name: 'listarcontratos' }"
     />
   </q-page>
 </template>
 
 <script>
+/* eslint-disable */
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -153,7 +153,7 @@ const columns = [
     name: "descricao",
     align: "left",
     label: "Descrição",
-    field: "nome",
+    field: "descricao",
     sortable: true,
   },
 
@@ -197,19 +197,19 @@ export default defineComponent({
   },
 
   setup() {
-    const templatecontratos = ref([]);
+    const templatecontrato = ref([]);
     const loading = ref(true);
     const router = useRouter();
     const filter = ref("");
     /* const table = "revendas"; */
     const $q = useQuasar();
     const { list, remove } = useApi();
-    const { notifySuccess, notifyError } = useNotify;
+    const { notifyError, notifySuccess } = useNotify;
 
     const handleListTemplateContratos = async () => {
       try {
         loading.value = true;
-        contratos.value = await list("templatecontrato");
+        templatecontrato.value = await list("templatecontrato");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
@@ -227,7 +227,7 @@ export default defineComponent({
     const handleDetails = (templatecontrato) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
-        name: "form-clientes-detalhes",
+        name: "formm-contratos-detalhes",
         params: { id: templatecontrato.id },
       });
     };
@@ -240,7 +240,7 @@ export default defineComponent({
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("contratos", templatecontrato.id);
+          await remove("contratos", templatecontrato);
           notifySuccess("Removido com sucesso!");
           handleListRevendas();
         });
@@ -255,7 +255,7 @@ export default defineComponent({
 
     return {
       columns,
-      templatecontratos,
+      templatecontrato,
       loading,
       filter,
       handleDetails,
@@ -264,7 +264,7 @@ export default defineComponent({
       initialPagination,
       pagesNumber: computed(() =>
         Math.ceil(
-          templatecontratos.value.length / initialPagination.value.rowPerPage
+          templatecontrato.value.length / initialPagination.value.rowPerPage
         )
       ),
     };

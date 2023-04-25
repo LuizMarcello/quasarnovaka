@@ -23,11 +23,16 @@
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
           <q-select
+            v-model="form.cliente_id"
+            :options="optionsCliente"
             class="q-pt-md"
-            v-model="form.nome"
-            :options="teste"
+            option-value="id"
+            option-label="razaosocial"
+            map-options
+            emit-value
             label="Cliente"
             hint="Buscar por cliente..."
+            :rules="[(val) => !!val || 'Informe um cliente']"
           />
 
           <q-select
@@ -53,6 +58,11 @@
             v-model="form.modelocontrato"
             :options="teste"
             hint="Pesquisar"
+            mask="(##) # #### - ####"
+            :rules="[
+              (val) =>
+                (val && val.length > 0) || 'Informe o modelo do contrato',
+            ]"
           />
 
           <q-select
@@ -71,14 +81,6 @@
             hint="Padrão* usa as config. predefinidas"
           />
 
-          <q-select
-            class="q-pt-md"
-            label="Modelo de contrato"
-            type="number"
-            v-model="form.modelocontrato"
-            hint="Pesquisar"
-          />
-
           <q-input
             class="q-pt-md"
             label="Dias para pendência"
@@ -93,6 +95,22 @@
             type="number"
             v-model="form.diasbloqueio"
             hint="Deixe em branco para usar config. padrão"
+          />
+
+          <q-select
+            class="q-pt-md"
+            label="Habilitar mensalidade automática?"
+            v-model="form.mensalidautom"
+            :options="mensalidautomatica"
+            hint="Padrão* usa as config. predefinidas"
+          />
+
+          <q-select
+            class="q-pt-md"
+            label="Forma de pagamento - Pré ou Pós?"
+            v-model="form.pgtoprepos"
+            :options="preoupos"
+            hint="Padrão* usa as config. predefinidas"
           />
 
           <!-- ok -->
@@ -172,6 +190,7 @@ export default defineComponent({
     const { notifyError, notifySuccess } = useNotify();
     const accept = ref(false);
 
+    const optionsCliente = ref([]);
     const optionsContrato = ref([]);
 
     /* Verificando se na rota existe o "id" como parâmetro
@@ -181,25 +200,30 @@ export default defineComponent({
     const isUpdate = computed(() => route.params.id);
     let contratooo = {};
     const form = ref({
-      nome: "",
+      cliente_id: "",
       formapgto: "Cobrança informal",
-      vencimento: "1",
+      vencimento: "01",
       valor: "",
-      datacriacao: "",
-      databloqpend: "",
       modelocontrato: "",
       diaspendencia: "",
-      diasbloqueio: "",
+      diasbloqueio: "Padrão",
       msgpendenciaautomatica: "Padrão",
       msgbloqueioautomatica: "Padrão",
+      mensalidautom: "Padrão",
+      pgtoprepos: "Padrão",
     });
 
     onMounted(() => {
+      handleListClientes();
       handleListContratos();
       if (isUpdate.value) {
         handleGetContrato(isUpdate.value);
       }
     });
+
+    const handleListClientes = async () => {
+      optionsCliente.value = await list("clientes");
+    };
 
     const handleListContratos = async () => {
       optionsContrato.value = await list("contratos");
@@ -223,16 +247,16 @@ export default defineComponent({
     // Para limpar os campos
     const onReset = async () => {
       form.value = {
-        nome: "",
+        cliente_id: "",
         formapgto: "",
         vencimento: "",
         valor: "",
-        datacriacao: "",
-        databloqpend: "",
         modelocontrato: "",
         diaspendencia: "",
         diasbloqueio: "",
         msgpendenciaautomatica: "",
+        mensalidautom: "",
+        pgtoprepos: "",
       };
     };
 
@@ -265,9 +289,10 @@ export default defineComponent({
       ],
 
       diadomes: ["01", "05", "10", "15", "20", "25"],
-
       pendenciasimounao: ["sim", "não", "Padrão"],
       bloqueiosimounao: ["sim", "não", "Padrão"],
+      mensalidautomatica: ["Não", "Sim"],
+      preoupos: ["Pré Pago", "Pós Pago"],
 
       /* onSubmit() {
         if (accept.value !== true) {
@@ -288,6 +313,7 @@ export default defineComponent({
       }, */
 
       optionsContrato,
+      optionsCliente,
     };
   },
 });
