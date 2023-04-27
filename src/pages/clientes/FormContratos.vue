@@ -31,7 +31,7 @@
             map-options
             emit-value
             label="Cliente"
-            hint="Buscar por cliente..."
+            hint="Selecione um cliente..."
             :rules="[(val) => !!val || 'Informe um cliente']"
           />
 
@@ -52,17 +52,15 @@
           />
 
           <q-select
-            class="q-pt-md"
+            v-model="form.templatecontrato_id"
+            :options="optionsTemplatecontrato"
+            option-value="id"
+            option-label="descricao"
+            map-options
+            emit-value
             label="Modelo de contrato"
-            type="number"
-            v-model="form.modelocontrato"
-            :options="teste"
-            hint="Pesquisar"
-            mask="(##) # #### - ####"
-            :rules="[
-              (val) =>
-                (val && val.length > 0) || 'Informe o modelo do contrato',
-            ]"
+            hint="Selecione um modelo de contrato..."
+            :rules="[(val) => !!val || 'Informe o modelo do contrato']"
           />
 
           <q-select
@@ -192,6 +190,7 @@ export default defineComponent({
 
     const optionsCliente = ref([]);
     const optionsContrato = ref([]);
+    const optionsTemplatecontrato = ref([]);
 
     /* Verificando se na rota existe o "id" como parâmetro
          ou seja, se é para atualizar um "id", ou criar um registro novo.
@@ -203,17 +202,18 @@ export default defineComponent({
       cliente_id: "",
       formapgto: "Cobrança informal",
       vencimento: "01",
-      valor: "",
-      modelocontrato: "",
       diaspendencia: "",
       diasbloqueio: "Padrão",
       msgpendenciaautomatica: "Padrão",
       msgbloqueioautomatica: "Padrão",
       mensalidautom: "Padrão",
       pgtoprepos: "Padrão",
+      templatecontrato_id: "",
+      valor: "",
     });
 
     onMounted(() => {
+      handleListModeloContratos();
       handleListClientes();
       handleListContratos();
       if (isUpdate.value) {
@@ -227,6 +227,10 @@ export default defineComponent({
 
     const handleListContratos = async () => {
       optionsContrato.value = await list("contratos");
+    };
+
+    const handleListModeloContratos = async () => {
+      optionsTemplatecontrato.value = await list("templatecontrato");
     };
 
     const handleSubmit = async () => {
@@ -250,13 +254,14 @@ export default defineComponent({
         cliente_id: "",
         formapgto: "",
         vencimento: "",
-        valor: "",
-        modelocontrato: "",
         diaspendencia: "",
         diasbloqueio: "",
         msgpendenciaautomatica: "",
+        msgbloqueioautomatica: "",
         mensalidautom: "",
         pgtoprepos: "",
+        templatecontrato_id: "",
+        valor: "",
       };
     };
 
@@ -314,6 +319,7 @@ export default defineComponent({
 
       optionsContrato,
       optionsCliente,
+      optionsTemplatecontrato,
     };
   },
 });

@@ -156,11 +156,19 @@ const columns = [
     field: "id",
     sortable: true,
   },
-  {
+  /* {
     name: "nome",
     align: "left",
     label: "Nome",
     field: "nome",
+    sortable: true,
+  }, */
+
+  {
+    name: "descricao",
+    align: "left",
+    label: "Cliente",
+    field: "descricao",
     sortable: true,
   },
 
@@ -187,17 +195,17 @@ const columns = [
     sortable: true,
   },
   {
-    name: "datacriacao",
+    name: "created_at",
     align: "left",
     label: "Criado em",
-    field: "datacriacao",
+    field: "created_at",
     sortable: true,
   },
   {
-    name: "databloqpend",
+    name: "diaspendencia",
     align: "left",
     label: "Data Bloq/Pend",
-    field: "databloqpend",
+    field: "diaspendencia",
     sortable: true,
   },
   {
