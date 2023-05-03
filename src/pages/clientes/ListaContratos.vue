@@ -156,37 +156,30 @@ const columns = [
     field: "id",
     sortable: true,
   },
-  /* {
-    name: "nome",
-    align: "left",
-    label: "Nome",
-    field: "nome",
-    sortable: true,
-  }, */
 
   {
-    name: "descricao",
+    name: "cliente_id",
     align: "left",
     label: "Cliente",
-    field: "descricao",
+    field: "cliente_id",
     sortable: true,
   },
 
-  {
+ /*  {
     name: "formapgto",
     align: "left",
     label: "Forma de pagamento",
     field: "formapgto",
     sortable: true,
-  },
+  }, */
 
-  {
+  /* {
     name: "vencimento",
     align: "left",
     label: "Vencimento",
     field: "vencimento",
     sortable: true,
-  },
+  }, */
   {
     name: "valor",
     align: "left",
@@ -194,20 +187,62 @@ const columns = [
     field: "valor",
     sortable: true,
   },
-  {
+  /* {
+    name: "diasbloqueio",
+    align: "left",
+    label: "Qtde. dias bloqueado",
+    field: "diasbloqueio",
+    sortable: true,
+  }, */
+  /* {
+    name: "templatecontrato_id",
+    align: "left",
+    label: "Modelo de contrato",
+    field: "templatecontrato_id",
+    sortable: true,
+  }, */
+  /* {
+    name: "pgtoprepos",
+    align: "left",
+    label: "Pagamento pré ou pós",
+    field: "pgtoprepos",
+    sortable: true,
+  }, */
+  /* {
+    name: "msgbloqueioautomatica",
+    align: "left",
+    label: "Mensagem de bloqueio automática",
+    field: "msgbloqueioautomatica",
+    sortable: true,
+  }, */
+   /* {
+    name: "msgpendenciaautomatica",
+    align: "left",
+    label: "Mensagem de pendência automática",
+    field: "msgpendenciaautomatica",
+    sortable: true,
+  }, */
+  /* {
+    name: "mensalidautom",
+    align: "left",
+    label: "Mensalidade automática",
+    field: "mensalidautom",
+    sortable: true,
+  }, */
+  /* {
     name: "created_at",
     align: "left",
     label: "Criado em",
     field: "created_at",
     sortable: true,
-  },
-  {
+  }, */
+  /* {
     name: "diaspendencia",
     align: "left",
     label: "Data Bloq/Pend",
     field: "diaspendencia",
     sortable: true,
-  },
+  }, */
   {
     name: "actions",
     align: "right",
@@ -275,7 +310,7 @@ export default defineComponent({
     const handleDetails = (contrato) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
-        name: "form-clientes-detalhes",
+        name: "form-contratos-detalhes",
         params: { id: contrato.id },
       });
     };
