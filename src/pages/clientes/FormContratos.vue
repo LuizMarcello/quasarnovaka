@@ -86,6 +86,11 @@
             v-model="form.diaspendencia"
             hint="Deixe em branco para usar config. padrão"
           />
+          <!-- Se optar por colocar regras, obrigando a preencher -->
+          <!-- :rules="[
+              (val) =>
+                (val && val.length > 0) || 'Informe o número da nota fiscal',
+            ]" -->
 
           <q-input
             class="q-pt-md"
@@ -93,6 +98,18 @@
             type="number"
             v-model="form.diasbloqueio"
             hint="Deixe em branco para usar config. padrão"
+          />
+
+          <!-- Se quiser preencher com zero -->
+          <!-- fill-mask="0" -->
+          <q-input
+            class="q-pt-md"
+            v-model="form.valor"
+            label="R$"
+            mask="#.###,##"
+            reverse-fill-mask
+            hint="Valor do contrato"
+            input-class="text-left"
           />
 
           <q-select
@@ -187,7 +204,6 @@ export default defineComponent({
     const { post, getById, update, list } = useApi();
     const { notifyError, notifySuccess } = useNotify();
     const accept = ref(false);
-
     const optionsCliente = ref([]);
     const optionsContrato = ref([]);
     const optionsTemplatecontrato = ref([]);
@@ -203,6 +219,7 @@ export default defineComponent({
       formapgto: "Cobrança informal",
       vencimento: "01",
       diaspendencia: "",
+      user_id: "",
       diasbloqueio: "Padrão",
       msgpendenciaautomatica: "Padrão",
       msgbloqueioautomatica: "Padrão",

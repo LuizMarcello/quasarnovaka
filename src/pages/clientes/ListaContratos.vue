@@ -165,21 +165,21 @@ const columns = [
     sortable: true,
   },
 
- /*  {
+  {
     name: "formapgto",
     align: "left",
     label: "Forma de pagamento",
     field: "formapgto",
     sortable: true,
-  }, */
+  },
 
-  /* {
+  {
     name: "vencimento",
     align: "left",
     label: "Vencimento",
     field: "vencimento",
     sortable: true,
-  }, */
+  },
   {
     name: "valor",
     align: "left",
@@ -201,13 +201,13 @@ const columns = [
     field: "templatecontrato_id",
     sortable: true,
   }, */
-  /* {
+  {
     name: "pgtoprepos",
     align: "left",
     label: "Pagamento pré ou pós",
     field: "pgtoprepos",
     sortable: true,
-  }, */
+  },
   /* {
     name: "msgbloqueioautomatica",
     align: "left",
@@ -229,13 +229,13 @@ const columns = [
     field: "mensalidautom",
     sortable: true,
   }, */
-  /* {
+  {
     name: "created_at",
     align: "left",
     label: "Criado em",
     field: "created_at",
     sortable: true,
-  }, */
+  },
   /* {
     name: "diaspendencia",
     align: "left",

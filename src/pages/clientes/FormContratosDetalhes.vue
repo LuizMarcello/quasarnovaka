@@ -3,7 +3,7 @@
   <q-page padding>
     <div class="row justify-center">
       <div class="col-12 text-center">
-        <p class="text-h6">Formulário de contratos</p>
+        <p class="text-h6">Detalhes do contrato</p>
       </div>
       <q-btn
         label="Voltar"
@@ -24,128 +24,57 @@
           <q-input label="ID" v-model="form.id" readonly />
 
           <q-input label="Cliente" v-model="form.cliente_id" readonly />
-          <!-- ok -->
+
           <q-input label="Valor" v-model="form.valor" readonly />
-          <!-- ok -->
-          <q-input
-            label="CNPJ"
-            v-model="form.cnpj"
-            readonly
-            mask="##.####.####/####-##"
-          />
-          <!-- ok -->
-          <q-input
-            label="Celular"
-            v-model="form.celular"
-            readonly
-            mask="(##) # #### - ####"
-          />
-          <!-- ok -->
-          <q-input
-            label="WhatsApp"
-            v-model="form.whatsapp"
-            readonly
-            mask="(##) # #### - ####"
-          />
-          <!-- ok -->
-          <q-input
-            label="Telefone fixo"
-            v-model="form.fixo"
-            readonly
-            mask="(##) #### - ####"
-          />
-          <!-- ok -->
-          <q-input label="Email" v-model="form.email" readonly type="email" />
-          <!-- ok -->
-          <q-input label="Rua" v-model="form.rua" readonly />
-          <!-- ok -->
-          <q-input label="Número" v-model="form.numero" readonly />
-          <!-- ok -->
-          <q-input label="Bairro" v-model="form.bairro" readonly />
-          <!-- ok -->
-          <q-input label="Cidade" v-model="form.cidade" readonly />
 
-          <q-input label="Estado" v-model="form.estado" readonly />
-
-          <!-- ok -->
-          <q-input label="CEP" v-model="form.cep" readonly mask="#####-###" />
-          <!-- ok -->
-          <q-input
-            label="Data de adesão"
-            v-model="form.dataadesao"
-            readonly
-            type="date"
-            stack-label
-            mask="##/##/####"
-          />
-
-          <!-- ok -->
-          <q-input label="Chave" v-model="form.chave" readonly />
-
-          <!-- ok -->
-          <q-input
-            label="Nome do contato"
-            v-model="form.nome_contato"
-            readonly
-          />
-
-          <!-- ok -->
-          <q-input label="Status" v-model="form.status" readonly />
+          <q-input label="Vencimento" v-model="form.vencimento" readonly />
 
           <q-input
             label="Forma de pagamento"
-            v-model="form.formapagamento"
-            readonly
-          />
-
-          <q-input label="Instalador" v-model="form.instalador" readonly />
-
-          <!-- ok -->
-          <!-- <q-select v-model="form.revenda" label="Revenda" /> -->
-
-          <!-- option-value: Qual o "id" da categoria que vai vir -->
-          <!-- option-label: O que vai ser exibido da categoria no select,
-                           no caso, o "name" -->
-          <!-- map-options: Para poder mapear as opções acima -->
-          <!-- emit-value: Para que no retôrno, seja emitido somente o valor
-                         desejado(id), e não o objeto completo. -->
-          <!-- <q-select
-            v-model="form.revenda_id"
-            :options="optionsRevenda"
-            label="Revenda"
-            option-value="id"
-            option-label="nome"
-            map-options
-            emit-value
-            :rules="[(val) => !!val || 'Informe a revenda']"
-          /> -->
-
-          <q-input
-            label="Revenda"
-            v-model="form.revenda_id"
-            option-value="id"
-            option-label="nome"
-            map-options
-            emit-value
+            v-model="form.formapgto"
             readonly
           />
 
           <q-input
-            label="Produtos e serviços que você vende atualmente"
-            v-model="form.servicos"
+            label="Modelo de contrato"
+            v-model="form.templatecontrato_id"
             readonly
           />
-        </div>
 
-        <!-- ok -->
-        <div
-          style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
-        >
           <q-input
-            label="Observação"
-            v-model="form.obs"
+            label="Msg. pendência - automática?"
+            v-model="form.msgpendenciaautomatica"
             readonly
-            :rules="[(val) => (val && val.length > 0) || 'Observação']"
+          />
+
+          <q-input
+            label="Msg. bloqueio - automática?"
+            v-model="form.msgbloqueioautomatica"
+            readonly
+          />
+
+          <q-input
+            label="Dias para pendência"
+            v-model="form.diaspendencia"
+            readonly
+          />
+
+          <q-input
+            label="Dias para bloqueio"
+            v-model="form.diasbloqueio"
+            readonly
+          />
+
+          <q-input
+            label="Habilitar mensalidade automática?"
+            v-model="form.mensalidautom"
+            readonly
+          />
+
+          <q-input
+            label="Forma de pagamento - Pré ou Pós?"
+            v-model="form.pgtoprepos"
+            readonly
           />
         </div>
 
