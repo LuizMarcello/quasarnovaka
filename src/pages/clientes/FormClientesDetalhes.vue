@@ -22,58 +22,58 @@
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
           <q-input label="ID" v-model="form.id" readonly />
-          <!-- ok -->
+
           <q-input label="Razão social" v-model="form.razaosocial" readonly />
-          <!-- ok -->
+
           <!-- <q-input
             label="Ie Rg"
             v-model="form.ie_rg"
             :rules="[(val) => (val && val.length > 0) || 'Informe seu Ie/Rg']"
           /> -->
-          <!-- ok -->
+
           <q-input
             label="CNPJ"
             v-model="form.cnpj"
             readonly
             mask="##.####.####/####-##"
           />
-          <!-- ok -->
+
           <q-input
             label="Celular"
             v-model="form.celular"
             readonly
             mask="(##) # #### - ####"
           />
-          <!-- ok -->
+          
           <q-input
             label="WhatsApp"
             v-model="form.whatsapp"
             readonly
             mask="(##) # #### - ####"
           />
-          <!-- ok -->
+
           <q-input
             label="Telefone fixo"
             v-model="form.fixo"
             readonly
             mask="(##) #### - ####"
           />
-          <!-- ok -->
+
           <q-input label="Email" v-model="form.email" readonly type="email" />
-          <!-- ok -->
+
           <q-input label="Rua" v-model="form.rua" readonly />
-          <!-- ok -->
+
           <q-input label="Número" v-model="form.numero" readonly />
-          <!-- ok -->
+
           <q-input label="Bairro" v-model="form.bairro" readonly />
-          <!-- ok -->
+
           <q-input label="Cidade" v-model="form.cidade" readonly />
 
           <q-input label="Estado" v-model="form.estado" readonly />
 
-          <!-- ok -->
+
           <q-input label="CEP" v-model="form.cep" readonly mask="#####-###" />
-          <!-- ok -->
+
           <q-input
             label="Data de adesão"
             v-model="form.dataadesao"
@@ -83,17 +83,17 @@
             mask="##/##/####"
           />
 
-          <!-- ok -->
+
           <q-input label="Chave" v-model="form.chave" readonly />
 
-          <!-- ok -->
+
           <q-input
             label="Nome do contato"
             v-model="form.nome_contato"
             readonly
           />
 
-          <!-- ok -->
+
           <q-input label="Status" v-model="form.status" readonly />
 
           <q-input
@@ -104,7 +104,7 @@
 
           <q-input label="Instalador" v-model="form.instalador" readonly />
 
-          <!-- ok -->
+
           <!-- <q-select v-model="form.revenda" label="Revenda" /> -->
 
           <!-- option-value: Qual o "id" da categoria que vai vir -->
@@ -124,9 +124,11 @@
             :rules="[(val) => !!val || 'Informe a revenda']"
           /> -->
 
-          <q-input
+          <q-select
             label="Revenda"
             v-model="form.revenda_id"
+            :options="optionsRevenda"
+            class="q-pt-md"
             option-value="id"
             option-label="nome"
             map-options
@@ -141,7 +143,7 @@
           />
         </div>
 
-        <!-- ok -->
+
         <div
           style="border: 2px solid #0b0b61; border-radius: 15px; padding: 30px"
         >
@@ -327,6 +329,7 @@ export default defineComponent({
       },
 
       optionsRevenda,
+      handleListRevendas,
     };
   },
 });

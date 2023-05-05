@@ -304,7 +304,7 @@ export default defineComponent({
 
     const handleEdit = (contrato) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-clientes", params: { id: contrato.id } });
+      router.push({ name: "form-contratos", params: { id: contrato.id } });
     };
 
     const handleDetails = (contrato) => {
@@ -319,7 +319,7 @@ export default defineComponent({
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${contrato.nome} ?`,
+          message: `Tem certeza que quer deletar ${contrato.cliente_id} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {

@@ -3,7 +3,8 @@
   <q-page padding>
     <div class="row justify-center">
       <div class="col-12 text-center">
-        <p class="text-h6">Cadastrar Contrato</p>
+
+        <p class="text-h6">Formulário de contratos</p>
       </div>
       <q-btn
         label="Voltar"

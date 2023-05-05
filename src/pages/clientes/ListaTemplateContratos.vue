@@ -227,7 +227,7 @@ export default defineComponent({
     const handleDetails = (templatecontrato) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
-        name: "formm-contratos-detalhes",
+        name: "form-template-contratos-detalhes",
         params: { id: templatecontrato.id },
       });
     };

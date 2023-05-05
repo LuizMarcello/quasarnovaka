@@ -23,7 +23,17 @@
         >
           <q-input label="ID" v-model="form.id" readonly />
 
-          <q-input label="Cliente" v-model="form.cliente_id" readonly />
+          <q-select
+            label="Cliente"
+            v-model="form.cliente_id"
+            :options="optionsCliente"
+            class="q-pt-md"
+            option-value="id"
+            option-label="razaosocial"
+            map-options
+            emit-value
+            readonly
+          />
 
           <q-input label="Valor" v-model="form.valor" readonly />
 
@@ -35,9 +45,15 @@
             readonly
           />
 
-          <q-input
+          <q-select
             label="Modelo de contrato"
             v-model="form.templatecontrato_id"
+            :options="optionsModeloContrato"
+            class="q-pt-md"
+            option-value="id"
+            option-label="descricao"
+            map-options
+            emit-value
             readonly
           />
 
@@ -111,8 +127,9 @@ export default defineComponent({
     const { post, getById, update, list } = useApi();
     const { notifyError, notifySuccess } = useNotify();
     const accept = ref(false);
-
+    const optionsModeloContrato = ref([]);
     const optionsRevenda = ref([]);
+    const optionsCliente = ref([]);
 
     /* Verificando se na rota existe o "id" como parâmetro
          ou seja, se é para atualizar um "id", ou criar um registro novo.
@@ -138,10 +155,20 @@ export default defineComponent({
 
     onMounted(() => {
       handleListRevendas();
+      handleListModeloContrato();
+      handleListClientes();
       if (isUpdate.value) {
         handleGetCliente(isUpdate.value);
       }
     });
+
+    const handleListClientes = async () => {
+      optionsCliente.value = await list("clientes");
+    };
+
+    const handleListModeloContrato = async () => {
+      optionsModeloContrato.value = await list("templatecontrato");
+    };
 
     const handleListRevendas = async () => {
       optionsRevenda.value = await list("revendas");
@@ -243,6 +270,8 @@ export default defineComponent({
       },
 
       optionsRevenda,
+      optionsCliente,
+      optionsModeloContrato,
     };
   },
 });

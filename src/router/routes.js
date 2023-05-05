@@ -82,8 +82,8 @@ const routes = [{
       },
 
       {
-        path: "form-contratos-detalhes/:id?",
-        name: "form-contratos-detalhes",
+        path: "form-templates-contrato-detalhes/:id?",
+        name: "form-template-contratos-detalhes",
         component: () => import("src/pages/clientes/FormTemplatesContratosDetalhes.vue"),
       },
 
