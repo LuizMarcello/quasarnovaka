@@ -1,3 +1,4 @@
+/* eslint-disable */
 const routes = [{
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
@@ -326,7 +327,7 @@ const routes = [{
       {
         path: "quemsomosnos",
         name: "quemsomosnos",
-        component: () => import("pages/Quemsomosnos.vue"),
+        component: () => import("pages/quemsomosnos.vue"),
       },
       {
         path: "login",
