@@ -33,52 +33,86 @@
               <q-card-section class="q-gutter-x-md q-gutter-y-sm">
                 <q-btn
                   to="/listarestoqueok"
-                  size="14px"
+                  size="13px"
                   label="Equipamento OK"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
                   no-caps
-                />
+                >
+                  <div
+                    class="text-h6"
+                    style="margin-left: 10px; margin-right: 10px; color: red"
+                  >
+                    {{ ativosEstoqueOK }}
+                  </div>
+                </q-btn>
 
                 <q-btn
                   to="/listarestoquedefeito"
-                  size="13.2px"
+                  size="12.2px"
                   label="Equip com defeito"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
                   no-caps
-                />
+                >
+                  <div
+                    class="text-h6"
+                    style="margin-left: 10px; margin-right: 10px; color: red"
+                  >
+                    6
+                  </div>
+                </q-btn>
 
                 <q-btn
                   to="/listarestoquegarantia"
-                  size="13.5px"
+                  size="12.7px"
                   label="Equip na garantia"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
                   no-caps
-                />
+                >
+                  <div
+                    class="text-h6"
+                    style="margin-left: 10px; margin-right: 10px; color: red"
+                  >
+                    6
+                  </div>
+                </q-btn>
 
                 <q-btn
                   to="/listarestoqueestoque"
-                  size="13.6px"
+                  size="12.7px"
                   label="Equip no Estoque"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
                   no-caps
-                />
+                  ><div
+                    class="text-h6"
+                    style="margin-left: 10px; margin-right: 10px; color: red"
+                  >
+                    6
+                  </div>
+                </q-btn>
+
                 <q-btn
                   to="/listarestoquecliente"
-                  size="14.5px"
+                  size="13.7px"
                   label="Equip no cliente"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
                   no-caps
-                />
+                  ><div
+                    class="text-h6"
+                    style="margin-left: 10px; margin-right: 10px; color: red"
+                  >
+                    6
+                  </div>
+                </q-btn>
               </q-card-section>
             </q-card>
           </div>
@@ -358,6 +392,7 @@ import {
 } from "vue";
 
 import useApi from "src/composables/UseApi";
+import qtdeApi from "src/composables/EstoqueApi";
 import useNotify from "src/composables/UseNotify";
 /* import router from "src/router"; */
 /* Patrick incluiu aqui "useRoute" também, em 10.01.23 */
@@ -397,7 +432,13 @@ export default defineComponent({
   },
 
   /* Este props foi acrescentado depois */
-  setup(props) {
+  setup() {
+    const ativosEstoqueOK = ref(0);
+    const ativosBuc = ref(0);
+    const ativosModem = ref(0);
+    const ativosEtria = ref(0);
+    const ativosFonte = ref(0);
+
     const estoque = ref([]);
     const loading = ref(true);
     const router = useRouter();
@@ -408,6 +449,14 @@ export default defineComponent({
     const $q = useQuasar();
     const { list, remove } = useApi();
     const { notifyError, notifySuccess } = useNotify;
+
+    const {
+      listaEstoqueOk,
+      listaEstoqueDefeito,
+      listaEstoqueGarantia,
+      listaEstoqueEstoque,
+      listaEstoqueCliente,
+    } = qtdeApi();
 
     const handleListEstoque = async () => {
       try {
@@ -457,6 +506,14 @@ export default defineComponent({
       }
     };
 
+    const handleEstoqueOK = async () => {
+      try {
+        ativosEstoqueOK.value = await listaEstoqueOk("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
     /* Patrick modificou em 10.01.23 */
     /* Antes: */
     //onMounted(() => {
@@ -471,6 +528,7 @@ export default defineComponent({
     /* Depois */
     onMounted(async () => {
       await handleListEstoque();
+      await handleEstoqueOK();
       /* Copiei do Form.vue */
       /* Este if(){} foi acrescentado pelo Patrick */
       /* Patrick alterou esta linha em 10.01.23 */
@@ -505,6 +563,7 @@ export default defineComponent({
       handleHistorico,
       handleRemoveEstoque,
       initialPagination,
+      handleEstoqueOK,
       pagesNumber: computed(() =>
         Math.ceil(estoque.value.length / initialPagination.value.rowPerPage)
       ),
@@ -548,3 +607,4 @@ body {
   }
 }
 </style>
+
