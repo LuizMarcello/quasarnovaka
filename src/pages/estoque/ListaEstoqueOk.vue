@@ -4,7 +4,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="estoqueOk"
+        :rows="estoque"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -208,8 +208,8 @@ import {
   ref,
   onMounted,
   computed,
-  watch,
-  watchEffect,
+  /*  watch,
+  watchEffect, */
 } from "vue";
 
 import estoqueApi from "src/composables/EstoqueApi";
@@ -238,7 +238,7 @@ export default defineComponent({
 
   /* Este props foi acrescentado depois */
   setup(props) {
-    const estoqueOk = ref([]);
+    const estoque = ref([]);
     const loading = ref(true);
     const router = useRouter();
     /* Patrick acrescentou esta linha em 10.01.23 */
@@ -253,43 +253,43 @@ export default defineComponent({
     const handleListEstoqueOk = async () => {
       try {
         loading.value = true;
-        estoqueOk.value = await listaEstoqueOk("estoque");
+        estoque.value = await listaEstoqueOk("estoque");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleEdit = (estoqueOk) => {
+    const handleEdit = (estoquee) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-estoque", params: { id: estoqueOk.id } });
+      router.push({ name: "form-estoque", params: { id: estoquee.id } });
     };
 
-    const handleDetails = (estoqueOk) => {
+    const handleDetails = (estoquee) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-detalhes",
-        params: { id: estoqueOk.id },
+        params: { id: estoquee.id },
       });
     };
 
-    const handleHistorico = (estoqueOk) => {
+    const handleHistorico = (estoquee) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-historico",
-        params: { id: estoqueOk.id },
+        params: { id: estoquee.id },
       });
     };
 
-    const handleRemoveEstoque = async (estoqueOk) => {
+    const handleRemoveEstoque = async (estoquee) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${estoqueOk.marca} ?`,
+          message: `Tem certeza que quer deletar ${estoquee.marca} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("estoque", estoqueOk.id);
+          await remove("estoque", estoquee.id);
           notifySuccess("Removido com sucesso!");
         });
       } catch (error) {
@@ -297,8 +297,8 @@ export default defineComponent({
       }
     };
 
-    onMounted(() => {
-      handleListEstoqueOk();
+    onMounted(async () => {
+      await handleListEstoqueOk();
     });
 
     /* "export": Para ser usado em "outro" componente */
@@ -310,7 +310,7 @@ export default defineComponent({
       columns,
       loading,
       filter,
-      estoqueOk,
+      estoque,
       handleEdit,
       handleDetails,
       handleListEstoqueOk,
@@ -318,7 +318,7 @@ export default defineComponent({
       handleRemoveEstoque,
       initialPagination,
       pagesNumber: computed(() =>
-        Math.ceil(estoqueOk.value.length / initialPagination.value.rowPerPage)
+        Math.ceil(estoque.value.length / initialPagination.value.rowPerPage)
       ),
     };
   },

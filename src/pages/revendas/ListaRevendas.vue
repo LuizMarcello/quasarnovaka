@@ -317,6 +317,7 @@ export default defineComponent({
     return {
       columns,
       revendas,
+      revenda,
       loading,
       filter,
       handleEdit,

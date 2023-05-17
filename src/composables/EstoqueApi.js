@@ -168,7 +168,7 @@ export default function useApi() {
         status: "Com defeito",
       });
     if (error) throw error;
-    return { data, count };
+    return { count, data };
   };
 
   const listaEstoqueGarantia = async (table) => {
@@ -179,7 +179,7 @@ export default function useApi() {
         status: "Enviado para garantia",
       });
     if (error) throw error;
-    return { data, count };
+    return { count, data };
   };
 
   const listaEstoqueEstoque = async (table) => {
@@ -190,7 +190,7 @@ export default function useApi() {
         status: "Na Bentley",
       });
     if (error) throw error;
-    return { data, count };
+    return { count, data };
   };
 
   const listaEstoqueCliente = async (table) => {
@@ -201,7 +201,7 @@ export default function useApi() {
         status: "No cliente",
       });
     if (error) throw error;
-    return { data, count };
+    return { count, data };
   };
 
   return {
