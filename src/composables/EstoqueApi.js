@@ -1,9 +1,9 @@
 import useSupabase from "src/boot/supabase";
-/* import useAuthUser from "./UseAuthUser"; */
+//import useAuthUser from "./UseAuthUser";
 
 export default function useApi() {
   const { supabase } = useSupabase();
-  /* const { user } = useAuthUser(); */
+  //const { user } = useAuthUser();
 
   const estoqueAntena = async (table) => {
     const { error, data, count } = await supabase
@@ -146,17 +146,18 @@ export default function useApi() {
     return count;
   };
 
-
-
   const listaEstoqueOk = async (table) => {
     const { error, data, count } = await supabase
       .from(table)
-      .select("*")
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
       .match({
         status: "Funcionamento OK",
       });
     if (error) throw error;
-    return { data, count };
+    return count;
   };
 
   const listaEstoqueDefeito = async (table) => {
@@ -202,8 +203,6 @@ export default function useApi() {
     if (error) throw error;
     return { data, count };
   };
-
-
 
   return {
     estoqueAntena,

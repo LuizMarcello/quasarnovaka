@@ -564,6 +564,7 @@ export default defineComponent({
       handleRemoveEstoque,
       initialPagination,
       handleEstoqueOK,
+      ativosEstoqueOK,
       pagesNumber: computed(() =>
         Math.ceil(estoque.value.length / initialPagination.value.rowPerPage)
       ),

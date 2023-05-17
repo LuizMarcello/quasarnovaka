@@ -189,11 +189,11 @@ export default defineComponent({
 
     //console.log(ativosTotal);
 
-    onMounted(() => {
-      handleStatusAguardando();
-      handleStatusAprovado();
-      handleStatusNaoAprovado();
-      handleStatusPendencia();
+    onMounted( async() => {
+      await handleStatusAguardando();
+      await handleStatusAprovado();
+      await handleStatusNaoAprovado();
+      await handleStatusPendencia();
     });
 
     //console.log(ativosTotal);
