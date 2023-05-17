@@ -151,6 +151,19 @@ export default function useApi() {
       .from(table)
       .select("*", {
         count: "exact",
+      })
+      .match({
+        status: "Funcionamento OK",
+      });
+    if (error) throw error;
+    return data;
+  };
+
+  const listaEstoqueOkCount = async (table) => {
+    const { error, data, count } = await supabase
+      .from(table)
+      .select("*", {
+        count: "exact",
         head: true,
       })
       .match({
@@ -179,7 +192,21 @@ export default function useApi() {
         status: "Enviado para garantia",
       });
     if (error) throw error;
-    return { count, data };
+    return data;
+  };
+
+  const listaEstoqueGarantiaCount = async (table) => {
+    const { error, data, count } = await supabase
+      .from(table)
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .match({
+        status: "Enviado para garantia",
+      });
+    if (error) throw error;
+    return count;
   };
 
   const listaEstoqueEstoque = async (table) => {
@@ -216,7 +243,9 @@ export default function useApi() {
     estoqueRadio,
     estoqueRoteador,
     listaEstoqueOk,
+    listaEstoqueOkCount,
     listaEstoqueDefeito,
+    listaEstoqueGarantiaCount,
     listaEstoqueGarantia,
     listaEstoqueEstoque,
     listaEstoqueCliente,

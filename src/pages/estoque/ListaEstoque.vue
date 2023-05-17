@@ -74,11 +74,11 @@
                   dense
                   no-caps
                 >
-                  <div
+                <div
                     class="text-h6"
                     style="margin-left: 10px; margin-right: 10px; color: red"
                   >
-                    6
+                    {{ ativosGarantiaOK }}
                   </div>
                 </q-btn>
 
@@ -434,6 +434,7 @@ export default defineComponent({
   /* Este props foi acrescentado depois */
   setup() {
     const ativosEstoqueOK = ref(0);
+    const ativosGarantiaOK = ref(0);
     const ativosBuc = ref(0);
     const ativosModem = ref(0);
     const ativosEtria = ref(0);
@@ -451,7 +452,7 @@ export default defineComponent({
     const { notifyError, notifySuccess } = useNotify;
 
     const {
-      listaEstoqueOk,
+      listaEstoqueOkCount,
       listaEstoqueDefeito,
       listaEstoqueGarantia,
       listaEstoqueEstoque,
@@ -508,7 +509,15 @@ export default defineComponent({
 
     const handleEstoqueOK = async () => {
       try {
-        ativosEstoqueOK.value = await listaEstoqueOk("estoque");
+        ativosEstoqueOK.value = await listaEstoqueOkCount("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleGarantiaOK = async () => {
+      try {
+        ativosGarantiaOK.value = await listaEstoqueGarantiaCount("estoque");
       } catch (error) {
         notifyError(error.message);
       }
@@ -529,6 +538,7 @@ export default defineComponent({
     onMounted(async () => {
       await handleListEstoque();
       await handleEstoqueOK();
+      await handleGarantiaOK();
       /* Copiei do Form.vue */
       /* Este if(){} foi acrescentado pelo Patrick */
       /* Patrick alterou esta linha em 10.01.23 */
@@ -564,6 +574,7 @@ export default defineComponent({
       handleRemoveEstoque,
       initialPagination,
       handleEstoqueOK,
+      handleGarantiaOK,
       ativosEstoqueOK,
       pagesNumber: computed(() =>
         Math.ceil(estoque.value.length / initialPagination.value.rowPerPage)
