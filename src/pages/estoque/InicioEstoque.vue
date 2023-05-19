@@ -14,55 +14,22 @@
     </q-btn>
   </div>
 
-
-
-
-  <div
-    class="container flex flex-wrap"
-    style="justify-content: center; text-align: center"
-  >
-    <q-card class="item my-card text-white" style="background: #0d084f">
-      <q-card-section style="padding: 2%">
-        <div class="text-h6">Antena</div>
-      </q-card-section>
-
-      <q-card-section class="q-pt-none" style="padding: 2%">
-        <div class="text-h5">{{ ativosAntena }}</div>
-      </q-card-section>
-
-      <q-card-section style="padding: 2%">
-        <q-card-media
-          ><q-img
-            src="~assets/satelite.png"
-            style="max-width: 30px; height: 30px"
-          >
-          </q-img
-        ></q-card-media>
-      </q-card-section>
-
-      <!-- <q-card-section>
-          <q-card-media
-            ><q-img src="~assets/icone-57.png"></q-img
-          ></q-card-media>
-        </q-card-section> -->
-
-      <q-card-section>
-        <q-btn
-          to="/listarestoqueantena"
-          label="Listar antenas"
-          style="background-color: #0a0a2a"
-          exact
-          no-caps
-        >
-          <!-- <q-icon name="mdi-human-male-female" /> -->
-        </q-btn>
-      </q-card-section>
-
-      <!-- <div class="col"></div> -->
-    </q-card>
-
-
-    
+  <div>
+    <q-btn
+      to="/listarestoqueestoque"
+      size="12.7px"
+      label="Equip no Estoque"
+      color="primary"
+      icon="mdi-satellite-variant"
+      dense
+      no-caps
+      ><div
+        class="text-h6"
+        style="margin-left: 10px; margin-right: 10px; color: red"
+      >
+        {{ ativosEstoqueEstoque }}
+      </div>
+    </q-btn>
 
     <br />
 

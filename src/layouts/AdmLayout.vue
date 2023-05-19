@@ -35,6 +35,43 @@
           </q-list>
         </q-btn-dropdown>
       </q-toolbar>
+
+
+      <q-toolbar>
+        <!-- <q-item-label></q-item-label> -->
+        <q-btn color="grey-4" icon="mdi-satellite-variant" text-color="primary" to="/listarestoqueestoque" glossy unelevated label="Equip no Estoque" >
+        <!-- <q-btn
+          to="/listarestoqueestoque"
+          size="12.7px"
+          label="Equip no Estoque"
+          color="primary"
+          icon="mdi-satellite-variant"
+          dense
+          no-caps
+          >--> <div
+            class="text-h6"
+            style="margin-left: 10px; margin-right: 10px; color: red"
+          >
+            {{ ativosEstoqueEstoque }}
+          </div>
+        </q-btn>
+
+        <q-btn
+                  to="/listarestoquecliente"
+                  size="13.7px"
+                  label="Equip no cliente"
+                  color="primary"
+                  icon="mdi-satellite-variant"
+                  dense
+                  no-caps
+                  ><div
+                    class="text-h6"
+                    style="margin-left: 10px; margin-right: 10px; color: red"
+                  >
+                    {{ ativosEstoqueCliente }}
+                  </div>
+                </q-btn>
+      </q-toolbar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" bordered>
