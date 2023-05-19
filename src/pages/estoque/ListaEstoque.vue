@@ -82,6 +82,9 @@
                   </div>
                 </q-btn>
 
+
+
+
                 <q-btn
                   to="/listarestoqueestoque"
                   size="12.7px"
@@ -97,6 +100,9 @@
                     {{ ativosEstoqueEstoque }}
                   </div>
                 </q-btn>
+
+
+                
 
                 <q-btn
                   to="/listarestoquecliente"
