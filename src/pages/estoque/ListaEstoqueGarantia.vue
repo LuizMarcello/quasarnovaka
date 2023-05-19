@@ -120,7 +120,7 @@
       rounded
       size="md"
       flat
-      :to="{ name: 'inicioestoque' }"
+      :to="{ name: 'listarestoque' }"
     />
 
     <q-page-sticky position="bottom-right" :offset="[18, 18]">

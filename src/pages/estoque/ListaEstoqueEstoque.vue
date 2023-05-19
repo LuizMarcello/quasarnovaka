@@ -4,7 +4,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="estoqueEstoque"
+        :rows="estoque"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -120,7 +120,7 @@
       rounded
       size="md"
       flat
-      :to="{ name: 'inicioestoque' }"
+      :to="{ name: 'listarestoque' }"
     />
 
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
@@ -238,7 +238,7 @@ export default defineComponent({
 
   /* Este props foi acrescentado depois */
   setup(props) {
-    const estoqueEstoque = ref([]);
+    const estoque = ref([]);
     const loading = ref(true);
     const router = useRouter();
     /* Patrick acrescentou esta linha em 10.01.23 */
@@ -250,46 +250,47 @@ export default defineComponent({
     const { listaEstoqueEstoque } = estoqueApi();
     const { notifyError, notifySuccess } = useNotify;
 
+    
     const handleListEstoqueEstoque = async () => {
       try {
         loading.value = true;
-        estoqueEstoque.value = await listaEstoqueEstoque("estoque");
+        estoque.value = await listaEstoqueEstoque("estoque");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleEdit = (estoqueEstoque) => {
+    const handleEdit = (estoquee) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-estoque", params: { id: estoqueEstoque.id } });
+      router.push({ name: "form-estoque", params: { id: estoquee.id } });
     };
 
-    const handleDetails = (estoqueEstoque) => {
+    const handleDetails = (estoquee) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-detalhes",
-        params: { id: estoqueEstoque.id },
+        params: { id: estoquee.id },
       });
     };
 
-    const handleHistorico = (estoqueEstoque) => {
+    const handleHistorico = (estoquee) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-historico",
-        params: { id: estoqueEstoque.id },
+        params: { id: estoquee.id },
       });
     };
 
-    const handleRemoveEstoque = async (estoqueEstoque) => {
+    const handleRemoveEstoque = async (estoquee) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${estoqueEstoque.marca} ?`,
+          message: `Tem certeza que quer deletar ${estoquee.marca} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("estoque", estoqueEstoque.id);
+          await remove("estoque", estoquee.id);
           notifySuccess("Removido com sucesso!");
         });
       } catch (error) {
@@ -310,7 +311,7 @@ export default defineComponent({
       columns,
       loading,
       filter,
-      estoqueEstoque,
+      estoque,
       handleEdit,
       handleDetails,
       handleListEstoqueEstoque,
@@ -318,7 +319,7 @@ export default defineComponent({
       handleRemoveEstoque,
       initialPagination,
       pagesNumber: computed(() =>
-        Math.ceil(estoqueEstoque.value.length / initialPagination.value.rowPerPage)
+        Math.ceil(estoque.value.length / initialPagination.value.rowPerPage)
       ),
     };
   },

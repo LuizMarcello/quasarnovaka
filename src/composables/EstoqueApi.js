@@ -2,11 +2,17 @@ import useSupabase from "src/boot/supabase";
 //import useAuthUser from "./UseAuthUser";
 
 export default function useApi() {
-  const { supabase } = useSupabase();
+  const {
+    supabase
+  } = useSupabase();
   //const { user } = useAuthUser();
 
   const estoqueAntena = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -20,7 +26,11 @@ export default function useApi() {
   };
 
   const estoqueBuc = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -34,7 +44,11 @@ export default function useApi() {
   };
 
   const estoqueModem = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -48,7 +62,11 @@ export default function useApi() {
   };
 
   const estoqueEtria = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -62,7 +80,11 @@ export default function useApi() {
   };
 
   const estoqueFonte = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -76,7 +98,11 @@ export default function useApi() {
   };
 
   const estoqueGroove = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -90,7 +116,11 @@ export default function useApi() {
   };
 
   const estoqueIlb = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -104,7 +134,11 @@ export default function useApi() {
   };
 
   const estoqueLnb = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -118,7 +152,11 @@ export default function useApi() {
   };
 
   const estoqueRadio = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -132,7 +170,11 @@ export default function useApi() {
   };
 
   const estoqueRoteador = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -147,7 +189,11 @@ export default function useApi() {
   };
 
   const listaEstoqueOk = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -160,7 +206,11 @@ export default function useApi() {
   };
 
   const listaEstoqueOkCount = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -174,18 +224,44 @@ export default function useApi() {
   };
 
   const listaEstoqueDefeito = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*")
       .match({
         status: "Com defeito",
       });
     if (error) throw error;
-    return { count, data };
+    return data;
+  };
+
+  const listaEstoqueDefeitoCount = async (table) => {
+    const {
+      error,
+      data,
+      count
+    } = await supabase
+      .from(table)
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .match({
+        status: "Com defeito",
+      });
+    if (error) throw error;
+    return count;
   };
 
   const listaEstoqueGarantia = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*")
       .match({
@@ -196,7 +272,11 @@ export default function useApi() {
   };
 
   const listaEstoqueGarantiaCount = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*", {
         count: "exact",
@@ -210,25 +290,70 @@ export default function useApi() {
   };
 
   const listaEstoqueEstoque = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*")
       .match({
         status: "Na Bentley",
       });
     if (error) throw error;
-    return { count, data };
+    return data;
   };
 
+  const listaEstoqueEstoqueCount = async (table) => {
+    const {
+      error,
+      data,
+      count
+    } = await supabase
+      .from(table)
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .match({
+        status: "Na Bentley",
+      });
+    if (error) throw error;
+    return count;
+  };
+
+
   const listaEstoqueCliente = async (table) => {
-    const { error, data, count } = await supabase
+    const {
+      error,
+      data,
+      count
+    } = await supabase
       .from(table)
       .select("*")
       .match({
         status: "No cliente",
       });
     if (error) throw error;
-    return { count, data };
+    return data;
+  };
+
+  const listaEstoqueClienteCount = async (table) => {
+    const {
+      error,
+      data,
+      count
+    } = await supabase
+      .from(table)
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .match({
+        status: "No cliente",
+      });
+    if (error) throw error;
+    return count;
   };
 
   return {
@@ -245,9 +370,12 @@ export default function useApi() {
     listaEstoqueOk,
     listaEstoqueOkCount,
     listaEstoqueDefeito,
-    listaEstoqueGarantiaCount,
+    listaEstoqueDefeitoCount,
     listaEstoqueGarantia,
+    listaEstoqueGarantiaCount,
     listaEstoqueEstoque,
+    listaEstoqueEstoqueCount,
     listaEstoqueCliente,
+    listaEstoqueClienteCount
   };
 }

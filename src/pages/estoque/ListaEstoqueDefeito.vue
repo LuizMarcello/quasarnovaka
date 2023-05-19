@@ -4,7 +4,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="estoqueDefeito"
+        :rows="estoque"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -120,7 +120,7 @@
       rounded
       size="md"
       flat
-      :to="{ name: 'inicioestoque' }"
+      :to="{ name: 'listarestoque' }"
     />
 
     <q-page-sticky position="bottom-right" :offset="[18, 18]">
@@ -208,8 +208,8 @@ import {
   ref,
   onMounted,
   computed,
-  watch,
-  watchEffect,
+ /*  watch,
+  watchEffect */
 } from "vue";
 
 import estoqueApi from "src/composables/EstoqueApi";
@@ -238,7 +238,7 @@ export default defineComponent({
 
   /* Este props foi acrescentado depois */
   setup(props) {
-    const estoqueDefeito = ref([]);
+    const estoque = ref([]);
     const loading = ref(true);
     const router = useRouter();
     /* Patrick acrescentou esta linha em 10.01.23 */
@@ -253,43 +253,43 @@ export default defineComponent({
     const handleListEstoqueDefeito = async () => {
       try {
         loading.value = true;
-        estoqueDefeito.value = await listaEstoqueDefeito("estoque");
+        estoque.value = await listaEstoqueDefeito("estoque");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
       }
     };
 
-    const handleEdit = (estoqueDefeito) => {
+    const handleEdit = (estoquee) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
-      router.push({ name: "form-estoque", params: { id: estoqueDefeito.id } });
+      router.push({ name: "form-estoque", params: { id: estoquee.id } });
     };
 
-    const handleDetails = (estoqueDefeito) => {
+    const handleDetails = (estoquee) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-detalhes",
-        params: { id: estoqueDefeito.id },
+        params: { id: estoquee.id },
       });
     };
 
-    const handleHistorico = (estoqueDefeito) => {
+    const handleHistorico = (estoquee) => {
       /*   router.push({ name: "form-revendas", params: { id: revenda.id } }); */
       router.push({
         name: "form-estoque-historico",
-        params: { id: estoqueDefeito.id },
+        params: { id: estoquee.id },
       });
     };
 
-    const handleRemoveEstoque = async (estoqueDefeito) => {
+    const handleRemoveEstoque = async (estoquee) => {
       try {
         $q.dialog({
           title: "Confirm",
-          message: `Tem certeza que quer deletar ${estoqueDefeito.marca} ?`,
+          message: `Tem certeza que quer deletar ${estoquee.marca} ?`,
           cancel: true,
           persistent: true,
         }).onOk(async () => {
-          await remove("estoque", estoqueDefeito.id);
+          await remove("estoque", estoquee.id);
           notifySuccess("Removido com sucesso!");
         });
       } catch (error) {
@@ -297,8 +297,8 @@ export default defineComponent({
       }
     };
 
-    onMounted(() => {
-      handleListEstoqueDefeito();
+    onMounted(async() => {
+      await handleListEstoqueDefeito();
     });
 
     /* "export": Para ser usado em "outro" componente */
@@ -310,7 +310,7 @@ export default defineComponent({
       columns,
       loading,
       filter,
-      estoqueDefeito,
+      estoque,
       handleEdit,
       handleDetails,
       handleListEstoqueDefeito,
@@ -318,7 +318,7 @@ export default defineComponent({
       handleRemoveEstoque,
       initialPagination,
       pagesNumber: computed(() =>
-        Math.ceil(estoqueDefeito.value.length / initialPagination.value.rowPerPage)
+        Math.ceil(estoque.value.length / initialPagination.value.rowPerPage)
       ),
     };
   },

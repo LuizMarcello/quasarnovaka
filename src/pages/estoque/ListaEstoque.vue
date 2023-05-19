@@ -61,7 +61,7 @@
                     class="text-h6"
                     style="margin-left: 10px; margin-right: 10px; color: red"
                   >
-                    6
+                    {{ ativosEstoqueDefeito }}
                   </div>
                 </q-btn>
 
@@ -74,11 +74,11 @@
                   dense
                   no-caps
                 >
-                <div
+                  <div
                     class="text-h6"
                     style="margin-left: 10px; margin-right: 10px; color: red"
                   >
-                    {{ ativosGarantiaOK }}
+                    {{ ativosEstoqueGarantia }}
                   </div>
                 </q-btn>
 
@@ -94,7 +94,7 @@
                     class="text-h6"
                     style="margin-left: 10px; margin-right: 10px; color: red"
                   >
-                    6
+                    {{ ativosEstoqueEstoque }}
                   </div>
                 </q-btn>
 
@@ -110,7 +110,7 @@
                     class="text-h6"
                     style="margin-left: 10px; margin-right: 10px; color: red"
                   >
-                    6
+                    {{ ativosEstoqueCliente }}
                   </div>
                 </q-btn>
               </q-card-section>
@@ -133,14 +133,6 @@
                   :to="{ name: 'barcodesearch' }"
                 />
 
-                <!-- <q-btn
-              icon="mdi-feature-search-outline"
-              color="primary"
-              dense
-              size="sm"
-              @click="handleDetails(props.row)"
-            ></q-btn> -->
-
                 <q-input
                   outlined
                   dense
@@ -156,15 +148,6 @@
                 </q-input>
                 <q-space />
 
-                <!-- <q-btn
-              class="desktop-only"
-              label="Gerar pdf"
-              color="primary"
-              icon="mdi-file-pdf-box"
-              dense
-              @click="makePDF"
-            /> -->
-
                 <q-btn
                   label="Gerar pdf"
                   color="primary"
@@ -173,24 +156,6 @@
                   no-caps
                   @click="makePDF"
                 />
-
-                <!--  <q-btn
-              class="desktop-only"
-              label="Adicionar"
-              color="primary"
-              icon="mdi-plus"
-              dense
-              :to="{ name: 'form-estoque' }"
-            /> -->
-
-                <!--  <q-btn
-              class="desktop-only"
-              label="Adicionar"
-              color="primary"
-              icon="mdi-plus"
-              dense
-              :to="{ name: 'barcode' }"
-            /> -->
 
                 <q-btn
                   v-if="$q.platform.is.desktop"
@@ -201,14 +166,6 @@
                   no-caps
                   :to="{ name: 'barcode' }"
                 />
-
-                <!-- <q-btn
-              label="Adicionar"
-              color="primary"
-              icon="mdi-plus"
-              dense
-              :to="{ name: 'form-estoque' }"
-            /> -->
               </q-card-section>
             </q-card>
           </div>
@@ -434,11 +391,14 @@ export default defineComponent({
   /* Este props foi acrescentado depois */
   setup() {
     const ativosEstoqueOK = ref(0);
-    const ativosGarantiaOK = ref(0);
-    const ativosBuc = ref(0);
-    const ativosModem = ref(0);
-    const ativosEtria = ref(0);
-    const ativosFonte = ref(0);
+    const ativosEstoqueDefeito = ref(0);
+    const ativosEstoqueGarantia = ref(0);
+    const ativosEstoqueEstoque = ref(0);
+    const ativosEstoqueCliente = ref(0);
+    //const ativosBuc = ref(0);
+    //const ativosModem = ref(0);
+    //const ativosEtria = ref(0);
+    //const ativosFonte = ref(0);
 
     const estoque = ref([]);
     const loading = ref(true);
@@ -453,10 +413,14 @@ export default defineComponent({
 
     const {
       listaEstoqueOkCount,
-      listaEstoqueDefeito,
-      listaEstoqueGarantia,
-      listaEstoqueEstoque,
-      listaEstoqueCliente,
+      listaEstoqueDefeitoCount,
+      listaEstoqueGarantiaCount,
+      listaEstoqueEstoqueCount,
+      listaEstoqueClienteCount
+      //listaEstoqueDefeito,
+      //listaEstoqueGarantia,
+      //listaEstoqueEstoque,
+      //listaEstoqueCliente,
     } = qtdeApi();
 
     const handleListEstoque = async () => {
@@ -515,9 +479,39 @@ export default defineComponent({
       }
     };
 
+    const handleDefeitoOK = async () => {
+      try {
+        ativosEstoqueDefeito.value = await listaEstoqueDefeitoCount("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
     const handleGarantiaOK = async () => {
       try {
-        ativosGarantiaOK.value = await listaEstoqueGarantiaCount("estoque");
+        ativosEstoqueGarantia.value = await listaEstoqueGarantiaCount(
+          "estoque"
+        );
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleEstoqueEstoqueOK = async () => {
+      try {
+        ativosEstoqueEstoque.value = await listaEstoqueEstoqueCount(
+          "estoque"
+        );
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleClienteOK = async () => {
+      try {
+        ativosEstoqueCliente.value = await listaEstoqueClienteCount(
+          "estoque"
+        );
       } catch (error) {
         notifyError(error.message);
       }
@@ -538,7 +532,10 @@ export default defineComponent({
     onMounted(async () => {
       await handleListEstoque();
       await handleEstoqueOK();
+      await handleDefeitoOK();
       await handleGarantiaOK();
+      await handleEstoqueEstoqueOK();
+      await handleClienteOK();
       /* Copiei do Form.vue */
       /* Este if(){} foi acrescentado pelo Patrick */
       /* Patrick alterou esta linha em 10.01.23 */
@@ -574,8 +571,12 @@ export default defineComponent({
       handleRemoveEstoque,
       initialPagination,
       handleEstoqueOK,
-      handleGarantiaOK,
+      handleDefeitoOK,
+      ativosEstoqueDefeito,
+      ativosEstoqueGarantia,
       ativosEstoqueOK,
+      ativosEstoqueEstoque,
+      ativosEstoqueCliente,
       pagesNumber: computed(() =>
         Math.ceil(estoque.value.length / initialPagination.value.rowPerPage)
       ),
@@ -619,4 +620,3 @@ body {
   }
 }
 </style>
-
