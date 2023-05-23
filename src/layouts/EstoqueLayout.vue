@@ -1,6 +1,6 @@
 <template>
   <!-- <q-layout view="lHh Lpr lFf"> -->
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" :rows="estoque">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -31,7 +31,7 @@
         style="justify-content: center; text-align: center"
       >
         <q-card class="item my-card text-white" style="margin-bottom: 1%">
-          <q-card-section class="q-gutter-x-md q-gutter-y-sm">
+          <q-card-section class="q-gutter-x-sm q-gutter-y-sm">
             <q-btn
               color="grey-4"
               icon="mdi-satellite-variant"
@@ -40,14 +40,16 @@
               glossy
               unelevated
               no-caps
-              label="Equipamento OK"
+              label="Equip OK"
             >
-              <div
-                class="text-h6"
-                style="margin-left: 10px; margin-right: 10px; color: red"
+              <q-btn round color="primary" style="margin-left: 10px"
+                ><div
+                  class="text-h6"
+                  style="margin-left: 10px; margin-right: 10px; color: white"
+                >
+                  {{ ativosEstoqueOK }}
+                </div></q-btn
               >
-                {{ ativosEstoqueOK }}
-              </div>
             </q-btn>
 
             <q-btn
@@ -58,14 +60,16 @@
               glossy
               unelevated
               no-caps
-              label="Equip no Estoque"
+              label="No Estoque"
             >
-              <div
-                class="text-h6"
-                style="margin-left: 10px; margin-right: 10px; color: red"
+              <q-btn round color="primary" style="margin-left: 10px"
+                ><div
+                  class="text-h6"
+                  style="margin-left: 10px; margin-right: 10px; color: white"
+                >
+                  {{ ativosEstoqueEstoque }}
+                </div></q-btn
               >
-                {{ ativosEstoqueEstoque }}
-              </div>
             </q-btn>
 
             <q-btn
@@ -76,14 +80,16 @@
               glossy
               no-caps
               unelevated
-              label="Equip no Cliente"
+              label="No Cliente"
             >
-              <div
-                class="text-h6"
-                style="margin-left: 10px; margin-right: 10px; color: red"
+              <q-btn round color="primary" style="margin-left: 10px"
+                ><div
+                  class="text-h6"
+                  style="margin-left: 10px; margin-right: 10px; color: white"
+                >
+                  {{ ativosEstoqueCliente }}
+                </div></q-btn
               >
-                {{ ativosEstoqueCliente }}
-              </div>
             </q-btn>
 
             <q-btn
@@ -94,14 +100,16 @@
               glossy
               no-caps
               unelevated
-              label="Equip com defeito"
+              label="Com Defeito"
             >
-              <div
-                class="text-h6"
-                style="margin-left: 10px; margin-right: 10px; color: red"
+              <q-btn round color="primary" style="margin-left: 10px"
+                ><div
+                  class="text-h6"
+                  style="margin-left: 10px; margin-right: 10px; color: white"
+                >
+                  {{ ativosEstoqueDefeito }}
+                </div></q-btn
               >
-                {{ ativosEstoqueDefeito }}
-              </div>
             </q-btn>
 
             <q-btn
@@ -112,14 +120,16 @@
               glossy
               no-caps
               unelevated
-              label="Equip na garantia"
+              label="Na Garantia"
             >
-              <div
-                class="text-h6"
-                style="margin-left: 10px; margin-right: 10px; color: red"
+              <q-btn round color="primary" style="margin-left: 10px"
+                ><div
+                  class="text-h6"
+                  style="margin-left: 10px; margin-right: 10px; color: white"
+                >
+                  {{ ativosEstoqueGarantia }}
+                </div></q-btn
               >
-                {{ ativosEstoqueGarantia }}
-              </div>
             </q-btn>
           </q-card-section>
         </q-card>
@@ -230,11 +240,13 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted, computed } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 import useAuthUser from "src/composables/UseAuthUser";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
+import qtdeApi from "src/composables/EstoqueApi";
+import useNotify from "src/composables/UseNotify";
 
 const linksList = [];
 export default defineComponent({
@@ -243,14 +255,77 @@ export default defineComponent({
     EssentialLink,
   },
   setup() {
+    const ativosEstoqueOK = ref(0);
+    const ativosEstoqueEstoque = ref(0);
+    const ativosEstoqueDefeito = ref(0);
+    const ativosEstoqueGarantia = ref(0);
+    const ativosEstoqueCliente = ref(0);
     const { user } = useAuthUser();
     const leftDrawerOpen = ref(false);
     const $q = useQuasar();
     const router = useRouter();
     const { logout } = useAuthUser();
 
+    const { notifyError, notifySuccess } = useNotify;
+
+    const estoque = ref([]);
+
+    const {
+      listaEstoqueOkCount,
+      listaEstoqueDefeitoCount,
+      listaEstoqueGarantiaCount,
+      listaEstoqueEstoqueCount,
+      listaEstoqueClienteCount,
+      //listaEstoqueDefeito,
+
+      //listaEstoqueEstoque,
+      //listaEstoqueCliente,
+    } = qtdeApi();
+
     /* Obtendo qual usuário está logado */
     const userlogado = user.value.user_metadata.name;
+
+    const handleEstoqueOK = async () => {
+      try {
+        ativosEstoqueOK.value = await listaEstoqueOkCount("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleEstoqueEstoqueOK = async () => {
+      try {
+        ativosEstoqueEstoque.value = await listaEstoqueEstoqueCount("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleClienteOK = async () => {
+      try {
+        ativosEstoqueCliente.value = await listaEstoqueClienteCount("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleDefeitoOK = async () => {
+      try {
+        ativosEstoqueDefeito.value = await listaEstoqueDefeitoCount("estoque");
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
+
+    const handleGarantiaOK = async () => {
+      try {
+        ativosEstoqueGarantia.value = await listaEstoqueGarantiaCount(
+          "estoque"
+        );
+      } catch (error) {
+        notifyError(error.message);
+      }
+    };
 
     const handleLogout = async () => {
       $q.dialog({
@@ -266,7 +341,32 @@ export default defineComponent({
         router.push({ name: "home" });
       });
     };
+
+    /* debugger; */
+
+    onMounted(async () => {
+      //await handleListEstoque();
+      await handleEstoqueOK();
+      await handleDefeitoOK();
+      await handleGarantiaOK();
+      await handleEstoqueEstoqueOK();
+      await handleClienteOK();
+      /* Copiei do Form.vue */
+      /* Este if(){} foi acrescentado pelo Patrick */
+      /* Patrick alterou esta linha em 10.01.23 */
+
+      //}
+    });
+
     return {
+      handleEstoqueOK,
+      ativosEstoqueOK,
+      handleGarantiaOK,
+      handleEstoqueEstoqueOK,
+      ativosEstoqueEstoque,
+      ativosEstoqueCliente,
+      ativosEstoqueDefeito,
+      ativosEstoqueGarantia,
       userlogado,
       user,
       essentialLinks: linksList,
@@ -274,6 +374,7 @@ export default defineComponent({
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
+
       handleLogout,
       onItemClick() {},
     };

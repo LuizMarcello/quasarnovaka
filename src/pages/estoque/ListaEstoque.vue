@@ -26,15 +26,15 @@
             /> -->
 
           <div
-            class="container flex flex-wrap"
+            class="item container flex flex-wrap"
             style="justify-content: center; text-align: center"
           >
             <q-card class="item my-card text-white" style="margin-bottom: 8%">
-              <q-card-section class="q-gutter-x-md q-gutter-y-sm">
-                <q-btn
+              <!-- <q-card-section class="q-gutter-x-md q-gutter-y-sm"> -->
+              <!-- <q-btn
                   to="/listarestoqueok"
                   size="13px"
-                  label="Equipamento OK"
+                  label="Equipamentoo OK"
                   color="primary"
                   icon="mdi-satellite-variant"
                   dense
@@ -46,9 +46,9 @@
                   >
                     {{ ativosEstoqueOK }}
                   </div>
-                </q-btn>
+                </q-btn> -->
 
-                <q-btn
+              <!-- <q-btn
                   to="/listarestoquedefeito"
                   size="12.2px"
                   label="Equip com defeito"
@@ -63,9 +63,9 @@
                   >
                     {{ ativosEstoqueDefeito }}
                   </div>
-                </q-btn>
+                </q-btn> -->
 
-                <q-btn
+              <!-- <q-btn
                   to="/listarestoquegarantia"
                   size="12.7px"
                   label="Equip na garantia"
@@ -80,12 +80,9 @@
                   >
                     {{ ativosEstoqueGarantia }}
                   </div>
-                </q-btn>
+                </q-btn> -->
 
-
-
-
-                <q-btn
+              <!-- <q-btn
                   to="/listarestoqueestoque"
                   size="12.7px"
                   label="Equip no Estoque"
@@ -99,12 +96,9 @@
                   >
                     {{ ativosEstoqueEstoque }}
                   </div>
-                </q-btn>
+                </q-btn> -->
 
-
-                
-
-                <q-btn
+              <!-- <q-btn
                   to="/listarestoquecliente"
                   size="13.7px"
                   label="Equip no cliente"
@@ -118,16 +112,23 @@
                   >
                     {{ ativosEstoqueCliente }}
                   </div>
-                </q-btn>
-              </q-card-section>
+                </q-btn> -->
+              <!--  </q-card-section> -->
             </q-card>
           </div>
 
           <div
             class="container flex flex-wrap"
-            style="justify-content: center; text-align: center"
+            style="
+              justify-content: center;
+              text-align: center;
+              margin-right: 30%;
+            "
           >
-            <q-card class="item my-card text-white" style="margin-bottom: 8%">
+            <q-card
+              class="item my-card text-white container flex flex-wrap col"
+              style="margin-top: 0"
+            >
               <q-card-section class="q-gutter-x-md q-gutter-y-sm">
                 <q-btn
                   v-if="$q.platform.is.mobile"
@@ -139,20 +140,7 @@
                   :to="{ name: 'barcodesearch' }"
                 />
 
-                <q-input
-                  outlined
-                  dense
-                  debounce="300"
-                  v-model="filter"
-                  placeholder="Pesquisar produtosss"
-                  color="primary"
-                  class="q-mb-sm"
-                >
-                  <template v-slot:append>
-                    <q-icon name="mdi-magnify" />
-                  </template>
-                </q-input>
-                <q-space />
+                <!-- <q-space /> -->
 
                 <q-btn
                   label="Gerar pdf"
@@ -174,6 +162,22 @@
                 />
               </q-card-section>
             </q-card>
+          </div>
+
+          <div class="col">
+            <q-input
+              outlined
+              dense
+              debounce="300"
+              v-model="filter"
+              placeholder="Pesquisar produtosss"
+              color="primary"
+              class="q-mb-sm"
+            >
+              <template v-slot:append>
+                <q-icon name="mdi-magnify" />
+              </template>
+            </q-input>
           </div>
         </template>
 
@@ -422,7 +426,7 @@ export default defineComponent({
       listaEstoqueDefeitoCount,
       listaEstoqueGarantiaCount,
       listaEstoqueEstoqueCount,
-      listaEstoqueClienteCount
+      listaEstoqueClienteCount,
       //listaEstoqueDefeito,
       //listaEstoqueGarantia,
       //listaEstoqueEstoque,
@@ -505,9 +509,7 @@ export default defineComponent({
 
     const handleEstoqueEstoqueOK = async () => {
       try {
-        ativosEstoqueEstoque.value = await listaEstoqueEstoqueCount(
-          "estoque"
-        );
+        ativosEstoqueEstoque.value = await listaEstoqueEstoqueCount("estoque");
       } catch (error) {
         notifyError(error.message);
       }
@@ -515,9 +517,7 @@ export default defineComponent({
 
     const handleClienteOK = async () => {
       try {
-        ativosEstoqueCliente.value = await listaEstoqueClienteCount(
-          "estoque"
-        );
+        ativosEstoqueCliente.value = await listaEstoqueClienteCount("estoque");
       } catch (error) {
         notifyError(error.message);
       }
