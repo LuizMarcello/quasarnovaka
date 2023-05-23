@@ -1,9 +1,11 @@
 /* eslint-disable */
-const routes = [{
+const routes = [
+  {
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{
+    children: [
+      {
         path: "/",
         name: "/",
         component: () => import("pages/Home.vue"),
@@ -38,7 +40,6 @@ const routes = [{
         name: "form-revendas",
         component: () => import("src/pages/revendas/Form.vue"),
       },
-
     ],
   },
 
@@ -46,7 +47,8 @@ const routes = [{
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/AdmLayout.vue"),
-    children: [{
+    children: [
+      {
         path: "listarclientes",
         name: "listarclientes",
         component: () => import("pages/clientes/ListaClientes.vue"),
@@ -85,7 +87,8 @@ const routes = [{
       {
         path: "form-templates-contrato-detalhes/:id?",
         name: "form-template-contratos-detalhes",
-        component: () => import("src/pages/clientes/FormTemplatesContratosDetalhes.vue"),
+        component: () =>
+          import("src/pages/clientes/FormTemplatesContratosDetalhes.vue"),
       },
 
       {
@@ -110,12 +113,6 @@ const routes = [{
       },
 
       {
-        path: "form-estoque-detalhes/:id?",
-        name: "form-estoque-detalhes",
-        component: () => import("pages/estoque/FormEstDetalhes.vue"),
-      },
-
-      {
         path: "form-clientes-detalhes/:id?",
         name: "form-clientes-detalhes",
         component: () => import("pages/clientes/FormClientesDetalhes.vue"),
@@ -134,17 +131,32 @@ const routes = [{
       },
 
       {
+        path: "charts",
+        name: "charts",
+        component: () => import("pages/Charts.vue"),
+      },
+    ],
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+  {
+    /* Neste layout, todas as rotas estão abertas, são publicas */
+    path: "/",
+    component: () => import("layouts/EstoqueLayout.vue"),
+    children: [
+      {
+        path: "form-estoque-detalhes/:id?",
+        name: "form-estoque-detalhes",
+        component: () => import("pages/estoque/FormEstDetalhes.vue"),
+      },
+
+      {
         path: "form-estoque-historico/:id?",
         name: "form-estoque-historico",
         component: () => import("pages/estoque/Formesthistorico.vue"),
       },
-
-      /* Antes do Patrick alterar? */
-      /* {
-        path: "form-estoque/:id?",
-        name: "form-estoque",
-        component: () => import("pages/estoque/Form.vue"),
-      }, */
 
       {
         path: "form-estoque/:id?/:barcode?",
@@ -283,16 +295,6 @@ const routes = [{
       },
 
       {
-        path: "charts",
-        name: "charts",
-        component: () => import("pages/Charts.vue"),
-      },
-      /* {
-        path: "register",
-        name: "register",
-        component: () => import("pages/Register.vue"),
-      }, */
-      {
         path: "inicioestoque",
         name: "inicioestoque",
         component: () => import("pages/estoque/InicioEstoque.vue"),
@@ -302,12 +304,13 @@ const routes = [{
       requiresAuth: true,
     },
   },
-
+  //////////////////////////////////////////////////////////////////////////////////////////////////////
   {
     /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{
+    children: [
+      {
         path: "/",
         name: "loginDefault",
         component: () => import("pages/Login.vue"),
@@ -327,7 +330,7 @@ const routes = [{
       {
         path: "quemsomosnos",
         name: "quemsomosnos",
-        component: () => import("pages/quemsomosnos.vue"),
+        component: () => import("pages/Quemsomosnos.vue"),
       },
       {
         path: "login",
@@ -344,7 +347,8 @@ const routes = [{
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
     component: () => import("src/layouts/MainLayout.vue"),
-    children: [{
+    children: [
+      {
         path: "barcode",
         name: "barcode",
         component: () =>
@@ -368,14 +372,16 @@ const routes = [{
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
     component: () => import("src/layouts/MainLayoutSair.vue"),
-    children: [{
-      path: "me",
-      name: "me",
-      component: () => import("pages/Me.vue"),
-    }, ],
+    children: [
+      {
+        path: "me",
+        name: "me",
+        component: () => import("pages/Me.vue"),
+      },
+    ],
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
 
   // Always leave this as last one,

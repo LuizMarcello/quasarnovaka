@@ -13,17 +13,6 @@
         />
 
         <q-toolbar-title> Bentley Brasil </q-toolbar-title>
-        <!-- <div>Quasar v{{ $q.version }}</div> -->
-
-        <!-- <q-btn-dropdown flat color="white" icon="person">
-          <q-list>
-            <q-item to="login" exact>
-              <q-item-section>
-                <q-item-label> Entrar</q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-btn-dropdown> -->
 
         <q-btn-dropdown flat color="white" icon="person">
           <q-list>
@@ -36,35 +25,116 @@
         </q-btn-dropdown>
       </q-toolbar>
 
+      <!-- <q-toolbar> -->
+      <div
+        class="container flex flex-wrap"
+        style="justify-content: center; text-align: center"
+      >
+        <q-card class="item my-card text-white" style="margin-bottom: 1%">
+          <q-card-section class="q-gutter-x-md q-gutter-y-sm">
+            <q-btn
+              color="grey-4"
+              icon="mdi-satellite-variant"
+              text-color="primary"
+              to="/listarestoqueok"
+              glossy
+              unelevated
+              no-caps
+              label="Equipamento OK"
+            >
+              <div
+                class="text-h6"
+                style="margin-left: 10px; margin-right: 10px; color: red"
+              >
+                {{ ativosEstoqueOK }}
+              </div>
+            </q-btn>
 
-      
+            <q-btn
+              color="grey-4"
+              icon="mdi-satellite-variant"
+              text-color="primary"
+              to="/listarestoqueestoque"
+              glossy
+              unelevated
+              no-caps
+              label="Equip no Estoque"
+            >
+              <div
+                class="text-h6"
+                style="margin-left: 10px; margin-right: 10px; color: red"
+              >
+                {{ ativosEstoqueEstoque }}
+              </div>
+            </q-btn>
+
+            <q-btn
+              color="grey-4"
+              icon="mdi-satellite-variant"
+              text-color="primary"
+              to="/listarestoquecliente"
+              glossy
+              no-caps
+              unelevated
+              label="Equip no Cliente"
+            >
+              <div
+                class="text-h6"
+                style="margin-left: 10px; margin-right: 10px; color: red"
+              >
+                {{ ativosEstoqueCliente }}
+              </div>
+            </q-btn>
+
+            <q-btn
+              color="grey-4"
+              icon="mdi-satellite-variant"
+              text-color="primary"
+              to="/listarestoquedefeito"
+              glossy
+              no-caps
+              unelevated
+              label="Equip com defeito"
+            >
+              <div
+                class="text-h6"
+                style="margin-left: 10px; margin-right: 10px; color: red"
+              >
+                {{ ativosEstoqueDefeito }}
+              </div>
+            </q-btn>
+
+            <q-btn
+              color="grey-4"
+              icon="mdi-satellite-variant"
+              text-color="primary"
+              to="/listarestoquegarantia"
+              glossy
+              no-caps
+              unelevated
+              label="Equip na garantia"
+            >
+              <div
+                class="text-h6"
+                style="margin-left: 10px; margin-right: 10px; color: red"
+              >
+                {{ ativosEstoqueGarantia }}
+              </div>
+            </q-btn>
+          </q-card-section>
+        </q-card>
+      </div>
+      <!--  </q-toolbar> -->
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" bordered>
-      <!-- <q-drawer
-      v-model="drawer"
-      show-if-above
-      :mini="miniState"
-      @mouseover="miniState = false"
-      @mouseout="miniState = true"
-      :breakpoint="500"
-      bordered
-      :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
-    > -->
-      <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered> -->
-      <!-- Sem a opção "show-if-above", ele inicia com o menu recolhido -->
-      <!-- <q-drawer v-model="leftDrawerOpen" behavior="mobile" bordered> -->
-      <!-- <q-drawer v-model="leftDrawerOpen" :width="200" behavior="mobile" bordered> -->
-
       <q-scroll-area class="fit">
         <q-list bordered separator>
           <q-item-label header>
-            <!-- Essential Links -->
             <strong>Administração</strong>
             <p>{{ user.user_metadata.name }}</p>
           </q-item-label>
 
-          <!--  <q-list bordered separator> -->
           <q-list>
             <q-item to="/home" exact>
               <q-item-section avatar>
@@ -78,7 +148,6 @@
 
             <q-item to="charts" exact>
               <q-item-section avatar>
-                <!-- <q-icon name="home" /> -->
                 <q-icon name="mdi-chart-sankey" />
               </q-item-section>
               <q-item-section>
@@ -87,7 +156,6 @@
               </q-item-section>
             </q-item>
 
-            <!-- <div v-if="!user"> -->
             <div
               v-if="
                 userlogado == 'Luiz Marcello' ||
@@ -98,7 +166,6 @@
             >
               <q-item to="/inicioRevendas" exact>
                 <q-item-section avatar>
-                  <!-- <q-icon name="list_alt" /> -->
                   <q-icon name="mdi-handshake-outline" />
                 </q-item-section>
                 <q-item-section
@@ -107,20 +174,6 @@
                 </q-item-section>
               </q-item>
             </div>
-
-            <!-- </div> -->
-
-            <!-- <q-item to="/listarclientes" exact>
-            <q-item-section avatar>
-              <q-icon name="mdi-face-agent" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Clientes</q-item-label>
-              <q-item-label caption>Clientes cadastrados</q-item-label>
-            </q-item-section>
-          </q-item> -->
-
-            <!-- <div v-if="!user"> -->
 
             <div
               v-if="
@@ -141,9 +194,6 @@
               </q-item>
             </div>
 
-            <!--  </div> -->
-
-            <!-- <div v-if="!user"> -->
             <div
               v-if="
                 userlogado == 'Luiz Marcello' ||
@@ -154,7 +204,6 @@
             >
               <q-item to="/inicioestoque" exact>
                 <q-item-section avatar>
-                  <!-- <q-icon name="list_alt" /> -->
                   <q-icon name="mdi-router-wireless-settings" />
                 </q-item-section>
                 <q-item-section
@@ -163,16 +212,6 @@
                 </q-item-section>
               </q-item>
             </div>
-
-            <!-- <q-item to="/form" exact>
-            <q-item-section avatar>
-              <q-icon name="list_alt" />
-            </q-item-section>
-            <q-item-section
-              ><q-item-label>Cadastrar revenda</q-item-label>
-              <q-item-label caption>Preencha o formulário</q-item-label>
-            </q-item-section>
-          </q-item> -->
 
             <EssentialLink
               v-for="link in essentialLinks"
@@ -197,14 +236,7 @@ import useAuthUser from "src/composables/UseAuthUser";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
-const linksList = [
-  /* {
-     title: "Discord Chat Channel",
-     caption: "chat.quasar.dev",
-     icon: "chat",
-     link: "https://chat.quasar.dev",
-  }, */
-];
+const linksList = [];
 export default defineComponent({
   name: "MainLayout",
   components: {
@@ -224,25 +256,17 @@ export default defineComponent({
       $q.dialog({
         title: "Logout",
         message: "Deseja realmente fazer logout ?",
-        /* Botão de cancelar como ativo */
+
         cancel: true,
-        /* Se clicar fora do dialog, a mensagem não desaparece */
+
         persistent: true,
-        /* "onOk" Se realmente apertar o "OK", fará o logout */
       }).onOk(async () => {
         await logout();
-        /* O "push" possibilita apertar em "voltar", porque
-           ele adiciona todas as rotas na pilha */
-        /* router.push({ name: 'login' }) */
-        /* O "replace" substitui realmente */
-        /* router.replace({ name: "login" }); */
+
         router.push({ name: "home" });
       });
     };
     return {
-      /* dialog: ref(false),
-      drawerLeft: ref(false),
-      drawerRight: ref(false), */
       userlogado,
       user,
       essentialLinks: linksList,
