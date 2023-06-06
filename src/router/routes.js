@@ -330,7 +330,7 @@ const routes = [
       {
         path: "quemsomosnos",
         name: "quemsomosnos",
-        component: () => import("pages/Quemsomosnos.vue"),
+        component: () => import("pages/quemsomosnos.vue"),
       },
       {
         path: "login",
