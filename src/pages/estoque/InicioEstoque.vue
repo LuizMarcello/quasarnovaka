@@ -5,7 +5,7 @@
   >
     <q-btn
       to="/listarestoque"
-      label="Listar todo estoque"
+      label="Listagem completa"
       exact
       no-caps
       style="background: #0d084f; color: white; width: 41%"
@@ -14,8 +14,9 @@
     </q-btn>
   </div>
 
-  <div>
-    <q-btn
+  <!-- /////////////////////////////////////////////////////////////// -->
+  <div class="row" style="justify-content: center" >
+    <!-- <q-btn
       to="/listarestoqueestoque"
       size="12.7px"
       label="Equip no Estoque"
@@ -29,7 +30,7 @@
       >
         {{ ativosEstoqueEstoque }}
       </div>
-    </q-btn>
+    </q-btn> -->
 
     <br />
 
@@ -55,7 +56,7 @@
       <q-card-section>
         <q-btn
           to="/listarestoquebuc"
-          label="Listar Bucs"
+          label="Listar Bucss"
           style="background-color: #070719"
           exact
           no-caps
@@ -400,6 +401,8 @@
           </q-card-section> -->
     </q-card>
   </div>
+
+  <!-- ////////////////////////////////////////////////////////////////////// -->
 
   <q-page-container>
     <router-view />

@@ -7,6 +7,7 @@
       to="/listarevendas"
       label="Listar todas revendas"
       exact
+      no-caps
       style="background: #0d084f; color: white; width: 41%"
     >
       <q-icon name="mdi-human-male-female" />

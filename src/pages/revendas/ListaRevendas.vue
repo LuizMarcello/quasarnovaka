@@ -147,19 +147,17 @@
         :to="{ name: 'form-revendas' }"
       />
     </q-page-sticky>
-<br>
+    <br />
     <q-btn
-          label="Voltar"
-          color="primary"
-          class="full-width"
-          rounded
-          size="sm"
-          flat
-          :to="{ name: 'iniciorevendas' }"
-        />
+      label="Voltar"
+      color="primary"
+      class="full-width"
+      rounded
+      size="sm"
+      flat
+      :to="{ name: 'iniciorevendas' }"
+    />
   </q-page>
-
-
 </template>
 
 <script>
@@ -167,7 +165,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
 const columns = [
-{
+  {
     name: "id",
     align: "left",
     label: "ID",
@@ -317,7 +315,6 @@ export default defineComponent({
     return {
       columns,
       revendas,
-      revenda,
       loading,
       filter,
       handleEdit,
