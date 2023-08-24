@@ -17,110 +17,104 @@
       to="/listarcontratos"
       label="Contratos"
       exact
-      no-caps=""
+      no-caps
       style="background: #0d084f; color: white; width: 41%"
     >
       <q-icon name="newspaper" style="margin-left: 2%" />
     </q-btn>
   </div>
 
-  <div style="margin-left: 30%; margin-right: 30%; text-align: center">
-    <q-card class="my-card text-white" style="background: blue">
-      <div class="flex-container">
-        <div style="margin-left: 4%">
+  <div style="margin-left: 40%; margin-right: 40%; text-align: center">
+    <q-card
+      class="my-card text-white"
+      style="background: green; border: 3px solid #0d084f; text-align: center"
+    >
+      <div class="flex-container" style="align-items: center">
+        <div class="col">
           <q-card-section>
-            <div class="text-h6">Total</div>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
           </q-card-section>
 
-          <q-card-section class="q-pt-none">
+          <q-btn no-caps exact to="/listarclientes" label="Total de clientes" />
+
+          <q-card-section class="q-pt-none" style="margin-top: 3%">
             <div class="text-h5">{{ ativosTotal }}</div>
           </q-card-section>
         </div>
-
-        <div class="col">
-          <q-card-section>
-            <q-card-media
-              ><q-img src="~assets/clientes050223.jpg"></q-img
-            ></q-card-media>
-          </q-card-section>
-        </div>
       </div>
     </q-card>
 
     <br />
 
-    <q-card class="my-card text-white" style="background: green">
-      <div class="flex-container">
-        <div style="margin-left: 4%">
+    <q-card
+      class="my-card text-white"
+      style="background: green; border: 3px solid #0d084f; text-align: center"
+    >
+      <div class="flex-container" style="align-items: center">
+        <div class="col">
           <q-card-section>
-            <div class="text-h6">
-              Ativos
-              <!-- <i class="fa-solid fa-user"></i> -->
-            </div>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
           </q-card-section>
 
-          <q-card-section class="q-pt-none">
+          <q-btn no-caps exact to="/listarclientes" label="Clientes ativos" />
+
+          <q-card-section class="q-pt-none" style="margin-top: 3%">
             <div class="text-h5">{{ ativosAtivos }}</div>
           </q-card-section>
         </div>
-
-        <div class="col">
-          <q-card-section>
-            <q-card-media
-              ><q-img src="~assets/clientes050223.jpg"></q-img
-            ></q-card-media>
-          </q-card-section>
-        </div>
       </div>
     </q-card>
 
     <br />
 
-    <q-card class="my-card text-white" style="background: green">
-      <div class="flex-container">
-        <div style="margin-left: 3%">
+    <q-card
+      class="my-card text-white"
+      style="background: green; border: 3px solid #0d084f; text-align: center"
+    >
+      <div class="flex-container" style="align-items: center">
+        <div class="col">
           <q-card-section>
-            <div class="text-h6">
-              Inativos
-              <!-- <i class="fa-solid fa-user"></i> -->
-            </div>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
           </q-card-section>
 
-          <q-card-section class="q-pt-none">
+          <q-btn no-caps exact to="/listarclientes" label="Clientes inativos" />
+
+          <q-card-section class="q-pt-none" style="margin-top: 3%">
             <div class="text-h5">{{ ativosInativos }}</div>
           </q-card-section>
         </div>
-        <div class="col">
-          <q-card-section>
-            <q-card-media
-              ><q-img src="~assets/clientes050223.jpg"></q-img
-            ></q-card-media>
-          </q-card-section>
-        </div>
       </div>
     </q-card>
 
     <br />
 
-    <q-card class="my-card text-white" style="background: green">
-      <div class="flex-container">
-        <div>
-          <q-card-section>
-            <div class="text-h6">
-              Aguardando
-              <!-- <i class="fa-solid fa-user"></i> -->
-            </div>
-          </q-card-section>
-
-          <q-card-section class="q-pt-none">
-            <div class="text-h5">{{ ativosAguardando }}</div>
-          </q-card-section>
-        </div>
+    <q-card
+      class="my-card text-white"
+      style="background: green; border: 3px solid #0d084f; text-align: center"
+    >
+      <div class="flex-container" style="align-items: center">
         <div class="col">
           <q-card-section>
-            <q-card-media
-              ><q-img src="~assets/clientes050223.jpg"></q-img
-            ></q-card-media>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+          </q-card-section>
+
+          <q-btn
+            no-caps
+            exact
+            to="/listarclientes"
+            label="Clientes aguardando"
+          />
+
+          <q-card-section class="q-pt-none" style="margin-top: 3%">
+            <div class="text-h5">{{ ativosAguardando }}</div>
           </q-card-section>
         </div>
       </div>

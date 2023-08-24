@@ -18,18 +18,18 @@
         color="primary"
         icon="mdi-barcode-scan"
         label="Adicionar produto"
-        class="full-width"
-        size="lg"
+        class="q-px-xl q-py-xs"
+        size="md"
         @click="continuarsemcodigo()"
         v-show="cameraStatus === 0"
       />
-
+      <br />
       <q-btn
         color="primary"
         icon="mdi-close-box-multiple-outline"
         label="Cancelar"
-        class="full-width"
-        size="lg"
+        class="q-px-xl q-py-xs"
+        size="md"
         @click="cancelar()"
         v-show="cameraStatus === 0"
       />
