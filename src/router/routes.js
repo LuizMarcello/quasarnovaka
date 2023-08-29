@@ -43,8 +43,8 @@ const routes = [
     ],
   },
 
+
   {
-    /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/AdmLayout.vue"),
     children: [
@@ -135,14 +135,28 @@ const routes = [
         name: "charts",
         component: () => import("pages/Charts.vue"),
       },
+
+      {
+        path: "listaclientesativos",
+        name: "listaclientesativos",
+        component: () => import("pages/clientes/ListaClientesAtivos.vue"),
+      }, {
+        path: "listaclientesinativos",
+        name: "listaclientesinativos",
+        component: () => import("pages/clientes/ListaClientesInativos.vue"),
+      }, {
+        path: "listaclientesaguardando",
+        name: "listaclientesaguardando",
+        component: () => import("pages/clientes/ListaClientesAguardando.vue"),
+      },
     ],
     meta: {
       requiresAuth: true,
     },
   },
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
   {
-    /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/EstoqueLayout.vue"),
     children: [
@@ -304,9 +318,9 @@ const routes = [
       requiresAuth: true,
     },
   },
-  //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
   {
-    /* Neste layout, todas as rotas estão abertas, são publicas */
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
     children: [
@@ -343,6 +357,7 @@ const routes = [
     } */
   },
 
+
   {
     /* Neste layout, todas as rotas precisam estar logadas */
     path: "/",
@@ -367,6 +382,7 @@ const routes = [
       requiresAuth: true,
     },
   },
+
 
   {
     /* Neste layout, todas as rotas precisam estar logadas */
