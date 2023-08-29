@@ -275,7 +275,6 @@ export default defineComponent({
     return {
       columns,
       clientesAtivos,
-
       loading,
       filter,
       handleDetails,
@@ -284,7 +283,9 @@ export default defineComponent({
       handleListClientesAtivos,
       initialPagination,
       pagesNumber: computed(() =>
-        Math.ceil(clientesAtivos.value.length / initialPagination.value.rowPerPage)
+        Math.ceil(
+          clientesAtivos.value.length / initialPagination.value.rowPerPage
+        )
       ),
     };
   },
