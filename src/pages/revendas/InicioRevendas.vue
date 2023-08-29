@@ -14,94 +14,95 @@
     </q-btn>
   </div>
 
-  <div
-    class="container flex flex-wrap"
-    style="justify-content: center; text-align: center"
-  >
-    <q-card class="item my-card text-white" style="background: green">
-      <q-card-section style="padding: 2%">
-        <div class="text-h6">Aprovadas</div>
-      </q-card-section>
+  <div style="margin-left: 40%; margin-right: 40%; text-align: center">
+    <q-card
+      class="my-card text-white"
+      style="background: green; border: 3px solid #0d084f; text-align: center"
+    >
+      <div class="flex-container" style="align-items: center">
+        <div class="col">
+          <q-card-section>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+          </q-card-section>
 
-      <q-card-section class="q-pt-none" style="padding: 2%">
-        <div class="text-h5">{{ ativosAprovado }}</div>
-      </q-card-section>
+          <q-btn no-caps exact to="/listaraprovadas" label="Aprovadas" />
 
-      <q-card-section style="padding: 2%">
-        <q-card-media
-          ><q-img
-            src="~assets/revendas_2_06.02.23.png"
-            style="max-width: 60px; height: 60px"
-          >
-          </q-img
-        ></q-card-media>
-      </q-card-section>
+          <q-card-section class="q-pt-none" style="margin-top: 3%">
+            <div class="text-h5">{{ ativosAprovado }}</div>
+          </q-card-section>
+        </div>
+      </div>
     </q-card>
 
     <br />
 
-    <q-card class="item my-card text-white" style="background: green">
-      <q-card-section style="padding: 2%">
-        <div class="text-h6">Reprovadas</div>
-      </q-card-section>
+    <q-card
+      class="my-card text-white"
+      style="background: green; border: 3px solid #0d084f; text-align: center"
+    >
+      <div class="flex-container" style="align-items: center">
+        <div class="col">
+          <q-card-section>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+          </q-card-section>
 
-      <q-card-section class="q-pt-none" style="padding: 2%">
-        <div class="text-h5">{{ ativosNaoAprovado }}</div>
-      </q-card-section>
+          <q-btn no-caps exact to="/listarreprovadas" label="Reprovadas" />
 
-      <q-card-section style="padding: 2%">
-        <q-card-media
-          ><q-img
-            src="~assets/revendas_2_06.02.23.png"
-            style="max-width: 60px; height: 60px"
-          >
-          </q-img
-        ></q-card-media>
-      </q-card-section>
+          <q-card-section class="q-pt-none" style="margin-top: 3%">
+            <div class="text-h5">{{ ativosNaoAprovado }}</div>
+          </q-card-section>
+        </div>
+      </div>
     </q-card>
 
     <br />
 
-    <q-card class="item my-card text-white" style="background: green">
-      <q-card-section style="padding: 2%">
-        <div class="text-h6">Pendências</div>
-      </q-card-section>
+    <q-card
+      class="my-card text-white"
+      style="background: green; border: 3px solid #0d084f; text-align: center"
+    >
+      <div class="flex-container" style="align-items: center">
+        <div class="col">
+          <q-card-section>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+          </q-card-section>
 
-      <q-card-section class="q-pt-none" style="padding: 2%">
-        <div class="text-h5">{{ ativosPendencia }}</div>
-      </q-card-section>
+          <q-btn no-caps exact to="/listarpendentes" label="Pendências" />
 
-      <q-card-section style="padding: 2%">
-        <q-card-media
-          ><q-img
-            src="~assets/revendas_2_06.02.23.png"
-            style="max-width: 60px; height: 60px"
-          >
-          </q-img
-        ></q-card-media>
-      </q-card-section>
+          <q-card-section class="q-pt-none" style="margin-top: 3%">
+            <div class="text-h5">{{ ativosPendencia }}</div>
+          </q-card-section>
+        </div>
+      </div>
     </q-card>
 
     <br />
 
-    <q-card class="item my-card text-white" style="background: green">
-      <q-card-section style="padding: 2%">
-        <div class="text-h6">Aguardando</div>
-      </q-card-section>
+    <q-card
+      class="my-card text-white"
+      style="background: green; border: 3px solid #0d084f; text-align: center"
+    >
+      <div class="flex-container" style="align-items: center">
+        <div class="col">
+          <q-card-section>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user"></i>
+          </q-card-section>
 
-      <q-card-section class="q-pt-none" style="padding: 2%">
-        <div class="text-h5">{{ ativosAguardando }}</div>
-      </q-card-section>
+          <q-btn no-caps exact to="/listaraguardando" label="Aguardando" />
 
-      <q-card-section style="padding: 2%">
-        <q-card-media
-          ><q-img
-            src="~assets/revendas_2_06.02.23.png"
-            style="max-width: 60px; height: 60px"
-          >
-          </q-img
-        ></q-card-media>
-      </q-card-section>
+          <q-card-section class="q-pt-none" style="margin-top: 3%">
+            <div class="text-h5">{{ ativosAguardando }}</div>
+          </q-card-section>
+        </div>
+      </div>
     </q-card>
 
     <br />
@@ -190,7 +191,7 @@ export default defineComponent({
 
     //console.log(ativosTotal);
 
-    onMounted( async() => {
+    onMounted(async () => {
       await handleStatusAguardando();
       await handleStatusAprovado();
       await handleStatusNaoAprovado();

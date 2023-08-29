@@ -17,31 +17,25 @@ export default function useApiClientes() {
   };
 
   const listainativo = async (table) => {
-    const { error, data, count } = await supabase
+    const { error, data } = await supabase
       .from(table)
-      .select("*", {
-        count: "exact",
-        head: true,
-      })
+      .select("*")
       .match({
         status: "Inativo",
       });
     if (error) throw error;
-    return count;
+    return data;
   };
 
   const listaaguardando = async (table) => {
-    const { error, data, count } = await supabase
+    const { error, data } = await supabase
       .from(table)
-      .select("*", {
-        count: "exact",
-        head: true,
-      })
+      .select("*")
       .match({
         status: "Aguardando",
       });
     if (error) throw error;
-    return count;
+    return data;
   };
 
   return {

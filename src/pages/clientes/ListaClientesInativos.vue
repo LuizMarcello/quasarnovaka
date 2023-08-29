@@ -3,7 +3,7 @@
     <div class="row">
       <!--  <q-table :rows="rows" :columns="columns" row-key="id" class="col-12"> -->
       <q-table
-        :rows="clientes"
+        :rows="clientesInativos"
         :columns="columns"
         v-model:pagination="initialPagination"
         row-key="id"
@@ -15,14 +15,7 @@
         <template v-slot:top>
           <span class="text-h6">Clientes</span>
           <q-space />
-          <!-- <q-btn
-              v-if="$q.platform.is.desktop"
-              label="Adicionar"
-              color="primary"
-              icon="mdi-plus"
-              dense
-              :to="{ name: 'form-revendas' }"
-            /> -->
+
           <q-td class="q-gutter-x-sm">
             <q-input
               outlined
@@ -107,13 +100,7 @@
         color="primary"
         @click="makePDF"
       />
-      <!-- <q-btn
-          v-if="$q.platform.is.mobile"
-          fab
-          icon="mdi-plus"
-          color="primary"
-          :to="{ name: 'form-revendas' }"
-        /> -->
+
       <q-btn
         class="mobile-only"
         fab
@@ -154,55 +141,6 @@ const columns = [
     field: "razaosocial",
     sortable: true,
   },
-  /* {
-    name: "ie_rg",
-    align: "left",
-    label: "Ie Rg",
-    field: "ie_rg",
-    sortable: true,
-  }, */
-  /* {
-    name: "cnpj",
-    align: "left",
-    label: "CNPJ",
-    field: "cnpj",
-    sortable: true,
-  }, */
-  /* {
-    name: "dataadesao",
-    align: "left",
-    label: "Data de adesão",
-    field: "dataadesao",
-    sortable: true,
-  }, */
-  /* {
-    name: "nome_contato",
-    align: "left",
-    label: "Nome do contato",
-    field: "nome_contato",
-    sortable: true,
-  }, */
-  /* {
-    name: "celular",
-    align: "left",
-    label: "Celular",
-    field: "celular",
-    sortable: true,
-  }, */
-  /* {
-    name: "whatsapp",
-    align: "left",
-    label: "WhatsApp",
-    field: "whatsapp",
-    sortable: true,
-  }, */
-  /* {
-    name: "fixo",
-    align: "left",
-    label: "Telefone fixo",
-    field: "fixo",
-    sortable: true,
-  }, */
   {
     name: "email",
     align: "left",
@@ -210,72 +148,7 @@ const columns = [
     field: "email",
     sortable: true,
   },
-  /* {
-    name: "chave",
-    align: "left",
-    label: "Chave",
-    field: "chave",
-    sortable: true,
-  }, */
 
-  /* {
-    name: "formapagamento",
-    align: "left",
-    label: "Forma de pagamento",
-    field: "formapagamento",
-    sortable: true,
-  }, */
-  /* {
-    name: "instalador",
-    align: "left",
-    label: "Instalador",
-    field: "instalador",
-    sortable: true,
-  }, */
-
-  /* {
-    name: "revenda_id",
-    align: "left",
-    label: "Revenddda",
-    field: "revenda_id",
-    sortable: true,
-  }, */
-
-  /* {
-    name: "observacao",
-    align: "left",
-    label: "Observacao",
-    field: "observacao",
-    sortable: true,
-  }, */
-  /* {
-    name: "cep",
-    align: "left",
-    label: "CEP",
-    field: "cep",
-    sortable: true,
-  }, */
-  /*  {
-    name: "rua",
-    align: "left",
-    label: "Rua",
-    field: "rua",
-    sortable: true,
-  }, */
-  /* {
-    name: "numero",
-    align: "left",
-    label: "Número",
-    field: "numero",
-    sortable: true,
-  }, */
-  /* {
-    name: "bairro",
-    align: "left",
-    label: "Bairro",
-    field: "bairro",
-    sortable: true,
-  }, */
   {
     name: "cidade",
     align: "left",
@@ -322,6 +195,7 @@ const initialPagination = ref({
 import { defineComponent, ref, onMounted, computed } from "vue";
 
 import useApi from "src/composables/UseApi";
+import useApiClientes from "src/composables/UseApiClientes";
 import useNotify from "src/composables/UseNotify";
 /* import router from "src/router"; */
 import { useRouter } from "vue-router";
@@ -344,19 +218,20 @@ export default defineComponent({
   },
 
   setup() {
-    const clientes = ref([]);
+    const clientesInativos = ref([]);
     const loading = ref(true);
     const router = useRouter();
     const filter = ref("");
     /* const table = "revendas"; */
     const $q = useQuasar();
-    const { list, remove } = useApi();
+    const { remove } = useApi();
+    const { listainativo } = useApiClientes();
     const { notifyError, notifySuccess } = useNotify;
 
-    const handleListClientes = async () => {
+    const handleListClientesInativos = async () => {
       try {
         loading.value = true;
-        clientes.value = await list("clientes");
+        clientesInativos.value = await listainativo("clientes");
         loading.value = false;
       } catch (error) {
         notifyError(error.message);
@@ -394,20 +269,23 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      handleListClientes();
+      handleListClientesInativos();
     });
 
     return {
       columns,
-      clientes,
+      clientesInativos,
       loading,
       filter,
       handleDetails,
       handleEdit,
       handleRemoveCliente,
+      handleListClientesInativos,
       initialPagination,
       pagesNumber: computed(() =>
-        Math.ceil(clientes.value.length / initialPagination.value.rowPerPage)
+        Math.ceil(
+          clientesInativos.value.length / initialPagination.value.rowPerPage
+        )
       ),
     };
   },
