@@ -341,11 +341,11 @@ const routes = [
         name: "dashboard",
         component: () => import("pages/Dashboard.vue"),
       },
-      /* {
+      {
         path: "quemsomosnos",
         name: "quemsomosnos",
         component: () => import("pages/Quemsomosnos.vue"),
-      }, */
+      },
       {
         path: "login",
         name: "login",
