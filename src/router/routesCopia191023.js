@@ -43,7 +43,6 @@ const routes = [
     ],
   },
 
-
   {
     path: "/",
     component: () => import("layouts/AdmLayout.vue"),
@@ -140,11 +139,13 @@ const routes = [
         path: "listaclientesativos",
         name: "listaclientesativos",
         component: () => import("pages/clientes/ListaClientesAtivos.vue"),
-      }, {
+      },
+      {
         path: "listaclientesinativos",
         name: "listaclientesinativos",
         component: () => import("pages/clientes/ListaClientesInativos.vue"),
-      }, {
+      },
+      {
         path: "listaclientesaguardando",
         name: "listaclientesaguardando",
         component: () => import("pages/clientes/ListaClientesAguardando.vue"),
@@ -154,7 +155,6 @@ const routes = [
       requiresAuth: true,
     },
   },
-
 
   {
     path: "/",
@@ -319,7 +319,6 @@ const routes = [
     },
   },
 
-
   {
     path: "/",
     component: () => import("layouts/MainLayout.vue"),
@@ -341,11 +340,11 @@ const routes = [
         name: "dashboard",
         component: () => import("pages/Dashboard.vue"),
       },
-      /* {
+      {
         path: "quemsomosnos",
         name: "quemsomosnos",
         component: () => import("pages/Quemsomosnos.vue"),
-      }, */
+      },
       {
         path: "login",
         name: "login",
@@ -356,7 +355,6 @@ const routes = [
       requiresAuth: true
     } */
   },
-
 
   {
     /* Neste layout, todas as rotas precisam estar logadas */
@@ -382,7 +380,6 @@ const routes = [
       requiresAuth: true,
     },
   },
-
 
   {
     /* Neste layout, todas as rotas precisam estar logadas */
