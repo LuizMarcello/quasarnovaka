@@ -9,13 +9,9 @@
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
 
 const ESLintPlugin = require("eslint-webpack-plugin");
-const {
-  QCard
-} = require("quasar");
+const { QCard } = require("quasar");
 
-const {
-  configure
-} = require("quasar/wrappers");
+const { configure } = require("quasar/wrappers");
 
 module.exports = configure(function (ctx) {
   return {
@@ -56,7 +52,8 @@ module.exports = configure(function (ctx) {
       vueRouterMode: "history", // available values: 'hash', 'history'
       env: {
         SUPABASE_URL: "https://shgydekzsmsygqsulbma.supabase.co",
-        SUPABASE_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNoZ3lkZWt6c21zeWdxc3VsYm1hIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjE5Nzc0MDMsImV4cCI6MTk3NzU1MzQwM30.0ldS7sm9QKcAiUUSUkxrwlPbev2qn42ytZ5VhJVenKs",
+        SUPABASE_KEY:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNoZ3lkZWt6c21zeWdxc3VsYm1hIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjE5Nzc0MDMsImV4cCI6MTk3NzU1MzQwM30.0ldS7sm9QKcAiUUSUkxrwlPbev2qn42ytZ5VhJVenKs",
       },
 
       // transpile: false,
@@ -80,9 +77,11 @@ module.exports = configure(function (ctx) {
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
 
       chainWebpack(chain) {
-        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [{
-          extensions: ["js", "vue"],
-        }, ]);
+        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [
+          {
+            extensions: ["js", "vue"],
+          },
+        ]);
       },
     },
 
@@ -166,9 +165,11 @@ module.exports = configure(function (ctx) {
       // Tell browser when a file from the server should expire from cache (in ms)
 
       chainWebpackWebserver(chain) {
-        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [{
-          extensions: ["js"],
-        }, ]);
+        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [
+          {
+            extensions: ["js"],
+          },
+        ]);
       },
 
       middlewares: [
@@ -180,15 +181,17 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli-webpack/developing-pwa/configuring-pwa
     pwa: {
       workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
-      workboxOptions: {}, // only for GenerateSW
+      workboxOptions: { skipWaiting: true, clientClaim: true }, // only for GenerateSW
 
       // for the custom service worker ONLY (/src-pwa/custom-service-worker.[js|ts])
       // if using workbox in InjectManifest mode
 
       chainWebpackCustomSW(chain) {
-        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [{
-          extensions: ["js"],
-        }, ]);
+        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [
+          {
+            extensions: ["js"],
+          },
+        ]);
       },
 
       manifest: {
@@ -199,7 +202,8 @@ module.exports = configure(function (ctx) {
         orientation: "portrait",
         background_color: "#ffffff",
         theme_color: "#027be3",
-        icons: [{
+        icons: [
+          {
             src: "icons/icon-128x128.png",
             sizes: "128x128",
             type: "image/png",
@@ -262,15 +266,19 @@ module.exports = configure(function (ctx) {
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
 
       chainWebpackMain(chain) {
-        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [{
-          extensions: ["js"],
-        }, ]);
+        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [
+          {
+            extensions: ["js"],
+          },
+        ]);
       },
 
       chainWebpackPreload(chain) {
-        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [{
-          extensions: ["js"],
-        }, ]);
+        chain.plugin("eslint-webpack-plugin").use(ESLintPlugin, [
+          {
+            extensions: ["js"],
+          },
+        ]);
       },
     },
   };
