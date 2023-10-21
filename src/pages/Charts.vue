@@ -1,13 +1,29 @@
 <!-- eslint-disable -->
 <template>
   <q-page padding>
-    <div class="q-pa-md" style="display: flex; justify-content: center"></div>
-
-    <div class="col">
-      <q-card-media>
+    <!-- <div class="q-pa-md" style="display: flex; justify-content: center"> -->
+    <!-- <div class="row q-col-gutter-y-md"> -->
+    <div class="row q-col-gutter-md">
+      <div class="col-md-4 col-xs-12 col-sm-6">
+        <card-dashboard table="clientes" label="Total de clientes:" icon="mdi-account-multiple" />
+        <!--  <div class="col"> -->
+        <!--  <q-card-media> -->
         <!-- <q-img src="~assets/bentleybrasil.jpeg" style="min-width: 400px; max-width: 50rem;"></q-img> -->
-        <q-img src="~assets/googleChart_2.png"></q-img>
-      </q-card-media>
+        <!-- <q-img src="~assets/googleChart_2.png"></q-img> -->
+        <!-- </q-card-media> -->
+      </div>
+
+      <div class="col-md-4 col-xs-12 col-sm-6">
+        <card-dashboard table="contratos" label="Total de contratos:" icon="mdi-account-multiple" />
+      </div>
+
+      <div class="col-md-4 col-xs-12 col-sm-6">
+        <card-dashboard table="estoque" label="Estoque total:" icon="mdi-account-multiple" />
+      </div>
+
+      <div class="col-md-4 col-xs-12 col-sm-6">
+        <card-dashboard table="revendas" label="Total de Revendas:" icon="mdi-account-multiple" />
+      </div>
     </div>
 
     <!--  <q-card>
@@ -18,7 +34,6 @@
     <!-- </div>
       </q-card-actions>
     </q-card>-->
-
   </q-page>
 
   <q-footer elevated>
@@ -34,8 +49,20 @@
 
 <script>
 /* eslint-disable */
-import { ref } from "vue";
-export default {
+import { defineComponent, defineAsyncComponent } from "vue";
+import useAuthUser from "src/composables/UseAuthUser";
+
+export default defineComponent({
   name: "Dashboard",
-};
+  components: {
+    CardDashboard: defineAsyncComponent(() =>
+      import("components/CardDashboard.vue")
+    ),
+  },
+  setup() {
+    const { user } = useAuthUser();
+
+    return { user };
+  },
+});
 </script>
