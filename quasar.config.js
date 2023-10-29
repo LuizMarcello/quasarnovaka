@@ -203,6 +203,7 @@ module.exports = configure(function (ctx) {
         background_color: "#ffffff",
         theme_color: "#027be3",
        /*  theme_color: "#03020d", */
+       categories: ['business', 'productivity'],
         icons: [
           {
             src: "icons/icon-128x128.png",
