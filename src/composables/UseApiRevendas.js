@@ -54,7 +54,56 @@ export default function useApiRevendas() {
     return data;
   };
 
+  const listaaprovada = async (table) => {
+    const { error, data } = await supabase
+      .from(table)
+      .select("*")
+      .match({
+        status: "Aprovado",
+      });
+    if (error) throw error;
+    return data;
+  };
+
+
+  const listareprovada = async (table) => {
+    const { error, data } = await supabase
+      .from(table)
+      .select("*")
+      .match({
+        status: "Não Aprovado",
+      });
+    if (error) throw error;
+    return data;
+  };
+
+  const emanalise = async (table) => {
+    const { error, data } = await supabase
+      .from(table)
+      .select("*")
+      .match({
+        status: "Em análise",
+      });
+    if (error) throw error;
+    return data;
+  };
+
+  const compendencias = async (table) => {
+    const { error, data } = await supabase
+      .from(table)
+      .select("*")
+      .match({
+        status: "Com pendências",
+      });
+    if (error) throw error;
+    return data;
+  };
+
   return {
+    listaaprovada,
+    listareprovada,
+    compendencias,
+    emanalise,
     list,
     getById,
     post,

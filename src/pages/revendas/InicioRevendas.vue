@@ -10,7 +10,7 @@
       no-caps
       style="background: #0d084f; color: white; width: 41%"
     >
-      <q-icon name="mdi-human-male-female" />
+      <q-icon name="mdi-human-male-female" style="margin-left: 2%" />
     </q-btn>
   </div>
 
@@ -73,10 +73,10 @@
             <i class="fa-solid fa-user"></i>
           </q-card-section>
 
-          <q-btn no-caps exact to="/listarpendentes" label="Pendências" />
+          <q-btn no-caps exact to="/listaremanalise" label="Em análise" />
 
           <q-card-section class="q-pt-none" style="margin-top: 3%">
-            <div class="text-h5">{{ ativosPendencia }}</div>
+            <div class="text-h5">{{ ativosEmanalise }}</div>
           </q-card-section>
         </div>
       </div>
@@ -96,16 +96,14 @@
             <i class="fa-solid fa-user"></i>
           </q-card-section>
 
-          <q-btn no-caps exact to="/listaraguardando" label="Aguardando" />
+          <q-btn no-caps exact to="/listarcompendencia" label="Com pendências" />
 
           <q-card-section class="q-pt-none" style="margin-top: 3%">
-            <div class="text-h5">{{ ativosAguardando }}</div>
+            <div class="text-h5">{{ ativosPendencia }}</div>
           </q-card-section>
         </div>
       </div>
     </q-card>
-
-    <br />
   </div>
 
   <q-page-container>
@@ -132,24 +130,24 @@ import { defineComponent, ref, onMounted } from "vue";
 import useApi from "src/composables/UseApi";
 
 /* import router from "src/router"; */
-import { useRouter } from "vue-router";
+//import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
 export default defineComponent({
   setup() {
     const ativosAprovado = ref(0);
     const ativosNaoAprovado = ref(0);
-    const ativosAguardando = ref(0);
+    const ativosEmanalise = ref(0);
     const ativosPendencia = ref(0);
 
-    const router = useRouter();
+    //const router = useRouter();
 
     const $q = useQuasar();
 
     const {
       revendasAprovadas,
       revendasReprovadas,
-      revendasAguardando,
+      revendasEmAnalise,
       revendasPendencia,
     } = useApi();
 
@@ -173,9 +171,9 @@ export default defineComponent({
       }
     };
 
-    const handleStatusAguardando = async () => {
+    const handleStatusEmAnalise = async () => {
       try {
-        ativosAguardando.value = await revendasAguardando("revendas");
+        ativosEmanalise.value = await revendasEmAnalise("revendas");
       } catch (error) {
         notifyError(error.message);
       }
@@ -191,23 +189,23 @@ export default defineComponent({
 
     //console.log(ativosTotal);
 
-    onMounted(async () => {
-      await handleStatusAguardando();
-      await handleStatusAprovado();
-      await handleStatusNaoAprovado();
-      await handleStatusPendencia();
+    onMounted(() => {
+      handleStatusEmAnalise();
+      handleStatusAprovado();
+      handleStatusNaoAprovado();
+      handleStatusPendencia();
     });
 
     //console.log(ativosTotal);
 
     return {
       handleStatusAprovado,
-      handleStatusAguardando,
+      handleStatusEmAnalise,
       handleStatusNaoAprovado,
       handleStatusPendencia,
       ativosAprovado,
       ativosNaoAprovado,
-      ativosAguardando,
+      ativosEmanalise,
       ativosPendencia,
       fitModes: ["cover", "fill", "contain", "none", "scale-down"],
     };
@@ -216,31 +214,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  /* border: 4px solid #ccc; */
-  align-items: center;
-  align-content: center;
-}
-.flex {
+.flex-container {
   display: flex;
+  justify-content: space-between;
 }
-.item {
-  margin: 6px;
-  /* background: tomato; */
-  text-align: center;
-  font-size: 1em;
-  min-width: 200px;
-}
-.flex-wrap {
-  flex-wrap: wrap;
-}
-body {
-  font-family: monospace;
-}
+
 @media only screen and (max-width: 600px) {
-  .container {
+  .flex-container {
     flex-direction: column;
   }
 }

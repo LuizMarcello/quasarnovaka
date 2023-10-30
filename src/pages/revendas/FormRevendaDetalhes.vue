@@ -56,7 +56,7 @@
           rounded
           size="sm"
           flat
-          :to="{ name: 'listarevendas' }"
+          :to="{ name: 'iniciorevendas' }"
         />
       </q-form>
     </div>

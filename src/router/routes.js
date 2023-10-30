@@ -111,6 +111,39 @@ const routes = [
         name: "aprovarrevendas",
         component: () => import("pages/revendas/FormAprovar.vue"),
       },
+      {
+        path: "listaraprovadas/:id?",
+        name: "listaraprovadas",
+        component: () => import("pages/revendas/ListaRevendasAprovadas.vue"),
+      },
+
+      {
+        path: "listarreprovadas/:id?",
+        name: "listarreprovadas",
+        component: () => import("pages/revendas/ListaRevendasReprovadas.vue"),
+      },
+
+      {
+        path: "listaremanalise/:id?",
+        name: "listaremanalise",
+        component: () => import("pages/revendas/ListaRevendasEmAnalise.vue"),
+      },
+
+      {
+        path: "listarcompendencia/:id?",
+        name: "listarcompendencia",
+        component: () => import("pages/revendas/ListaRevendasComPendencias.vue"),
+      },
+
+
+      {
+        path: "form-revendas-detalhes/:id?",
+        name: "form-revendas-detalhes",
+        component: () => import("pages/revendas/FormRevendaDetalhes.vue"),
+      },
+
+
+
 
       {
         path: "form-clientes-detalhes/:id?",

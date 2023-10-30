@@ -60,7 +60,12 @@
             <i class="fa-solid fa-user"></i>
           </q-card-section>
 
-          <q-btn no-caps exact to="/listaclientesativos" label="Clientes ativos" />
+          <q-btn
+            no-caps
+            exact
+            to="/listaclientesativos"
+            label="Clientes ativos"
+          />
 
           <q-card-section class="q-pt-none" style="margin-top: 3%">
             <div class="text-h5">{{ ativosAtivos }}</div>
@@ -83,7 +88,12 @@
             <i class="fa-solid fa-user"></i>
           </q-card-section>
 
-          <q-btn no-caps exact to="/listaclientesinativos" label="Clientes inativos" />
+          <q-btn
+            no-caps
+            exact
+            to="/listaclientesinativos"
+            label="Clientes inativos"
+          />
 
           <q-card-section class="q-pt-none" style="margin-top: 3%">
             <div class="text-h5">{{ ativosInativos }}</div>
