@@ -1,39 +1,76 @@
 <!-- eslint-disable -->
 <template>
   <q-page padding>
-    <!-- <div class="q-pa-md" style="display: flex; justify-content: center"> -->
-    <!-- <div class="row q-col-gutter-y-md"> -->
-    <div class="row q-col-gutter-md">
-      <div class="col-md-4 col-xs-12 col-sm-6">
-        <card-dashboard table="clientes" label="Total de clientes:" icon="mdi-account-multiple" />
-        <!--  <div class="col"> -->
-        <!--  <q-card-media> -->
-        <!-- <q-img src="~assets/bentleybrasil.jpeg" style="min-width: 400px; max-width: 50rem;"></q-img> -->
-        <!-- <q-img src="~assets/googleChart_2.png"></q-img> -->
-        <!-- </q-card-media> -->
-      </div>
-
-      <div class="col-md-4 col-xs-12 col-sm-6">
-        <card-dashboard table="contratos" label="Total de contratos:" icon="mdi-account-multiple" />
-      </div>
-
-      <div class="col-md-4 col-xs-12 col-sm-6">
-        <card-dashboard table="estoque" label="Estoque total:" icon="mdi-account-multiple" />
-      </div>
-
-      <div class="col-md-4 col-xs-12 col-sm-6">
-        <card-dashboard table="revendas" label="Total de Revendas:" icon="mdi-account-multiple" />
-      </div>
+    <div class="col">
+      <q-card-media
+        class="q-pa-md"
+        style="display: flex; justify-content: center"
+      >
+        <q-img src="~assets/googleChart_2.png" width="55%"></q-img>
+      </q-card-media>
     </div>
 
-    <!--  <q-card>
-      <q-card-actions class="q-gutter-md"> -->
-    <!-- <q-btn flat round dense icon="event"></q-btn> -->
-    <!-- <div class="col"> -->
-    <!-- <q-btn flat label="Detalhes"></q-btn> -->
-    <!-- </div>
-      </q-card-actions>
-    </q-card>-->
+    <!-- style="text-align: center; align-items: center;" -->
+
+    <div class="col" style="display: flex; justify-content: center">
+      <div class="row q-col-gutter-md" style="text-align: center">
+        <div class="col-md-4 col-xs-12 col-sm-6">
+          <card-dashboard
+            table="clientes"
+            label="Total de clientes:"
+            icon="mdi-account-multiple"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-6">
+          <card-dashboard
+            table="contratos"
+            label="Total de contratos:"
+            icon="mdi-account-multiple"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-6">
+          <card-dashboard
+            table="estoque"
+            label="Estoque total:"
+            icon="mdi-account-multiple"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-6">
+          <card-dashboard
+            table="revendas"
+            label="Total de Revendas:"
+            icon="mdi-account-multiple"
+          />
+        </div>
+        <div class="col-md-4 col-xs-12 col-sm-6">
+          <card-dashboard
+            table=""
+            label="Contratos cancelados:"
+            icon="mdi-account-multiple"
+          />
+        </div>
+
+        <div class="col-md-4 col-xs-12 col-sm-6">
+          <card-dashboard
+            table=""
+            label="Contratos em análise:"
+            icon="mdi-account-multiple"
+          />
+        </div>
+      </div>
+
+      <!-- <q-card>
+        <q-card-actions class="q-gutter-md">
+          <q-btn flat round dense icon="event"></q-btn>
+          <div class="col">
+            <q-btn flat label="Detalhes"></q-btn>
+          </div>
+        </q-card-actions>
+      </q-card> -->
+    </div>
   </q-page>
 
   <q-footer elevated>
